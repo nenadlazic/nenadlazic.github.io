@@ -6,8 +6,22 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Diam Aliqua</title>
+      <link>https://nenadlazic.github.io/categories/diam-aliqua/</link>
+      <pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/diam-aliqua/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fringilla</title>
+      <link>https://nenadlazic.github.io/categories/fringilla/</link>
+      <pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/fringilla/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Syntax</title>
       <link>https://nenadlazic.github.io/categories/syntax/</link>
@@ -20,20 +34,6 @@
       <link>https://nenadlazic.github.io/categories/themes/</link>
       <pubDate>Sat, 19 Nov 2022 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/categories/themes/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Diam Aliqua</title>
-      <link>https://nenadlazic.github.io/categories/diam-aliqua/</link>
-      <pubDate>Sat, 06 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/categories/diam-aliqua/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Fringilla</title>
-      <link>https://nenadlazic.github.io/categories/fringilla/</link>
-      <pubDate>Sat, 06 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/categories/fringilla/</guid>
       <description></description>
     </item>
   </channel>
