@@ -1,17 +1,16 @@
 baseURL: https://nenadlazic.github.io/
-# Uncomment below to use aafu as hugo theme. See instructions in README.md
-# theme: aafu
-languageCode: en-us
 theme: aafu
+languageCode: en-us
 build:
   writeStats: true
 params:
-  title: aafu theme
-  author: Darshan Baral
-  description: Website title
+  title: Nenad Lazić
+  author: Nenad Lazić
+  description: Software Engineer — Portfolio, Blog & Contact
+  keywords: [Nenad, Lazic, Lazić, CV, Portfolio, Senior Software Engineer, Technical Lead, Blog, Java, C, C++, Streaming, DTV, Android, AI]
   copyright: >-
     powered by [hugo](https://gohugo.io/) & deployed on
-    [Cloudflare](https://www.cloudflare.com/)
+    [GitHub Pages](https://pages.github.com/)
   theme:
     mainTheme: dark
     showAttribute: true
@@ -27,34 +26,28 @@ params:
               <link rel="shortcut icon" href="favicon.ico">
 
   profile:
-    name: "First Last, Abbr."
-    tagline: Title
-    location: "City Name, ST"
+    name: "Nenad Lazić"
+    tagline: Software Engineer
+    location: "Belgrade, Serbia"
     photo: profile.jpg
   social:
     title: Links
     list:
       - icon: fab fa-linkedin-in
-        url: "#"
+        url: "https://www.linkedin.com/in/nenad-lazic-7110a310a/"
         title: LinkedIn
-      - icon: fab fa-stack-overflow
-        url: "#"
-        title: StackOverflow
       - icon: fab fa-github
-        url: "#"
+        url: "https://github.com/nenadlazic"
         title: GitHub
+      - icon: fab fa-stack-overflow
+        url: "https://stackoverflow.com/users/7375893/nenad-lazic"
+        title: StackOverflow
       - icon: fab fa-twitter
-        url: "#"
+        url: "https://x.com/nlazic993"
         title: Twitter
-      - icon: fab fa-orcid
-        url: "#"
-        title: Orcid
-      - icon: ai ai-google-scholar
-        url: "#"
-        title: Google Scholar
-      - icon: fab fa-researchgate
-        url: "#"
-        title: ResearchGate
+      - icon: fab fa-instagram
+        url: 'https://www.instagram.com/nlazic993/'
+        title: Instagram
   showInAccordion:
     - item: aboutme
       expand: true
