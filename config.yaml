@@ -53,114 +53,100 @@ params:
       expand: true
     - item: experience
     - item: education
-    - item: publication
+    - item: services
     - item: project
     - item: skill
     - item: hobby
   aboutme:
     title: About Me
-    icon: fas fa-user
-    description: This is a demo of the `aafu` theme. It has `light` and `dark` theme.
+    icon: fas fa-user-tie
+    description: Senior Software Engineer and Technical Lead with ~10 years of experience. Demonstrates proficiency in developing diverse projects across both client and backend systems, including system design and architectural planning. Possesses extensive expertise in technologies including C, C++, Java, Spring Boot, Kotlin, Python, Docker, Kubernetes, Android, among others. Consistently applies out-of-the-box thinking to solve complex problems, underpinned by a strong, goal-oriented approach. Effective organization and prioritization are central to leadership in ensuring the successful delivery of high-quality software projects from idea to launch.
   experience:
     title: Experiences
     icon: fas fa-briefcase
     list:
-      - position: Job Title
-        dates: 2019 - *Present*
-        company: Company Name
+      - position: Software Engineer | Technical lead
+        dates: 01/2022 - *Present*
+        url: https://tyllo.net/
+        company: Tyllo (UnitedCloud)
         details: |1-
-          - Printed from desktop. Sent [emails](#).
-              - Called people *using* telephone.
-          - Drank water from office cooler.
-          - Ate donuts on people's birthdays.
-      - position: Job Title
-        dates: 2018 - 2019
-        url: "#"
-        company: Company Name
+          - Worked on backend solutions for media processing (transcoding, streaming, content protection), while leading a team of 10 engineers and designing architecture solutions across projects.
+      - position: Software Engineer
+        dates: 07/2020 - 01/2022
+        url: "https://www.iwedia.com/"
+        company: RT-RK (iWedia), Belgrade, Serbia
+        details: |1-
+          - Led and contributed to R&D of digital TV systems within iWedia, driving innovation and mentoring new team members.
+      - position: Software Engineer
+        dates: 07/2018 - 07/2020
+        url: "https://www.bouyguestelecom.fr/"
+        company: Bouygues telecom, Paris, France
+        details: |1-
+          - Collaborated with clients on feature planning and development, while maintaining a digital TV platform in production on over 3M devices.
+      - position: Embedded Software Engineer
+        dates: 09/2015 - 07/2018
+        url: "https://www.rt-rk.com/"
+        company: RT-RK, Belgrade, Serbia
+        details: |1-
+          - Worked on DTV middleware and Android UI solutions. Participated in all phases of agile development.
   education:
     title: Education
     icon: fas fa-graduation-cap
     list:
-      - degree: Ph.D. in Subject
-        college: University of State-City
-        dates: 2013 - 2018
-        thesis_title: "Effect of humans on other humans: a study of human behavior."
+      - degree: M.S. in Computer Science
+        college: Faculty of Mathematics, University of Belgrade
+        dates: 2015 - 2018
+        thesis_title: "Remote control of intelligent robots using android devices."
         thesis_url: "#"
-      - degree: M.S. in Subject
-        college: University of State-City
-        dates: 2013 - 2018
-        thesis_title: "Effect of humans on other humans: a study of human behavior."
-        thesis_url: "#"
-      - degree: B.S. in Subject
-        college: University of State-City
-        dates: 2004 - 2009
-  publication:
-    title: Publications
-    icon: fas fa-book
-    format:
-      - date
-      - title
-      - authors
-      - journal
-    types:
-      - Journal Articles
-      - Proceedings
+      - degree: B.S. in Computer Science
+        college: Faculty of Mathematics, University of Belgrade
+        dates: 2012 - 2015
+  services:
+    title: Services
+    icon: fas fa-laptop-code
     list:
-      - title: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        authors: "F Last, F Second, P secondary"
-        date: "2018"
-        journal: "Journal of Field 52 (16), 9033-9044"
+      - title: Custom software engineering
         url: "#"
-        type: Journal Articles
-      - title: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        authors: "F Last, F Second, P secondary"
-        date: "2018"
-        journal: "Journal of Field 52 (16), 9033-9044"
+        description: Design and development of tailored software solutions — from backend systems in Java and C++, to full-featured client applications. Focused on building reliable, scalable, and maintainable applications aligned with your business needs.
+      - title: Solution architecture & system design
         url: "#"
-        type: Journal Articles
-      - title: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        authors: "F Last, F Second, P secondary"
-        date: "2018"
-        journal: "Journal of Field 52 (16), 9033-9044"
+        description: Architecting complex distributed systems with an emphasis on performance, resilience, and long-term scalability. I help teams structure their systems using modern practices like event-driven design, clean architecture, and cloud-native infrastructure.
+      - title: Media processing expertise
         url: "#"
-        type: Proceedings
+        description: Extensive knowledge of video processing pipelines, including transcoding, packaging, and adaptive streaming (DVB/HLS/DASH). I help design and optimize media workflows using FFmpeg, integrate content protection through DRM and CAS systems, and support delivery across secure and scalable infrastructures.
   project:
     title: Projects
-    icon: fas fa-project-diagram
+    icon: fas fa-code-branch
     list:
       - title: Project 1
         url: "#"
-        description: Description of the project
+        description: project description
       - title: Project 2
         url: "#"
-        description: Description of the project
+        description: project description
       - title: Project 3
         url: "#"
-        description: Description of the project
+        description: project description
       - title: Project 4
         url: "#"
-        description: Description of the project
+        description: project description
   skill:
     title: Skills
     panelId: skill-panel
     icon: fas fa-cogs
     list:
-      - skill: "Skill 1, Skill 2"
+      - skill: "C/C++, Java, Spring Boot,  Vault, Keycloak, Kubernetes, GNU Linux, Jenkins, Docker, Kubernetes, Hibernate, OAuth, Kafka, Redis, Liquibase, PostgreSql, Prometheus, Grafana"
+        skillrating: 100
+      - skill: Kotlin, Python, Android, MySql, AWS
         skillrating: 90
-      - skill: Skill 3
-        skillrating: 80
-      - skill: Skill 4
-        skillrating: 50
+      - skill: HTML,CSS, Bootstrap, JS, Vue.js
+        skillrating: 65
   hobby:
     title: Hobbies
-    icon: fas fa-gamepad
+    icon: fas fa-heart
     list:
-      - hobby: Cooking
-      - hobby: Hiking
-      - hobby: Baking
+      - hobby: Basketball
+      - hobby: Cars & mechanics
+      - hobby: Traveling
+      - hobby: Exploring AI and machine learning
+      - hobby: Building personal tech projects
