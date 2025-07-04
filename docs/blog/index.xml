@@ -6,28 +6,14 @@
     <description>Recent content in Tech blog on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>test 2025</title>
-      <link>https://nenadlazic.github.io/blog/blog4/</link>
-      <pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/blog4/</guid>
-      <description>&lt;h2 id=&#34;donec-test&#34;&gt;donec test&lt;/h2&gt;&#xA;&lt;p&gt;Pulvinar tempor ultrices amet praesent aliquet non magnis euismod elit venenatis. Aliqua consequat tristique erat nulla sit risus aliqua posuere. Potenti natoque augue proin accimsan risus scelerisque id integer curabitur mattis amet quisque. Aliquet porta sit sapien natoque sed fringilla, madssa suspendisse vivamus placerat sociis condimentum ridiculus. Natoque egestas non lectus pellentesque nunc mattis eu ridiculus pretium maecenas ligula. Gravida facilisis sem mollis sagittis aliquet ornare bibendum, leo nec morbi tortor diam maecenas tempor.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Demo Page</title>
-      <link>https://nenadlazic.github.io/blog/markdown_syntax/</link>
-      <pubDate>Sat, 19 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/markdown_syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>luctus enim ultricies auctor pulvinar nam etiam</title>
-      <link>https://nenadlazic.github.io/blog/post_3/</link>
-      <pubDate>Sat, 06 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/post_3/</guid>
-      <description>&lt;h2 id=&#34;donec-lacinia-eleifend-sem-a&#34;&gt;donec lacinia eleifend sem a&lt;/h2&gt;&#xA;&lt;p&gt;Pulvinar tempor ultrices amet praesent aliquet non magnis euismod elit venenatis. Aliqua consequat tristique erat nulla sit risus aliqua posuere. Potenti natoque augue proin accimsan risus scelerisque id integer curabitur mattis amet quisque. Aliquet porta sit sapien natoque sed fringilla, madssa suspendisse vivamus placerat sociis condimentum ridiculus. Natoque egestas non lectus pellentesque nunc mattis eu ridiculus pretium maecenas ligula. Gravida facilisis sem mollis sagittis aliquet ornare bibendum, leo nec morbi tortor diam maecenas tempor.&lt;/p&gt;</description>
+      <title>Getting Started with Vue.js</title>
+      <link>https://nenadlazic.github.io/blog/blog1/</link>
+      <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/blog1/</guid>
+      <description>&lt;h2 id=&#34;what-is-vuejs&#34;&gt;What is Vue.js?&lt;/h2&gt;&#xA;&lt;p&gt;Vue is a powerful yet easy-to-use JavaScript framework that lets you build dynamic, interactive user interfaces with ease. It works with standard HTML, CSS, and JavaScript, leveraging a clean, component-based structure that helps you craft everything from simple page elements to fully-featured, complex applications — all without the headache.&lt;/p&gt;&#xA;&lt;p&gt;At its core, Vue.js is a progressive framework. It offers incremental adoptability, meaning you can start small by enhancing just a tiny part of your webpage and gradually scale it up to build complete, modern web apps — no need to rewrite everything from scratch!&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
