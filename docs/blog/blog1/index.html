@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" class="m-auto  dark "><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<html lang="en-us" class="m-auto  dark "><head>
   <title>Nenad Lazić</title>
 
 <meta name="theme-color" content="" />
@@ -27,7 +27,14 @@
 
   
   
-  <link href="/main.css" rel="stylesheet" />
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.28fd726dccfb02ef7c3ef0103e355ca656f08e4a2393655a3dcb45681cadcfde.css"
+    integrity="sha256-KP1ybcz7Au98PvAQPjVcplbwjkojk2VaPctFaBytz94="
+    crossorigin="anonymous"
+  />
+  
 
   <link href="/main.css" rel="stylesheet" />
   <link rel="stylesheet" href="/css/general.css" />
@@ -111,7 +118,7 @@
   class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
 >
   <div>
-    <a class="nav-menu-item" href="http://localhost:1313/">Home</a>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
     <a class="nav-menu-item" href="/blog">Blog</a>
   </div>
   <div>
@@ -190,8 +197,54 @@
 </li>
 </ol>
 <p>🎉 If everything went well, your very first Vue.js app should now be successfully running on localhost.</p>
+<h2 id="project-structure-explained">Project structure explained</h2>
+<p>There are no strict rules for structuring a Vue.js project, but one essential principle is predictability — having a clear and consistent layout that helps developers quickly understand where things belong.</p>
+<p>A predictable and consistent folder structure makes it much easier to navigate the codebase — especially as your application grows in size and complexity. This becomes even more important when working in a team or revisiting the project after some time.</p>
+<p>Here’s a commonly used and well-organized folder structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>├── public/           <span style="color:#75715e"># Static public files (served as-is, e.g. favicon, robots.txt)</span>
+</span></span><span style="display:flex;"><span>├── src/
+</span></span><span style="display:flex;"><span>|   ├── assets/         <span style="color:#75715e"># Static files such as images, fonts, or global styles</span>
+</span></span><span style="display:flex;"><span>|   ├── components/     <span style="color:#75715e"># Reusable UI components (header, footer, sidebar, buttons, cards...)</span>
+</span></span><span style="display:flex;"><span>|   ├── views/          <span style="color:#75715e"># Route-level components mapped to routes</span>
+</span></span><span style="display:flex;"><span>|   ├── layouts/        <span style="color:#75715e"># Optional: reusable layout shells (e.g., MainLayout, AuthLayout)</span>
+</span></span><span style="display:flex;"><span>|   ├── router/         <span style="color:#75715e"># Vue router setup and route definitions</span>
+</span></span><span style="display:flex;"><span>|   ├── store/          <span style="color:#75715e"># Centralized state management (e.g., Vuex or Pinia)</span>
+</span></span><span style="display:flex;"><span>|   ├── composables/    <span style="color:#75715e"># Reusable logic using the Composition API (e.g., useAuth, useForm)</span>
+</span></span><span style="display:flex;"><span>|   ├── services/       <span style="color:#75715e"># API calls and external service wrappers</span>
+</span></span><span style="display:flex;"><span>|   ├── utils/          <span style="color:#75715e"># Utility functions and helpers</span>
+</span></span><span style="display:flex;"><span>|   ├── types/          <span style="color:#75715e"># TypeScript types and interfaces (if you&#39;re using TypeScript)</span>
+</span></span><span style="display:flex;"><span>|   ├── directives/     <span style="color:#75715e"># Custom Vue directives (like v-click-outside)</span>
+</span></span><span style="display:flex;"><span>|   ├── App.vue         <span style="color:#75715e"># The root component that acts as the main wrapper for entire app</span>
+</span></span><span style="display:flex;"><span>|   |                   <span style="color:#75715e"># It usually contains global layout structure (e.g., header, footer...)</span>
+</span></span><span style="display:flex;"><span>|   └── main.js         <span style="color:#75715e"># App entry point where Vue app is created and  mounted to the DOM</span>
+</span></span><span style="display:flex;"><span>├── index.html          <span style="color:#75715e"># Main HTML file, entry point for the app</span>
+</span></span><span style="display:flex;"><span>├── vite.config.js      <span style="color:#75715e"># Vite configuration (plugins, aliases, etc.)</span>
+</span></span><span style="display:flex;"><span>├── package.json        <span style="color:#75715e"># Project metadata, dependencies, scripts</span>
+</span></span><span style="display:flex;"><span>├── package-lock.json   <span style="color:#75715e"># Exact versions of installed packages (auto-generated)</span>
+</span></span><span style="display:flex;"><span>├── .gitignore          <span style="color:#75715e"># Files and folders Git should ignore</span>
+</span></span><span style="display:flex;"><span>└── README.md           <span style="color:#75715e"># Project description and usage instructions</span>
+</span></span></code></pre></div><p>This structure is modular, clear, and easy to scale. You can also adapt or extend it based on your project’s needs.</p>
+<p>In more complex applications, it&rsquo;s common to organize the app by feature or domain rather than by type. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>src/modules/user/
+</span></span><span style="display:flex;"><span>├── components/
+</span></span><span style="display:flex;"><span>├── store.js
+</span></span><span style="display:flex;"><span>├── routes.js
+</span></span><span style="display:flex;"><span>├── composables/
+</span></span></code></pre></div><p>This “feature-based” structure keeps related logic grouped together, making the codebase easier to understand and maintain — especially in large teams or enterprise projects.</p>
 <h2 id="what-you-learned">What you learned?</h2>
+<ul>
+<li>What Vue.js is and how it compares to React and Angular</li>
+<li>Tools you need: Node.js, NVM, Vite, Vue DevTools</li>
+<li>How to set up your first Vue project on Linux</li>
+<li>Common project structure and its purpose</li>
+</ul>
 <h2 id="whats-next">What&rsquo;s Next?</h2>
+<ul>
+<li>Learn core Vue features: directives, reactivity, and Composition API</li>
+<li>Add routing (Vue Router) and state management (Pinia)</li>
+<li>Style your app (e.g., Tailwind CSS)</li>
+<li>Explore testing and deployment basics</li>
+</ul>
 
 </div>
 </div>

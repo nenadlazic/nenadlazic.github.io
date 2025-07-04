@@ -6,55 +6,20 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Laoreet</title>
-      <link>https://nenadlazic.github.io/tags/laoreet/</link>
-      <pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/laoreet/</guid>
+      <title>Vue.js</title>
+      <link>https://nenadlazic.github.io/tags/vue.js/</link>
+      <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/vue.js/</guid>
       <description></description>
     </item>
     <item>
-      <title>Mollis Urna</title>
-      <link>https://nenadlazic.github.io/tags/mollis-urna/</link>
-      <pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/mollis-urna/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Notes</title>
-      <link>https://nenadlazic.github.io/tags/notes/</link>
-      <pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/notes/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Css</title>
-      <link>https://nenadlazic.github.io/tags/css/</link>
-      <pubDate>Sat, 19 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/css/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Html</title>
-      <link>https://nenadlazic.github.io/tags/html/</link>
-      <pubDate>Sat, 19 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/html/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Markdown</title>
-      <link>https://nenadlazic.github.io/tags/markdown/</link>
-      <pubDate>Sat, 19 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/markdown/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Themes</title>
-      <link>https://nenadlazic.github.io/tags/themes/</link>
-      <pubDate>Sat, 19 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/themes/</guid>
+      <title>Webdev</title>
+      <link>https://nenadlazic.github.io/tags/webdev/</link>
+      <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/webdev/</guid>
       <description></description>
     </item>
   </channel>
