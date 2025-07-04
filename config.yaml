@@ -113,23 +113,32 @@ params:
         description: Architecting complex distributed systems with an emphasis on performance, resilience, and long-term scalability. I help teams structure their systems using modern practices like event-driven design, clean architecture, and cloud-native infrastructure.
       - title: Media processing expertise
         url: "#"
-        description: Extensive knowledge of video processing pipelines, including transcoding, packaging, and adaptive streaming (DVB/HLS/DASH). I help design and optimize media workflows using FFmpeg, integrate content protection through DRM and CAS systems, and support delivery across secure and scalable infrastructures.
+        description: Extensive knowledge of media processing pipelines, including transcoding, packaging, and streaming content (DVB/HLS/DASH). I help design and optimize media workflows using FFmpeg, integrate content protection through DRM and CAS systems, and support delivery across secure and scalable infrastructures.
   project:
     title: Projects
     icon: fas fa-code-branch
     list:
-      - title: Project 1
+      - title: Native Android DASH player
         url: "#"
-        description: project description
-      - title: Project 2
+        description: Developed a custom Android player for MPEG-DASH streams using NDK and native codecs. Included core playback features like ABR, subtitles, and DRM support with strong performance optimization.
+      - title: DTV middleware platform
         url: "#"
-        description: project description
-      - title: Project 3
+        description: Built a middleware layer for digital TV on Android, supporting various protocols (DVB, IPTV, HbbTV). Covered the full stack from hardware interfacing to application logic for multiple clients.
+      - title: Recommendation engine
         url: "#"
-        description: project description
-      - title: Project 4
+        description: Created a user preference-based recommendation system using collaborative filtering and behavioral data, designed for integration into large-scale media platforms.
+      - title: Media content protection system (CAS/DRM)
         url: "#"
-        description: project description
+        description: Designed and deployed a high-performance backend for securing media content using CAS and DRM standards. The system handles real-time license requests in production.
+      - title: FFmpeg-based transcoding pipelines
+        url: "#"
+        description: Developed scalable video transcoding workflows based on FFmpeg, including ingest, encoding, and packaging into multiple formats and qualities.
+      - title: Real-time stream quality comparison tool
+        url: "#"
+        description: Built a tool to compare live video streams in real time, detecting visual/audio differences for quality assurance and encoding validation.
+      - title: Microservice-based media processing platform
+        url: "#"
+        description: Engineered a microservice architecture handling the full media processing flow—ingest, processing, protection, packaging, and delivery—with scalability and modular design.      
   skill:
     title: Skills
     panelId: skill-panel
