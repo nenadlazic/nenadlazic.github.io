@@ -190,7 +190,6 @@
       "code-block-with-hugos-internal-highlight-shortcode",
       "code-blocks",
       "donec-lacinia-eleifend-sem-a",
-      "donec-test",
       "fn:1",
       "fnref:1",
       "h1",
@@ -211,12 +210,19 @@
       "panel-item-4",
       "panel-item-5",
       "panel-item-6",
+      "panel-item-7",
+      "panel-item-8",
       "paragraph",
       "search",
+      "setting-up-development-environment",
       "skill-panel",
       "skill-percent",
       "tables",
-      "unordered-list"
+      "unordered-list",
+      "what-is-vuejs",
+      "what-you-learned",
+      "whats-next",
+      "why-use-it"
     ]
   }
 }
