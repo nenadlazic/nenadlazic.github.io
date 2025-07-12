@@ -6,14 +6,21 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 11 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Authentication vs Authorization Explained</title>
+      <link>https://nenadlazic.github.io/blog/authentication-vs-authorization/</link>
+      <pubDate>Fri, 11 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/authentication-vs-authorization/</guid>
+      <description>&lt;h2 id=&#34;introduction--why-this-matters&#34;&gt;Introduction – Why This Matters&lt;/h2&gt;&#xA;&lt;p&gt;Security is one of the most critical aspects of backend development, yet the concepts of authentication and authorization are often confused or mixed up. No matter if you&amp;rsquo;re building a web application, a REST API, or a distributed microservices system, it&amp;rsquo;s essential to know &lt;strong&gt;who the user is&lt;/strong&gt; and &lt;strong&gt;what they&amp;rsquo;re allowed to do&lt;/strong&gt;. This blog post will explain these two fundamental concepts in plain terms, outline how they work together, and offer best practices every backend developer should follow to build secure applications.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Getting Started with Vue.js</title>
-      <link>https://nenadlazic.github.io/blog/blog1/</link>
+      <link>https://nenadlazic.github.io/blog/getting-started-with-vue/</link>
       <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/blog1/</guid>
-      <description>&lt;h2 id=&#34;what-is-vuejs&#34;&gt;What is Vue.js?&lt;/h2&gt;&#xA;&lt;p&gt;Vue is a powerful yet easy-to-use JavaScript framework that lets you build dynamic, interactive user interfaces with ease. It works with standard HTML, CSS, and JavaScript, leveraging a clean, component-based structure that helps you craft everything from simple page elements to fully-featured, complex applications — all without the headache.&lt;/p&gt;&#xA;&lt;p&gt;At its core, Vue.js is a progressive framework. It offers incremental adoptability, meaning you can start small by enhancing just a tiny part of your webpage and gradually scale it up to build complete, modern web apps — no need to rewrite everything from scratch!&lt;/p&gt;</description>
+      <guid>https://nenadlazic.github.io/blog/getting-started-with-vue/</guid>
+      <description>&lt;h2 id=&#34;what-is-vuejs&#34;&gt;What is Vue.js?&lt;/h2&gt;&#xA;&lt;p&gt;Vue is a powerful yet easy-to-use JavaScript framework that lets you build dynamic, interactive user interfaces with ease. It works with standard HTML, CSS, and JavaScript, leveraging a clean, component-based structure that helps you craft everything from simple page elements to fully-featured, complex applications - all without the headache.&lt;/p&gt;&#xA;&lt;p&gt;At its core, Vue.js is a progressive framework. It offers incremental adoptability, meaning you can start small by enhancing just a tiny part of your webpage and gradually scale it up to build complete, modern web apps - no need to rewrite everything from scratch!&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

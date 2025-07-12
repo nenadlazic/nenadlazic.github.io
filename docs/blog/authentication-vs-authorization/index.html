@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.6546bf03dbae7feba3fc9723249fc6dc091ed02ba658ce05d8087bfa2f96705d.css"
+    integrity="sha256-ZUa/A9uuf&#43;uj/JcjJJ/G3Ake0CumWM4F2Ah7&#43;i&#43;WcF0="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Authentication vs Authorization Explained</h1>
+  <p class="mb-1">July 11, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <h2 id="introduction--why-this-matters">Introduction – Why This Matters</h2>
+<p>Security is one of the most critical aspects of backend development, yet the concepts of authentication and authorization are often confused or mixed up. No matter if you&rsquo;re building a web application, a REST API, or a distributed microservices system, it&rsquo;s essential to know <strong>who the user is</strong> and <strong>what they&rsquo;re allowed to do</strong>. This blog post will explain these two fundamental concepts in plain terms, outline how they work together, and offer best practices every backend developer should follow to build secure applications.</p>
+<h2 id="what-is-authentication">What is Authentication?</h2>
+<p><strong>Authentication</strong> is the process of verifying <strong>who the user is</strong>. It answers the crucial question: <em>&ldquo;Are you really who you claim to be?&rdquo;</em></p>
+<p>Typically, this involves the user providing credentials that your system can validate, such as a password, a fingerprint, or a token. On the backend, your system validates these credentials to confirm the user&rsquo;s identity, usually by comparing them to stored information. Once a user is successfully authenticated, they gain access to the system. However, what they can actually do within that system is then determined by <strong>authorization</strong>.</p>
+<p>It&rsquo;s also common for backend systems to delegate this entire authentication process to third-party identity providers like Keycloak, Auth0, Okta or even social logins (Google, Facebook). These providers manage user identities and issue tokens, effectively offloading the complexity of secure credential storage and verification from your application.</p>
+<h3 id="common-authentication-methods">Common authentication methods:</h3>
+<p>Modern applications support a variety of authentication methods, each designed for specific use cases - from simple user logins to secure machine-to-machine communication. Understanding these methods helps you choose the right level of security and user experience for your application. Below are the most commonly used approaches:</p>
+<ul>
+<li>
+<p><strong>Username and password</strong></p>
+<p>Is the most common login method. Users enter a username (or email) and password, which is verified against a securely hashed version in the database.</p>
+<table>
+  <thead>
+      <tr>
+          <th>✅ Pros</th>
+          <th>❌ Cons</th>
+          <th>🛡️ Tips</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Simple to implement</td>
+          <td>Weak alone</td>
+          <td>Hash passwords</td>
+      </tr>
+      <tr>
+          <td>Universally supported</td>
+          <td>Prone to phishing and brute-force attacks</td>
+          <td>Enforce strong passwords</td>
+      </tr>
+      <tr>
+          <td>Familiar to all users</td>
+          <td>Users often use weak or reused passwords</td>
+          <td>Add MFA for better security</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p><strong>Multi-Factor Authentication (MFA)</strong></p>
+<p>Adds an extra layer of security by combining different types of verification factors-<strong>something you know</strong> (like a password), <strong>something you have</strong> (such as a phone or hardware token), or <strong>something you are</strong> (biometric data). This multi-layered approach makes it much harder for attackers to gain access to an account, even if one factor is compromised.</p>
+<table>
+  <thead>
+      <tr>
+          <th>✅ Pros</th>
+          <th>❌ Cons</th>
+          <th>🛡️ Tips</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Significantly increases security</td>
+          <td>Adds extra steps for users</td>
+          <td>Use authenticator apps or hardware tokens</td>
+      </tr>
+      <tr>
+          <td>Protects against stolen passwords</td>
+          <td>Requires additional setup and maintenance</td>
+          <td>Encourage users to enable MFA</td>
+      </tr>
+      <tr>
+          <td>Supports multiple verification methods (apps, biometrics, hardware)</td>
+          <td>Security depends on the strength of second factor</td>
+          <td>Avoid SMS when possible</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p><strong>OIDC (OpenID Connect on top of OAuth2)</strong></p>
+<p>OIDC is a standardized way to verify a user’s identity using an ID token issued by a trusted authority over the OAuth2 protocol.</p>
+<p>While OAuth2 primarily handles authorization, OIDC builds on top of it to provide authentication. This allows applications to confirm who the user is by trusting an identity provider like Google, Microsoft, or Keycloak.</p>
+<p>An identity provider (IdP) is a service that authenticates users and issues identity tokens on their behalf. Acting as a trusted source of user information, IdPs let applications offload the complexity of login and user management. Popular providers include Google, Microsoft, Keycloak, Auth0, and Okta.</p>
+<p>After the user logs in through the identity provider, the application receives a signed ID token (usually a JWT), which it sends to the backend - where the token is validated to confirm the user’s identity and extract relevant user info.</p>
+<p><strong>OIDC Authentication Flow – Step by Step</strong></p>
+<ol>
+<li>User tries to access a protected resource in your app</li>
+<li>App redirects the user to the Identity Provider’s login page (e.g. Google)</li>
+<li>User authenticates successfully</li>
+<li>Identity Provider redirects back to the app with an ID token confirming the user’s identity and access token (optionally)</li>
+<li>The app validates the ID token by verifying its signature with the Identity Provider’s public key to ensure it’s issued by a trusted source, and also checks claims like issuer, audience, and expiration to confirm it’s valid and meant for the app.</li>
+</ol>
+<p>In simple terms, ID token is like a digital ID card issued by a trusted authority.
+If all checks pass - your app can safely trust the user&rsquo;s identity without needing to manage passwords or sessions directly.</p>
+<table>
+  <thead>
+      <tr>
+          <th>✅ Pros</th>
+          <th>❌ Cons</th>
+          <th>🛡️ Tips</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Standardized authentication protocol</td>
+          <td>Adds complexity in implementation</td>
+          <td>Use well-tested libraries</td>
+      </tr>
+      <tr>
+          <td>Offloads user login to trusted providers</td>
+          <td>Requires token validation</td>
+          <td>Always verify signature and claims</td>
+      </tr>
+      <tr>
+          <td>Enables Single Sign-On (SSO)</td>
+          <td>Must handle token expiration</td>
+          <td>Implement token refresh mechanisms</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p><strong>SAML</strong></p>
+<p>SAML (Security Assertion Markup Language) enables Single Sign-On (SSO) by allowing users to authenticate once with a central IdP, and then access multiple applications without logging in again. When the user accesses an application, the app redirects them to the IdP, which verifies their identity and returns a signed SAML assertion containing the user’s identity details. SAML assertion is a signed XML document issued by the Identity Provider that securely conveys a user’s authentication status and related identity information to the application.</p>
+<p>If the user is already authenticated, the IdP skips the login step and immediately returns the assertion. Each application validates the assertion’s signature and grants access, enabling seamless login across trusted systems without re-entering credentials.</p>
+</li>
+<li>
+<p><strong>Biometric authentication</strong></p>
+<p>Biometric authentication verifies a user&rsquo;s identity using unique physical traits like fingerprints, facial recognition, or iris scans. It offers a fast and user-friendly login experience, often used in combination with other factors for stronger security (e.g., 2FA).</p>
+</li>
+<li>
+<p><strong>Machine-to-Machine Identity: API Keys, Certificates, and Tokens</strong></p>
+<p>Machine-to-machine authentication commonly relies on various methods such as API keys, tokens, or digital certificates to prove identity. These approaches enable services to securely communicate and access resources without user involvement, ensuring trusted and authorized interactions.</p>
+<ul>
+<li>
+<p><strong>API Keys</strong> are simple secret tokens that a client includes in each request to authenticate itself. They can be sent via HTTP headers (e.g., x-api-key), query parameters, or in the request body. API keys are easy to implement but usually lack fine-grained permissions and expiry controls.</p>
+</li>
+<li>
+<p><strong>Token-based authentication</strong> relies on passing a signed token with each request to prove identity, typically using the Authorization: Bearer <!-- raw HTML omitted --> header.Tokens can be issued via OAuth2, custom auth systems, or generated as JWTs, and allow stateless, secure access without sending credentials each time.</p>
+</li>
+<li>
+<p><strong>Certificate-based authentication</strong> uses digital certificates to verify the identity of a client or server during a secure connection (usually via TLS). In mutual TLS (mTLS), both sides present certificates, enabling trusted machine-to-machine communication without passwords or tokens.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="tips-for-choosing-an-authentication-method">Tips for choosing an authentication method:</h3>
+<ul>
+<li><strong>Balance security and usability:</strong> Stronger methods like MFA offer more security, but may affect user experience.</li>
+<li><strong>Use industry standards</strong> whenever possible (e.g., OAuth2 + OpenID Connect for web/mobile apps).</li>
+<li><strong>Avoid implementing your own auth:</strong> Leverage trusted identity providers (e.g., Keycloak, Auth0, Okta).</li>
+<li><strong>Different contexts need different methods:</strong> Use API keys or mutual TLS for backend systems, and username/password + MFA for user-facing apps.</li>
+<li><strong>Protect secrets:</strong> Whether it’s passwords, tokens, or certificates - always store them securely.</li>
+</ul>
+<h2 id="what-is-authorization">What is Authorization?</h2>
+<p>While authentication answers the question &ldquo;Who are you?&rdquo;, authorization determines &ldquo;What are you allowed to do?&rdquo; - it governs the access rights and permissions of an authenticated user or service within your application or system.</p>
+<p>In simpler terms, authorization controls whether a user or service has permission to perform a specific action or access certain resources after their identity has been verified.</p>
+<h3 id="common-models">Common models:</h3>
+<p>There are several common ways to implement authorization policies:</p>
+<ul>
+<li>
+<p><strong>Role-Based Access Control (RBAC):</strong> Permissions are grouped into roles such as admin, editor, or viewer. Each user is assigned one or more roles, and their access to resources depends on the roles they have.</p>
+</li>
+<li>
+<p><strong>Attribute-Based Access Control (ABAC):</strong> Access is granted based on specific characteristics (attributes) of the user, the resource, or the environment. For example, a user from the marketing department can access marketing reports, or access might be allowed only during working hours.</p>
+</li>
+<li>
+<p><strong>Scope-Based Authorization:</strong> Commonly used in OAuth2 and OpenID Connect, where tokens carry scopes that specify the exact permissions granted to the token holder. These scopes define which actions are allowed, such as read:files for reading files or write:profile for updating user profiles. This approach provides fine-grained access control without giving broad permissions to the user or service.</p>
+</li>
+<li>
+<p><strong>Ownership-Based Authorization:</strong> Access is granted based on whether the user owns the resource they want to access or modify. For example, a user can view or edit only their own profile information, documents, or posts, but cannot access or change data that belongs to other users. This model ensures users have control over their own data while protecting others’ information.</p>
+</li>
+</ul>
+<p>In addition to the models mentioned above, there are other authorization approaches such as policy-based, discretionary, mandatory, and context-based access control, which are used in more complex or specialized systems to provide extra flexibility and security.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>
+<p>Authentication verifies identity - confirming who the user or service is.</p>
+</li>
+<li>
+<p>Authorization verifies permissions - confirming what the authenticated user or service can do.</p>
+</li>
+</ul>
+<p>Together, they form the foundation of secure application design, ensuring that users not only prove who they are but also access only what they are allowed. Without proper authentication, unauthorized users could gain access, and without proper authorization, authenticated users might perform actions beyond their privileges, leading to potential security breaches. Implementing both correctly is essential for protecting sensitive data, maintaining user trust, and complying with regulatory requirements. Ultimately, authentication and authorization work hand-in-hand to create a robust security framework that safeguards applications against unauthorized access and misuse.</p>
+<h2 id="whats-next">What’s Next?</h2>
+<p>With the basics covered, start implementing secure authentication and authorization in your projects. Explore OAuth2, add multi-factor authentication, and design precise access controls. Stay updated on security best practices to keep your applications safe and resilient.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/getting-started-with-vue/"
+      title="Getting Started with Vue.js"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
