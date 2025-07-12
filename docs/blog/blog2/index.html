@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.6546bf03dbae7feba3fc9723249fc6dc091ed02ba658ce05d8087bfa2f96705d.css"
+    integrity="sha256-ZUa/A9uuf&#43;uj/JcjJJ/G3Ake0CumWM4F2Ah7&#43;i&#43;WcF0="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Authentication vs Authorization Explained</h1>
+  <p class="mb-1">July 4, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <h2 id="introduction--why-this-matters">Introduction – Why This Matters</h2>
+<p>Security is one of the most critical aspects of backend development, yet the concepts of authentication and authorization are often confused or mixed up. No matter if you&rsquo;re building a web application, a REST API, or a distributed microservices system, it&rsquo;s essential to know <strong>who the user is</strong> and <strong>what they&rsquo;re allowed to do</strong>. This blog post will explain these two fundamental concepts in plain terms, outline how they work together, and offer best practices every backend developer should follow to build secure applications.</p>
+<h2 id="what-is-authentication">What is Authentication?</h2>
+<p><strong>Authentication</strong> is the process of verifying <strong>who the user is</strong>. It answers the crucial question: <em>&ldquo;Are you really who you claim to be?&rdquo;</em></p>
+<p>Typically, this involves the user providing credentials that your system can validate, such as a password, a fingerprint, or a token. On the backend, your system validates these credentials to confirm the user&rsquo;s identity, usually by comparing them to stored information. Once a user is successfully authenticated, they gain access to the system. However, what they can actually do within that system is then determined by <strong>authorization</strong>.</p>
+<p>It&rsquo;s also common for backend systems to delegate this entire authentication process to third-party identity providers like Keycloak, Auth0, Okta or even social logins (Google, Facebook), which manage user identities and issue tokens. These services manage user identities and issue tokens, effectively offloading the complexity of secure credential storage and verification from your application.</p>
+<h3 id="common-authentication-methods">Common authentication methods:</h3>
+<p>Modern applications support a variety of authentication methods, each designed for specific use cases—from simple user logins to secure machine-to-machine communication. Understanding these methods helps you choose the right level of security and user experience for your application. Below are the most commonly used approaches:</p>
+<ul>
+<li>
+<p><strong>Username and password</strong></p>
+<p>Is the most common login method. Users enter a username (or email) and password, which is verified against a securely hashed version in the database.</p>
+<table>
+  <thead>
+      <tr>
+          <th>✅ Pros</th>
+          <th>❌ Cons</th>
+          <th>🛡️ Tips</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Simple to implement</td>
+          <td>Weak alone</td>
+          <td>Hash passwords</td>
+      </tr>
+      <tr>
+          <td>Universally supported</td>
+          <td>Prone to phishing and brute-force attacks</td>
+          <td>Enforce strong passwords</td>
+      </tr>
+      <tr>
+          <td>Familiar to all users</td>
+          <td>Users often use weak or reused passwords</td>
+          <td>Add MFA for better security</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p><strong>Multi-Factor Authentication (MFA)</strong></p>
+<p>Adds an extra layer of security by combining different types of verification factors—<strong>something you know</strong> (like a password), <strong>something you have</strong> (such as a phone or hardware token), or <strong>something you are</strong> (biometric data). This multi-layered approach makes it much harder for attackers to gain access to an account, even if one factor is compromised.</p>
+<table>
+  <thead>
+      <tr>
+          <th>✅ Pros</th>
+          <th>❌ Cons</th>
+          <th>🛡️ Tips</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Significantly increases security</td>
+          <td>Adds extra steps for users</td>
+          <td>Use authenticator apps or hardware tokens</td>
+      </tr>
+      <tr>
+          <td>Protects against stolen passwords</td>
+          <td>Requires additional setup and maintenance</td>
+          <td>Encourage users to enable MFA</td>
+      </tr>
+      <tr>
+          <td>Supports multiple verification methods (apps, biometrics, hardware)</td>
+          <td>Security depends on the strength of second factor</td>
+          <td>Avoid SMS when possible</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p><strong>OIDC (OpenID Connect on top of OAuth2)</strong></p>
+<p>While OAuth2 is primarily an authorization framework, OpenID Connect (OIDC) builds on top of it to provide authentication — allowing applications to verify a user’s identity based on a trusted identity provider (e.g., Google, Microsoft, Keycloak).</p>
+<p>An identity provider (IdP) is a service that authenticates users and issues identity tokens on their behalf. It acts as a trusted source of truth about user identities, allowing applications to offload the responsibility of login and user management.
+Popular identity providers include Google, Microsoft, Keycloak, Auth0, and Okta.</p>
+<p>After the user logs in through the identity provider, the application receives a signed ID token (usually a JWT), which it sends to the backend — where the token is validated to confirm the user’s identity and extract relevant user info.</p>
+</li>
+<li>
+<p>SAML (Security Assertion Markup Language):</p>
+</li>
+<li>
+<p>Biometric authentication (e.g. fingerprint, face ID)</p>
+</li>
+<li>
+<p>API keys or certificates (machine-to-machine)</p>
+</li>
+</ul>
+<h3 id="tips-for-choosing-an-authentication-method">Tips for choosing an authentication method:</h3>
+<ul>
+<li><strong>Balance security and usability:</strong> Stronger methods like MFA offer more security, but may affect user experience.</li>
+<li><strong>Use industry standards</strong> whenever possible (e.g., OAuth2 + OpenID Connect for web/mobile apps).</li>
+<li><strong>Avoid implementing your own auth:</strong> Leverage trusted identity providers (e.g., Keycloak, Auth0, Okta).</li>
+<li><strong>Different contexts need different methods:</strong> Use API keys or mutual TLS for backend systems, and username/password + MFA for user-facing apps.</li>
+<li><strong>Protect secrets:</strong> Whether it’s passwords, tokens, or certificates—always store them securely.</li>
+</ul>
+<h2 id="what-is-authorization">What is Authorization?</h2>
+<h3 id="common-models">Common models:</h3>
+<ul>
+<li>Role-Based Access Control (RBAC)</li>
+<li>Attribute-Based Access Control (ABAC)</li>
+<li>Scope-Based Authorization (used in OAuth2)</li>
+<li>Ownership-Based Authorization</li>
+</ul>
+<h2 id="how-authentication-and-authorization-work-together">How Authentication and Authorization Work Together</h2>
+<h2 id="protocols--standards-you-should-know">Protocols &amp; Standards You Should Know</h2>
+<ul>
+<li>OAuth2</li>
+<li>OpenID Connect (OIDC)</li>
+<li>SAML (Security Assertion Markup Language)</li>
+</ul>
+<h2 id="common-pitfalls-and-misconceptions">Common Pitfalls and Misconceptions</h2>
+<h2 id="security-best-practices">Security Best Practices</h2>
+<h2 id="summary">Summary</h2>
+<h2 id="whats-next">What’s Next?</h2>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/blog1/"
+      title="Getting Started with Vue.js"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
