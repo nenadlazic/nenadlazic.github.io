@@ -7,9 +7,9 @@ description: "vue js intro"
 draft: false
 ---
 ## What is Vue.js?
-Vue is a powerful yet easy-to-use JavaScript framework that lets you build dynamic, interactive user interfaces with ease. It works with standard HTML, CSS, and JavaScript, leveraging a clean, component-based structure that helps you craft everything from simple page elements to fully-featured, complex applications — all without the headache.
+Vue is a powerful yet easy-to-use JavaScript framework that lets you build dynamic, interactive user interfaces with ease. It works with standard HTML, CSS, and JavaScript, leveraging a clean, component-based structure that helps you craft everything from simple page elements to fully-featured, complex applications - all without the headache.
 
-At its core, Vue.js is a progressive framework. It offers incremental adoptability, meaning you can start small by enhancing just a tiny part of your webpage and gradually scale it up to build complete, modern web apps — no need to rewrite everything from scratch!
+At its core, Vue.js is a progressive framework. It offers incremental adoptability, meaning you can start small by enhancing just a tiny part of your webpage and gradually scale it up to build complete, modern web apps - no need to rewrite everything from scratch!
 
 ## Why use it?
 Vue is:
@@ -22,7 +22,7 @@ Vue is:
 
 - React is flexible but requires more setup and learning around the environment.
 - Angular is powerful but complex and mostly suited for big enterprise projects.
-- Vue sits in between — offering structure and simplicity without being overwhelming.
+- Vue sits in between - offering structure and simplicity without being overwhelming.
 - Vue lets you quickly build working applications, making it a great choice for both beginners and experienced developers.
 
 ## Setting up development environment
@@ -64,9 +64,9 @@ Step-by-Step Setup on Linux:
 
 ## Project structure explained
 
-There are no strict rules for structuring a Vue.js project, but one essential principle is predictability — having a clear and consistent layout that helps developers quickly understand where things belong.
+There are no strict rules for structuring a Vue.js project, but one essential principle is predictability - having a clear and consistent layout that helps developers quickly understand where things belong.
 
-A predictable and consistent folder structure makes it much easier to navigate the codebase — especially as your application grows in size and complexity. This becomes even more important when working in a team or revisiting the project after some time.
+A predictable and consistent folder structure makes it much easier to navigate the codebase - especially as your application grows in size and complexity. This becomes even more important when working in a team or revisiting the project after some time.
 
 Here’s a commonly used and well-organized folder structure:
 ```bash
@@ -105,7 +105,7 @@ src/modules/user/
 ├── composables/
 ```
 
-This “feature-based” structure keeps related logic grouped together, making the codebase easier to understand and maintain — especially in large teams or enterprise projects.
+This “feature-based” structure keeps related logic grouped together, making the codebase easier to understand and maintain - especially in large teams or enterprise projects.
 
 
 ## What you learned?
