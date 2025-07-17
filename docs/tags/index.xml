@@ -6,8 +6,50 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Components</title>
+      <link>https://nenadlazic.github.io/tags/components/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/components/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Composition-Api</title>
+      <link>https://nenadlazic.github.io/tags/composition-api/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/composition-api/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Directives</title>
+      <link>https://nenadlazic.github.io/tags/directives/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/directives/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Frontend</title>
+      <link>https://nenadlazic.github.io/tags/frontend/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/frontend/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reactivity</title>
+      <link>https://nenadlazic.github.io/tags/reactivity/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/reactivity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vue.js</title>
+      <link>https://nenadlazic.github.io/tags/vue.js/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/vue.js/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Authentication</title>
       <link>https://nenadlazic.github.io/tags/authentication/</link>
@@ -27,13 +69,6 @@
       <link>https://nenadlazic.github.io/tags/security/</link>
       <pubDate>Fri, 11 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/tags/security/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Vue.js</title>
-      <link>https://nenadlazic.github.io/tags/vue.js/</link>
-      <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/vue.js/</guid>
       <description></description>
     </item>
     <item>
