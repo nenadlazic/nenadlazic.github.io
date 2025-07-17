@@ -6,8 +6,15 @@
     <description>Recent content in Vue.js on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/vue.js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue.js Core Concepts You Must Know</title>
+      <link>https://nenadlazic.github.io/blog/vue-core-convepts/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/vue-core-convepts/</guid>
+      <description>&lt;p&gt;Vue has captured the hearts of developers with its simplicity, efficiency, and adaptability. Whether you&amp;rsquo;re a newcomer to front-end development or an experienced programmer seeking a new tool, Vue.js offers an intuitive approach to building interactive and dynamic web applications.&lt;/p&gt;&#xA;&lt;p&gt;In this blog post, we&amp;rsquo;ll dive deeper into the &lt;strong&gt;philosophy behind Vue.js&lt;/strong&gt;, understanding why it was designed the way it was and the benefits it brings. After that, we&amp;rsquo;ll walk through the &lt;strong&gt;most crucial core concepts&lt;/strong&gt; essential for getting started and effectively utilizing this powerful framework.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Getting Started with Vue.js</title>
       <link>https://nenadlazic.github.io/blog/getting-started-with-vue/</link>

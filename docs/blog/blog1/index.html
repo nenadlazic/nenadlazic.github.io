@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" class="m-auto  dark "><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<html lang="en-us" class="m-auto  dark "><head>
   <title>Nenad Lazić</title>
 
 <meta name="theme-color" content="" />
@@ -27,7 +27,14 @@
 
   
   
-  <link href="/main.css" rel="stylesheet" />
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.6546bf03dbae7feba3fc9723249fc6dc091ed02ba658ce05d8087bfa2f96705d.css"
+    integrity="sha256-ZUa/A9uuf&#43;uj/JcjJJ/G3Ake0CumWM4F2Ah7&#43;i&#43;WcF0="
+    crossorigin="anonymous"
+  />
+  
 
   <link href="/main.css" rel="stylesheet" />
   <link rel="stylesheet" href="/css/general.css" />
@@ -111,7 +118,7 @@
   class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
 >
   <div>
-    <a class="nav-menu-item" href="http://localhost:1313/">Home</a>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
     <a class="nav-menu-item" href="/blog">Blog</a>
   </div>
   <div>
@@ -194,21 +201,21 @@
 <p>There are no strict rules for structuring a Vue.js project, but one essential principle is predictability - having a clear and consistent layout that helps developers quickly understand where things belong.</p>
 <p>A predictable and consistent folder structure makes it much easier to navigate the codebase - especially as your application grows in size and complexity. This becomes even more important when working in a team or revisiting the project after some time.</p>
 <p>Here’s a commonly used and well-organized folder structure:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>├── public/           <span style="color:#75715e"># Static public files (served as-is, e.g. favicon, robots.txt)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>├── public/             <span style="color:#75715e"># Static public files (served as-is, e.g. favicon, robots.txt)</span>
 </span></span><span style="display:flex;"><span>├── src/
 </span></span><span style="display:flex;"><span>|   ├── assets/         <span style="color:#75715e"># Static files such as images, fonts, or global styles</span>
 </span></span><span style="display:flex;"><span>|   ├── components/     <span style="color:#75715e"># Reusable UI components (header, footer, sidebar, buttons, cards...)</span>
 </span></span><span style="display:flex;"><span>|   ├── views/          <span style="color:#75715e"># Route-level components mapped to routes</span>
-</span></span><span style="display:flex;"><span>|   ├── layouts/        <span style="color:#75715e"># Optional: reusable layout shells (e.g., MainLayout, AuthLayout)</span>
+</span></span><span style="display:flex;"><span>|   ├── layouts/        <span style="color:#75715e"># Optional: reusable layout shells (e.g. MainLayout, AuthLayout)</span>
 </span></span><span style="display:flex;"><span>|   ├── router/         <span style="color:#75715e"># Vue router setup and route definitions</span>
-</span></span><span style="display:flex;"><span>|   ├── store/          <span style="color:#75715e"># Centralized state management (e.g., Vuex or Pinia)</span>
-</span></span><span style="display:flex;"><span>|   ├── composables/    <span style="color:#75715e"># Reusable logic using the Composition API (e.g., useAuth, useForm)</span>
+</span></span><span style="display:flex;"><span>|   ├── store/          <span style="color:#75715e"># Centralized state management (e.g. Vuex or Pinia)</span>
+</span></span><span style="display:flex;"><span>|   ├── composables/    <span style="color:#75715e"># Reusable logic using the Composition API (e.g. useAuth, useForm)</span>
 </span></span><span style="display:flex;"><span>|   ├── services/       <span style="color:#75715e"># API calls and external service wrappers</span>
 </span></span><span style="display:flex;"><span>|   ├── utils/          <span style="color:#75715e"># Utility functions and helpers</span>
 </span></span><span style="display:flex;"><span>|   ├── types/          <span style="color:#75715e"># TypeScript types and interfaces (if you&#39;re using TypeScript)</span>
 </span></span><span style="display:flex;"><span>|   ├── directives/     <span style="color:#75715e"># Custom Vue directives (like v-click-outside)</span>
 </span></span><span style="display:flex;"><span>|   ├── App.vue         <span style="color:#75715e"># The root component that acts as the main wrapper for entire app</span>
-</span></span><span style="display:flex;"><span>|   |                   <span style="color:#75715e"># It usually contains global layout structure (e.g., header, footer...)</span>
+</span></span><span style="display:flex;"><span>|   |                   <span style="color:#75715e"># It usually contains global layout structure (e.g. header, footer...)</span>
 </span></span><span style="display:flex;"><span>|   └── main.js         <span style="color:#75715e"># App entry point where Vue app is created and  mounted to the DOM</span>
 </span></span><span style="display:flex;"><span>├── index.html          <span style="color:#75715e"># Main HTML file, entry point for the app</span>
 </span></span><span style="display:flex;"><span>├── vite.config.js      <span style="color:#75715e"># Vite configuration (plugins, aliases, etc.)</span>
@@ -244,7 +251,12 @@
 <div class="flex flex-row justify-around my-2">
   <h3 class="mb-1 mt-1 text-left mr-4">
     
-    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-left"></i>
+    <a
+      href="/blog/getting-started-with-vue/"
+      title="Getting Started with Vue.js"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
     
   </h3>
   <h3 class="mb-1 mt-1 text-left ml-4">

@@ -14,3 +14,7 @@ cp -r public/* docs/
 
 echo "Successfully completed."
 
+
+# cd themes/aafu
+# hugo new blog/blog-post-name.md
+

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.6546bf03dbae7feba3fc9723249fc6dc091ed02ba658ce05d8087bfa2f96705d.css"
+    integrity="sha256-ZUa/A9uuf&#43;uj/JcjJJ/G3Ake0CumWM4F2Ah7&#43;i&#43;WcF0="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Vue.js Core Concepts You Must Know</h1>
+  <p class="mb-1">July 18, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Vue has captured the hearts of developers with its simplicity, efficiency, and adaptability. Whether you&rsquo;re a newcomer to front-end development or an experienced programmer seeking a new tool, Vue.js offers an intuitive approach to building interactive and dynamic web applications.</p>
+<p>In this blog post, we&rsquo;ll dive deeper into the <strong>philosophy behind Vue.js</strong>, understanding why it was designed the way it was and the benefits it brings. After that, we&rsquo;ll walk through the <strong>most crucial core concepts</strong> essential for getting started and effectively utilizing this powerful framework.</p>
+<h3 id="philosophy-of-vuejs-approachability-performance-and-versatility">Philosophy of Vue.js: Approachability, Performance, and Versatility</h3>
+<p>Vue.js was created with a clear goal: to offer a progressive framework that is both easy to get started with and powerful enough for building complex applications.
+Its design emphasizes simplicity and flexibility, allowing developers to incrementally adopt features as needed, whether you want to use it for a single component or build a full-scale application.
+This makes it incredibly versatile and scalable, suitable for projects ranging from adding a small interactive element to an existing page to developing robust SPAs.</p>
+<p>At the core of Vue is a <strong>reactive system</strong> that keeps the user interface in sync with the underlying data. When the data changes, the UI updates automatically, without the need for manual DOM manipulation or additional logic. This makes it easy to build dynamic and responsive interfaces with clean, maintainable code,  significantly boosting developer productivity.</p>
+<p>Vue combines some of the best ideas from modern frameworks like React and Angular, while remaining lightweight, flexible, and adaptable to different workflows and project sizes. Thanks to its gentle learning curve and reactive core, developers can quickly grasp its core concepts and start building high-performing, responsive user interfaces with minimal effort.</p>
+<h3 id="design-principles-of-the-framework">Design Principles of the Framework</h3>
+<ul>
+<li>
+<p><strong>Declarative rendering with a reactive core</strong></p>
+<p>Vue’s core is built around a reactive system that automatically keeps the DOM in sync with your data. In Vue 2, this reactivity is implemented using JavaScript getters and setters, where each property in your data object is wrapped with custom logic that tracks when it&rsquo;s read or updated. In Vue 3, this mechanism was modernized using the Proxy object, which intercepts and handles operations on entire objects dynamically, making reactivity more efficient and flexible.</p>
+<p>Vue adopts a declarative rendering approach, meaning that instead of writing code that directly manipulates the DOM, you declare what the UI should look like based on the current application state. Vue then takes care of updating the DOM efficiently whenever the underlying data changes. This principle simplifies development and reduces the need to manually manage state updates or DOM manipulation.</p>
+</li>
+<li>
+<p><strong>Component based architecture</strong></p>
+<p>Each component encapsulates its own template, logic, and styling, serving as a self-contained building block. This modular approach makes it easier to organize, reuse, and maintain code especially in large applications.
+This design principle aligns with modern frontend engineering and promotes clean code, reusability, and separation of concerns.</p>
+</li>
+<li>
+<p><strong>Separation of concerns through single file components</strong></p>
+<p>Unlike traditional projects where HTML, JavaScript, and CSS are split into separate files, Vue uses single file components that keep all three related parts together in one file but logically separated within it. This structure improves cohesion and reflects how developers naturally think about UI as unified units, simplifying development and maintenance.</p>
+</li>
+<li>
+<p><strong>Simplicity first, power when you need it</strong></p>
+<p>Vue tries to hit the balance between being easy to learn and powerful enough for complex use cases. Under the hood, Vue offers advanced features like custom directives, render functions, TypeScript support, and a compiler without requiring them up front.
+This principle ensures Vue remains approachable for beginners while providing the scalability needed for complex applications.</p>
+</li>
+<li>
+<p><strong>Performance-focused design</strong></p>
+<p>Vue optimizes rendering with a virtual DOM and efficient update scheduling, ensuring smooth user experiences even in complex apps.</p>
+</li>
+</ul>
+<p>These principles make Vue an excellent choice for building maintainable, scalable applications with a gentle learning curve.</p>
+<h3 id="core-fundamentals-well-cover">Core fundamentals we&rsquo;ll cover</h3>
+<p>Each of the following concepts is essential to becoming proficient with Vue.js. In this series, each topic will have its own dedicated post:</p>
+<ul>
+<li>
+<p><strong>Reactivity system</strong> - How Vue tracks changes in data and updates the DOM efficiently behind the scenes using proxies and dependency tracking</p>
+</li>
+<li>
+<p><strong>Composition API</strong> - A modern, flexible way to organize logic and reuse it across components</p>
+</li>
+<li>
+<p><strong>Template syntax &amp; directives</strong> - Vue’s declarative HTML-based syntax, enhanced by special directives like <code>v-for</code>, <code>v-if</code>, and <code>v-bind</code> for clean and readable templates</p>
+</li>
+<li>
+<p><strong>Components</strong> - The building blocks of every Vue app. Learn how to create reusable, encapsulated components to manage complexity</p>
+</li>
+<li>
+<p><strong>Lifecycle hooks</strong> - Hook into specific moments of a component’s lifecycle to run logic during mounting, updating, or unmounting</p>
+</li>
+<li>
+<p><strong>Vue router</strong> - Add client-side navigation to your app using Vue Router, the official routing library for Vue</p>
+</li>
+<li>
+<p><strong>State management (Pinia/Vuex)</strong> - Manage shared state between components in a structured way using either the newer Pinia or Vuex (for legacy projects)</p>
+</li>
+</ul>
+<p>Each article is designed to be beginner friendly while also offering valuable insights to developers looking to deepen their understanding.</p>
+<p>So whether you&rsquo;re just starting with Vue or want to revisit the fundamentals with a modern lens - stay tuned.</p>
+<h2 id="whats-next">What’s Next?</h2>
+<p>After learning the core concepts, focus on:</p>
+<ul>
+<li>Working with APIs using fetch or axios</li>
+<li>Testing Vue components for reliability</li>
+<li>Optimizing performance with lazy loading and efficient updates</li>
+<li>Deploying your app and integrating with other systems</li>
+</ul>
+<p>These skills will help you build real-world Vue applications confidently.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/authentication-vs-authorization/"
+      title="Authentication vs Authorization Explained"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

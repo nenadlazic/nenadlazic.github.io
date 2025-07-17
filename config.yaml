@@ -107,7 +107,7 @@ params:
     list:
       - title: Custom software engineering
         url: "#"
-        description: Design and development of tailored software solutions — from backend systems in Java and C++, to full-featured client applications. Focused on building reliable, scalable, and maintainable applications aligned with your business needs.
+        description: Design and development of tailored software solutions - from backend systems in Java and C++, to full-featured client applications. Focused on building reliable, scalable, and maintainable applications aligned with your business needs.
       - title: Solution architecture & system design
         url: "#"
         description: Architecting complex distributed systems with an emphasis on performance, resilience, and long-term scalability. I help teams structure their systems using modern practices like event-driven design, clean architecture, and cloud-native infrastructure.

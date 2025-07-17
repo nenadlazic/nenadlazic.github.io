@@ -1,4 +1,4 @@
 ---
-title: "Tech blog"
+title: "All tech blogs"
 weight: 100
 ---
