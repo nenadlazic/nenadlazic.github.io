@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.6546bf03dbae7feba3fc9723249fc6dc091ed02ba658ce05d8087bfa2f96705d.css"
+    integrity="sha256-ZUa/A9uuf&#43;uj/JcjJJ/G3Ake0CumWM4F2Ah7&#43;i&#43;WcF0="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Reactivity in Vue.js</h1>
+  <p class="mb-1">July 18, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>One of the most powerful features of Vue.js and the reason why it feels so intuitive is its <strong>reactivity system</strong>. It allows your UI to automatically update when the underlying data changes, without writing a single line of manual DOM manipulation.</p>
+<p>If you’ve ever built complex user interfaces before reactive frameworks like Vue, you know the pain of keeping the UI in sync with application state manually juggling query selectors, event handlers, and state flags. It&rsquo;s error-prone, hard to scale, and difficult to maintain.</p>
+<p>Vue solves this elegantly by handling all those updates for you behind the scenes, so you can focus on what your app should do - not how to keep it visually in sync.</p>
+<p>But how does this magic work under the hood? In this post, we’ll break down Vue’s reactivity system from Vue 2’s classic approach using getters/setters to the more powerful proxy-based model in Vue 3.</p>
+<h2 id="what-is-reactivity">What Is Reactivity?</h2>
+<p>When we talk about reactivity in programming, we mean a system that lets your code automatically adapt and respond to changes in data. Imagine it like this: instead of constantly checking manually whether something changed and then updating everything that depends on it, the reactive system does this for you behind the scenes, like a smart assistant quietly working in the background.</p>
+<p>This approach simplifies managing state and data dependencies, making your code more maintainable and less error-prone.</p>
+<p>In a nutshell, in the context of frontend:</p>
+<blockquote>
+<p><strong>When my data changes, my UI should reflect that change automatically.</strong></p></blockquote>
+<p>Vue achieves this by “watching” your data. When it sees a change, it updates the DOM in the most efficient way possible.</p>
+<h2 id="how-vues-reactivity-system-works-vue-2-vs-vue-3">How Vue’s Reactivity System Works: Vue 2 vs Vue 3</h2>
+<p>Vue’s reactivity system is the backbone of the framework. Over the years, Vue has evolved this system from Vue 2 to Vue 3, improving flexibility, performance, and developer experience.</p>
+<ul>
+<li>
+<p><strong>Vue 2: reactivity with getters and setters</strong></p>
+<p>In Vue 2, reactivity is implemented by defining <strong>getters</strong> and <strong>setters</strong> on each property of the data object using JavaScript’s <code>Object.defineProperty()</code>. This allows Vue to:</p>
+<ul>
+<li>Track when a property is <strong>read</strong> (getter)</li>
+<li>Detect when a property is <strong>written to or updated</strong> (setter)</li>
+</ul>
+<p>When a property changes, Vue knows exactly which components or computed properties depend on that specific piece of data. It does this by tracking dependencies during the component’s render phase, collecting &ldquo;watchers&rdquo; that observe the data.
+When a component renders or accesses a reactive value, Vue registers (collects) a watcher for that value, keeping track of which parts of the application need to be updated when that value changes.
+Then, when the data changes, Vue efficiently triggers updates only on those components that actually rely on the changed data, avoiding unnecessary re-renders of unaffected parts of the UI. This fine-grained dependency tracking is what makes Vue both performant and responsive.</p>
+<p><strong>Limitations of Vue 2 reactivity:</strong></p>
+<ul>
+<li>Vue 2 <strong>cannot detect new properties added to an object</strong> after its initialization, so you need to use <code>Vue.set()</code> to add reactive properties dynamically</li>
+<li>Deleting properties also is <strong>not reactive</strong> by default</li>
+<li>Reactivity with arrays requires special methods like <code>splice()</code> or <code>Vue.set()</code> for updates to be tracked</li>
+<li>The system adds some overhead by creating getters and setters for each property</li>
+</ul>
+<p>Despite these limitations, Vue 2’s reactivity system was revolutionary for its time, simplifying UI synchronization significantly compared to manual DOM manipulation.</p>
+</li>
+<li>
+<p><strong>Vue 3: modern reactivity with proxy</strong></p>
+<p>Vue 3 rebuilds the reactivity system using JavaScript’s Proxy API, which <strong>wraps</strong> the entire object and intercepts all operations instead of only individual properties. This lets Vue detect reads, writes, additions, and deletions seamlessly. When the reactive object changes, Vue precisely tracks what was modified and updates only the affected computations and UI.</p>
+<p>This approach offers several advantages:</p>
+<ul>
+<li><strong>Full observation</strong> of properties, including additions, deletions, and nested objects, without needing <code>Vue.set()</code></li>
+<li><strong>Improved performance</strong> due to less overhead in tracking changes</li>
+<li><strong>Simpler and cleaner internal code</strong>, which also enables advanced features like the Composition API</li>
+<li>Reactivity works seamlessly with complex data structures</li>
+</ul>
+<p><strong>Simple Vue 3 reactive component example</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vue" data-lang="vue"><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;<span style="color:#a6e22e">Count</span><span style="color:#f92672">:</span> {{ <span style="color:#a6e22e">count</span> }}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">button</span> <span style="color:#f92672">@click</span><span style="color:#e6db74">=&#34;increment&#34;</span>&gt;<span style="color:#a6e22e">Increase</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">setup</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ref</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">increment</span>() {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">count</span>.<span style="color:#a6e22e">value</span><span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">style</span> <span style="color:#a6e22e">scoped</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">button</span> {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span><span style="color:#a6e22e">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">style</span>&gt;
+</span></span></code></pre></div><p>This is a minimal Vue 3 component example demonstrating reactive state using ref, which creates a reactive data variable (count). The UI automatically updates whenever the count value changes after clicking the button.</p>
+</li>
+</ul>
+<h3 id="summary-table">Summary Table</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Vue 2 (Getters/Setters)</th>
+          <th>Vue 3 (Proxy)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Detect property addition</td>
+          <td>No (requires <code>Vue.set()</code>)</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>Detect property deletion</td>
+          <td>No</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>Nested objects reactivity</td>
+          <td>Yes, but with caveats</td>
+          <td>Yes, fully reactive</td>
+      </tr>
+      <tr>
+          <td>Performance</td>
+          <td>Good, but with overhead per property</td>
+          <td>Better, proxy-based and optimized</td>
+      </tr>
+      <tr>
+          <td>Ease of use</td>
+          <td>Some workarounds needed</td>
+          <td>Cleaner, more intuitive</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="wrap-up">Wrap-Up</h2>
+<p>Vue’s reactivity system is the secret sauce behind its ease of use and powerful capabilities. The evolution from Vue 2’s getters/setters to Vue 3’s Proxy-based reactivity brings better performance, fewer caveats, and more flexibility - all while making your development experience smoother.</p>
+<p>In the next post, we’ll dive into Vue 3’s <strong>Composition API</strong>, which leverages this reactive core to help you organize and reuse your application logic efficiently.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/vue-core-convepts/"
+      title="Vue.js Core Concepts You Must Know"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

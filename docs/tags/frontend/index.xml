@@ -9,6 +9,13 @@
     <lastBuildDate>Fri, 18 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/frontend/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Reactivity in Vue.js</title>
+      <link>https://nenadlazic.github.io/blog/reactivity-in-vue/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/reactivity-in-vue/</guid>
+      <description>&lt;p&gt;One of the most powerful features of Vue.js and the reason why it feels so intuitive is its &lt;strong&gt;reactivity system&lt;/strong&gt;. It allows your UI to automatically update when the underlying data changes, without writing a single line of manual DOM manipulation.&lt;/p&gt;&#xA;&lt;p&gt;If you’ve ever built complex user interfaces before reactive frameworks like Vue, you know the pain of keeping the UI in sync with application state manually juggling query selectors, event handlers, and state flags. It&amp;rsquo;s error-prone, hard to scale, and difficult to maintain.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Vue.js Core Concepts You Must Know</title>
       <link>https://nenadlazic.github.io/blog/vue-core-convepts/</link>
       <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
