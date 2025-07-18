@@ -2,6 +2,7 @@
   "htmlElements": {
     "tags": [
       "a",
+      "blockquote",
       "body",
       "code",
       "div",
@@ -13,6 +14,7 @@
       "h4",
       "head",
       "header",
+      "hr",
       "html",
       "i",
       "img",
@@ -178,6 +180,7 @@
       "common-models",
       "core-fundamentals-well-cover",
       "design-principles-of-the-framework",
+      "how-vues-reactivity-system-works-vue-2-vs-vue-3",
       "introduction--why-this-matters",
       "panel-item-0",
       "panel-item-1",
@@ -196,13 +199,16 @@
       "skill-panel",
       "skill-percent",
       "summary",
+      "summary-table",
       "tips-for-choosing-an-authentication-method",
       "what-is-authentication",
       "what-is-authorization",
+      "what-is-reactivity",
       "what-is-vuejs",
       "what-you-learned",
       "whats-next",
-      "why-use-it"
+      "why-use-it",
+      "wrap-up"
     ]
   }
 }
