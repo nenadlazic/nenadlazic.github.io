@@ -6,8 +6,22 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 25 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploy</title>
+      <link>https://nenadlazic.github.io/tags/deploy/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/deploy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Release Notes</title>
+      <link>https://nenadlazic.github.io/tags/release-notes/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/release-notes/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Frontend</title>
       <link>https://nenadlazic.github.io/tags/frontend/</link>
