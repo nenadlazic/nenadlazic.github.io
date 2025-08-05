@@ -70,6 +70,8 @@ Modern applications support a variety of authentication methods, each designed f
     | Offloads user login to trusted providers | Requires token validation        | Always verify signature and claims |
     | Enables Single Sign-On (SSO)              | Must handle token expiration     | Implement token refresh mechanisms  |
 
+    ![authentication_authorization_diagram](/images/authentication_authorization.gif)
+
 - **SAML**
 
     SAML (Security Assertion Markup Language) enables Single Sign-On (SSO) by allowing users to authenticate once with a central IdP, and then access multiple applications without logging in again. When the user accesses an application, the app redirects them to the IdP, which verifies their identity and returns a signed SAML assertion containing the user’s identity details. SAML assertion is a signed XML document issued by the Identity Provider that securely conveys a user’s authentication status and related identity information to the application.

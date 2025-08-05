@@ -1,6 +1,6 @@
 ---
 title: "Reactivity in Vue.js"
-date: 2025-07-18
+date: 2025-07-25
 tags: ["vue.js", "reactivity", "frontend"]
 categories: ["frontend"]
 description: "vue js reactivity"
