@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.dc874c56815f969df275c688f8165d5d6dea8319c7ba9ea4dcae8f63ea14bea2.css"
+    integrity="sha256-3IdMVoFflp3ydcaI&#43;BZdXW3qgxnHup6k3K6PY&#43;oUvqI="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">How to write release notes</h1>
+  <p class="mb-1">August 10, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Release notes are one of the most underrated tools in software development. Often overlooked, they can be a powerful way to communicate changes, ensure smoother deployments, and build trust across teams - and even with users.</p>
+<p>In this post, we’ll walk through:</p>
+<ul>
+<li>What release notes are (and what they’re not)</li>
+<li>When and why to write them</li>
+<li>Who benefits from them</li>
+<li>What a good release note should contain</li>
+<li>A practical example &amp; reusable template</li>
+</ul>
+<p>Whether you&rsquo;re running a microservice architecture or a monolith, releasing internal tools or public APIs - this guide is for you.</p>
+<h2 id="what-are-release-notes">What are release notes?</h2>
+<p>Release notes are formal, structured summaries that communicate what has changed in a specific version of a software product. Typically tied to a version number (e.g. v1.3.0), they provide visibility into new features, bug fixes, improvements, and any known limitations or risks introduced with the release.</p>
+<p>Although often confused with changelogs, release notes serve a different purpose. Changelogs are usually auto-generated and list raw commits or pull requests. Release notes are carefully written documents that provide context, summarize key updates, and help product managers, developers, QA, support teams, and clients understand what was delivered and why it matters.</p>
+<h2 id="when-and-why-to-write-them">When and why to write them?</h2>
+<p>Release notes should be written before or at the time of deployment, not days later when details are blurred.
+They are not just a formality, they serve several purposes:</p>
+<ul>
+<li>Communication across teams - everyone from developers to support staff knows exactly what changed</li>
+<li>Documentation - they create a historical record of releases for audits, troubleshooting, and onboarding new team members</li>
+<li>Expectation setting - they prepare users for upcoming changes, reducing surprises and confusion</li>
+<li>Risk mitigation - highlighting known issues or special instructions can prevent production incidents</li>
+</ul>
+<p>Even for internal tools, skipping release notes often results in confusion, duplicate bug reports, or wasted time rediscovering changes.</p>
+<h2 id="who-benefits-from-release-notes">Who benefits from release notes?</h2>
+<ul>
+<li>Developers - understand dependencies, breaking changes, and feature availability</li>
+<li>QA/testers - know what to test and where to focus regression checks</li>
+<li>Support teams - can answer user questions quickly without digging through code or tickets</li>
+<li>Product managers - get a clear view of delivered value and project progress</li>
+<li>End users/clients - can see improvements, new capabilities, and changes that affect them directly</li>
+</ul>
+<p>Good release notes are written with all these audiences in mind. This doesn’t mean you have to write five different versions but you should balance technical detail with plain language explanations.</p>
+<h2 id="what-a-good-release-note-should-contain">What a good release note should contain?</h2>
+<p>While the exact format can vary depending on your team and product, a well-written release note usually includes:</p>
+<h3 id="-release-info">📦 Release Info</h3>
+<p>Basic information about the release that helps identify the exact version deployed and its source in the code repository.</p>
+<hr>
+<h3 id="-summary">🔍 Summary</h3>
+<p>A brief high-level overview highlighting the key changes in this release, giving readers a quick understanding of what’s new or improved.</p>
+<hr>
+<h3 id="-product-features">✨ Product Features</h3>
+<p>User-facing features or enhancements that improve functionality or add new capabilities.</p>
+<h3 id="-technical-features">⚙️ Technical Features</h3>
+<p>Backend or infrastructure changes relevant to developers and operations teams, such as new APIs or monitoring improvements.</p>
+<hr>
+<h3 id="-resolved-support-tickets">✅ Resolved Support Tickets</h3>
+<p>Specific user or support issues addressed in this release, providing transparency on customer-impacting fixes.</p>
+<h3 id="-bug-fixes">🐛 Bug Fixes</h3>
+<p>Detailed list of bugs fixed with concise descriptions to inform users and maintainers.</p>
+<hr>
+<h3 id="-breaking-changes">⚠️ Breaking Changes</h3>
+<p>Important changes that may require users or integrators to update their workflows or configurations.</p>
+<h3 id="-known-issues">❗ Known Issues</h3>
+<p>Current limitations or problems users should be aware of, including possible workarounds if available.</p>
+<h3 id="-deployment-notes">🚀 Deployment Notes</h3>
+<p>Instructions necessary to successfully deploy and run this release, including environment variables, database migrations and etc.</p>
+<hr>
+<h3 id="-compatibility">🧩 Compatibility</h3>
+<p>Compatibility information with other services or versions helps users plan upgrades and avoid integration issues.</p>
+<p>Including a compatibility matrix can be especially helpful. It is a simple table listing which versions of your software work with which versions of dependent services, libraries, or platforms.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Compatible Versions</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Transcoder service</td>
+          <td>≥ 1.4.0</td>
+          <td>Required for retry features</td>
+      </tr>
+      <tr>
+          <td>Packaging service</td>
+          <td>2.0.1 - 2.3.5</td>
+          <td>Deprecated versions unsupported</td>
+      </tr>
+      <tr>
+          <td>Database</td>
+          <td>PostgreSQL 12 or higher</td>
+          <td>Older versions not tested</td>
+      </tr>
+  </tbody>
+</table>
+<p>This helps users quickly verify if their environment matches the release requirements, reducing upgrade risks.</p>
+<hr>
+<h3 id="-contributors">👥 Contributors</h3>
+<p>People responsible for preparing, reviewing, and approving this release note and the release itself:</p>
+<ul>
+<li>Release manager / author: John Smith</li>
+<li>Reviewed and approved by: John Doe,  Joe Shmoe</li>
+</ul>
+<h2 id="a-practical-example--reusable-template">A practical example &amp; reusable template</h2>
+<pre tabindex="0"><code>Release Note – my-service-name
+
+Release Info
+- Version: v2.7.1
+- Git Tag: v2.7.1
+- Commit SHA: d4e5f6a7b8c9
+- Release Date: 2025-08-10
+
+Summary
+- Added support for multi-region failover.
+- Optimized database query performance.
+- Enhanced logging with trace IDs.
+
+Product Features
+- Enabled multi-region failover for higher availability.
+- New user setting to toggle detailed logs.
+
+Technical Features
+- Introduced new API endpoint: GET /regions/status
+- Added distributed tracing support using OpenTelemetry.
+
+Resolved Support Tickets
+- SUPPORT-210 – Failover not triggering correctly in some regions.
+- SUPPORT-218 – Logs missing trace IDs in debug mode.
+
+Bug Fixes
+- Fixed race condition causing stale cache reads.
+- Resolved timeout issue on /users/profile endpoint.
+
+Breaking Changes
+- Deprecated GET /regions/info — use GET /regions/status instead.
+
+Known Issues
+- Failover latency may spike during peak hours.
+- Trace ID propagation not yet supported in legacy clients.
+
+Deployment Notes
+- Set environment variable: FAILOVER_ENABLED=true
+- Run migration script: V102__add_failover_flags.sql
+- Restart my-service-name pods after deployment.
+
+Compatibility
+- example-db: ≥ 3.5.0 (Required for failover features)
+- messaging-service: 1.8.0 - 2.0.0 (Legacy versions unsupported)
+- Monitoring agent: v4.1 or higher (For distributed tracing support)
+
+Contributors
+- Release manager / author: John Smith
+- Reviewed and approved by: Jane Doe, Alex Williams
+</code></pre><h2 id="conclusion">Conclusion</h2>
+<p>Clear release notes improve communication, reduce confusion, and set user expectations.</p>
+<p>Following this guide helps you create notes that serve developers, testers, product managers, and users alike.</p>
+<p>Make release notes a routine part of your process to ensure smoother releases and better user trust.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/reactivity-in-vue/"
+      title="Reactivity in Vue.js"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
