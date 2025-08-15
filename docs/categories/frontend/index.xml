@@ -16,14 +16,14 @@
       <description>&lt;p&gt;One of the most powerful features of Vue.js and the reason why it feels so intuitive is its &lt;strong&gt;reactivity system&lt;/strong&gt;. It allows your UI to automatically update when the underlying data changes, without writing a single line of manual DOM manipulation.&lt;/p&gt;&#xA;&lt;p&gt;If you’ve ever built complex user interfaces before reactive frameworks like Vue, you know the pain of keeping the UI in sync with application state manually juggling query selectors, event handlers, and state flags. It&amp;rsquo;s error-prone, hard to scale, and difficult to maintain.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Vue.js Core Concepts You Must Know</title>
+      <title>Vue.js core concepts you must know</title>
       <link>https://nenadlazic.github.io/blog/vue-core-convepts/</link>
       <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/blog/vue-core-convepts/</guid>
       <description>&lt;p&gt;Vue has captured the hearts of developers with its simplicity, efficiency, and adaptability. Whether you&amp;rsquo;re a newcomer to front-end development or an experienced programmer seeking a new tool, Vue.js offers an intuitive approach to building interactive and dynamic web applications.&lt;/p&gt;&#xA;&lt;p&gt;In this blog post, we&amp;rsquo;ll dive deeper into the &lt;strong&gt;philosophy behind Vue.js&lt;/strong&gt;, understanding why it was designed the way it was and the benefits it brings. After that, we&amp;rsquo;ll walk through the &lt;strong&gt;most crucial core concepts&lt;/strong&gt; essential for getting started and effectively utilizing this powerful framework.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Getting Started with Vue.js</title>
+      <title>Getting started with Vue.js</title>
       <link>https://nenadlazic.github.io/blog/getting-started-with-vue/</link>
       <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/blog/getting-started-with-vue/</guid>

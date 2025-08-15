@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.0f74a55f778081b125623a493e2d25d3e08d1acce456ea15adf127e7d0e2347f.css"
+    integrity="sha256-D3SlX3eAgbElYjpJPi0l0&#43;CNGszkVuoVrfEn59DiNH8="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Keycloak migration scripts: your shortcut to consistent IAM</h1>
+  <p class="mb-1">August 14, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <h2 id="introduction">Introduction</h2>
+<p>Managing authentication and authorization at scale can be error-prone. Manual clicks in the Keycloak dashboard work for small environments, but as your system grows, replicating configurations across development, staging, and production becomes tedious and risky.</p>
+<p>Keycloak migration scripts let you treat your IAM configuration as code: versioned, repeatable, and automatable. With scripts, you can apply changes safely, track them in version control, and integrate them into CI/CD pipelines for consistent deployments.</p>
+<h2 id="why-migration-scripts-matter">Why Migration Scripts Matter?</h2>
+<p>Migration scripts make Keycloak management faster, safer, and more consistent. Instead of manual clicks, you automate repetitive tasks, keep environments in sync, and maintain a clear audit trail of changes.</p>
+<p>Typical use cases include:</p>
+<ul>
+<li>Migrating users, groups, and roles between Keycloak instances</li>
+<li>Replicating realm settings across development, staging, and production environments</li>
+<li>Bulk-creating service accounts and client roles</li>
+<li>Backing up and restoring configurations for disaster recovery</li>
+</ul>
+<p>Treat Keycloak as code, not clicks. Scripts reduce human errors, speed up deployments, and ensure your identity infrastructure scales reliably with your applications.</p>
+<h2 id="how-keycloak-migration-scripts-work">How Keycloak migration scripts work</h2>
+<p>There are two main ways to manage Keycloak migration scripts, depending on whether you need incremental changes or full realm migrations:</p>
+<ol>
+<li>
+<p><strong>Using the Keycloak REST API from your local machine</strong></p>
+<ul>
+<li>Tools like kcadm.sh (Keycloak Admin CLI) let you authenticate to a remote Keycloak server and perform administrative tasks such as creating users, clients, or roles directly from your terminal. This approach is ideal for incremental, scriptable changes and CI/CD automation, as it does not require direct server access, only network/API access and sufficient credentials.</li>
+<li>Example:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kcadm.sh config credentials --server https://&lt;keycloak-server&gt;/ --realm master --user &lt;admin-username&gt; --password &lt;admin-password&gt;
+</span></span><span style="display:flex;"><span>kcadm.sh create users -r &lt;realm-name&gt; -s username<span style="color:#f92672">=</span>newuser -s enabled<span style="color:#f92672">=</span>true
+</span></span></code></pre></div></li>
+<li>You can also use <code>curl</code> or Postman to make direct REST API requests for fine-grained migrations.</li>
+</ul>
+<p>In short: Use kcadm.sh for targeted updates and automation.</p>
+</li>
+<li>
+<p><strong>Running CLI scripts directly on the server or in the Docker container</strong></p>
+<ul>
+<li>
+<p>For full realm migrations or bulk updates, use Keycloak CLI (kc.sh) inside the environment where Keycloak is deployed (e.g. Docker container or VM). This allows you to export or import entire realm configurations as JSON files. This method is perfect for backups, full environment replication, or disaster recovery.</p>
+</li>
+<li>
+<p>Example (Docker):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker exec &lt;container-name&gt; /opt/keycloak/bin/kc.sh export --realm &lt;realm-name&gt; --file /tmp/realm-export.json
+</span></span><span style="display:flex;"><span>docker cp &lt;container-name&gt;:/tmp/realm-export.json ./realm-export.json
+</span></span><span style="display:flex;"><span>docker cp ./realm-export.json &lt;container-name&gt;:/tmp/realm-export.json
+</span></span><span style="display:flex;"><span>docker exec &lt;container-name&gt; /opt/keycloak/bin/kc.sh import --file /tmp/realm-export.json
+</span></span></code></pre></div></li>
+</ul>
+<p>In short: Use kc.sh export/import for full migrations or backups.</p>
+<h3 id="behind-the-scenes--best-practices">Behind the scenes &amp; best practices</h3>
+<p>When you run Keycloak migration scripts, whether via kcadm.sh, REST API, or kc.sh, you’re essentially talking to the Keycloak server programmatically. Here’s a simplified view of what happens:</p>
+<ol>
+<li>Authentication – Your script logs in as an admin or service account, making sure it has the right permissions.</li>
+<li>Payload creation – Each command is turned into a JSON payload representing the configuration you want (users, roles, clients, groups, etc.).</li>
+<li>Server processing – Keycloak applies your changes to its database, validating relationships and dependencies.</li>
+<li>Persistence – All changes are saved in the database and reflected in the running system.</li>
+<li>Automation-friendly – Scripts can be integrated into CI/CD pipelines, making deployments repeatable, auditable, and safer.</li>
+</ol>
+<h4 id="key-tips">Key tips:</h4>
+<ul>
+<li>Always test scripts in non-production environments first.</li>
+<li>Use kcadm.sh for incremental updates and CI/CD automation.</li>
+<li>Use kc.sh export/import for full backups or bulk migrations.</li>
+<li>Be cautious: importing a realm JSON can overwrite existing configurations.</li>
+</ul>
+<p>Migration scripts turn what used to be manual clicks into automated, reliable operations, letting you manage Keycloak as code.</p>
+</li>
+</ol>
+<h2 id="practical-examples-writing-migration-scripts">Practical examples: Writing migration scripts</h2>
+<p>Here are clear examples showing how to automate common Keycloak tasks with migration scripts and CLI tools. You can use them for initial setup, incremental updates, or CI/CD automation.</p>
+<h3 id="1-creating-a-client-resource-server">1. Creating a client (resource server)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Step 1: Authenticate to Keycloak</span>
+</span></span><span style="display:flex;"><span>kcadm.sh config credentials <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --server https://&lt;keycloak-server&gt;/ <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --realm master <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --user &lt;admin-username&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --password &lt;admin-password&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 2: Create the resource server client</span>
+</span></span><span style="display:flex;"><span>kcadm.sh create clients -r &lt;realm-name&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -s clientId<span style="color:#f92672">=</span>&lt;resource-server-name&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -s protocol<span style="color:#f92672">=</span>openid-connect <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -s publicClient<span style="color:#f92672">=</span>false <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -s directAccessGrantsEnabled<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -s serviceAccountsEnabled<span style="color:#f92672">=</span>true
+</span></span></code></pre></div><p>This creates a confidential client that can request tokens using username/password (directAccessGrantsEnabled=true) and can also use a service account to access other services (serviceAccountsEnabled=true).</p>
+<p>There are additional parameters you can set depending on your needs, such as standardFlowEnabled, implicitFlowEnabled, clientAuthenticatorType, redirectUris, rootUrl, and attributes. These allow further customization, for example enabling browser-based login, defining redirect URIs, or setting specific client attributes.</p>
+<h3 id="2-adding-roles-to-a-realm">2. Adding roles to a realm</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Add a new role to the realm</span>
+</span></span><span style="display:flex;"><span>kcadm.sh create roles -r &lt;realm-name&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -s name<span style="color:#f92672">=</span>&lt;role-name&gt;
+</span></span></code></pre></div><p>Roles define permissions that can be assigned to users, groups, or clients. You can create multiple roles and manage access consistently across environments without using the UI.</p>
+<h3 id="3-assigning-a-role-to-a-user">3. Assigning a role to a user</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Assign role to a user</span>
+</span></span><span style="display:flex;"><span>kcadm.sh add-roles -r &lt;realm-name&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --uusername &lt;username&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --rolename &lt;role-name&gt;
+</span></span></code></pre></div><p>This allows automation of user-role assignments, which is especially useful for provisioning test users or syncing environments.</p>
+<h3 id="4-creating-and-assigning-client-scopes">4. Creating and assigning client scopes</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Create a client scope</span>
+</span></span><span style="display:flex;"><span>kcadm.sh create client-scopes -r &lt;realm-name&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -s name<span style="color:#f92672">=</span>&lt;scope-name&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -s protocol<span style="color:#f92672">=</span>openid-connect
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Assign the scope to a client</span>
+</span></span><span style="display:flex;"><span>kcadm.sh update clients/&lt;client-id&gt; -r &lt;realm-name&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -s <span style="color:#e6db74">&#39;defaultClientScopes=[&#34;&lt;scope-name&gt;&#34;]&#39;</span>
+</span></span></code></pre></div><p>Client scopes define sets of claims or permissions for clients. Automating their creation ensures consistent behavior across environments.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Migration scripts turn what used to be manual UI clicks into repeatable, version-controlled, and automated operations. By scripting clients, roles, user assignments, and scopes, you can:</p>
+<ul>
+<li>Reduce human errors and inconsistencies</li>
+<li>Keep multiple environments synchronized</li>
+<li>Integrate Keycloak configuration into CI/CD pipelines</li>
+</ul>
+<p>Treat Keycloak as code, not clicks, and you’ll gain both reliability and scalability in your identity and access management workflows.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/how-to-write-release-notes/"
+      title="How to write release notes"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
