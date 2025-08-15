@@ -6,8 +6,15 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Keycloak migration scripts: your shortcut to consistent IAM</title>
+      <link>https://nenadlazic.github.io/blog/keycloak-migration-scripts/</link>
+      <pubDate>Thu, 14 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/keycloak-migration-scripts/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Managing authentication and authorization at scale can be error-prone. Manual clicks in the Keycloak dashboard work for small environments, but as your system grows, replicating configurations across development, staging, and production becomes tedious and risky.&lt;/p&gt;&#xA;&lt;p&gt;Keycloak migration scripts let you treat your IAM configuration as code: versioned, repeatable, and automatable. With scripts, you can apply changes safely, track them in version control, and integrate them into CI/CD pipelines for consistent deployments.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How to write release notes</title>
       <link>https://nenadlazic.github.io/blog/how-to-write-release-notes/</link>
@@ -23,7 +30,7 @@
       <description>&lt;p&gt;One of the most powerful features of Vue.js and the reason why it feels so intuitive is its &lt;strong&gt;reactivity system&lt;/strong&gt;. It allows your UI to automatically update when the underlying data changes, without writing a single line of manual DOM manipulation.&lt;/p&gt;&#xA;&lt;p&gt;If you’ve ever built complex user interfaces before reactive frameworks like Vue, you know the pain of keeping the UI in sync with application state manually juggling query selectors, event handlers, and state flags. It&amp;rsquo;s error-prone, hard to scale, and difficult to maintain.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Vue.js Core Concepts You Must Know</title>
+      <title>Vue.js core concepts you must know</title>
       <link>https://nenadlazic.github.io/blog/vue-core-convepts/</link>
       <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/blog/vue-core-convepts/</guid>
@@ -37,7 +44,7 @@
       <description>&lt;h2 id=&#34;introduction--why-this-matters&#34;&gt;Introduction – Why This Matters&lt;/h2&gt;&#xA;&lt;p&gt;Security is one of the most critical aspects of backend development, yet the concepts of authentication and authorization are often confused or mixed up. No matter if you&amp;rsquo;re building a web application, a REST API, or a distributed microservices system, it&amp;rsquo;s essential to know &lt;strong&gt;who the user is&lt;/strong&gt; and &lt;strong&gt;what they&amp;rsquo;re allowed to do&lt;/strong&gt;. This blog post will explain these two fundamental concepts in plain terms, outline how they work together, and offer best practices every backend developer should follow to build secure applications.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Getting Started with Vue.js</title>
+      <title>Getting started with Vue.js</title>
       <link>https://nenadlazic.github.io/blog/getting-started-with-vue/</link>
       <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/blog/getting-started-with-vue/</guid>

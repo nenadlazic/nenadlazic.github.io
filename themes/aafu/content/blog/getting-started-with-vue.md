@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with Vue.js"
+title: "Getting started with Vue.js"
 date: 2025-07-04
 tags: ["vue.js", "webdev"]
 categories: ["frontend"]

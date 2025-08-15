@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Backend on </title>
+    <link>https://nenadlazic.github.io/tags/backend/</link>
+    <description>Recent content in Backend on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nenadlazic.github.io/tags/backend/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Keycloak migration scripts: your shortcut to consistent IAM</title>
+      <link>https://nenadlazic.github.io/blog/keycloak-migration-scripts/</link>
+      <pubDate>Thu, 14 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/keycloak-migration-scripts/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Managing authentication and authorization at scale can be error-prone. Manual clicks in the Keycloak dashboard work for small environments, but as your system grows, replicating configurations across development, staging, and production becomes tedious and risky.&lt;/p&gt;&#xA;&lt;p&gt;Keycloak migration scripts let you treat your IAM configuration as code: versioned, repeatable, and automatable. With scripts, you can apply changes safely, track them in version control, and integrate them into CI/CD pipelines for consistent deployments.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
