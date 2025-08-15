@@ -191,7 +191,10 @@
   [hidden]:where(:not([hidden="until-found"])) {
     display: none !important;
   }
-}@layer utilities{.relative {
+}@layer utilities{.fixed {
+    position: fixed !important;
+  }
+  .relative {
     position: relative !important;
   }
   .col-span-2 {
@@ -199,6 +202,24 @@
   }
   .col-span-3 {
     grid-column: span 3 / span 3 !important;
+  }
+  .container {
+    width: 100% !important;
+    @media (width >= 40rem) {
+      max-width: 40rem !important;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem !important;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem !important;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem !important;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem !important;
+    }
   }
   .m-0 {
     margin: calc(var(--spacing) * 0) !important;
@@ -674,6 +695,9 @@
   }
   .grid {
     display: grid !important;
+  }
+  .table {
+    display: table !important;
   }
   .h-full {
     height: 100% !important;

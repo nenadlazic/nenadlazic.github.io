@@ -1,5 +1,5 @@
 ---
-title: "Vue.js Core Concepts You Must Know"
+title: "Vue.js core concepts you must know"
 date: 2025-07-18
 tags: ["vue.js", "composition-api", "directives", "reactivity", "components", "frontend"]
 categories: ["frontend"]
