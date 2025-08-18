@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LDAP on </title>
+    <link>https://nenadlazic.github.io/tags/ldap/</link>
+    <description>Recent content in LDAP on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nenadlazic.github.io/tags/ldap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to expose Active Directory attributes in Keycloak tokens</title>
+      <link>https://nenadlazic.github.io/blog/keycloak-custom-claims-from-ad-users/</link>
+      <pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/keycloak-custom-claims-from-ad-users/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;In modern enterprises, &lt;strong&gt;centralized user directories&lt;/strong&gt; are the backbone of identity management. Whether it’s Active Directory (AD) in large corporations or an LDAP server in smaller setups, the goal is simple: a single source of truth for user identities, used across networks and applications.&lt;/p&gt;&#xA;&lt;p&gt;However, AD by itself is not a full IAM solution. This is where Keycloak comes into play: it acts as a layer that allows applications to leverage these identities for authentication and access management, while also providing the flexibility to enrich tokens with custom attributes from AD.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
