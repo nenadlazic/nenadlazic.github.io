@@ -3,18 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nenadlazic.github.io/blog/</loc>
-    <lastmod>2025-08-18T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/</loc>
-    <lastmod>2025-08-18T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/categories/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/codec/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/encoding/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/ffmpeg/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/netflix/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/streaming/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/transcoding/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/blog/vmaf-introduction/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/video-quality/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/categories/video-engineering/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/vmaf/</loc>
+    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/active-directory/</loc>
     <lastmod>2025-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/authentication/</loc>
-    <lastmod>2025-08-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://nenadlazic.github.io/categories/</loc>
     <lastmod>2025-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/blog/keycloak-custom-claims-from-ad-users/</loc>
@@ -39,9 +72,6 @@
     <lastmod>2025-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/security/</loc>
-    <lastmod>2025-08-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/</loc>
     <lastmod>2025-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/user-federation/</loc>
