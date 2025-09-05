@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Codec on </title>
+    <link>https://nenadlazic.github.io/tags/codec/</link>
+    <description>Recent content in Codec on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 05 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nenadlazic.github.io/tags/codec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding VMAF: Measuring video quality the right way</title>
+      <link>https://nenadlazic.github.io/blog/vmaf-introduction/</link>
+      <pubDate>Fri, 05 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/vmaf-introduction/</guid>
+      <description>&lt;p&gt;When building streaming platforms, testing new codecs, or tuning encoding ladders, one of the hardest questions is: &lt;strong&gt;“How do we objectively measure video quality?”&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Traditional metrics like &lt;strong&gt;PSNR&lt;/strong&gt; (Peak Signal-to-Noise Ratio) and &lt;strong&gt;SSIM&lt;/strong&gt; (Structural Similarity Index) often fail to reflect what viewers actually see. PSNR, for example, is a simple mathematical calculation that measures pixel differences, which means it can give a high score to a video that looks visually poor, while SSIM, though better at assessing structural similarity, can still be deceived by certain video artifacts.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

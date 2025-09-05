@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.fbada2634ed261a26fe03a6c07e41d24f09992dc2ab55f35bc347508a11d04e4.css"
+    integrity="sha256-&#43;62iY07SYaJv4DpsB&#43;QdJPCZktwqtV81vDR1CKEdBOQ="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Understanding VMAF: Measuring video quality the right way</h1>
+  <p class="mb-1">September 5, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>When building streaming platforms, testing new codecs, or tuning encoding ladders, one of the hardest questions is: <strong>“How do we objectively measure video quality?”</strong></p>
+<p>Traditional metrics like <strong>PSNR</strong> (Peak Signal-to-Noise Ratio) and <strong>SSIM</strong> (Structural Similarity Index) often fail to reflect what viewers actually see. PSNR, for example, is a simple mathematical calculation that measures pixel differences, which means it can give a high score to a video that looks visually poor, while SSIM, though better at assessing structural similarity, can still be deceived by certain video artifacts.</p>
+<p>To address these limitations, Netflix developed <strong>VMAF</strong> (Video Multi-Method Assessment Fusion), a perceptual quality metric that has become the industry standard. VMAF is a more sophisticated approach because it uses a machine learning model that takes multiple factors into account, including PSNR and SSIM, but also other human perception characteristics. This fusion allows VMAF to provide a single, comprehensive score that is much more aligned with how a human eye perceives quality.</p>
+<h2 id="how-vmaf-works">How VMAF works?</h2>
+<p>VMAF combines multiple quality metrics and feeds them into a trained machine learning model. The result is a score between 0 and 100.</p>
+<p>The metric is computed by comparing two videos:</p>
+<ul>
+<li><strong>Reference video</strong> - the original, uncompressed source</li>
+<li><strong>Distorted/transcoded video</strong> - a compressed, transcoded, or otherwise degraded version</li>
+</ul>
+<p>VMAF analyzes differences frame by frame, producing either a single aggregate score or a per-frame curve. Because it accounts for perceptual factors, it better matches how humans judge quality than simple pixel-based metrics.</p>
+<h3 id="vmaf-score-ranges">VMAF Score Ranges</h3>
+<ul>
+<li>95–100 → identical to reference, differences invisible</li>
+<li>90–95 → near-lossless, barely noticeable differences</li>
+<li>80–90 → good quality, typical for premium streaming</li>
+<li>70–80 → noticeable degradation but acceptable</li>
+<li>60–70 → clear artifacts, borderline watchable</li>
+<li>50–60 → poor quality</li>
+<li>&lt;50 → very poor, hardly watchable</li>
+</ul>
+<h3 id="visibility-of-differences">Visibility of differences</h3>
+<ul>
+<li>1–2 points → not perceptible</li>
+<li>3–5 points → borderline noticeable in side-by-side comparison</li>
+<li>6+ points → clearly visible in normal viewing</li>
+</ul>
+<h2 id="technical-prerequisites-for-accurate-measurement">Technical prerequisites for accurate measurement</h2>
+<p>Even the best metric can produce misleading results if the test setup is incorrect. For reliable VMAF scores, the following conditions should be met:</p>
+<ul>
+<li>Same resolution - upscale or downscale one of the videos if necessary. Mismatched resolutions can artificially inflate or deflate scores.</li>
+<li>Same frame rate (fps) - differences in fps will confuse the algorithm and produce inaccurate results.</li>
+<li>Frame alignment - videos must start and end at the same points. Even a one-frame shift can drastically alter results.</li>
+<li>Same format - matching bit depth and chroma subsampling (e.g., 4:2:0 8-bit) is essential.</li>
+</ul>
+<h2 id="practical-examples">Practical examples</h2>
+<p>If you take the following ABR ladder for 1080p content:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Bitrate</th>
+          <th>Resolution</th>
+          <th>FPS</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>400 kbps</td>
+          <td>426×240 (240p)</td>
+          <td>25</td>
+          <td>Minimum acceptable quality, for mobile on poor networks</td>
+      </tr>
+      <tr>
+          <td>800 kbps</td>
+          <td>640×360 (360p)</td>
+          <td>25</td>
+          <td>Still mobile-focused, better readability for text</td>
+      </tr>
+      <tr>
+          <td>1200 kbps</td>
+          <td>854×480 (480p)</td>
+          <td>25</td>
+          <td>SD quality, watchable on small screens</td>
+      </tr>
+      <tr>
+          <td>2400 kbps</td>
+          <td>1280×720 (720p)</td>
+          <td>50</td>
+          <td>HD baseline, good balance for tablets/TV</td>
+      </tr>
+      <tr>
+          <td>3500 kbps</td>
+          <td>1920×1080 (1080p)</td>
+          <td>50</td>
+          <td>Full HD, streaming standard for TVs</td>
+      </tr>
+      <tr>
+          <td>4500 kbps</td>
+          <td>1920×1080 (1080p high profile)</td>
+          <td>50</td>
+          <td>Higher motion/detail content (sports, action)</td>
+      </tr>
+  </tbody>
+</table>
+<p>Measuring VMAF for each transcoded stream against the original reference video might yield the following trend:</p>
+<p><img src="/images/vmaf-score.png" alt="vmaf-score"></p>
+<p>Plotting these values in a graph (X-axis = bitrate, Y-axis = VMAF score) clearly illustrates the relationship between bitrate and perceptual video quality, helping you decide the optimal ladder levels for adaptive streaming.</p>
+<h2 id="easyvmaf--simplified-workflow">EasyVMAF – simplified workflow</h2>
+<p>EasyVMAF is a Python library that streamlines video quality assessment using VMAF. It allows easy comparison between reference and distorted videos, automatically manages models and configurations, and outputs results in JSON format.</p>
+<p>Get easyVmaf docker image:</p>
+<pre tabindex="0"><code>docker pull gfdavila/easyvmaf:latest
+</code></pre><p>Run easy VMAF from docker container:</p>
+<pre tabindex="0"><code>docker run --rm -v &lt;local-path-to-your-video-files&gt;:/vmaf_files gfdavila/easyvmaf -r /vmaf_files/video-1.mp4 -d /vmaf_files/video-2.mp4
+</code></pre><p>This makes EasyVMAF ideal for quick comparisons, pipeline integration, and automated video quality evaluation, without the need for manually configuring complex parameters.</p>
+<h2 id="strengths-and-limitations">Strengths and limitations</h2>
+<p>Strengths ✅</p>
+<ul>
+<li>Strong correlation with human visual perception</li>
+<li>Open-source and actively maintained</li>
+<li>Scriptable and easy to integrate into workflows</li>
+</ul>
+<p>Limitations ⚠️</p>
+<ul>
+<li>Requires a reference video (not suitable for no-reference scenarios)</li>
+<li>Sensitive to upscaling, sharpening, or other preprocessing</li>
+<li>Accuracy depends on correct technical setup</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>VMAF provides a robust, perceptually-aligned metric for video quality, bridging the gap between mathematical measures and actual viewer experience. While highly reliable, it is best complemented with occasional subjective tests to detect subtle artifacts. By combining VMAF with practical tools like EasyVMAF, video engineers can efficiently optimize bitrate ladders, encoding, and codec evaluation, delivering the best possible viewing experience.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/keycloak-custom-claims-from-ad-users/"
+      title="How to expose Active Directory attributes in Keycloak tokens"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

@@ -6,8 +6,15 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 05 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Video-Engineering</title>
+      <link>https://nenadlazic.github.io/categories/video-engineering/</link>
+      <pubDate>Fri, 05 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/video-engineering/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Security</title>
       <link>https://nenadlazic.github.io/categories/security/</link>
