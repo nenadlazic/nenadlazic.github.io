@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.fbada2634ed261a26fe03a6c07e41d24f09992dc2ab55f35bc347508a11d04e4.css"
+    integrity="sha256-&#43;62iY07SYaJv4DpsB&#43;QdJPCZktwqtV81vDR1CKEdBOQ="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Understanding AI-Powered Backends</h1>
+  <p class="mb-1">September 19, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Large Language Models (LLMs) have become the backbone of modern AI: they can generate text, summarize documents, answer questions, and help automate developer workflows. But an LLM on its own is just a very good statistical text generator. To build useful, reliable systems, we often combine them with software that provides memory, facts, actions, and guardrails.</p>
+<p>Using LLMs usually means sending data to the cloud which can be expensive, slow, and raise privacy concerns.</p>
+<p>In this blog, we’ll focus on key concepts behind AI-powered backends:</p>
+<ul>
+<li>How LLMs work and what they can do</li>
+<li>What AI agents are and how they differ from simple LLM integrations</li>
+<li>Key challenges when building AI-driven services</li>
+<li>How local deployment can give you privacy, control, and flexibility</li>
+</ul>
+<p>By understanding these fundamentals, you’ll be better prepared to design systems that integrate LLMs and agents in practical, reliable ways whether in Spring Boot, other backend frameworks, or future prototypes.</p>
+<h2 id="understanding-llms-ai-agents-and-challenges">Understanding LLMs, AI Agents, and Challenges</h2>
+<h3 id="what-are-llms">What are LLMs?</h3>
+<p>Large Language Models (LLMs) are neural networks trained on massive text datasets to predict the next chunk of text, called a token (which can be a word, part of a word, or punctuation). By learning these patterns, LLMs can generalize and adapt to a wide variety of contexts, drawing on the knowledge and examples seen during training.</p>
+<p>Thanks to this, they can:</p>
+<ul>
+<li>Generate natural language (answers, summaries, explanations)</li>
+<li>Follow prompts to perform tasks like translation, extraction, or formatting</li>
+<li>Adapt to context through prompt design or a few examples (few-shot learning)</li>
+</ul>
+<p>Important caveat: LLMs can “hallucinate” - confidently produce incorrect or invented facts and their knowledge can be outdated unless connected to live data.</p>
+<h3 id="what-are-ai-agents">What are AI Agents?</h3>
+<p>An <strong>AI agent</strong> is a system that uses a language model (LLM) as its “brain” but also takes <strong>autonomous actions</strong> based on input and context. Unlike a plain LLM integration, which only generates text, an agent can make decisions, orchestrate multiple steps, and interact with external tools or data sources.</p>
+<p>In practice, an agent typically:</p>
+<ul>
+<li>Analyzes input data to decide how to proceed</li>
+<li>Calls LLM(s) intelligently, sometimes multiple times, to generate or refine content</li>
+<li>Interacts with external systems such as databases, APIs, or workflows to gather information or perform actions</li>
+<li>Produces structured outputs or triggers side effects in your application</li>
+</ul>
+<p>In short, an AI agent is <strong>LLM + orchestration + autonomous decision-making</strong>, turning raw text generation into actionable, context-aware automation.</p>
+<h2 id="self-hosted-llms">Self-Hosted LLMs</h2>
+<p>When starting to build AI-powered backends, many developers first try <strong>cloud-based LLM APIs</strong> like OpenAI, Gemini, or Claude. This approach is attractive because it’s fast and easy: you get a pre-trained model with minimal setup - just an API key and a few lines of code.</p>
+<p>However, this approach has some trade-offs:</p>
+<ul>
+<li>Cost: pay-per-token billing can become expensive for frequent or large-scale use</li>
+<li>Privacy: sensitive data is sent to third-party servers</li>
+<li>Latency: every request requires a network round-trip</li>
+</ul>
+<p>Once these limitations become significant, moving to private or local deployment becomes appealing.</p>
+<p>You don’t need a supercomputer to run a self-hosted LLM. Depending on the model size, a modern workstation or small server may suffice. Tools like <strong>Ollama</strong> provide a simple runtime to run pre-trained models in Docker under your control.</p>
+<p>Key points to know:</p>
+<ul>
+<li>Pre-trained models (e.g., LLaMA, Mistral, Falcon) can be pulled and run without cloud dependencies</li>
+<li>Self-hosting requires sufficient compute and memory: smaller models run comfortably on a single GPU or CPU-heavy machines, while larger models need more resources</li>
+<li>You have full control over your data: prompts, fine-tuning datasets, and queries never leave your infrastructure</li>
+</ul>
+<p>With this setup, your backend can interact with the model as if it were any other internal service - private, fast, and flexible.</p>
+<h2 id="pre-trained-models-and-fine-tuning">Pre-trained Models and Fine-Tuning</h2>
+<p>Once you decide to self-host a model, the next step is choosing and adapting the model for your use case. There are several approaches:</p>
+<h3 id="1-pre-trained-models">1. Pre-trained Models</h3>
+<p>Open-source LLMs like LLaMA, Mistral, Falcon, and others come ready to use. They offer:</p>
+<ul>
+<li>Immediate usability: start generating text or building agents without training from scratch</li>
+<li>Active community support: tutorials, examples, and pre-trained checkpoints</li>
+</ul>
+<p>Limitations include model size, licensing restrictions, and sometimes limited domain-specific knowledge.</p>
+<h3 id="2-fine-tuning-existing-models">2. Fine-Tuning Existing Models</h3>
+<p>Fine-tuning lets you adapt a pre-trained model to your own data or domain:</p>
+<ul>
+<li>
+<p>Techniques like LoRA (<strong>Low-Rank Adaptation</strong>), PEFT (<strong>Parameter-Efficient Fine-Tuning</strong>), or <strong>instruction tuning</strong> modify only a small subset of the model’s parameters instead of retraining the entire network.</p>
+</li>
+<li>
+<p>LoRA: trains small “adapter” matrices that are added to the existing weights, allowing the model to learn new tasks without full retraining.</p>
+</li>
+<li>
+<p>PEFT: a general approach that fine-tunes only selected parts of the model to save memory and computation while adapting to specific tasks.</p>
+</li>
+<li>
+<p>Instruction tuning: fine-tunes the model on prompts with instructions, making it better at following task-specific guidance.</p>
+</li>
+</ul>
+<p>Fine-tuned models retain their general language abilities while becoming specialized for your target tasks, providing domain-specific intelligence without the need for huge computational resources.</p>
+<h3 id="3-training-from-scratch">3. Training from Scratch</h3>
+<p>This is usually only practical for research or very specialized projects. It requires massive datasets and significant computational resources.</p>
+<p>Key takeaway: for most projects, the practical workflow is to pick a pre-trained model, optionally fine-tune it for your domain, and deploy it in a self-hosted setup for full privacy, control, and low latency.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this post, we explored the key concepts behind AI-powered backends: how LLMs work, what AI agents are, and the benefits of self-hosted models. We also looked at pre-trained models, fine-tuning techniques, and how deploying models locally gives you privacy, control, and flexibility.</p>
+<p>By understanding these fundamentals, you’re now equipped to start designing systems that integrate LLMs and agents in practical, reliable ways - whether in Spring Boot, other backend frameworks, or experimental prototypes.</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>In the next posts, we’ll build a complete Spring Boot-based AI agent that integrates with a self-hosted LLM. You’ll see how to:</p>
+<ul>
+<li>Send structured queries from your API to the local model</li>
+<li>Receive and process responses</li>
+<li>Orchestrate multiple tasks, turning raw LLM outputs into actionable, context-aware automation</li>
+</ul>
+<p>This will transform the concepts covered here into a working, private AI-powered service that you can run, test, and extend.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/vmaf-introduction/"
+      title="Understanding VMAF: Measuring video quality the right way"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

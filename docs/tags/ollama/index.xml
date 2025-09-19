@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ollama on </title>
+    <link>https://nenadlazic.github.io/tags/ollama/</link>
+    <description>Recent content in Ollama on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nenadlazic.github.io/tags/ollama/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding AI-Powered Backends</title>
+      <link>https://nenadlazic.github.io/blog/ai-powered-api/</link>
+      <pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/ai-powered-api/</guid>
+      <description>&lt;p&gt;Large Language Models (LLMs) have become the backbone of modern AI: they can generate text, summarize documents, answer questions, and help automate developer workflows. But an LLM on its own is just a very good statistical text generator. To build useful, reliable systems, we often combine them with software that provides memory, facts, actions, and guardrails.&lt;/p&gt;&#xA;&lt;p&gt;Using LLMs usually means sending data to the cloud which can be expensive, slow, and raise privacy concerns.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

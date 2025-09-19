@@ -3,13 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nenadlazic.github.io/blog/</loc>
-    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/</loc>
-    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/categories/ai/</loc>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/categories/backend/</loc>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/categories/</loc>
-    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/docker/</loc>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/java/</loc>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/categories/llm/</loc>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/llm/</loc>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/ollama/</loc>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/spring-boot/</loc>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/</loc>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/blog/ai-powered-api/</loc>
+    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/codec/</loc>
     <lastmod>2025-09-05T00:00:00+00:00</lastmod>
@@ -24,9 +54,6 @@
     <lastmod>2025-09-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/streaming/</loc>
-    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/</loc>
     <lastmod>2025-09-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/transcoding/</loc>
@@ -126,9 +153,6 @@
     <lastmod>2025-07-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/authorization/</loc>
-    <lastmod>2025-07-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://nenadlazic.github.io/categories/backend/</loc>
     <lastmod>2025-07-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/blog/getting-started-with-vue/</loc>

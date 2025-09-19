@@ -6,8 +6,29 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai</title>
+      <link>https://nenadlazic.github.io/categories/ai/</link>
+      <pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Backend</title>
+      <link>https://nenadlazic.github.io/categories/backend/</link>
+      <pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/backend/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Llm</title>
+      <link>https://nenadlazic.github.io/categories/llm/</link>
+      <pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/llm/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Video-Engineering</title>
       <link>https://nenadlazic.github.io/categories/video-engineering/</link>
@@ -34,13 +55,6 @@
       <link>https://nenadlazic.github.io/categories/frontend/</link>
       <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/categories/frontend/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Backend</title>
-      <link>https://nenadlazic.github.io/categories/backend/</link>
-      <pubDate>Fri, 11 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/categories/backend/</guid>
       <description></description>
     </item>
   </channel>
