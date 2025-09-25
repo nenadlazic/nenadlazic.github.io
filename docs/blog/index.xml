@@ -6,8 +6,15 @@
     <description>Recent content in All tech blogs on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenAI Whisper: Quick Audio-to-Text and Subtitle Workflow</title>
+      <link>https://nenadlazic.github.io/blog/blog-whisper-audio-transcription/</link>
+      <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/blog-whisper-audio-transcription/</guid>
+      <description>&lt;p&gt;Transcribing audio has become essential for creators, developers, and content teams. Whether it&amp;rsquo;s podcasts, YouTube videos, or meeting recordings, having accurate text saves time and makes content more accessible.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;OpenAI Whisper&lt;/strong&gt; is a versatile &lt;strong&gt;speech-to-text tool and library&lt;/strong&gt; that leverages pre-trained models to convert audio into text or subtitles. It supports multiple languages, understands context, and can generate time-coded subtitle files.&lt;/p&gt;&#xA;&lt;p&gt;Whisper is more than just a command-line tool: it integrates with &lt;strong&gt;FFmpeg&lt;/strong&gt;, allowing you to process a wide range of audio and video formats directly. You can use it as a CLI for quick transcriptions, or as a Python library for embedding transcription into custom workflows and applications.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Understanding AI-Powered Backends</title>
       <link>https://nenadlazic.github.io/blog/ai-powered-api/</link>
