@@ -136,190 +136,94 @@
 
     
     <main class="grow">
-<div class="prose dark:prose-invert max-w-none">
-  <h1 class="standard font-italic">
-    #AI</h1>
-  
-  <div class="">
-    <div
-      class="rounded-sm hover:bg-gray-400 dark:hover:bg-darker flex flex-row items-center justify-start accordion mt-0 mb-0 p-2 active"
-    >
-      <i
-        onclick="expandAccordion(this)"
-        class="cursor-pointer chevron p-2 mr-4 fas fa-chevron-right rounded-sm text-blue-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700"
-      ></i>
-      <a href="/blog/blog-whisper-audio-transcription/"
-        ><h2 class="accordion m-0">OpenAI Whisper: Quick Audio-to-Text and Subtitle Workflow</h2></a
-      >
-    </div>
-    <div
-      id="panel-item-0"
-      class="panel metadata-panel overflow-hidden bg-gray-200 dark:bg-dark"
-    >
-      <div class="metadata p-2"><p class="mt-0 mb-0 text-sm">September 25, 2025</p>
-<p class="mt-1 mb-0 text-sm">Reading Time: 3 minutes</p>
- 
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">OpenAI Whisper: Quick Audio-to-Text and Subtitle Workflow</h1>
+  <p class="mb-1">September 25, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Transcribing audio has become essential for creators, developers, and content teams. Whether it&rsquo;s podcasts, YouTube videos, or meeting recordings, having accurate text saves time and makes content more accessible.</p>
+<p><strong>OpenAI Whisper</strong> is a versatile <strong>speech-to-text tool and library</strong> that leverages pre-trained models to convert audio into text or subtitles. It supports multiple languages, understands context, and can generate time-coded subtitle files.</p>
+<p>Whisper is more than just a command-line tool: it integrates with <strong>FFmpeg</strong>, allowing you to process a wide range of audio and video formats directly. You can use it as a CLI for quick transcriptions, or as a Python library for embedding transcription into custom workflows and applications.</p>
+<p>In this guide, we’ll demonstrate how to take an audio file (or a video with audio), transcribe it with Whisper, and generate <strong>subtitle files</strong> ready for video editors or media players.</p>
+<h2 id="-setup-installing-whisper">🛠️ Setup: Installing Whisper</h2>
+<p>Before running Whisper, you need to ensure that your system has the following tools installed:</p>
+<ul>
+<li><strong>FFmpeg</strong> – for handling audio and video files</li>
+<li><strong>CMake</strong> – required to build Whisper from source</li>
+<li><strong>GCC / G++</strong> – for compiling the Whisper binaries</li>
+</ul>
+<h3 id="clone-the-official-whisper-repository">Clone the official Whisper repository:</h3>
+<pre tabindex="0"><code>git clone https://github.com/ggml-org/whisper.cpp
+cd whisper.cpp
+</code></pre><h3 id="download-one-of-the-pretrained-model-using-the-provided-bash-script">Download one of the pretrained model using the provided bash script:</h3>
+<pre tabindex="0"><code>sh ./models/download-ggml-model.sh base.en
+</code></pre><p>Whisper offers multiple model sizes and language variants. Here’s a quick overview:</p>
+<ul>
+<li>
+<p>Model sizes:</p>
+<ul>
+<li>tiny – fastest, lowest accuracy</li>
+<li>base – fast, moderate accuracy</li>
+<li>small – balanced speed and accuracy</li>
+<li>medium – higher accuracy, slower</li>
+<li>large – highest accuracy, slowest</li>
+</ul>
+</li>
+<li>
+<p>Language variants:</p>
+<ul>
+<li>en – optimized for English transcription</li>
+<li>multilingual (sometimes written as multilang) – supports multiple languages, useful if your audio contains non-English speech</li>
+</ul>
+</li>
+</ul>
+<h3 id="build-whisper-using-cmake">Build Whisper using CMake:</h3>
+<pre tabindex="0"><code>cmake -B build
+cmake --build build --config Release
+sudo make install -C build
+</code></pre><h3 id="prepare-audio-file-for-input">Prepare audio file for input</h3>
+<pre tabindex="0"><code>ffmpeg -i input.ts -vn -ar 16000 -ac 1 -c:a pcm_s16le input_audio.wav
+</code></pre><h3 id="run-whisper">Run Whisper</h3>
+<pre tabindex="0"><code>./build/bin/whisper-cli -m ./models/ggml-base.en.bin -f samples/input_audio.wav -ovtt
+</code></pre><p>When you run Whisper with the -ovtt flag, the tool generates a WebVTT subtitle file alongside your audio. This file contains:</p>
+<ul>
+<li>Timestamps for each spoken segment</li>
+<li>Transcribed text for each segment</li>
+<li>Proper formatting compatible with video players or editing software</li>
+</ul>
+<pre tabindex="0"><code>WEBVTT
 
-<p class="metadata-value mt-1 mb-0 text-sm taxa taxa-container-div list-categories">
-  Categories: 
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/categories/ai"
-    title="categories"
-  >
-    #AI</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/categories/tools"
-    title="categories"
-  >
-    #Tools</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/categories/how-to"
-    title="categories"
-  >
-    #How-to</a>
-  
-</p>
+00:00:00.000 --&gt; 00:00:02.500
+Hello everyone, welcome to this tutorial.
 
-
-
-<p class="metadata-value mt-1 mb-0 text-sm taxa taxa-container-div list-tags">
-  Tags: 
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/tags/whisper"
-    title="tags"
-  >
-    #whisper</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/tags/transcription"
-    title="tags"
-  >
-    #transcription</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/tags/speech-to-text"
-    title="tags"
-  >
-    #speech-to-text</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/tags/audio"
-    title="tags"
-  >
-    #audio</a>
-  
-</p>
-
+00:00:02.500 --&gt; 00:00:05.000
+Today we are learning how to use OpenAI Whisper.
+</code></pre><p><em>You can also use the -osrt flag to generate SRT subtitles if your workflow requires that format.</em></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>OpenAI Whisper makes audio-to-text transcription fast and simple. With the right model and FFmpeg integration, you can generate accurate transcriptions and subtitles in minutes, whether for videos, podcasts, or meetings. It&rsquo;s a versatile tool for both quick CLI usage and integration into custom workflows.</p>
 
 </div>
-    </div>
-  </div>
-  
-  <div class="">
-    <div
-      class="rounded-sm hover:bg-gray-400 dark:hover:bg-darker flex flex-row items-center justify-start accordion mt-0 mb-0 p-2 "
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/ai-powered-api/"
+      title="Understanding AI-Powered Backends"
     >
-      <i
-        onclick="expandAccordion(this)"
-        class="cursor-pointer chevron p-2 mr-4 fas fa-chevron-right rounded-sm text-blue-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700"
-      ></i>
-      <a href="/blog/ai-powered-api/"
-        ><h2 class="accordion m-0">Understanding AI-Powered Backends</h2></a
-      >
-    </div>
-    <div
-      id="panel-item-1"
-      class="panel metadata-panel overflow-hidden bg-gray-200 dark:bg-dark"
-    >
-      <div class="metadata p-2"><p class="mt-0 mb-0 text-sm">September 19, 2025</p>
-<p class="mt-1 mb-0 text-sm">Reading Time: 5 minutes</p>
- 
-
-<p class="metadata-value mt-1 mb-0 text-sm taxa taxa-container-div list-categories">
-  Categories: 
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/categories/backend"
-    title="categories"
-  >
-    #backend</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/categories/ai"
-    title="categories"
-  >
-    #ai</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/categories/llm"
-    title="categories"
-  >
-    #llm</a>
-  
-</p>
-
-
-
-<p class="metadata-value mt-1 mb-0 text-sm taxa taxa-container-div list-tags">
-  Tags: 
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/tags/spring-boot"
-    title="tags"
-  >
-    #spring boot</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/tags/llm"
-    title="tags"
-  >
-    #llm</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/tags/ollama"
-    title="tags"
-  >
-    #ollama</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/tags/docker"
-    title="tags"
-  >
-    #docker</a>
-  
-  <a
-    class="metadata-tags hover:no-underline"
-    href="/tags/java"
-    title="tags"
-  >
-    #java</a>
-  
-</p>
-
-
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
 </div>
-    </div>
-  </div>
-  
-</div>
-<script src="/js/accordion.js"></script>
-<div class="my-6 flex justify-center pagination-links">
-  
-</div>
+
 
     </main>
     
