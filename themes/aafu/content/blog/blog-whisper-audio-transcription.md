@@ -1,5 +1,5 @@
 ---
-title: "OpenAI Whisper: Quick Audio-to-Text and Subtitle Workflow"
+title: "OpenAI Whisper: Quick audio-to-text and subtitle workflow"
 date: 2025-09-25
 tags: ["whisper", "transcription", "speech-to-text", "audio"]
 categories: ["AI", "Tools", "How-to"]
