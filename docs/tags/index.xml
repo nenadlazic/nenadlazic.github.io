@@ -6,8 +6,50 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 31 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computer Vision</title>
+      <link>https://nenadlazic.github.io/tags/computer-vision/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Image Processing</title>
+      <link>https://nenadlazic.github.io/tags/image-processing/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/image-processing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ocr</title>
+      <link>https://nenadlazic.github.io/tags/ocr/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/ocr/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Opencv</title>
+      <link>https://nenadlazic.github.io/tags/opencv/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/opencv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://nenadlazic.github.io/tags/python/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tesseract</title>
+      <link>https://nenadlazic.github.io/tags/tesseract/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/tesseract/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Audio</title>
       <link>https://nenadlazic.github.io/tags/audio/</link>

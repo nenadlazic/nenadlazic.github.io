@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.b66cc635cbe2927120e492729a25abd862c6cfe03d576007484dba51d8788914.css"
+    integrity="sha256-tmzGNcviknEg5JJymiWr2GLGz&#43;A9V2AHSE26Udh4iRQ="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="https://nenadlazic.github.io/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Getting better OCR results: Practical image preprocessing tips</h1>
+  <p class="mb-1">October 31, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <h2 id="introduction">Introduction</h2>
+<p>In many modern applications, text doesn’t always arrive as plain, selectable characters. It often  appears inside images like scanned documents, screenshots, ID cards, receipts, or even video subtitles. In these cases, the text looks readable to humans but is invisible to software systems that expect digital text.</p>
+<p><strong>O</strong>ptical <strong>C</strong>haracter <strong>R</strong>ecognition (<strong>OCR</strong>) helps bridge that gap by detecting and converting text from images into editable and searchable form. This makes it possible to process documents automatically, extract data, enable search, or translate visual text.</p>
+<p>Still, OCR accuracy heavily depends on image quality. Noise, low contrast, shadows, compression artifacts, and stylized fonts often lead to poor recognition. The key to reliable results is not just choosing the right OCR engine but preparing the image properly.</p>
+<p>By applying a few preprocessing steps such as contrast adjustment, thresholding, and noise reduction, you can greatly improve recognition quality and reduce post-processing work.</p>
+<p>This post shows why preprocessing matters and how to use OpenCV and Tesseract to turn messy text images into clean, readable text.</p>
+<h2 id="why-ocr-fails-on-real-world-images">Why OCR fails on real-world images</h2>
+<p>OCR works by combining image analysis, pattern recognition, and machine learning. A typical OCR pipeline involves <strong>preprocessing</strong> the image, <strong>detecting text regions</strong>, <strong>segmenting</strong> characters, <strong>recognizing</strong> each symbol (often with neural networks or pattern matching), and <strong>post-processing</strong> the output using dictionaries or heuristics.</p>
+<p>The core of modern OCR relies on Deep Neural Networks (<strong>DNNs</strong>), which are essential for handling the high variability found in real-world images, such as diverse fonts, styles, and poor image quality.</p>
+<p>Even modern OCR engines like Tesseract or EasyOCR rely heavily on the quality of the input image. Common issues in real-world images include:</p>
+<ul>
+<li>low contrast between text and background</li>
+<li>compression artifacts or blur</li>
+<li>complex fonts with shadows or outlines</li>
+<li>language and character set limitations</li>
+<li>partially connected characters</li>
+<li>text skew / alignment</li>
+<li>multiple colors or transparency</li>
+</ul>
+<p><img src="/images/example-comples-image-for-ocr.png" alt="complex-images-for-ocr"></p>
+<p>These factors make it difficult for OCR to correctly detect and classify characters. For example, a scanned document or screenshot may produce garbled output, while applying simple preprocessing steps like contrast enhancement and noise removal can dramatically improve recognition.</p>
+<p>The key takeaway is that OCR accuracy depends not just on the engine itself but on how clearly the text is presented to it. Preprocessing helps the OCR “see” the text more clearly, increasing reliability and reducing errors.</p>
+<h2 id="preprocessing-techniques">Preprocessing techniques</h2>
+<p>To better understand how different image preprocessing filters affect OCR results, I’ve created a small Python “playground” script available on GitHub.<br>
+It lets you toggle various OpenCV filters on and off - such as contrast enhancement, Gaussian blur, thresholding, morphology operations, and noise reduction and instantly see how each transformation impacts text recognition accuracy.</p>
+<p>👉 Check out the repository here: <a href="https://github.com/nenadlazic/ocr-playground">GitHub – ocr-preprocessing-playground</a></p>
+<p>Below are some of the most effective and commonly used preprocessing filters that can significantly boost OCR accuracy. You don’t need to apply all of them. The right combination depends on your source image characteristics.</p>
+<h4 id="1-grayscale-conversion">1. Grayscale conversion</h4>
+<p>Almost every OCR workflow starts with converting the image to grayscale.<br>
+It removes unnecessary color information, simplifying the input and making it easier for later filters to distinguish text from background.</p>
+<h4 id="2-resize--scaling-for-ocr">2. Resize / Scaling for OCR</h4>
+<p>Resizing adjusts the image dimensions to a target width while preserving the aspect ratio, ensuring text is large enough for OCR to recognize clearly. Proper resizing prevents tiny or blurred characters, improving recognition accuracy without unnecessarily enlarging the image.</p>
+<h4 id="3-contrast-enhancement-clahe">3. Contrast enhancement (CLAHE)</h4>
+<p>CLAHE (Contrast Limited Adaptive Histogram Equalization) improves the local contrast of an image, making faint or uneven text more distinguishable from the background. This helps OCR engines detect characters more reliably, especially in screenshots or video frames with variable lighting.</p>
+<h4 id="4-adaptive-thresholding">4. Adaptive thresholding</h4>
+<p>Adaptive thresholding is useful when the background illumination is uneven.
+Instead of a single global threshold, this method calculates thresholds for small regions of the image, making faint or shadowed text more visible to OCR engines.</p>
+<h4 id="5-noise-reduction">5. Noise reduction</h4>
+<p>Real-world images often contain small “salt-and-pepper” noise or compression artifacts.</p>
+<ul>
+<li>Median blur (3×3) is ideal for removing tiny white/black specks while keeping text intact.</li>
+<li>Gaussian blur can be used carefully for mild smoothing, but avoid large kernels to prevent font deformation.</li>
+</ul>
+<h4 id="6-removing-unwanted-artifacts-snow">6. Removing unwanted artifacts (“snow”)</h4>
+<p>Sometimes subtitles or scanned text have small unwanted white dots (“snow”) on dark backgrounds.
+A safe approach is to remove only the brightest pixels without affecting thin characters.</p>
+<h4 id="7-invert-colors">7. Invert colors</h4>
+<p>If text is lighter than the background, inverting colors helps OCR engines read it correctly:</p>
+<ul>
+<li>Converts white text on black to black text on white, which most OCR engines handle better.</li>
+<li>Always check the expected input of your OCR engine.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>OCR accuracy depends not just on the engine, but on preparing your images properly. Real-world images often contain noise, uneven lighting, or small artifacts that make text hard to read.</p>
+<p>Using preprocessing steps like grayscale conversion, resizing, mild contrast enhancement, adaptive thresholding, gentle noise reduction, and optional color inversion can make text much clearer for OCR.</p>
+<p>The key is to apply filters gently and preview results to avoid merging or distorting letters. With the right combination, even challenging images become reliably machine-readable, saving time and reducing errors.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/blog-whisper-audio-transcription/"
+      title="OpenAI Whisper: Quick audio-to-text and subtitle workflow"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

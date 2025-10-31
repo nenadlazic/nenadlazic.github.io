@@ -6,13 +6,27 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 31 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://nenadlazic.github.io/categories/ai/</link>
-      <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Backend</title>
+      <link>https://nenadlazic.github.io/categories/backend/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/backend/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Computer-Vision</title>
+      <link>https://nenadlazic.github.io/categories/computer-vision/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/computer-vision/</guid>
       <description></description>
     </item>
     <item>
@@ -27,13 +41,6 @@
       <link>https://nenadlazic.github.io/categories/tools/</link>
       <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/categories/tools/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Backend</title>
-      <link>https://nenadlazic.github.io/categories/backend/</link>
-      <pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/categories/backend/</guid>
       <description></description>
     </item>
     <item>
