@@ -6,17 +6,24 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 31 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>OpenAI Whisper: Quick Audio-to-Text and Subtitle Workflow</title>
+      <title>Getting better OCR results: Practical image preprocessing tips</title>
+      <link>https://nenadlazic.github.io/blog/better-ocr-with-image-preprocessing/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/better-ocr-with-image-preprocessing/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;In many modern applications, text doesn’t always arrive as plain, selectable characters. It often  appears inside images like scanned documents, screenshots, ID cards, receipts, or even video subtitles. In these cases, the text looks readable to humans but is invisible to software systems that expect digital text.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;O&lt;/strong&gt;ptical &lt;strong&gt;C&lt;/strong&gt;haracter &lt;strong&gt;R&lt;/strong&gt;ecognition (&lt;strong&gt;OCR&lt;/strong&gt;) helps bridge that gap by detecting and converting text from images into editable and searchable form. This makes it possible to process documents automatically, extract data, enable search, or translate visual text.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenAI Whisper: Quick audio-to-text and subtitle workflow</title>
       <link>https://nenadlazic.github.io/blog/blog-whisper-audio-transcription/</link>
       <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/blog/blog-whisper-audio-transcription/</guid>
       <description>&lt;p&gt;Transcribing audio has become essential for creators, developers, and content teams. Whether it&amp;rsquo;s podcasts, YouTube videos, or meeting recordings, having accurate text saves time and makes content more accessible.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;OpenAI Whisper&lt;/strong&gt; is a versatile &lt;strong&gt;speech-to-text tool and library&lt;/strong&gt; that leverages pre-trained models to convert audio into text or subtitles. It supports multiple languages, understands context, and can generate time-coded subtitle files.&lt;/p&gt;&#xA;&lt;p&gt;Whisper is more than just a command-line tool: it integrates with &lt;strong&gt;FFmpeg&lt;/strong&gt;, allowing you to process a wide range of audio and video formats directly. You can use it as a CLI for quick transcriptions, or as a Python library for embedding transcription into custom workflows and applications.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Understanding AI-Powered Backends</title>
+      <title>Understanding AI-powered backends</title>
       <link>https://nenadlazic.github.io/blog/ai-powered-api/</link>
       <pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/blog/ai-powered-api/</guid>

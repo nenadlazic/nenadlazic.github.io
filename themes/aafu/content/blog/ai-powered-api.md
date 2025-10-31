@@ -1,5 +1,5 @@
 ---
-title: "Understanding AI-Powered Backends"
+title: "Understanding AI-powered backends"
 date: 2025-09-19
 tags: ["spring boot", "llm", "ollama", "docker", "java"]
 categories: ["backend", "ai", "llm"]

@@ -32,6 +32,12 @@
   <link rel="stylesheet" href="{{ `/css/general.css` | relURL }}" />
   <link rel="stylesheet" href="{{ `/css/search.css` | relURL }}" />
 
+  {{ with .Params.cover }}
+    <meta property="og:image" content="{{ . | absURL }}">
+  {{ else }}
+    <meta property="og:image" content="{{ "/images/default-preview.png" | absURL }}">
+  {{ end }}
+
   <script>
     let html = document.querySelector("html");
     let theme = window.localStorage.getItem("theme");
