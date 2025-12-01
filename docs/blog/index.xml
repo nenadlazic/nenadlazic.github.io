@@ -6,8 +6,15 @@
     <description>Recent content in All tech blogs on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The power of templating in modern engineering with Jinja</title>
+      <link>https://nenadlazic.github.io/blog/templateing-with-jinja/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/templateing-with-jinja/</guid>
+      <description>&lt;p&gt;Templating is one of the most underrated superpowers in modern software and platform engineering. Simply put, it lets you generate files from reusable, parameterized blueprints, avoiding repetitive and error-prone configuration work.&#xA;Among the many templating tools available, Jinja stands out as one of the cleanest, most powerful, and versatile - perfect for generating dynamic configurations, YAML, scripts, and infrastructure definitions.&lt;/p&gt;&#xA;&lt;p&gt;In this article, we focus on Jinja - why it matters, how it’s used, and where it delivers the most value. Along the way, we’ll briefly compare it to other templating approaches, like Helm and Go templates, so engineers can see where each tool fits best.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Getting better OCR results: Practical image preprocessing tips</title>
       <link>https://nenadlazic.github.io/blog/better-ocr-with-image-preprocessing/</link>

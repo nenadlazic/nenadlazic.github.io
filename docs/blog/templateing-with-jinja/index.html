@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.ac639589c935e0fbc3b65978877052f518f4095b63502dfa8492adb2ad508338.css"
+    integrity="sha256-rGOVick14PvDtll4h3BS9Rj0CVtjUC36hJKtsq1Qgzg="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="https://nenadlazic.github.io/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">The power of templating in modern engineering with Jinja</h1>
+  <p class="mb-1">December 1, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Templating is one of the most underrated superpowers in modern software and platform engineering. Simply put, it lets you generate files from reusable, parameterized blueprints, avoiding repetitive and error-prone configuration work.
+Among the many templating tools available, Jinja stands out as one of the cleanest, most powerful, and versatile - perfect for generating dynamic configurations, YAML, scripts, and infrastructure definitions.</p>
+<p>In this article, we focus on Jinja - why it matters, how it’s used, and where it delivers the most value. Along the way, we’ll briefly compare it to other templating approaches, like Helm and Go templates, so engineers can see where each tool fits best.</p>
+<h2 id="why-jinja-matters">Why Jinja Matters</h2>
+<p>Templating lets you generate dynamic files and configurations from a single source template and a set of input variables. In practice, this can mean the difference between editing 20 separate Kubernetes YAML files by hand and generating them all automatically from a single template.</p>
+<h3 id="why-jinja-has-become-the-practical-standard">Why Jinja has become the practical standard</h3>
+<ul>
+<li>Extremely readable syntax – <em>{{ variable }}</em> and <em>{% for &hellip; %}</em> are intuitive and easy to follow.</li>
+<li>Powerful logic – filters, loops, conditionals, and macros let you handle complex templating needs.</li>
+<li>Automation-ready - widely used across Ansible, CI/CD pipelines, and configuration generators.</li>
+<li>Platform-neutral - not tied to a single vendor or ecosystem.</li>
+</ul>
+<pre tabindex="0"><code>servers:
+{% for server in servers %}
+- name: {{ server.name }}
+env: {{ server.env }}
+replicas: {{ server.replicas if server.env == &#39;prod&#39; else 1 }}
+{% endfor %}
+</code></pre><p>Jinja is essentially the Swiss army knife of templating.</p>
+<h3 id="jinja-and-other-templating-tools-when-to-use-what">Jinja and Other Templating Tools (When to Use What)</h3>
+<p>Different templating engines serve different domains. Jinja’s strength is its general-purpose flexibility, but other tools exist for more specialized needs.</p>
+<ul>
+<li><strong>Helm</strong> is a Kubernetes-specific tool that uses templating (Go templates) to generate Kubernetes resource manifest files. It packages resources into charts, allows parameterization via <code>values.yaml</code> for different environments, and supports reusable dependencies. Helm is structured and repeatable, making it ideal for deploying complex microservices consistently across clusters.</li>
+<li><strong>Go Templates</strong> are a lightweight, low-level templating system used to generate text or configuration files dynamically. They are fast and efficient, making them suitable for performance-critical tools, but they are less expressive and feature-rich than Jinja, often requiring more boilerplate for complex logic.</li>
+<li><strong>Handlebars / Mustache</strong> are simple, logic-less templating engines. They allow you to inject variables into static templates but deliberately avoid loops, conditionals, or complex logic inside the template itself. This makes them very safe and easy to read, but less flexible than Jinja, which supports full logic, loops, conditionals, and macros.</li>
+</ul>
+<p><strong>Quick guide:</strong> Jinja for general-purpose automation, Helm for Kubernetes deployments, Go Templates for low-level performance, Handlebars/Mustache for simple injection, and Kustomize for environment-specific YAML adjustments.</p>
+<h2 id="how-to-create-a-simple-jinja-template">How to Create a Simple Jinja Template</h2>
+<p>Here’s a basic step-by-step example from scratch:</p>
+<ol>
+<li>Create a template file <code>server_config.j2</code> (<em>Jinja templates usually have the extension <code>.j2</code></em>)</li>
+</ol>
+<pre tabindex="0"><code># Server configuration for {{ environment }} environment
+
+# Static part: general settings
+settings:
+  max_connections: 500
+  timeout_seconds: 30
+
+servers:
+{% for server in servers %}
+- name: {{ server.name }}
+  host: {{ server.host }}
+  port: {{ server.port }}
+  role: {{ server.role }}
+{% endfor %}
+
+database:
+  host: {{ database.host }}
+  port: {{ database.port }}
+  user: {{ database.user }}
+  ssl_enabled: true
+</code></pre><ol start="2">
+<li>Create values file (<code>values.yaml</code>)</li>
+</ol>
+<pre tabindex="0"><code>environment: production
+servers:
+  - name: app1
+    host: 10.0.0.1
+    port: 8080
+    role: web
+  - name: app2
+    host: 10.0.0.2
+    port: 8080
+    role: worker
+database:
+  host: db.prod.local
+  port: 5432
+  user: admin
+</code></pre><ol start="3">
+<li>Create python script to render template (<code>template_render_script.py</code>)</li>
+</ol>
+<pre tabindex="0"><code>from jinja2 import Environment, FileSystemLoader
+import yaml
+
+# Load template from current folder
+env = Environment(loader=FileSystemLoader(&#39;./&#39;))
+template = env.get_template(&#39;server_config.j2&#39;)
+
+# Load values from YAML
+with open(&#39;values.yaml&#39;) as f:
+    values = yaml.safe_load(f)
+
+# Render template
+output = template.render(values)
+print(output)
+</code></pre><ol start="4">
+<li>Render the template and review output</li>
+</ol>
+<pre tabindex="0"><code>python template_render_script.py
+</code></pre><p>Output:</p>
+<pre tabindex="0"><code># Server configuration for production environment
+
+# Static part: general settings
+settings:
+  max_connections: 500
+  timeout_seconds: 30
+
+servers:
+
+- name: app1
+  host: 10.0.0.1
+  port: 8080
+  role: web
+
+- name: app2
+  host: 10.0.0.2
+  port: 8080
+  role: worker
+
+
+database:
+  host: db.prod.local
+  port: 5432
+  user: admin
+  ssl_enabled: true
+</code></pre><p>This example demonstrates the core workflow of Jinja templating:</p>
+<ul>
+<li>The <strong>template file</strong> defines structure, static content, and placeholders for dynamic values.</li>
+<li>The <strong>values file</strong> provides input data for rendering.</li>
+<li>The <strong>Python script</strong> renders the final configuration by combining both.</li>
+</ul>
+<p>Even in simple examples like this, templating helps reduce repetition, minimizes the chance of manual errors, and simplifies managing multiple environments or servers. As systems grow, using templates provides a consistent and maintainable approach to configuration management.</p>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>Templating isn’t just a convenience - it’s a practical way to manage complexity. Well-designed templates reduce repetition, prevent errors, and make systems easier to maintain.</p>
+<p>Jinja, with its straightforward syntax and flexibility, is a tool that engineers use every day to automate work and keep configurations consistent.</p>
+<p>In the end, effective templating is the key to effective automation, giving teams the space to focus on what really matters.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/better-ocr-with-image-preprocessing/"
+      title="Getting better OCR results: Practical image preprocessing tips"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
