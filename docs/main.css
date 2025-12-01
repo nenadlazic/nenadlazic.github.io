@@ -211,6 +211,9 @@
   .relative {
     position: relative !important;
   }
+  .static {
+    position: static !important;
+  }
   .col-span-2 {
     grid-column: span 2 / span 2 !important;
   }
