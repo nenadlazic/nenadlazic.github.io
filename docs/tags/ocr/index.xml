@@ -6,8 +6,15 @@
     <description>Recent content in Ocr on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/ocr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Teaching Tesseract to Read Our Data</title>
+      <link>https://nenadlazic.github.io/blog/tesseract-fine-tuning-ocr/</link>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/tesseract-fine-tuning-ocr/</guid>
+      <description>&lt;p&gt;In practice, getting good OCR results is rarely about a single improvement. It’s a chain of steps and the weakest one usually defines the final accuracy.&lt;/p&gt;&#xA;&lt;p&gt;In one of previous post, &lt;a href=&#34;https://nenadlazic.github.io/blog/better-ocr-with-image-preprocessing/&#34;&gt;Getting better OCR results: Practical image preprocessing tips&lt;/a&gt;, we focused on improving OCR accuracy by cleaning up images, reducing noise, and normalizing contrast. That work is essential, and without it, OCR systems like Tesseract struggle immediately when applied to real-world data.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Getting better OCR results: Practical image preprocessing tips</title>
       <link>https://nenadlazic.github.io/blog/better-ocr-with-image-preprocessing/</link>

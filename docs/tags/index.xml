@@ -6,8 +6,43 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computer-Vision</title>
+      <link>https://nenadlazic.github.io/tags/computer-vision/</link>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lstm</title>
+      <link>https://nenadlazic.github.io/tags/lstm/</link>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/lstm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine-Learning</title>
+      <link>https://nenadlazic.github.io/tags/machine-learning/</link>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ocr</title>
+      <link>https://nenadlazic.github.io/tags/ocr/</link>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/ocr/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tesseract</title>
+      <link>https://nenadlazic.github.io/tags/tesseract/</link>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/tesseract/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Jinja</title>
       <link>https://nenadlazic.github.io/tags/jinja/</link>
@@ -23,24 +58,10 @@
       <description></description>
     </item>
     <item>
-      <title>Computer Vision</title>
-      <link>https://nenadlazic.github.io/tags/computer-vision/</link>
-      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/computer-vision/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Image Processing</title>
       <link>https://nenadlazic.github.io/tags/image-processing/</link>
       <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/tags/image-processing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ocr</title>
-      <link>https://nenadlazic.github.io/tags/ocr/</link>
-      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/ocr/</guid>
       <description></description>
     </item>
     <item>
@@ -55,13 +76,6 @@
       <link>https://nenadlazic.github.io/tags/python/</link>
       <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tesseract</title>
-      <link>https://nenadlazic.github.io/tags/tesseract/</link>
-      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/tesseract/</guid>
       <description></description>
     </item>
     <item>
