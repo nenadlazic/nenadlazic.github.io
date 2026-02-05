@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.ac639589c935e0fbc3b65978877052f518f4095b63502dfa8492adb2ad508338.css"
+    integrity="sha256-rGOVick14PvDtll4h3BS9Rj0CVtjUC36hJKtsq1Qgzg="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="https://nenadlazic.github.io/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Teaching Tesseract to Read Our Data</h1>
+  <p class="mb-1">February 5, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>In practice, getting good OCR results is rarely about a single improvement. It’s a chain of steps and the weakest one usually defines the final accuracy.</p>
+<p>In one of previous post, <a href="https://nenadlazic.github.io/blog/better-ocr-with-image-preprocessing/">Getting better OCR results: Practical image preprocessing tips</a>, we focused on improving OCR accuracy by cleaning up images, reducing noise, and normalizing contrast. That work is essential, and without it, OCR systems like Tesseract struggle immediately when applied to real-world data.</p>
+<p>However, preprocessing alone has a natural limit.</p>
+<p>At some point, improving the images doesn’t help much anymore. Accuracy stops increasing, and tweaking thresholds or filters barely makes a difference. That’s when the bottleneck is no longer the input - it’s the <strong>model</strong> itself.</p>
+<p><a href="https://github.com/tesseract-ocr/tessdata_best">Pretrained OCR models</a> are trained on large, generic datasets, while real-world OCR data is often more diverse and domain-specific. Differences in fonts, layouts, character distributions, and punctuation introduce patterns the model has never seen before.</p>
+<p>When the data distribution shifts, the model’s assumptions no longer hold.</p>
+<p>This is where fine-tuning becomes necessary. Instead of pushing preprocessing input data further, we adapt the model itself to the data it is expected to read.</p>
+<h2 id="how-tesseract-ocr-works">How Tesseract OCR Works</h2>
+<p>To understand why fine-tuning is so effective, we first need to look under the hood of how Tesseract actually &ldquo;sees&rdquo; text.</p>
+<p>Tesseract is the industry standard for open-source <strong>OCR</strong> (Optical Character Recognition), but its internal logic underwent a massive transformation with the release of version 4.0. The shift from a traditional, rule-based system to a modern deep learning architecture changed the game for accuracy.</p>
+<h3 id="whats-different-in-modern-tesseract">What&rsquo;s Different in Modern Tesseract</h3>
+<p>In older versions, Tesseract used a traditional pattern‑matching approach: segment the image into individual character shapes, then classify each one. This worked reasonably well on clean scans but was brittle when characters were connected, blurred, or varied in style.</p>
+<p>The core of modern Tesseract (versions 4 and 5) is a specialized engine based on <strong>LSTM</strong> (<em>Long Short-Term Memory</em>) networks. This is a type of <strong>RNN</strong> (<em>Recurrent Neural Network</em>) designed specifically to recognize patterns in sequences of data.</p>
+<p>Here is why this shift matters:</p>
+<ul>
+<li>
+<p><strong>Sequential Recognition:</strong> Unlike older versions that segmented images into individual characters, which often failed when letters were close together or blurred, LSTM processes the entire line as a sequence of visual features. This allows it to recognize each character in the context of its neighbors, improving accuracy on connected or noisy text.</p>
+</li>
+<li>
+<p><strong>Contextual Awareness:</strong> Because it processes sequences, the model can leverage context. If a character is ambiguous, the LSTM uses the surrounding patterns to make a statistically informed decision, much like how humans read words rather than just isolated letters.</p>
+</li>
+<li>
+<p><strong>Deep Learning Precision:</strong> By moving to a deep learning approach, Tesseract significantly improved its performance on noisy scans, unconventional fonts, and complex layouts. It no longer relies on hard-coded rules about what an &ldquo;A&rdquo; or &ldquo;B&rdquo; should look like; instead, it learns those features through training.</p>
+</li>
+</ul>
+<p>When your data, such as unusual fonts, codes, or typewriter text, differs significantly from the generic training set, the pretrained model struggles. This is where fine-tuning comes in, allowing the LSTM layers to learn these new patterns and improve accuracy.</p>
+<p><img src="/images/tesseract-fine-tuning.png" alt="tesseract-fine-tuning"></p>
+<h3 id="fine-tuning-tesseract-step-by-step">Fine-Tuning Tesseract: Step by Step</h3>
+<p>Fine-tuning adapts a pretrained OCR model to your specific data. It teaches the model to recognize fonts, layouts, and character patterns it hasn’t seen before, improving accuracy on domain-specific data.</p>
+<h4 id="1-prepare-your-custom-dataset">1. Prepare Your Custom Dataset</h4>
+<ul>
+<li>Collect lines/images representative of your domain
+<ul>
+<li>Ensure one line per input image</li>
+<li>Minimize whitespace around text (extra margins dilute features)</li>
+<li>Normalize line height where possible</li>
+</ul>
+</li>
+<li>Create ground-truth labels for each line (.gt.txt file with truth)
+<ul>
+<li>Make sure the text in .gt.txt matches exactly what is visible</li>
+<li>Keep in mind that extra spaces or mismatches confuse the model</li>
+</ul>
+</li>
+<li>Ensure diversity: fonts, layouts, character distributions, punctuation, numbers, special codes, or timestamps</li>
+<li>Optional: lightly preprocess data to remove/reduce noise that fine-tuning cannot fix (preprocessing inputs)</li>
+<li>Split the dataset:
+<ul>
+<li>70% for training</li>
+<li>30% for evaluation</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-evaluate-the-pretrained-model">2. Evaluate the Pretrained Model</h4>
+<ul>
+<li>Test model on evaluation subset (30%)</li>
+<li>Measure baseline accuracy</li>
+<li>Identify systematic errors (e.g., confusing O/0, typewriter fonts, unusual punctuation or domain-specific codes)</li>
+</ul>
+<h4 id="3-fine-tuning--training">3. Fine-Tuning / Training</h4>
+<ul>
+<li>Feed the pretrained model with your training dataset (70%)</li>
+<li>LSTM weights adjust to better interpret domain-specific text</li>
+<li>Monitor for overfitting by comparing training vs evaluation accuracy</li>
+<li>Track accuracy separately on typical lines vs edge cases (rare or noisy examples)</li>
+</ul>
+<h4 id="4-evaluate-the-fine-tuned-model">4. Evaluate the Fine-Tuned Model</h4>
+<ul>
+<li>Run evaluation on the unseen data</li>
+<li>Compare metrics before vs after fine-tuning</li>
+<li>Confirm improvement on real-world data, not just training samples</li>
+<li>Optionally, keep a small “challenge” set of rare/noisy lines to verify robustness</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>Fine-tuning bridges the gap between generic OCR models and the realities of your data. Preprocessing improves inputs, but real gains come from adapting the model itself. By preparing representative, single-line datasets with precise ground-truth labels and including your domain’s quirks, you can teach Tesseract to read text it has never seen before.</p>
+<p>The result: fewer misreads, higher confidence, and a robust OCR engine tailored to your workflow.</p>
+<p>Next Steps: In the next post, we’ll show a Dockerized training pipeline that automates dataset preparation, fine-tuning, and evaluation for reproducable results.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/templateing-with-jinja/"
+      title="The power of templating in modern engineering with Jinja"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
