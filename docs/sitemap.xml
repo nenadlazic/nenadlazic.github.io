@@ -3,13 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nenadlazic.github.io/blog/</loc>
-    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/</loc>
-    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/categories/</loc>
-    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/docker/</loc>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/blog/tesseract-docker-fine-tuning/</loc>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/categories/machine-learning/</loc>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/machine-learning/</loc>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/categories/ocr/</loc>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/ocr/</loc>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/</loc>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/tesseract/</loc>
+    <lastmod>2026-02-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/computer-vision/</loc>
     <lastmod>2026-02-05T00:00:00+00:00</lastmod>
@@ -20,19 +44,7 @@
     <loc>https://nenadlazic.github.io/tags/lstm/</loc>
     <lastmod>2026-02-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://nenadlazic.github.io/tags/machine-learning/</loc>
-    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/ocr/</loc>
-    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/</loc>
-    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://nenadlazic.github.io/blog/tesseract-fine-tuning-ocr/</loc>
-    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/tesseract/</loc>
     <lastmod>2026-02-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/jinja/</loc>
@@ -85,9 +97,6 @@
   </url><url>
     <loc>https://nenadlazic.github.io/tags/whisper/</loc>
     <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/docker/</loc>
-    <lastmod>2025-09-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/java/</loc>
     <lastmod>2025-09-19T00:00:00+00:00</lastmod>

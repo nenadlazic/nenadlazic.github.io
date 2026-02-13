@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.ac639589c935e0fbc3b65978877052f518f4095b63502dfa8492adb2ad508338.css"
+    integrity="sha256-rGOVick14PvDtll4h3BS9Rj0CVtjUC36hJKtsq1Qgzg="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="https://nenadlazic.github.io/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Fine-Tuning Tesseract OCR Models with Docker: A Practical Guide</h1>
+  <p class="mb-1">February 13, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Training custom Tesseract OCR models can significantly improve text recognition accuracy for specific use cases - whether you&rsquo;re dealing with unique fonts, specialized documents, or specific languages. This practical guide walks you through the entire process using a Docker-based workflow that eliminates environment setup headaches.</p>
+<p>In this guide, we&rsquo;ll cover:</p>
+<ul>
+<li>Why fine-tuning Tesseract matters</li>
+<li>Setting up the Docker training environment</li>
+<li>Preparing your training data correctly</li>
+<li>Running the training process</li>
+<li>Evaluating model performance with CER/WER metrics</li>
+<li>Tips for achieving better results</li>
+</ul>
+<p>This is a hands-on companion to the theoretical background - we&rsquo;ll focus on the practical steps to get your custom model trained and evaluated.</p>
+<h2 id="why-fine-tune-tesseract">Why Fine-Tune Tesseract?</h2>
+<p>Out-of-the-box Tesseract models work well for general text, but struggle with:</p>
+<ul>
+<li><strong>Specialized fonts</strong> - Historical documents, stylized text, custom typefaces</li>
+<li><strong>Domain-specific content</strong> - Medical records, legal documents, technical drawings</li>
+<li><strong>Low-quality scans</strong> - Degraded historical documents, poor photocopies</li>
+<li><strong>Unique layouts</strong> - Forms, tables, mixed-language documents</li>
+</ul>
+<p>Fine-tuning (transfer learning) starts with a pre-trained language model and adapts it to your specific use case. You don&rsquo;t need thousands of samples - often 100-200 well-chosen examples yield significant improvements.</p>
+<h2 id="the-docker-advantage">The Docker Advantage</h2>
+<p>Traditional Tesseract training requires:</p>
+<ul>
+<li>Specific Ubuntu/Debian versions</li>
+<li>Multiple dependencies (libtesseract-dev, tesseract-ocr, build tools)</li>
+<li>Correct environment variables</li>
+<li>Python packages for evaluation</li>
+</ul>
+<p>Our Docker approach packages everything into a single container. You just need Docker installed - no dependency conflicts, no version mismatches.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before starting, ensure you have:</p>
+<ol>
+<li><strong>Docker installed</strong> on your system</li>
+<li><strong>Training data prepared</strong> - PNG images with corresponding ground truth text files</li>
+<li><strong>Basic command line familiarity</strong></li>
+</ol>
+<p>That&rsquo;s it. No Python environments, no Tesseract installation, no build tools.</p>
+<h2 id="step-1-prepare-your-training-data">Step 1: Prepare Your Training Data</h2>
+<p>The quality of your training data directly impacts model accuracy. Here&rsquo;s how to prepare it properly:</p>
+<h3 id="data-format">Data Format</h3>
+<p>You need pairs of files:</p>
+<ul>
+<li><strong>Image file</strong>: PNG format (e.g., <code>sample_001.png</code>)</li>
+<li><strong>Ground truth file</strong>: Text file with <code>.gt.txt</code> extension containing the exact text from the image</li>
+</ul>
+<pre tabindex="0"><code>WORKDIR/training_data/
+├── sample_001.png
+├── sample_001.gt.txt
+├── sample_002.png
+├── sample_002.gt.txt
+└── ...
+</code></pre><h3 id="critical-rules">Critical Rules</h3>
+<p><strong>1. Exact matching is crucial</strong></p>
+<p>Your <code>.gt.txt</code> file must contain the <strong>exact</strong> text visible in the image:</p>
+<ul>
+<li>Same capitalization</li>
+<li>Same punctuation</li>
+<li>Same spacing</li>
+<li>Same line breaks</li>
+</ul>
+<p>If the image shows &ldquo;Dr. Smith&rdquo; but your <code>.gt.txt</code> says &ldquo;Dr Smith&rdquo; (missing period), the model learns incorrect patterns.</p>
+<p><strong>2. File naming must match</strong></p>
+<p>Each PNG must have a corresponding <code>.gt.txt</code> with the same base name:</p>
+<ul>
+<li>✅ <code>doc_001.png</code> + <code>doc_001.gt.txt</code></li>
+<li>❌ <code>doc_001.png</code> + <code>document_001.gt.txt</code></li>
+</ul>
+<p><strong>3. PNG format only</strong></p>
+<p>Convert JPG/TIFF images to PNG before training:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>convert input.jpg output.png
+</span></span></code></pre></div><h3 id="how-much-data">How Much Data?</h3>
+<ul>
+<li><strong>Minimum</strong>: 50-100 samples for simple improvements</li>
+<li><strong>Recommended</strong>: 200-500 samples for good results</li>
+<li><strong>Optimal</strong>: 1000+ samples for production models</li>
+</ul>
+<p>Quality beats quantity - 100 accurate samples outperform 1000 sloppy ones.</p>
+<h3 id="data-diversity">Data Diversity</h3>
+<p>Include variety in your training set:</p>
+<ul>
+<li>Different font sizes (if applicable)</li>
+<li>Various text densities (sparse vs. dense)</li>
+<li>Different quality levels (if you&rsquo;ll encounter both)</li>
+<li>Edge cases (special characters, numbers, punctuation)</li>
+</ul>
+<h2 id="step-2-configure-your-training">Step 2: Configure Your Training</h2>
+<p>Create or edit <code>config.env</code> in your project root:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Model naming</span>
+</span></span><span style="display:flex;"><span>MODEL_NAME<span style="color:#f92672">=</span>my_custom_model_v1
+</span></span><span style="display:flex;"><span>START_MODEL<span style="color:#f92672">=</span>srp_latn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Training parameters</span>
+</span></span><span style="display:flex;"><span>MAX_ITERATIONS<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>LEARNING_RATE<span style="color:#f92672">=</span>0.0001
+</span></span><span style="display:flex;"><span>RATIO_TRAIN<span style="color:#f92672">=</span>0.9
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Paths</span>
+</span></span><span style="display:flex;"><span>TESSDATA<span style="color:#f92672">=</span>/usr/share/tesseract-ocr/5/tessdata
+</span></span><span style="display:flex;"><span>WORKDIR<span style="color:#f92672">=</span>WORKDIR
+</span></span></code></pre></div><h3 id="parameter-explanations">Parameter Explanations</h3>
+<p><strong>MODEL_NAME</strong>: Your output model identifier</p>
+<ul>
+<li>Use descriptive names: <code>legal_docs_v1</code>, <code>handwritten_forms_v2</code></li>
+<li>Versioning helps track iterations</li>
+</ul>
+<p><strong>START_MODEL</strong>: Base model to fine-tune from</p>
+<ul>
+<li>Available: <code>srp_latn</code>, <code>hrv</code>, <code>slv</code>, <code>mkd</code>, <code>bul</code>, <code>ron</code>, <code>ell</code>, <code>srp</code></li>
+<li>Choose the closest language/script to your target</li>
+</ul>
+<p><strong>MAX_ITERATIONS</strong>: How long to train</p>
+<ul>
+<li>Start with 100-500 for testing</li>
+<li>Use 1000-5000 for production models</li>
+<li>More iterations = longer training, potentially better accuracy</li>
+<li>Watch for overfitting (model memorizes training data)</li>
+</ul>
+<p><strong>LEARNING_RATE</strong>: How aggressively to update weights</p>
+<ul>
+<li><code>0.0001</code> - Conservative, good for fine-tuning existing models</li>
+<li><code>0.001</code> - Moderate, balanced approach</li>
+<li><code>0.01</code> - Aggressive, use with caution</li>
+<li>Lower is safer but slower</li>
+</ul>
+<p><strong>RATIO_TRAIN</strong>: Train/validation split</p>
+<ul>
+<li><code>0.9</code> = 90% training, 10% validation</li>
+<li><code>0.8</code> = 80% training, 20% validation (better for smaller datasets)</li>
+<li>Validation set helps detect overfitting</li>
+</ul>
+<h2 id="step-3-build-the-docker-environment">Step 3: Build the Docker Environment</h2>
+<p>Clone or set up the project structure, then build the Docker image:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./build-image.sh
+</span></span></code></pre></div><p>This creates a Docker image named <code>tesstrain-docker:1.0.0</code> with:</p>
+<ul>
+<li>Tesseract 5.x</li>
+<li>tesstrain toolkit</li>
+<li>Pre-trained language models</li>
+<li>Python evaluation scripts</li>
+<li>All dependencies pre-installed</li>
+</ul>
+<p>Build time: 5-10 minutes (one-time operation).</p>
+<h2 id="step-4-run-training">Step 4: Run Training</h2>
+<p>Place your prepared data in <code>WORKDIR/training_data/</code>, then:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./run-auto.sh
+</span></span></code></pre></div><h3 id="what-happens-during-training">What Happens During Training</h3>
+<p>The script:</p>
+<ol>
+<li><strong>Validates configuration</strong> - Checks all required parameters</li>
+<li><strong>Displays summary</strong> - Shows your settings before starting</li>
+<li><strong>Mounts your data</strong> - Maps <code>WORKDIR</code> into the container</li>
+<li><strong>Runs training pipeline</strong>:
+<ul>
+<li>Extracts features from images</li>
+<li>Generates training files (.box, .lstmf files)</li>
+<li>Splits data into train/validation sets</li>
+<li>Runs LSTM training for specified iterations</li>
+<li>Combines final model</li>
+</ul>
+</li>
+<li><strong>Saves output</strong> - Writes <code>.traineddata</code> file to <code>WORKDIR/output/</code></li>
+</ol>
+<h3 id="monitoring-progress">Monitoring Progress</h3>
+<p>Training output shows:</p>
+<pre tabindex="0"><code>Iteration 100: Mean CER=3.45%, Word Accuracy=94.2%
+Iteration 200: Mean CER=2.87%, Word Accuracy=95.8%
+Iteration 300: Mean CER=2.34%, Word Accuracy=96.5%
+...
+</code></pre><p><strong>CER</strong> (Character Error Rate): Lower is better (0% = perfect)
+<strong>WER</strong> (Word Error Rate): Lower is better (0% = perfect)</p>
+<p>Watch for:</p>
+<ul>
+<li>✅ Steady improvement in CER/WER</li>
+<li>⚠️ Stagnation (might need more data or different parameters)</li>
+<li>❌ Degradation (reduce learning rate or stop early)</li>
+</ul>
+<h2 id="step-5-evaluate-your-model">Step 5: Evaluate Your Model</h2>
+<p>Evaluation compares your trained model against the baseline using held-out test data.</p>
+<h3 id="prepare-evaluation-data">Prepare Evaluation Data</h3>
+<p>Create <code>WORKDIR/evaluation_data/</code> with NEW images (not used in training):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p WORKDIR/evaluation_data
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add .png and .gt.txt files</span>
+</span></span></code></pre></div><p>Critical: Use <strong>different</strong> images than training. Using training data for evaluation gives falsely optimistic results.</p>
+<h3 id="run-evaluation">Run Evaluation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./run-evaluate.sh
+</span></span></code></pre></div><p>This script:</p>
+<ol>
+<li>Validates trained model exists</li>
+<li>Checks evaluation data is present</li>
+<li>Runs OCR with baseline model</li>
+<li>Runs OCR with your trained model</li>
+<li>Calculates CER/WER metrics</li>
+<li>Generates comparison report</li>
+</ol>
+<h3 id="understanding-results">Understanding Results</h3>
+<p>Results are saved to <code>WORKDIR/output/evaluation_results/</code>:</p>
+<p><strong>comparison_summary.txt</strong> - High-level metrics:</p>
+<pre tabindex="0"><code>========================================
+Tesseract Model Evaluation - Comparison
+========================================
+Evaluation Dataset:
+  - Total images: 150
+  - Successfully processed: 150
+  - Total characters: 12,458
+  - Total words: 2,341
+
+----------------------------------------
+BASELINE MODEL: srp_latn
+----------------------------------------
+  Character Error Rate (CER): 5.23%
+  Word Error Rate (WER): 12.45%
+
+----------------------------------------
+TRAINED MODEL: my_custom_model_v1
+----------------------------------------
+  Character Error Rate (CER): 2.14%
+  Word Error Rate (WER): 5.67%
+
+----------------------------------------
+IMPROVEMENT ANALYSIS
+----------------------------------------
+  CER improvement: 3.09% (✓ Better)
+  WER improvement: 6.78% (✓ Better)
+</code></pre><p><strong>What the metrics mean:</strong></p>
+<ul>
+<li>
+<p><strong>CER (Character Error Rate)</strong>: Percentage of characters incorrectly recognized</p>
+<ul>
+<li>0% = perfect character recognition</li>
+<li>5% = 95% of characters correct (acceptable for many uses)</li>
+<li>10%+ = poor quality, needs improvement</li>
+</ul>
+</li>
+<li>
+<p><strong>WER (Word Error Rate)</strong>: Percentage of words with any errors</p>
+<ul>
+<li>0% = every word perfect</li>
+<li>10% = 90% of words correct (good for most applications)</li>
+<li>20%+ = significant issues</li>
+</ul>
+</li>
+</ul>
+<h3 id="detailed-results">Detailed Results</h3>
+<p><strong>baseline_detailed.txt</strong> and <strong>trained_model_detailed.txt</strong> show per-file metrics:</p>
+<pre tabindex="0"><code>File: sample_042
+  Ground Truth: Република Србија
+  OCR Result:   Република Србија
+  Characters: 15, Words: 2
+  CER: 0.00%, WER: 0.00%
+  Character Distance: 0, Word Distance: 0
+
+File: sample_043
+  Ground Truth: 21. децембар 2025.
+  OCR Result:   21. децембар 2025.
+  Characters: 18, Words: 3
+  CER: 5.56%, WER: 33.33%
+  Character Distance: 1, Word Distance: 1
+</code></pre><p>Use these to identify:</p>
+<ul>
+<li>Problematic patterns (certain character combinations)</li>
+<li>Specific font/style issues</li>
+<li>Areas needing more training data</li>
+</ul>
+<h3 id="comparison-examples">Comparison Examples</h3>
+<p>The summary file also includes side-by-side comparisons showing where each model made errors:</p>
+<pre tabindex="0"><code>Example: form_header_001
+────────────────────────────────────────
+Ground Truth: Dr. Smith, M.D.
+Baseline:     Dr. Smlth, M.D. (✗ ERRORS)
+New Model:    Dr. Smith, M.D. (✓ PERFECT)
+</code></pre><p>Errors are highlighted with <code>[✗text✗]</code> markers for easy identification.</p>
+<h2 id="step-6-using-your-trained-model">Step 6: Using Your Trained Model</h2>
+<p>After successful training and evaluation, use your model:</p>
+<h3 id="with-tesseract-command-line">With Tesseract Command Line</h3>
+<ol>
+<li>Copy the trained model to Tesseract&rsquo;s tessdata directory:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp WORKDIR/output/my_custom_model_v1.traineddata /usr/share/tesseract-ocr/5/tessdata/
+</span></span></code></pre></div><ol start="2">
+<li>Run OCR with your model:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tesseract input.png output -l my_custom_model_v1
+</span></span></code></pre></div><h3 id="with-python-pytesseract">With Python (pytesseract)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pytesseract
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configure custom tessdata path if needed</span>
+</span></span><span style="display:flex;"><span>custom_config <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;--tessdata-dir /path/to/tessdata&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>image <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#39;document.png&#39;</span>)
+</span></span><span style="display:flex;"><span>text <span style="color:#f92672">=</span> pytesseract<span style="color:#f92672">.</span>image_to_string(
+</span></span><span style="display:flex;"><span>    image, 
+</span></span><span style="display:flex;"><span>    lang<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;my_custom_model_v1&#39;</span>,
+</span></span><span style="display:flex;"><span>    config<span style="color:#f92672">=</span>custom_config
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(text)
+</span></span></code></pre></div><h3 id="in-production-pipelines">In Production Pipelines</h3>
+<p>Deploy the <code>.traineddata</code> file alongside your application:</p>
+<ul>
+<li>Include in Docker images</li>
+<li>Mount as volume in containers</li>
+<li>Copy to deployment servers</li>
+<li>Version control with your code</li>
+</ul>
+<h2 id="tips-for-better-results">Tips for Better Results</h2>
+<h3 id="1-start-small-iterate">1. Start Small, Iterate</h3>
+<ul>
+<li>Begin with 100 iterations to test the pipeline</li>
+<li>Evaluate results</li>
+<li>Adjust parameters based on metrics</li>
+<li>Scale up iterations for final model</li>
+</ul>
+<h3 id="2-learning-rate-sweet-spot">2. Learning Rate Sweet Spot</h3>
+<ul>
+<li>Too high (0.01+): Model diverges, accuracy drops</li>
+<li>Too low (0.00001): Training takes forever, minimal improvement</li>
+<li>Sweet spot: 0.0001 - 0.001 for fine-tuning</li>
+</ul>
+<h3 id="3-recognize-overfitting">3. Recognize Overfitting</h3>
+<p>Signs your model is overfitting:</p>
+<ul>
+<li>Training CER decreases but validation CER increases</li>
+<li>Perfect on training data, poor on evaluation data</li>
+<li>Model memorizes samples instead of learning patterns</li>
+</ul>
+<p>Solutions:</p>
+<ul>
+<li>Get more diverse training data</li>
+<li>Reduce iterations</li>
+<li>Increase validation split (lower RATIO_TRAIN)</li>
+</ul>
+<h3 id="4-data-quality-over-quantity">4. Data Quality Over Quantity</h3>
+<p>Bad example:</p>
+<ul>
+<li>500 samples with typos in ground truth</li>
+<li>Result: Model learns incorrect patterns</li>
+</ul>
+<p>Good example:</p>
+<ul>
+<li>200 samples with meticulously verified ground truth</li>
+<li>Result: Accurate, generalizable model</li>
+</ul>
+<h3 id="5-match-your-use-case">5. Match Your Use Case</h3>
+<p>Training data should mirror production conditions:</p>
+<ul>
+<li>Same scan quality</li>
+<li>Similar fonts/layouts</li>
+<li>Comparable image resolution</li>
+<li>Representative difficulty level</li>
+</ul>
+<p>Don&rsquo;t train on high-quality scans if you&rsquo;ll process low-quality faxes in production.</p>
+<h3 id="6-leverage-base-models-wisely">6. Leverage Base Models Wisely</h3>
+<p>Choose START_MODEL closest to your target:</p>
+<ul>
+<li>Cyrillic text → Use Cyrillic base model</li>
+<li>Similar language → Use related language model</li>
+<li>Custom script → May need to train from scratch (more data needed)</li>
+</ul>
+<h3 id="7-monitor-training-progress">7. Monitor Training Progress</h3>
+<p>Stop early if:</p>
+<ul>
+<li>Accuracy plateaus for 200+ iterations</li>
+<li>Validation accuracy starts decreasing</li>
+<li>You&rsquo;ve reached &ldquo;good enough&rdquo; for your use case</li>
+</ul>
+<p>No need to train for 5000 iterations if you hit target accuracy at 800.</p>
+<h2 id="common-issues-and-solutions">Common Issues and Solutions</h2>
+<h3 id="issue-model-performs-worse-than-baseline">Issue: &ldquo;Model performs worse than baseline&rdquo;</h3>
+<p><strong>Causes:</strong></p>
+<ul>
+<li>Incorrect ground truth data</li>
+<li>Learning rate too high</li>
+<li>Too few training samples</li>
+<li>Wrong base model chosen</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Audit <code>.gt.txt</code> files for accuracy</li>
+<li>Reduce learning rate to 0.0001</li>
+<li>Add more diverse training data</li>
+<li>Try different START_MODEL</li>
+</ul>
+<h3 id="issue-training-takes-forever">Issue: &ldquo;Training takes forever&rdquo;</h3>
+<p><strong>Causes:</strong></p>
+<ul>
+<li>Too many iterations</li>
+<li>Large dataset</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Start with 100-200 iterations for testing</li>
+<li>Use subset of data initially</li>
+<li>Training on GPU would help (requires different setup)</li>
+</ul>
+<h3 id="issue-great-training-accuracy-poor-evaluation-accuracy">Issue: &ldquo;Great training accuracy, poor evaluation accuracy&rdquo;</h3>
+<p><strong>Cause:</strong> Overfitting</p>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Reduce MAX_ITERATIONS</li>
+<li>Increase validation split (RATIO_TRAIN=0.8)</li>
+<li>Add more diverse training data</li>
+<li>Ensure evaluation data differs from training data</li>
+</ul>
+<h3 id="issue-errors-on-specific-characters">Issue: &ldquo;Errors on specific characters&rdquo;</h3>
+<p><strong>Cause:</strong> Insufficient examples of those characters</p>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Add more samples containing problematic characters</li>
+<li>Ensure ground truth is correct for those cases</li>
+<li>Consider character-level data augmentation</li>
+</ul>
+<h2 id="advanced-combining-models">Advanced: Combining Models</h2>
+<p>You can ensemble multiple models for better robustness:</p>
+<ol>
+<li>
+<p>Train specialized models:</p>
+<ul>
+<li><code>headers_model</code> - trained on document headers</li>
+<li><code>body_model</code> - trained on body text</li>
+<li><code>tables_model</code> - trained on tabular data</li>
+</ul>
+</li>
+<li>
+<p>Apply contextually:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">smart_ocr</span>(image_region, region_type):
+</span></span><span style="display:flex;"><span>    model_map <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;header&#39;</span>: <span style="color:#e6db74">&#39;headers_model&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;body&#39;</span>: <span style="color:#e6db74">&#39;body_model&#39;</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;table&#39;</span>: <span style="color:#e6db74">&#39;tables_model&#39;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    model <span style="color:#f92672">=</span> model_map<span style="color:#f92672">.</span>get(region_type, <span style="color:#e6db74">&#39;body_model&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> pytesseract<span style="color:#f92672">.</span>image_to_string(image_region, lang<span style="color:#f92672">=</span>model)
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Fine-tuning Tesseract OCR models doesn&rsquo;t have to be complicated. With Docker handling the environment complexity, you can focus on what matters:</p>
+<ol>
+<li><strong>Quality training data</strong> - Accurate ground truth is everything</li>
+<li><strong>Proper configuration</strong> - Start conservative, iterate based on results</li>
+<li><strong>Rigorous evaluation</strong> - Test on held-out data, not training samples</li>
+<li><strong>Continuous improvement</strong> - Monitor production performance, retrain as needed</li>
+</ol>
+<p>The workflow we&rsquo;ve covered - prepare data, configure, train, evaluate - scales from quick experiments (100 samples, 100 iterations) to production models (1000+ samples, 1000+ iterations).</p>
+<p>Start simple, measure results, iterate. Your custom model could achieve 50-80% error reduction compared to generic models - a massive improvement for specialized use cases.</p>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Try training on your first dataset (even 50 samples)</li>
+<li>Experiment with different base models</li>
+<li>Compare multiple parameter combinations</li>
+<li>Set up automated evaluation in your CI/CD pipeline</li>
+<li>Share your model with your team via Git LFS or artifact storage</li>
+</ul>
+<p>Happy training! 🚀</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/tesseract-fine-tuning-ocr/"
+      title="Teaching Tesseract to Read Our Data"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
