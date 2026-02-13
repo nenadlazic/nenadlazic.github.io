@@ -86,4 +86,4 @@ Fine-tuning bridges the gap between generic OCR models and the realities of your
 
 The result: fewer misreads, higher confidence, and a robust OCR engine tailored to your workflow.
 
-Next Steps: In the next post, we’ll show a Dockerized training pipeline that automates dataset preparation, fine-tuning, and evaluation for reproducable results.
+Next Steps: In the next [post](https://nenadlazic.github.io/blog/tesseract-docker-fine-tuning/), we’ll show a Dockerized training pipeline that automates model fine-tuning, and evaluation for reproducable results.
