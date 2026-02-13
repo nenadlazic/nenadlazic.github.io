@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Machine-Learning on </title>
-    <link>https://nenadlazic.github.io/tags/machine-learning/</link>
-    <description>Recent content in Machine-Learning on </description>
+    <title>Ocr on </title>
+    <link>https://nenadlazic.github.io/categories/ocr/</link>
+    <description>Recent content in Ocr on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 13 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://nenadlazic.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://nenadlazic.github.io/categories/ocr/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fine-Tuning Tesseract OCR Models with Docker: A Practical Guide</title>
       <link>https://nenadlazic.github.io/blog/tesseract-docker-fine-tuning/</link>
       <pubDate>Fri, 13 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/blog/tesseract-docker-fine-tuning/</guid>
       <description>&lt;p&gt;Training custom Tesseract OCR models can significantly improve text recognition accuracy for specific use cases - whether you&amp;rsquo;re dealing with unique fonts, specialized documents, or specific languages. This practical guide walks you through the entire process using a Docker-based workflow that eliminates environment setup headaches.&lt;/p&gt;&#xA;&lt;p&gt;In this guide, we&amp;rsquo;ll cover:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Why fine-tuning Tesseract matters&lt;/li&gt;&#xA;&lt;li&gt;Setting up the Docker training environment&lt;/li&gt;&#xA;&lt;li&gt;Preparing your training data correctly&lt;/li&gt;&#xA;&lt;li&gt;Running the training process&lt;/li&gt;&#xA;&lt;li&gt;Evaluating model performance with CER/WER metrics&lt;/li&gt;&#xA;&lt;li&gt;Tips for achieving better results&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;why-fine-tune-tesseract&#34;&gt;Why Fine-Tune Tesseract?&lt;/h2&gt;&#xA;&lt;p&gt;Default Tesseract models work well for major languages, but quickly show limits in real-world use.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Teaching Tesseract to Read Our Data</title>
-      <link>https://nenadlazic.github.io/blog/tesseract-fine-tuning-ocr/</link>
-      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/tesseract-fine-tuning-ocr/</guid>
-      <description>&lt;p&gt;In practice, getting good OCR results is rarely about a single improvement. It’s a chain of steps and the weakest one usually defines the final accuracy.&lt;/p&gt;&#xA;&lt;p&gt;In one of previous post, &lt;a href=&#34;https://nenadlazic.github.io/blog/better-ocr-with-image-preprocessing/&#34;&gt;Getting better OCR results: Practical image preprocessing tips&lt;/a&gt;, we focused on improving OCR accuracy by cleaning up images, reducing noise, and normalizing contrast. That work is essential, and without it, OCR systems like Tesseract struggle immediately when applied to real-world data.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
