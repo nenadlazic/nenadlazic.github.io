@@ -6,8 +6,15 @@
     <description>Recent content in Release Notes on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/release-notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why your PCIe device isn’t detected (and it’s not a driver issue)</title>
+      <link>https://nenadlazic.github.io/blog/why-your-pcie-card-isnt-detected/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/why-your-pcie-card-isnt-detected/</guid>
+      <description>&lt;h2 id=&#34;introduction--when-your-first-guess-is-wrong&#34;&gt;Introduction – When Your First Guess is Wrong&lt;/h2&gt;&#xA;&lt;p&gt;You install a PCIe device.&lt;br&gt;&#xA;You boot your system.&lt;br&gt;&#xA;You run:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lspci&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;…and it’s not there.&lt;/p&gt;&#xA;&lt;p&gt;Your first instinct?&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;“I probably need to install a driver… again.”&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;That’s usually the wrong conclusion.&lt;/p&gt;&#xA;&lt;p&gt;For many modern PCIe devices, if the system can’t see the hardware, the problem isn’t in the OS at all - it starts much earlier.&lt;/p&gt;&#xA;&lt;p&gt;Before drivers.&#xA;Before Linux.&#xA;Even before the OS boots.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How to write release notes</title>
       <link>https://nenadlazic.github.io/blog/how-to-write-release-notes/</link>

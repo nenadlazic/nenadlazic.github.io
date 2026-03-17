@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.ac639589c935e0fbc3b65978877052f518f4095b63502dfa8492adb2ad508338.css"
+    integrity="sha256-rGOVick14PvDtll4h3BS9Rj0CVtjUC36hJKtsq1Qgzg="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="https://nenadlazic.github.io/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Why your PCIe device isn’t detected (and it’s not a driver issue)</h1>
+  <p class="mb-1">March 17, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <h2 id="introduction--when-your-first-guess-is-wrong">Introduction – When Your First Guess is Wrong</h2>
+<p>You install a PCIe device.<br>
+You boot your system.<br>
+You run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lspci
+</span></span></code></pre></div><p>…and it’s not there.</p>
+<p>Your first instinct?</p>
+<p><em>“I probably need to install a driver… again.”</em></p>
+<p>That’s usually the wrong conclusion.</p>
+<p>For many modern PCIe devices, if the system can’t see the hardware, the problem isn’t in the OS at all - it starts much earlier.</p>
+<p>Before drivers.
+Before Linux.
+Even before the OS boots.</p>
+<p>To understand what’s really going on, we need to go one level deeper.</p>
+<hr>
+<h2 id="what-actually-happens-when-you-power-on-a-machine">What actually happens when you power on a machine</h2>
+<p>Before Linux (or any OS) is involved, the system follows a strict hardware-to-software handoff:</p>
+<ul>
+<li>
+<p><strong>CPU power-on &amp; reset vector:</strong><br>
+The moment power stabilizes, the CPU wakes up. It is hardwired to look at a specific memory address (the <strong>Reset Vector</strong>) where the firmware instructions begin.</p>
+</li>
+<li>
+<p><strong>Firmware Execution (UEFI/BIOS):</strong><br>
+Firmware is a low-level software stored on a small memory chip on the motherboard. It acts as the first code that runs when the system powers on.
+Firmware takes total control and runs POST (Power-On Self-Test) to make sure CPU, RAM, and power supply are all working.</p>
+<p>💡 <em>Think of it as a doctor checking if the patient is alive and all the vital organs are working.</em></p>
+</li>
+<li>
+<p><strong>Hardware initialization</strong><br>
+The goal of this step is to ensure that &ldquo;every device is operational and ready to be seen by the OS&rdquo;. For example, it performs Memory Training to ensure the RAM sticks are communicating reliably at the correct speeds.</p>
+<p>💡 <em>Think of it as the doctor carefully examining each of the patient’s organs to make sure they function properly.</em></p>
+</li>
+<li>
+<p><strong>Device Discovery:</strong><br>
+The BIOS/UEFI firmware scans all buses and controllers on the motherboard, including PCIe slots, USB controllers, and storage interfaces.<br>
+It identifies every connected device, assigns system resources (like memory addresses, I/O ports, and interrupts), and builds a complete hardware map.</p>
+<p>This map is then exposed to the operating system, allowing it to recognize and communicate with all devices.<br>
+Without this step, devices may be physically present but completely invisible to the OS.</p>
+</li>
+<li>
+<p><strong>The Handover:</strong><br>
+Once all hardware is initialized and the device map is complete, the firmware hands control over to a bootloader on a storage device, such as <strong>GRUB</strong> (GRand Unified Bootloader) on Linux or <strong>Windows Boot Manager</strong> on Windows.<br>
+The bootloader’s job is to load the operating system kernel into memory and start its execution.</p>
+<p>Once the OS takes control, drivers rely on each device’s own firmware to operate correctly.</p>
+<p>At this point, the OS can only interact with devices that firmware successfully initialized.</p>
+</li>
+</ul>
+<p>👉 Important point:</p>
+<p>Hardware is not discovered by the OS first - it is presented to the OS.</p>
+<p>If something goes wrong here, the OS will never even know the device exists.</p>
+<hr>
+<h2 id="firmware-beyond-biosuefi">Firmware beyond BIOS/UEFI</h2>
+<p>When most people say “firmware,” they immediately think of BIOS. But modern systems contain multiple layers of firmware that all play a role in hardware initialization:</p>
+<ul>
+<li><strong>BIOS/UEFI:</strong> Initializes CPU, memory, PCIe slots, and performs the <strong>POST</strong> and device enumeration.</li>
+<li><strong>BMC (Baseboard Management Controller):</strong> Handles remote management, server power control, and monitoring. Common on server motherboards.</li>
+<li><strong>CPLD / Onboard Controllers:</strong> Control low-level board logic, power sequencing, and other hardware-specific tasks.</li>
+<li><strong>Device Firmware:</strong> Each PCIe device (GPU, NIC, FPGA, or encoder card) may contain its own firmware to initialize and manage its internal hardware.</li>
+</ul>
+<blockquote>
+<p>Think of the BIOS as the conductor, and all other firmware as orchestra sections. Each must play its part perfectly before the OS even gets to perform.</p></blockquote>
+<p>The key takeaway: <strong>the operating system only sees what firmware exposes.</strong> If a device isn’t initialized correctly at the firmware level, the OS cannot see it - no driver can fix that.</p>
+<hr>
+<h2 id="so-why-does-this-happen-specifically-with-pcie-devices">So why does this happen specifically with PCIe devices?</h2>
+<p>When we say PCIe devices, we don’t mean only add-in cards. A PCIe device can be anything connected over the PCIe bus - GPUs, NICs, NVMe drives, or specialized accelerator cards.</p>
+<p>In this article, we’ll mostly focus on add-in PCIe cards, since they are the most common source of these issues.</p>
+<p>Unlike simpler buses, PCIe is not just “plug and play” at the electrical level. For a PCIe device to appear in the system, several things must align before the OS even starts:</p>
+<h3 id="1-lane-availability-cpu--slot-wiring">1. Lane availability (CPU ↔ slot wiring)</h3>
+<p>Every PCIe device requires a certain number of <strong>lanes</strong> (x1, x4, x8, x16).</p>
+<p>A lane is a pair of high-speed data links - one for sending and one for receiving data.
+You can think of lanes as independent “data highways” between the CPU and the device.</p>
+<p>More lanes = more bandwidth.</p>
+<p>For example:</p>
+<ul>
+<li>x1 - 1 lane (basic devices)</li>
+<li>x4 - 4 lanes (NVMe SSDs)</li>
+<li>x8 / x16 - high-throughput devices (GPUs, accelerators)</li>
+</ul>
+<p>Those lanes come directly from the CPU (or sometimes through a chipset), and they are physically routed to specific slots on the motherboard.
+If slot does not have the required lanes available or they are shared with another device, the device may:</p>
+<ul>
+<li>❌ Fail to initialize (The system won&rsquo;t even see it)</li>
+<li>📉 Downgrade its link (e.g., an x16 GPU running at x8 speeds)</li>
+<li>👻 Ghosting (Appears and disappears randomly)</li>
+</ul>
+<p>👉 Not all slots are equal, even if they look identical.</p>
+<h3 id="2-pcie-bifurcation-the-silent-killer">2. PCIe bifurcation (the silent killer)</h3>
+<p>If lanes are the &ldquo;data highways,&rdquo; then <strong>bifurcation</strong> is the ability to paint new lines and create separate exits on that highway.</p>
+<p>Modern CPUs can take a single x16 slot and split it into multiple smaller, independent links (e.g., x16 → x8/x8 or x4/x4/x4/x4). This is crucial because some cards(devices) are actually &ldquo;multi-device&rdquo; boards masquerading as a single physical card.</p>
+<p><img src="/images/bifurcation.png" alt="complex-images-for-ocr"></p>
+<p>Some PCIe cards (especially NVMe adapters, FPGA boards, or specialized accelerator cards) depend on this behavior to expose multiple internal devices.</p>
+<p>If bifurcation is:</p>
+<ul>
+<li>not supported by the motherboard</li>
+<li>not enabled in BIOS</li>
+<li>or configured incorrectly</li>
+</ul>
+<p>👉 In many cases, the system might see only the first internal device (e.g. one SSD out of four), leaving the rest in a hardware limbo.</p>
+<p>No error. No warning. Just… nothing in <code>lspci</code>.</p>
+<h3 id="3-firmware-configuration--resource-allocation">3. Firmware Configuration &amp; Resource Allocation</h3>
+<p>Physical connectivity is only half the story. Even if your PCIe device is correctly plugged in and has the required lanes, the firmware (BIOS/UEFI) still needs to properly configure it before the OS can use it.</p>
+<p>This process involves a few key steps:</p>
+<ul>
+<li><strong>Slot Enablement &amp; Bifurcation</strong><br>
+A slot may be physically x16, but firmware controls how it actually operates.
+It can split lanes (bifurcation), limit bandwidth, or even disable the slot depending on the configuration and other devices in the system.</li>
+<li><strong>Resource Assignment (MMIO &amp; Interrupts)</strong><br>
+Every PCIe device needs system resources to function - mainly memory-mapped I/O (MMIO) space and interrupts.
+The firmware is responsible for assigning these resources and building the hardware map.</li>
+</ul>
+<p>If there isn’t enough available address space (which can happen in systems with multiple GPUs or accelerator cards), some devices may simply not be initialized at all.</p>
+<ul>
+<li><strong>Link Speed Negotiation</strong><br>
+The firmware also determines the PCIe generation and link speed (Gen3, Gen4, Gen5).
+In some cases, forcing a lower generation in BIOS can improve stability if the signal quality is marginal.</li>
+</ul>
+<p>This is why BIOS updates often appear to “fix” hardware issues.
+In reality, they improve:</p>
+<ul>
+<li>device compatibility</li>
+<li>resource allocation logic</li>
+<li>and firmware tables used during initialization</li>
+</ul>
+<p>A newer BIOS can make previously invisible devices suddenly appear — without any changes in the OS or drivers.</p>
+<h3 id="4-link-training--device-initialization">4. Link Training &amp; Device Initialization</h3>
+<p>Even with correct lane configuration and firmware setup, a PCIe device still needs to successfully establish a physical link with the system.
+This process is called <strong>link training</strong>. During link training, the system and the device negotiate:</p>
+<ul>
+<li>how many lanes will be used</li>
+<li>at what speed (Gen3, Gen4, etc.)</li>
+<li>and whether the signal is stable enough for reliable communication</li>
+</ul>
+<p>If this process fails, the link never becomes active - and the device is not detected at all.</p>
+<ul>
+<li>
+<p>Signal integrity:
+PCIe operates at very high speeds, which makes it sensitive to signal quality.
+Poor riser cables, long traces, or unstable power delivery can prevent the link from stabilizing. In these cases, the device may fail to appear or only work at a reduced speed</p>
+</li>
+<li>
+<p>Device initialization (onboard firmware):
+Many modern PCIe devices are not passive - they run their own internal firmware.
+Devices like SmartNICs, FPGAs, or encoder cards need to initialize internally before they can respond to the system.</p>
+<p>If this initialization fails or takes too long - firmware may skip the device during discovery.</p>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>If a PCIe device doesn’t appear in lspci, the OS is not the problem.</p>
+<p>The failure already happened earlier - during firmware initialization, lane configuration, resource allocation, or link training.</p>
+<p>Reinstalling drivers or tweaking the OS won’t help. Instead, check:</p>
+<ul>
+<li>BIOS detection</li>
+<li>Slot configuration (lanes, bifurcation)</li>
+<li>Resource assignment (MMIO, interrupts)</li>
+<li>Link training and device firmware</li>
+</ul>
+<p>👉 If the hardware isn’t visible to the firmware, the OS can’t see it - and no driver can fix that.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/tesseract-docker-fine-tuning/"
+      title="Fine-Tuning Tesseract OCR Models with Docker: A Practical Guide"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
