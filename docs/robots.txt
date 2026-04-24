@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nenadlazic.github.io/sitemap.xml
