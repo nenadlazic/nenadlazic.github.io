@@ -6,8 +6,15 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Business</title>
+      <link>https://nenadlazic.github.io/categories/business/</link>
+      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/business/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Deployment</title>
       <link>https://nenadlazic.github.io/categories/deployment/</link>
