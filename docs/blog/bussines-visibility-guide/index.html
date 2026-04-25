@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Engineer — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="google-site-verification" content="BNTdqVbAxPtce9qZkRnwXoAH5Wc9VZD66vX5UK1HXUM" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.b0ec42bc41b60fa9ed241a858ec33d8b39da05f0d2092d6521ddf7407f82cca4.css"
+    integrity="sha256-sOxCvEG2D6ntJBqFjsM9iznaBfDSCS1lId33QH&#43;CzKQ="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="https://nenadlazic.github.io/images/debugging-marketing.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "31022709b8d24ae089f3fc7035bd7ffa"}'></script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Debugging Marketing: A Backend Engineer&#39;s Approach to Online Visibility</h1>
+  <p class="mb-1">April 25, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p><img src="/images/debugging-marketing.png" alt="Debugging Marketing - a backend engineer&rsquo;s approach to online visibility"></p>
+<h2 id="introduction--if-they-cant-find-you-you-dont-exist">Introduction – If they can&rsquo;t find you, you don&rsquo;t exist</h2>
+<p>If you run a small or medium business and rely only on word of mouth, you&rsquo;re leaving a huge amount of money on the table.</p>
+<p>How customers buy has changed. Almost everyone follows the same pattern:</p>
+<ol>
+<li>They have a problem or a need.</li>
+<li>They open Google, Instagram, or TikTok.</li>
+<li>They look at the first 3–5 results.</li>
+<li>They pick whoever looks most trustworthy and easiest to contact.</li>
+</ol>
+<p>If your business isn&rsquo;t in those first 3–5 results, you simply don&rsquo;t exist for them - no matter how good your service or how fair your prices.</p>
+<p>This guide walks you through the <strong>bare minimum</strong> to become visible online, plus the practical tricks that actually move the needle. No marketing jargon, no theory - just things you can start doing this week.</p>
+<blockquote>
+<p><strong>The honest truth:</strong> most of what an agency would charge you a few thousand euros to set up - a Google Business profile, a fast landing page, first paid ads, a basic content plan - you can do yourself with a laptop and a few weekend afternoons. By the end of this guide you&rsquo;ll know what&rsquo;s worth paying for later, and what isn&rsquo;t.</p></blockquote>
+<hr>
+<h2 id="1-the-foundation-a-simple-fast-website">1. The foundation: a simple, fast website</h2>
+<p>Your website is your digital storefront - everything else (ads, social, Google Business) eventually points back to it. A visitor should answer three questions in the first 5 seconds: <strong>What do you do? Do I trust you? How do I contact you?</strong></p>
+<p>What that means in practice:</p>
+<ul>
+<li>A clear headline in plain language (not &ldquo;We deliver excellence&rdquo; - say <em>&ldquo;Emergency plumbing and boiler repairs in [your city], same-day callout&rdquo;</em>).</li>
+<li>Services with prices or at least a price range.</li>
+<li>Real photos of your work, team, and equipment - people spot stock photos instantly and trust drops.</li>
+<li>Phone, email, and a big <strong>&ldquo;Call now&rdquo;</strong> or <strong>&ldquo;Get a quote&rdquo;</strong> button at the top of the page, not buried in a footer.</li>
+<li>Customer reviews with real names and a simple contact form (name, phone, message - nothing more).</li>
+<li><strong>Fast on mobile.</strong> 70%+ of local searches happen on a phone. If your site needs more than 3 seconds to load, you lose half your visitors - compress images, skip heavy templates.</li>
+</ul>
+<p>Don&rsquo;t overthink the platform. A one-page WordPress, Wix, or static HTML is enough. <strong>A site that loads in 1 second beats a fancy one that loads in 6 - every time.</strong></p>
+<hr>
+<h2 id="2-google-business-profile-the-single-highest-roi-step">2. Google Business Profile (the single highest-ROI step)</h2>
+<p>For any local business this is <strong>the single most important free thing you can do online</strong>. A complete profile makes a business 70% more likely to attract visits (Google).</p>
+<p>When someone searches <em>&ldquo;mechanic near me&rdquo;</em> or <em>&ldquo;dentist open Sunday&rdquo;</em>, Google shows a <strong>map with three businesses on top</strong> above any normal result. Those three slots get most of the clicks - if you&rsquo;re not in the &ldquo;map pack&rdquo;, you&rsquo;re invisible.</p>
+<h3 id="what-you-get-for-free">What you get for free</h3>
+<ul>
+<li>Your business on Google Maps with star rating and reviews shown directly in search results.</li>
+<li>Click-to-call, click-for-directions, and a free mini-website inside Google.</li>
+<li>Insights: how many people saw you, called you, or asked for directions.</li>
+</ul>
+<h3 id="how-to-set-it-up-properly">How to set it up properly</h3>
+<ol>
+<li>Go to <strong>google.com/business</strong> and create a profile.</li>
+<li>Use your <strong>exact business name</strong> - don&rsquo;t stuff with keywords (Google penalizes it).</li>
+<li>Pick the <strong>most specific category</strong> (&ldquo;Emergency Plumber,&rdquo; not &ldquo;Plumber&rdquo;).</li>
+<li>Add your <strong>service area</strong> and <strong>working hours</strong> (keep updated for holidays).</li>
+<li>Upload <strong>15–20 real photos</strong>: team, vehicles, finished jobs, before/after.</li>
+<li>Add all your services with descriptions and prices.</li>
+<li>Verify the profile (postcard, phone, or video).</li>
+<li>Publish weekly posts (offers, updates, recent jobs) - signals to Google the business is active and bumps ranking.</li>
+</ol>
+<h3 id="the-review-game">The review game</h3>
+<p>Reviews are the single biggest trust factor for local searches.</p>
+<ul>
+<li>Ask <strong>every happy customer</strong> on the spot, while they&rsquo;re still smiling - don&rsquo;t wait a week, they&rsquo;ll forget.</li>
+<li>Send the <strong>direct review link</strong> (generate it in the dashboard) so they don&rsquo;t have to search.</li>
+<li><strong>Respond to every review</strong>, good or bad. A professional reply to a 1-star review impresses future customers more than ten 5-star reviews.</li>
+</ul>
+<blockquote>
+<p><strong>Rule of thumb:</strong> 10 honest 5-star reviews bring you more business than the prettiest website ever could.</p></blockquote>
+<hr>
+<h2 id="3-social-media---pick-one-or-two-and-do-them-properly">3. Social media - pick one or two and do them properly</h2>
+<p>You don&rsquo;t need to be on every platform. <strong>Two channels done well beat six channels done badly.</strong></p>
+<h3 id="which-one-is-right-for-you">Which one is right for you?</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Platform</th>
+          <th>Best for</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Facebook</strong></td>
+          <td>Local services, older demographic, community groups, classifieds</td>
+      </tr>
+      <tr>
+          <td><strong>Instagram</strong></td>
+          <td>Visual businesses - restaurants, salons, construction, photography</td>
+      </tr>
+      <tr>
+          <td><strong>TikTok</strong></td>
+          <td>Younger audience, fast growth, &ldquo;behind the scenes&rdquo; content</td>
+      </tr>
+      <tr>
+          <td><strong>LinkedIn</strong></td>
+          <td>B2B services, consulting, recruitment</td>
+      </tr>
+      <tr>
+          <td><strong>YouTube</strong></td>
+          <td>Tutorials, longer educational content, evergreen reach</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="what-actually-works-as-content">What actually works as content</h3>
+<p>Skip the &ldquo;good morning everyone&rdquo; posts - people follow you for value or curiosity. Short vertical video consistently outperforms photos; 87% of marketers report direct sales lift from short-form video (Wyzowl). Formats that perform everywhere:</p>
+<ul>
+<li><strong>Before / after</strong> photos and videos.</li>
+<li><strong>Process videos</strong> - sped up, with captions.</li>
+<li><strong>Common mistakes</strong> customers make and how to avoid them.</li>
+<li><strong>Customer testimonials</strong> filmed casually on a phone.</li>
+</ul>
+<h3 id="practical-posting-rules">Practical posting rules</h3>
+<ul>
+<li><strong>Consistency beats perfection.</strong> Two posts a week forever &gt; ten in one week and silence.</li>
+<li><strong>Captions sell, photos attract.</strong> Answer a question or tell a short story.</li>
+<li><strong>Include a CTA and reuse across platforms</strong> - one video → Reel → TikTok → Facebook → Short.</li>
+<li><strong>Reply within 24 hours</strong> to every comment and DM. Speed is both a ranking factor <em>and</em> a conversion factor.</li>
+</ul>
+<blockquote>
+<p><strong>Truth bomb:</strong> People don&rsquo;t buy services. They buy <strong>trust</strong>. Social media is where you build that trust before they ever pick up the phone.</p></blockquote>
+<hr>
+<h2 id="4-seo---getting-found-on-google-for-free-forever">4. SEO - getting found on Google for free (forever)</h2>
+<p>SEO means showing up when people search for what you offer. Unlike ads, <strong>SEO traffic doesn&rsquo;t stop when you stop paying.</strong> It takes 3–6 months for real results, but the compounding is huge. About 46% of Google searches have local intent, and 76% lead to a visit within 24 hours (Google). In 2026 search isn&rsquo;t just Google - people increasingly use ChatGPT, Perplexity, and AI Overviews. The same fundamentals (clear answers, FAQ-style content, structured data) rank in both.</p>
+<h3 id="the-three-pillars">The three pillars</h3>
+<ol>
+<li><strong>What people search for</strong> - find the phrases your customers actually type.</li>
+<li><strong>Pages that answer those searches</strong> - content matching those phrases.</li>
+<li><strong>Trust signals</strong> - links from other sites, reviews, mentions online.</li>
+</ol>
+<h3 id="practical-first-steps">Practical first steps</h3>
+<p><strong>Find keywords customers use</strong> - type your service into Google for autocomplete, scroll to &ldquo;People also ask&rdquo; and &ldquo;Related searches&rdquo;, or use free tools like <a href="https://ads.google.com/home/tools/keyword-planner/">Google Keyword Planner</a> or <a href="https://neilpatel.com/ubersuggest/">Ubersuggest</a>.</p>
+<p><strong>Place keywords naturally</strong> in your page title, H1/H2 headings, the first 100 words, and image alt-text. Write for humans first, Google second.</p>
+<p><strong>Write a blog.</strong> Each article is another door customers can find you through. Real questions like <em>&ldquo;How much does it cost to fix a burst pipe?&rdquo;</em> bring <strong>buyers</strong>, not browsers - long-tail searches have less competition.</p>
+<h3 id="local-seo-specifics">Local SEO specifics</h3>
+<ul>
+<li>Mention your city/region in titles, headings, and naturally throughout the text.</li>
+<li>Add a &ldquo;Service area&rdquo; page listing every town you cover.</li>
+<li>Get listed in local directories (chamber of commerce, Yellow Pages equivalents).</li>
+<li>Keep your <strong>NAP</strong> (Name, Address, Phone) identical everywhere online.</li>
+</ul>
+<hr>
+<h2 id="5-paid-ads---the-fastest-way-to-get-customers-when-done-right">5. Paid ads - the fastest way to get customers (when done right)</h2>
+<p>SEO is a marathon. Ads are a sprint. But ads without a good landing page = burning money - make sure step 1 is solid first.</p>
+<h3 id="google-ads-search-ads">Google Ads (search ads)</h3>
+<p>You bid on keywords; when someone searches them, your ad appears at the top - intent is the highest you&rsquo;ll ever find.</p>
+<ul>
+<li><strong>Best for:</strong> services with clear demand (&ldquo;locksmith&rdquo;, &ldquo;tow truck&rdquo;, &ldquo;AC repair&rdquo;).</li>
+<li><strong>Starting budget:</strong> €5–10/day to test, scale what works.</li>
+<li>Use exact-match keywords; add <strong>negative keywords</strong> (&ldquo;free&rdquo;, &ldquo;DIY&rdquo;, &ldquo;jobs&rdquo;) to avoid unqualified clicks.</li>
+<li>Send ads to a <strong>specific landing page</strong> matching the ad&rsquo;s promise, not your homepage. Add call extensions.</li>
+<li><strong>Track conversions</strong> (calls, forms, sales - not &ldquo;likes&rdquo;). Run two versions and kill losers after €20–30.</li>
+</ul>
+<h3 id="facebook--instagram-ads">Facebook &amp; Instagram Ads</h3>
+<p>These are <strong>interruption ads</strong> - people aren&rsquo;t looking for you, but you appear in their feed.</p>
+<ul>
+<li><strong>Best for:</strong> visual services, lifestyle products, awareness building.</li>
+<li><strong>Power feature:</strong> detailed audience targeting (location, age, interests, behaviors).</li>
+<li><strong>Starting budget:</strong> €5/day per ad set. Creative is everything - boring ads fail even with perfect targeting.</li>
+<li>Skip <strong>&ldquo;Boost Post&rdquo;</strong> - use Ads Manager properly, it&rsquo;s more powerful and cheaper per result.</li>
+</ul>
+<h3 id="dont-ignore-the-old-channels">Don&rsquo;t ignore the old channels</h3>
+<p>Google and Facebook aren&rsquo;t the only paid channels - for some businesses the &ldquo;old&rdquo; ones still convert better.</p>
+<ul>
+<li><strong>Online classifieds and marketplaces</strong> - free or a few euros to feature, still drive leads for tradesmen, repair services, and movers.</li>
+<li><strong>Local community groups</strong> - neighborhood and professional Facebook groups, hobby communities. Free, hyper-local, high trust. Participate, don&rsquo;t spam.</li>
+<li><strong>Local newspapers, radio, flyers, sponsorships, vehicle wraps</strong> - low-tech but high trust with older demographics; a vinyl van wrap or local sponsorship buys goodwill no Google Ad can match.</li>
+</ul>
+<p>The right channel is the one your customers actually use - for a 65-year-old looking for a roofer, that&rsquo;s still the local newspaper, not Instagram.</p>
+<hr>
+<h2 id="6-automation-ai-and-the-modern-edge">6. Automation, AI, and the modern edge</h2>
+<h3 id="practical-automations-that-pay-off-immediately">Practical automations that pay off immediately</h3>
+<ul>
+<li><strong>Live chat / chatbot.</strong> A simple bot that answers FAQs and grabs a phone number captures leads at 2 AM.</li>
+<li><strong>Auto-reply to DMs and missed calls.</strong> A &ldquo;Thanks, we&rsquo;ll call you in 10 minutes&rdquo; reply dramatically lifts conversion.</li>
+<li><strong>Email/SMS follow-ups.</strong> Most leads don&rsquo;t buy on first contact - a 3-message sequence wins back 20–30% of &ldquo;lost&rdquo; leads.</li>
+<li><strong>Booking automation.</strong> Calendly, SimplyBook, or even a Google Form kills the back-and-forth phone tag.</li>
+</ul>
+<h3 id="where-ai-actually-helps-a-small-business-in-2026">Where AI actually helps a small business in 2026</h3>
+<ul>
+<li>Drafting blog articles, social captions, and email replies (you still edit).</li>
+<li>Translating your site into other languages instantly.</li>
+<li>Generating product or service descriptions.</li>
+<li>Summarizing long customer messages and voice-to-text for hands-free job notes.</li>
+</ul>
+<blockquote>
+<p><strong>Mindset:</strong> automation isn&rsquo;t about firing people. It&rsquo;s about <strong>not losing leads while you&rsquo;re busy doing the actual job.</strong></p></blockquote>
+<hr>
+<h2 id="7-a-realistic-30-day-starter-plan">7. A realistic 30-day starter plan</h2>
+<p>Don&rsquo;t try to do everything at once. Follow this order. Each step builds on the previous one.</p>
+<p><strong>Week 1 - Foundation</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Buy a domain name (your business name, .com or local TLD).</li>
+<li><input disabled="" type="checkbox"> Build a simple one-page website with services, photos, prices, and contact info.</li>
+<li><input disabled="" type="checkbox"> Set up a business email on your domain (not @gmail).</li>
+</ul>
+<p><strong>Week 2 - Get on the map</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Create and verify your Google Business Profile, upload 15+ photos, add services.</li>
+</ul>
+<p><strong>Week 3 - Build social proof</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Ask your last 10–20 customers for a Google review (send the direct link), open one social account (Facebook <strong>or</strong> Instagram), post 3 intro pieces.</li>
+</ul>
+<p><strong>Week 4 - Start getting traffic</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Launch a small Google Ads campaign (€5–10/day).</li>
+<li><input disabled="" type="checkbox"> Write one blog post (see SEO section).</li>
+<li><input disabled="" type="checkbox"> Set up an auto-reply for missed calls and DMs.</li>
+</ul>
+<p>After 30 days you&rsquo;ll have a complete, professional online presence - better than 80% of your local competition.</p>
+<hr>
+<h2 id="8-where-to-go-next---the-advanced-layer">8. Where to go next - the advanced layer</h2>
+<p>Once the basics are running, there&rsquo;s a second layer worth knowing about - not for day one, but it saves you months when you start scaling:</p>
+<ul>
+<li><strong>GEO (Generative Engine Optimization)</strong> - optimizing content to appear in AI answers (ChatGPT, Perplexity, Google AI Overviews). Brands ignoring this are losing organic share quarter by quarter.</li>
+<li><strong>Email and SMS</strong> - cheapest channels, highest ROI. SMS open rates hit ~98% vs. ~20% for email - email nurtures, SMS converts urgent offers. Mailchimp/Brevo are free up to ~500 contacts.</li>
+<li><strong>Analytics done properly</strong> - GA4 + Search Console + UTM tags on every link. Without data, everything else is guessing.</li>
+<li><strong>Conversion Rate Optimization (CRO)</strong> - Microsoft Clarity (free) or Hotjar show where visitors drop off; A/B test headlines and buttons.</li>
+<li><strong>Marketing automation</strong> - Zapier, Make, HubSpot Free. Welcome emails, lead sync to CRM, auto-replies.</li>
+</ul>
+<p>Also on the radar: <strong>technical SEO</strong> (schema, sitemap, Core Web Vitals), <strong>link building</strong>, and <strong>visual identity</strong> (consistent logo/colors/fonts).</p>
+<p>Rule: don&rsquo;t touch any of this until the basics are stable for at least 3 months. Doing everything at once is the #1 reason small businesses give up on marketing.</p>
+<hr>
+<h2 id="9-mistakes-to-avoid-in-any-order">9. Mistakes to avoid (in any order)</h2>
+<ul>
+<li><strong>Chasing every new platform.</strong> Pick what fits your audience. Ignore the rest.</li>
+<li><strong>Hiring a &ldquo;marketing agency&rdquo; without a clear plan.</strong> Many overcharge for activities, not results. Always ask: &ldquo;What&rsquo;s the measurable outcome?&rdquo;</li>
+<li><strong>Ignoring reviews.</strong> A bad review you don&rsquo;t respond to costs you more than the bad review itself.</li>
+<li><strong>Updating things once and forgetting them.</strong> A Google profile from 2021 with old hours is worse than no profile.</li>
+<li><strong>Mixing personal and business profiles.</strong> Always separate. Always.</li>
+</ul>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>Online visibility isn&rsquo;t a luxury - it&rsquo;s the foundation of doing business. You don&rsquo;t need a big budget or a marketing team, you need to:</p>
+<ul>
+<li><strong>Exist online</strong> - a simple site, a Google profile, one social channel.</li>
+<li><strong>Look trustworthy</strong> - real photos, real reviews, real prices.</li>
+<li><strong>Be easy to contact</strong> - phone, message, form, all visible immediately.</li>
+<li><strong>Be consistent</strong> - small actions, every week, for 6 months.</li>
+</ul>
+<p>Do this better than your competitors and the work starts coming to you.</p>
+
+</div>
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/why-your-pcie-card-isnt-detected/"
+      title="Why your PCIe device isn’t detected (and it’s not a driver issue)"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
