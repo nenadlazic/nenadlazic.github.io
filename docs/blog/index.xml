@@ -6,14 +6,14 @@
     <description>Recent content in All tech blogs on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Debugging Marketing: A Backend Engineer&#39;s Approach to Online Visibility</title>
-      <link>https://nenadlazic.github.io/blog/bussines-visibility-guide/</link>
-      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/bussines-visibility-guide/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://nenadlazic.github.io/images/debugging-marketing.png&#34; alt=&#34;Debugging Marketing - a backend engineer&amp;rsquo;s approach to online visibility&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction--if-they-cant-find-you-you-dont-exist&#34;&gt;Introduction – If they can&amp;rsquo;t find you, you don&amp;rsquo;t exist&lt;/h2&gt;&#xA;&lt;p&gt;If you run a small or medium business and rely only on word of mouth, you&amp;rsquo;re leaving a huge amount of money on the table.&lt;/p&gt;&#xA;&lt;p&gt;How customers buy has changed. Almost everyone follows the same pattern:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;They have a problem or a need.&lt;/li&gt;&#xA;&lt;li&gt;They open Google, Instagram, or TikTok.&lt;/li&gt;&#xA;&lt;li&gt;They look at the first 3–5 results.&lt;/li&gt;&#xA;&lt;li&gt;They pick whoever looks most trustworthy and easiest to contact.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;If your business isn&amp;rsquo;t in those first 3–5 results, you simply don&amp;rsquo;t exist for them - no matter how good your service or how fair your prices.&lt;/p&gt;</description>
+      <title>Compute cost: the buy-vs-rent calculation everyone gets wrong</title>
+      <link>https://nenadlazic.github.io/blog/compute-cost-calculation-buy-vs-rent/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/compute-cost-calculation-buy-vs-rent/</guid>
+      <description>&lt;h2 id=&#34;the-question-gets-framed-wrong&#34;&gt;The question gets framed wrong&lt;/h2&gt;&#xA;&lt;p&gt;Every couple of years the same question lands on an architect&amp;rsquo;s desk, dressed up in a fresh deck:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Should we move to the cloud?&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;or, lately, the inverted version:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Should we move &lt;em&gt;off&lt;/em&gt; the cloud?&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Both are the wrong question. The right question is:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Which of our workloads belong on owned iron, which belong on rented capacity, and what is the &lt;em&gt;workload-shape threshold&lt;/em&gt; that flips one into the other?&amp;rdquo;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Why your PCIe device isn’t detected (and it’s not a driver issue)</title>
@@ -38,9 +38,9 @@
     </item>
     <item>
       <title>The power of templating in modern engineering with Jinja</title>
-      <link>https://nenadlazic.github.io/blog/templateing-with-jinja/</link>
+      <link>https://nenadlazic.github.io/blog/templating-with-jinja/</link>
       <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/templateing-with-jinja/</guid>
+      <guid>https://nenadlazic.github.io/blog/templating-with-jinja/</guid>
       <description>&lt;p&gt;Templating is one of the most underrated superpowers in modern software and platform engineering. Simply put, it lets you generate files from reusable, parameterized blueprints, avoiding repetitive and error-prone configuration work.&#xA;Among the many templating tools available, Jinja stands out as one of the cleanest, most powerful, and versatile - perfect for generating dynamic configurations, YAML, scripts, and infrastructure definitions.&lt;/p&gt;&#xA;&lt;p&gt;In this article, we focus on Jinja - why it matters, how it’s used, and where it delivers the most value. Along the way, we’ll briefly compare it to other templating approaches, like Helm and Go templates, so engineers can see where each tool fits best.&lt;/p&gt;</description>
     </item>
     <item>
@@ -51,18 +51,11 @@
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;In many modern applications, text doesn’t always arrive as plain, selectable characters. It often  appears inside images like scanned documents, screenshots, ID cards, receipts, or even video subtitles. In these cases, the text looks readable to humans but is invisible to software systems that expect digital text.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;O&lt;/strong&gt;ptical &lt;strong&gt;C&lt;/strong&gt;haracter &lt;strong&gt;R&lt;/strong&gt;ecognition (&lt;strong&gt;OCR&lt;/strong&gt;) helps bridge that gap by detecting and converting text from images into editable and searchable form. This makes it possible to process documents automatically, extract data, enable search, or translate visual text.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>OpenAI Whisper: Quick audio-to-text and subtitle workflow</title>
-      <link>https://nenadlazic.github.io/blog/blog-whisper-audio-transcription/</link>
-      <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/blog-whisper-audio-transcription/</guid>
-      <description>&lt;p&gt;Transcribing audio has become essential for creators, developers, and content teams. Whether it&amp;rsquo;s podcasts, YouTube videos, or meeting recordings, having accurate text saves time and makes content more accessible.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;OpenAI Whisper&lt;/strong&gt; is a versatile &lt;strong&gt;speech-to-text tool and library&lt;/strong&gt; that leverages pre-trained models to convert audio into text or subtitles. It supports multiple languages, understands context, and can generate time-coded subtitle files.&lt;/p&gt;&#xA;&lt;p&gt;Whisper is more than just a command-line tool: it integrates with &lt;strong&gt;FFmpeg&lt;/strong&gt;, allowing you to process a wide range of audio and video formats directly. You can use it as a CLI for quick transcriptions, or as a Python library for embedding transcription into custom workflows and applications.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Understanding AI-powered backends</title>
       <link>https://nenadlazic.github.io/blog/ai-powered-api/</link>
       <pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/blog/ai-powered-api/</guid>
-      <description>&lt;p&gt;Large Language Models (LLMs) have become the backbone of modern AI: they can generate text, summarize documents, answer questions, and help automate developer workflows. But an LLM on its own is just a very good statistical text generator. To build useful, reliable systems, we often combine them with software that provides memory, facts, actions, and guardrails.&lt;/p&gt;&#xA;&lt;p&gt;Using LLMs usually means sending data to the cloud which can be expensive, slow, and raise privacy concerns.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Large Language Models (LLMs) have become the backbone of modern AI: they can generate text, summarize documents, answer questions, and help automate developer workflows.&lt;/p&gt;&#xA;&lt;p&gt;But here is the framing that matters for anyone designing systems: &lt;strong&gt;an LLM is just another component - only an unusual one.&lt;/strong&gt; It is probabilistic (the same input can return different output), stateless (it remembers nothing between calls), and it can be confidently wrong. Almost everything we call an &amp;ldquo;AI-powered backend&amp;rdquo; is the engineering we wrap &lt;em&gt;around&lt;/em&gt; that component to make it useful and reliable: memory, facts, actions, and guardrails.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Understanding VMAF: Measuring video quality the right way</title>
@@ -93,32 +86,11 @@
       <description>&lt;p&gt;Release notes are one of the most underrated tools in software development. Often overlooked, they can be a powerful way to communicate changes, ensure smoother deployments, and build trust across teams - and even with users.&lt;/p&gt;&#xA;&lt;p&gt;In this post, we’ll walk through:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;What release notes are (and what they’re not)&lt;/li&gt;&#xA;&lt;li&gt;When and why to write them&lt;/li&gt;&#xA;&lt;li&gt;Who benefits from them&lt;/li&gt;&#xA;&lt;li&gt;What a good release note should contain&lt;/li&gt;&#xA;&lt;li&gt;A practical example &amp;amp; reusable template&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Whether you&amp;rsquo;re running a microservice architecture or a monolith, releasing internal tools or public APIs - this guide is for you.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Reactivity in Vue.js</title>
-      <link>https://nenadlazic.github.io/blog/reactivity-in-vue/</link>
-      <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/reactivity-in-vue/</guid>
-      <description>&lt;p&gt;One of the most powerful features of Vue.js and the reason why it feels so intuitive is its &lt;strong&gt;reactivity system&lt;/strong&gt;. It allows your UI to automatically update when the underlying data changes, without writing a single line of manual DOM manipulation.&lt;/p&gt;&#xA;&lt;p&gt;If you’ve ever built complex user interfaces before reactive frameworks like Vue, you know the pain of keeping the UI in sync with application state manually juggling query selectors, event handlers, and state flags. It&amp;rsquo;s error-prone, hard to scale, and difficult to maintain.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Vue.js core concepts you must know</title>
-      <link>https://nenadlazic.github.io/blog/vue-core-convepts/</link>
-      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/vue-core-convepts/</guid>
-      <description>&lt;p&gt;Vue has captured the hearts of developers with its simplicity, efficiency, and adaptability. Whether you&amp;rsquo;re a newcomer to front-end development or an experienced programmer seeking a new tool, Vue.js offers an intuitive approach to building interactive and dynamic web applications.&lt;/p&gt;&#xA;&lt;p&gt;In this blog post, we&amp;rsquo;ll dive deeper into the &lt;strong&gt;philosophy behind Vue.js&lt;/strong&gt;, understanding why it was designed the way it was and the benefits it brings. After that, we&amp;rsquo;ll walk through the &lt;strong&gt;most crucial core concepts&lt;/strong&gt; essential for getting started and effectively utilizing this powerful framework.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Authentication vs Authorization Explained</title>
       <link>https://nenadlazic.github.io/blog/authentication-vs-authorization/</link>
       <pubDate>Fri, 11 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/blog/authentication-vs-authorization/</guid>
       <description>&lt;h2 id=&#34;introduction--why-this-matters&#34;&gt;Introduction – Why This Matters&lt;/h2&gt;&#xA;&lt;p&gt;Security is one of the most critical aspects of backend development, yet the concepts of authentication and authorization are often confused or mixed up. No matter if you&amp;rsquo;re building a web application, a REST API, or a distributed microservices system, it&amp;rsquo;s essential to know &lt;strong&gt;who the user is&lt;/strong&gt; and &lt;strong&gt;what they&amp;rsquo;re allowed to do&lt;/strong&gt;. This blog post will explain these two fundamental concepts in plain terms, outline how they work together, and offer best practices every backend developer should follow to build secure applications.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Getting started with Vue.js</title>
-      <link>https://nenadlazic.github.io/blog/getting-started-with-vue/</link>
-      <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/getting-started-with-vue/</guid>
-      <description>&lt;h2 id=&#34;what-is-vuejs&#34;&gt;What is Vue.js?&lt;/h2&gt;&#xA;&lt;p&gt;Vue is a powerful yet easy-to-use JavaScript framework that lets you build dynamic, interactive user interfaces with ease. It works with standard HTML, CSS, and JavaScript, leveraging a clean, component-based structure that helps you craft everything from simple page elements to fully-featured, complex applications - all without the headache.&lt;/p&gt;&#xA;&lt;p&gt;At its core, Vue.js is a progressive framework. It offers incremental adoptability, meaning you can start small by enhancing just a tiny part of your webpage and gradually scale it up to build complete, modern web apps - no need to rewrite everything from scratch!&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -3,7 +3,7 @@ title: "How to expose Active Directory attributes in Keycloak tokens"
 date: 2025-08-18
 tags: ["keycloak", "active directory", "LDAP", "JWT", "protocol mappers", "user federation", "IAM", "security", "authentication"]
 categories: ["security"]
-description: "custom claims from ad users attributes"
+description: "How to map Active Directory and LDAP attributes into Keycloak tokens using protocol mappers and user federation, so your JWTs carry the claims your services actually need."
 draft: false
 ---
 ## Introduction

@@ -1,9 +1,10 @@
 ---
 title: "The power of templating in modern engineering with Jinja"
 date: 2025-12-01
-tags: ["templateing", "jinja"]
+tags: ["templating", "jinja"]
 categories: ["engineering"]
-description: "power of templateing"
+description: "Where templating earns its place in modern engineering - config generation, scaffolding, and code generation with Jinja, and the pitfalls to avoid."
+aliases: ["/blog/templateing-with-jinja/"]
 draft: false
 ---
 

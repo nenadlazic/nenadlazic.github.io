@@ -2,9 +2,9 @@
 title: "OpenAI Whisper: Quick audio-to-text and subtitle workflow"
 date: 2025-09-25
 tags: ["whisper", "transcription", "speech-to-text", "audio"]
-categories: ["AI", "Tools", "How-to"]
+categories: ["ai", "tools", "how-to"]
 description: "A concise guide on using OpenAI Whisper to transcribe audio files into text or subtitles quickly and easily."
-draft: false
+draft: true
 ---
 
 Transcribing audio has become essential for creators, developers, and content teams. Whether it's podcasts, YouTube videos, or meeting recordings, having accurate text saves time and makes content more accessible.  

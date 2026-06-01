@@ -8,6 +8,7 @@
 <div class="content">
   {{ .Content }}
 </div>
+{{ if eq .Section "blog" }}{{ partial "authorbio.html" . }}{{ end }}
 </div>
 {{ partial "prevnext" . }}
 {{ end }}

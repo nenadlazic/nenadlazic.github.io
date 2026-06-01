@@ -5,7 +5,8 @@ tags: ["business", "marketing", "seo", "small business"]
 categories: ["business"]
 description: "A practical, no-fluff guide for small and medium businesses on how to become visible online - website, Google Business Profile, social media, SEO, ads, and automation."
 cover: /images/debugging-marketing.png
-draft: false
+aliases: ["/blog/bussines-visibility-guide/"]
+draft: true
 ---
 
 ![Debugging Marketing - a backend engineer's approach to online visibility](/images/debugging-marketing.png)

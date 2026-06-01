@@ -6,20 +6,13 @@
     <description>Recent content in Categories on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Business</title>
-      <link>https://nenadlazic.github.io/categories/business/</link>
-      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/categories/business/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Deployment</title>
-      <link>https://nenadlazic.github.io/categories/deployment/</link>
-      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/categories/deployment/</guid>
+      <title>Engineering</title>
+      <link>https://nenadlazic.github.io/categories/engineering/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/engineering/</guid>
       <description></description>
     </item>
     <item>
@@ -37,14 +30,7 @@
       <description></description>
     </item>
     <item>
-      <title>Engineering</title>
-      <link>https://nenadlazic.github.io/categories/engineering/</link>
-      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/categories/engineering/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AI</title>
+      <title>Ai</title>
       <link>https://nenadlazic.github.io/categories/ai/</link>
       <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/categories/ai/</guid>
@@ -62,20 +48,6 @@
       <link>https://nenadlazic.github.io/categories/computer-vision/</link>
       <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/categories/computer-vision/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>How-To</title>
-      <link>https://nenadlazic.github.io/categories/how-to/</link>
-      <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/categories/how-to/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tools</title>
-      <link>https://nenadlazic.github.io/categories/tools/</link>
-      <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/categories/tools/</guid>
       <description></description>
     </item>
     <item>
@@ -100,10 +72,10 @@
       <description></description>
     </item>
     <item>
-      <title>Frontend</title>
-      <link>https://nenadlazic.github.io/categories/frontend/</link>
-      <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/categories/frontend/</guid>
+      <title>Deployment</title>
+      <link>https://nenadlazic.github.io/categories/deployment/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/categories/deployment/</guid>
       <description></description>
     </item>
   </channel>

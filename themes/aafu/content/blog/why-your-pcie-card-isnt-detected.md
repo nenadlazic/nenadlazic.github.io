@@ -1,8 +1,8 @@
 ---
 title: "Why your PCIe device isn’t detected (and it’s not a driver issue)"
 date: 2026-03-17
-tags: ["release notes", "deploy"]
-categories: ["deployment"]
+tags: ["pcie", "hardware", "bios", "linux", "pcie-bifurcation", "debugging"]
+categories: ["engineering"]
 description: "A deep dive into why PCIe hardware fails to appear in lspci, covering BIOS, lanes, and bifurcation."
 draft: false
 ---

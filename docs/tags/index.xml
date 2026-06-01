@@ -6,48 +6,90 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Business</title>
-      <link>https://nenadlazic.github.io/tags/business/</link>
-      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/business/</guid>
+      <title>Capacity-Planning</title>
+      <link>https://nenadlazic.github.io/tags/capacity-planning/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/capacity-planning/</guid>
       <description></description>
     </item>
     <item>
-      <title>Marketing</title>
-      <link>https://nenadlazic.github.io/tags/marketing/</link>
-      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/marketing/</guid>
+      <title>Cloud</title>
+      <link>https://nenadlazic.github.io/tags/cloud/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/cloud/</guid>
       <description></description>
     </item>
     <item>
-      <title>Seo</title>
-      <link>https://nenadlazic.github.io/tags/seo/</link>
-      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/seo/</guid>
+      <title>Cost-Engineering</title>
+      <link>https://nenadlazic.github.io/tags/cost-engineering/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/cost-engineering/</guid>
       <description></description>
     </item>
     <item>
-      <title>Small Business</title>
-      <link>https://nenadlazic.github.io/tags/small-business/</link>
-      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/small-business/</guid>
+      <title>Gpu</title>
+      <link>https://nenadlazic.github.io/tags/gpu/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/gpu/</guid>
       <description></description>
     </item>
     <item>
-      <title>Deploy</title>
-      <link>https://nenadlazic.github.io/tags/deploy/</link>
+      <title>On-Prem</title>
+      <link>https://nenadlazic.github.io/tags/on-prem/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/on-prem/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tco</title>
+      <link>https://nenadlazic.github.io/tags/tco/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/tco/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bios</title>
+      <link>https://nenadlazic.github.io/tags/bios/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/deploy/</guid>
+      <guid>https://nenadlazic.github.io/tags/bios/</guid>
       <description></description>
     </item>
     <item>
-      <title>Release Notes</title>
-      <link>https://nenadlazic.github.io/tags/release-notes/</link>
+      <title>Debugging</title>
+      <link>https://nenadlazic.github.io/tags/debugging/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/release-notes/</guid>
+      <guid>https://nenadlazic.github.io/tags/debugging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hardware</title>
+      <link>https://nenadlazic.github.io/tags/hardware/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/hardware/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://nenadlazic.github.io/tags/linux/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pcie</title>
+      <link>https://nenadlazic.github.io/tags/pcie/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/pcie/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pcie-Bifurcation</title>
+      <link>https://nenadlazic.github.io/tags/pcie-bifurcation/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/pcie-bifurcation/</guid>
       <description></description>
     </item>
     <item>
@@ -100,10 +142,10 @@
       <description></description>
     </item>
     <item>
-      <title>Templateing</title>
-      <link>https://nenadlazic.github.io/tags/templateing/</link>
+      <title>Templating</title>
+      <link>https://nenadlazic.github.io/tags/templating/</link>
       <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/templateing/</guid>
+      <guid>https://nenadlazic.github.io/tags/templating/</guid>
       <description></description>
     </item>
     <item>
@@ -125,34 +167,6 @@
       <link>https://nenadlazic.github.io/tags/python/</link>
       <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Audio</title>
-      <link>https://nenadlazic.github.io/tags/audio/</link>
-      <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/audio/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Speech-to-Text</title>
-      <link>https://nenadlazic.github.io/tags/speech-to-text/</link>
-      <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/speech-to-text/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Transcription</title>
-      <link>https://nenadlazic.github.io/tags/transcription/</link>
-      <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/transcription/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Whisper</title>
-      <link>https://nenadlazic.github.io/tags/whisper/</link>
-      <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/whisper/</guid>
       <description></description>
     </item>
     <item>
@@ -310,45 +324,17 @@
       <description></description>
     </item>
     <item>
-      <title>Frontend</title>
-      <link>https://nenadlazic.github.io/tags/frontend/</link>
-      <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/frontend/</guid>
+      <title>Deploy</title>
+      <link>https://nenadlazic.github.io/tags/deploy/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/deploy/</guid>
       <description></description>
     </item>
     <item>
-      <title>Reactivity</title>
-      <link>https://nenadlazic.github.io/tags/reactivity/</link>
-      <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/reactivity/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Vue.js</title>
-      <link>https://nenadlazic.github.io/tags/vue.js/</link>
-      <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/vue.js/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Components</title>
-      <link>https://nenadlazic.github.io/tags/components/</link>
-      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/components/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Composition-Api</title>
-      <link>https://nenadlazic.github.io/tags/composition-api/</link>
-      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/composition-api/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Directives</title>
-      <link>https://nenadlazic.github.io/tags/directives/</link>
-      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/directives/</guid>
+      <title>Release Notes</title>
+      <link>https://nenadlazic.github.io/tags/release-notes/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/release-notes/</guid>
       <description></description>
     </item>
     <item>
@@ -356,13 +342,6 @@
       <link>https://nenadlazic.github.io/tags/authorization/</link>
       <pubDate>Fri, 11 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/tags/authorization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Webdev</title>
-      <link>https://nenadlazic.github.io/tags/webdev/</link>
-      <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/webdev/</guid>
       <description></description>
     </item>
   </channel>

@@ -6,8 +6,22 @@
     <description>Recent content in Engineering on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/categories/engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compute cost: the buy-vs-rent calculation everyone gets wrong</title>
+      <link>https://nenadlazic.github.io/blog/compute-cost-calculation-buy-vs-rent/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/compute-cost-calculation-buy-vs-rent/</guid>
+      <description>&lt;h2 id=&#34;the-question-gets-framed-wrong&#34;&gt;The question gets framed wrong&lt;/h2&gt;&#xA;&lt;p&gt;Every couple of years the same question lands on an architect&amp;rsquo;s desk, dressed up in a fresh deck:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Should we move to the cloud?&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;or, lately, the inverted version:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Should we move &lt;em&gt;off&lt;/em&gt; the cloud?&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Both are the wrong question. The right question is:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Which of our workloads belong on owned iron, which belong on rented capacity, and what is the &lt;em&gt;workload-shape threshold&lt;/em&gt; that flips one into the other?&amp;rdquo;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why your PCIe device isn’t detected (and it’s not a driver issue)</title>
+      <link>https://nenadlazic.github.io/blog/why-your-pcie-card-isnt-detected/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/why-your-pcie-card-isnt-detected/</guid>
+      <description>&lt;h2 id=&#34;introduction--when-your-first-guess-is-wrong&#34;&gt;Introduction – When Your First Guess is Wrong&lt;/h2&gt;&#xA;&lt;p&gt;You install a PCIe device.&lt;br&gt;&#xA;You boot your system.&lt;br&gt;&#xA;You run:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lspci&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;…and it’s not there.&lt;/p&gt;&#xA;&lt;p&gt;Your first instinct?&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;“I probably need to install a driver… again.”&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;That’s usually the wrong conclusion.&lt;/p&gt;&#xA;&lt;p&gt;For many modern PCIe devices, if the system can’t see the hardware, the problem isn’t in the OS at all - it starts much earlier.&lt;/p&gt;&#xA;&lt;p&gt;Before drivers.&#xA;Before Linux.&#xA;Even before the OS boots.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Teaching Tesseract to Read Our Data</title>
       <link>https://nenadlazic.github.io/blog/tesseract-fine-tuning-ocr/</link>
@@ -17,9 +31,9 @@
     </item>
     <item>
       <title>The power of templating in modern engineering with Jinja</title>
-      <link>https://nenadlazic.github.io/blog/templateing-with-jinja/</link>
+      <link>https://nenadlazic.github.io/blog/templating-with-jinja/</link>
       <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/blog/templateing-with-jinja/</guid>
+      <guid>https://nenadlazic.github.io/blog/templating-with-jinja/</guid>
       <description>&lt;p&gt;Templating is one of the most underrated superpowers in modern software and platform engineering. Simply put, it lets you generate files from reusable, parameterized blueprints, avoiding repetitive and error-prone configuration work.&#xA;Among the many templating tools available, Jinja stands out as one of the cleanest, most powerful, and versatile - perfect for generating dynamic configurations, YAML, scripts, and infrastructure definitions.&lt;/p&gt;&#xA;&lt;p&gt;In this article, we focus on Jinja - why it matters, how it’s used, and where it delivers the most value. Along the way, we’ll briefly compare it to other templating approaches, like Helm and Go templates, so engineers can see where each tool fits best.&lt;/p&gt;</description>
     </item>
   </channel>

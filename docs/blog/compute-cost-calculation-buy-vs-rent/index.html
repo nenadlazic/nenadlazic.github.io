@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Architect — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="google-site-verification" content="BNTdqVbAxPtce9qZkRnwXoAH5Wc9VZD66vX5UK1HXUM" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.8757001cedb25173e0e59cfd7ecea6f401eb56e08704a576674ea322f7cbcf17.css"
+    integrity="sha256-h1cAHO2yUXPg5Zz9fs6m9AHrVuCHBKV2Z06jIvfLzxc="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="https://nenadlazic.github.io/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "31022709b8d24ae089f3fc7035bd7ffa"}'></script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Compute cost: the buy-vs-rent calculation everyone gets wrong</h1>
+  <p class="mb-1">May 21, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <h2 id="the-question-gets-framed-wrong">The question gets framed wrong</h2>
+<p>Every couple of years the same question lands on an architect&rsquo;s desk, dressed up in a fresh deck:</p>
+<blockquote>
+<p>&ldquo;Should we move to the cloud?&rdquo;</p></blockquote>
+<p>or, lately, the inverted version:</p>
+<blockquote>
+<p>&ldquo;Should we move <em>off</em> the cloud?&rdquo;</p></blockquote>
+<p>Both are the wrong question. The right question is:</p>
+<blockquote>
+<p>&ldquo;Which of our workloads belong on owned iron, which belong on rented capacity, and what is the <em>workload-shape threshold</em> that flips one into the other?&rdquo;</p></blockquote>
+<p>A binary buy-vs-rent answer is almost always a sign that someone is selling something - a cloud migration, a reverse migration, or a CFO narrative. Real infrastructure ends up as a portfolio, and the only interesting work is figuring out where the boundaries between the buckets belong.</p>
+<p>This post is about why the standard TCO (Total Cost of Ownership) spreadsheet lies, where the lie hides, and the variables that actually decide the answer in production. It closes with a concrete worked example: sizing a 24 GB FP16 GPU for a live-transcription pipeline, using a real cost matrix.</p>
+<h2 id="the-cost-surfaces-nobody-puts-on-the-slide">The cost surfaces nobody puts on the slide</h2>
+<p>Both sides of the calculation have visible costs and hidden costs. The visible ones go on the slide. The hidden ones decide your budget.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Rented compute</th>
+          <th>Owned compute</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Compute hours (on-demand / RI / savings plan)</td>
+          <td>Capex - servers, accelerators, switches, ToR, PDUs, cabling</td>
+      </tr>
+      <tr>
+          <td>Storage - block, object, snapshots, multi-AZ replication</td>
+          <td>Colo or in-house DC - rack-units, kW draw, cross-connects, remote-hands</td>
+      </tr>
+      <tr>
+          <td><strong>Egress</strong> - data leaving the cloud: $0.05-0.09/GB out (inbound is free); even traffic between zones is billed</td>
+          <td>Power and cooling - typically <strong>30-40%</strong> of run-rate; PUE matters</td>
+      </tr>
+      <tr>
+          <td>IOPS and throughput for managed storage</td>
+          <td>Spares and RMA - <strong>5-10%</strong> spare inventory minimum</td>
+      </tr>
+      <tr>
+          <td>Managed-service premium (RDS, MSK, EKS, NAT GW hours)</td>
+          <td>Refresh cycle - 3-5y general, <em>much shorter</em> for accelerators</td>
+      </tr>
+      <tr>
+          <td>Observability ingest + retention (often the 3rd largest line item)</td>
+          <td>Headcount - SRE, DC techs, procurement</td>
+      </tr>
+      <tr>
+          <td>Support contract (Business / Enterprise = % of total spend)</td>
+          <td>Cost of capital - capex is money that could fund something else</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Stranded capacity - gap between provisioned and used</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Abbreviations:</strong></p>
+<ul>
+<li><strong>RI</strong> - reserved instance</li>
+<li><strong>AZ</strong> - availability zone</li>
+<li><strong>IOPS</strong> - I/O operations per second</li>
+<li><strong>capex</strong> - capital expenditure</li>
+<li><strong>ToR</strong> - top-of-rack switch</li>
+<li><strong>PDU</strong> - power distribution unit</li>
+<li><strong>colo</strong> - colocation (your hardware in rented DC space)</li>
+<li><strong>DC</strong> - data center</li>
+<li><strong>RMA</strong> - hardware replacement</li>
+<li><strong>PUE</strong> - datacenter energy overhead</li>
+<li><strong>RDS / MSK / EKS / NAT GW</strong> - AWS managed services</li>
+<li><strong>SRE</strong> - site reliability engineer</li>
+</ul>
+<p>The two surfaces are not symmetric. The cloud surface is dense with small recurring charges that are easy to model individually and easy to miss collectively. The owned surface is dominated by a few large capex events with long-tailed opex underneath. The accounting departments treat them differently, the engineering teams treat them differently, and the comparison only becomes honest when both are reduced to the same <code>$ per unit-of-work per year</code>.</p>
+<h2 id="the-variables-that-actually-decide">The variables that actually decide</h2>
+<p>Most TCO models compare a single unit price - <code>$/vCPU/hour</code>, <code>$/GPU/hour</code>, <code>$/GB</code> - cloud against owned, and stop there. This is a category error. Unit price is not a decision input; it is a number that <em>falls out</em> of deeper variables. Compare the unit prices and you are reading the answer off the wrong line. The variables below are what actually move it.</p>
+<h3 id="workload-shape---the-hidden-multiplier">Workload shape - the hidden multiplier</h3>
+<p>Workload shape is the ratio of peak demand to sustained demand, plus the predictability of the peaks. A workload running 24/7 at 80% utilization has the opposite cost profile from one running 4 hours a day at 95% peak and idle the rest of the time.</p>
+<p>The three shapes that matter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  STEADY-STATE                SPIKY UNPREDICTABLE         SPIKY PREDICTABLE
+</span></span><span style="display:flex;"><span>  (own it)                    (rent it)                   (hybrid)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>util                          util                        util
+</span></span><span style="display:flex;"><span>100│                          100│   █        █          100│      ▄        ▄
+</span></span><span style="display:flex;"><span> 80│████████████████████       80│   █        █           80│     ███      ███
+</span></span><span style="display:flex;"><span> 60│████████████████████       60│   █  █  █  █           60│    █████    █████
+</span></span><span style="display:flex;"><span> 40│████████████████████       40│ █ █  █  █  █           40│ ▄▄██████▄▄▄██████▄
+</span></span><span style="display:flex;"><span> 20│████████████████████       20│ █ █  █  ███ █          20│███████████████████
+</span></span><span style="display:flex;"><span>  0└─────────────────────►      0└─────────────────►       0└─────────────────►
+</span></span><span style="display:flex;"><span>       time (24/7)                    time                       time (diurnal)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  production databases,        a new product launch,   Black Friday sales,
+</span></span><span style="display:flex;"><span>  email &amp; file servers,        a marketing campaign,   streaming sport events,
+</span></span><span style="display:flex;"><span>  ERP / CRM systems            breaking-news traffic   busy by day, idle at night
+</span></span></code></pre></div><ul>
+<li><strong>Steady-state, high-utilization</strong>: owned iron wins by a wide margin once utilization passes ~50-60%. The crossover happens because cloud pricing implicitly charges you for elasticity you aren&rsquo;t using.</li>
+<li><strong>Spiky, unpredictable</strong>: cloud almost always wins, even at uncomfortable unit prices, because the alternative is overprovisioning owned capacity to the peak.</li>
+<li><strong>Spiky but predictable</strong>: the optimal answer is hybrid - own the baseline, rent the burst. Pure cloud or pure on-prem are both bad here.</li>
+</ul>
+<p>Engineering implication: before any TCO math, build a workload-shape inventory. For each workload, compute <code>p50/p99 demand</code> and <code>peak/sustained ratio</code> over a representative period. Those two numbers tell you which bucket the workload belongs in before you ever look at price.</p>
+<h3 id="breakeven-in-hours-not-years">Breakeven in hours, not years</h3>
+<p>Most TCO models report payback in <em>years</em>. That hides the answer. The useful framing is:</p>
+<blockquote>
+<p>&ldquo;How many hours of actual usage does it take before the one-time purchase is cheaper than continuing to rent?&rdquo;</p></blockquote>
+<p>Divide purchase price by rental rate, get a number of hours. Then compare against the workload&rsquo;s realistic utilization.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  cumulative
+</span></span><span style="display:flex;"><span>  cost ($)              rent (linear: rate × hours)
+</span></span><span style="display:flex;"><span>       ▲                              ╱
+</span></span><span style="display:flex;"><span>       │                            ╱
+</span></span><span style="display:flex;"><span>       │                          ╱
+</span></span><span style="display:flex;"><span>       │                        ╱
+</span></span><span style="display:flex;"><span>       │                      ╱
+</span></span><span style="display:flex;"><span>       │                    ╳────────── breakeven
+</span></span><span style="display:flex;"><span>       │                  ╱│
+</span></span><span style="display:flex;"><span>       │                ╱  │
+</span></span><span style="display:flex;"><span>       │              ╱    │           buy (flat: capex + power)
+</span></span><span style="display:flex;"><span>       │            ╱──────┼─────────────────────────────
+</span></span><span style="display:flex;"><span>       │          ╱        │
+</span></span><span style="display:flex;"><span>       │        ╱          │
+</span></span><span style="display:flex;"><span>       │      ╱            │
+</span></span><span style="display:flex;"><span>       │    ╱              │
+</span></span><span style="display:flex;"><span>       │  ╱                │
+</span></span><span style="display:flex;"><span>       │╱                  │
+</span></span><span style="display:flex;"><span>       └───────────────────┴────────────────────────────►
+</span></span><span style="display:flex;"><span>                       hours of use            
+</span></span><span style="display:flex;"><span>                    (e.g. ~1,500h ≈ 60-75 days continuous)
+</span></span></code></pre></div><p>A box that breaks even at 1,500 hours pays for itself in 60-75 days of continuous use; one that needs 8,000 hours might never pay for itself before the hardware is obsolete.</p>
+<p>This framing also surfaces a brutal truth: hardware that has a long buy-vs-rent breakeven on cheap silicon (consumer GPUs, mid-range CPUs) is <em>more</em> attractive to buy than premium silicon with expensive cloud equivalents - because the cloud premium on premium silicon is what extends the breakeven.</p>
+<h3 id="mvp-tier-vs-saas-tier-pricing---the-rate-that-doesnt-survive-contact-with-production">MVP-tier vs SaaS-tier pricing - the rate that doesn&rsquo;t survive contact with production</h3>
+<p>Cloud pricing is not one curve. It is at least two:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Tier</th>
+          <th>Providers</th>
+          <th>Typical rate vs hyperscaler</th>
+          <th>What you get</th>
+          <th>What&rsquo;s missing</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>MVP-tier</strong></td>
+          <td>RunPod, Vast.ai, Lambda, lower Nebius</td>
+          <td>30-60%</td>
+          <td>Raw compute, low friction, fast spin-up</td>
+          <td>No SLA, no GDPR DPA, no VPC, no enterprise support</td>
+      </tr>
+      <tr>
+          <td><strong>SaaS-tier</strong></td>
+          <td>AWS, GCP, Azure, SOC 2 providers</td>
+          <td>100% (baseline)</td>
+          <td>Financially-backed SLA, GDPR DPA, VPC, enterprise support, CISO-acceptable procurement</td>
+          <td>Pays 2-4x the neo-cloud rate</td>
+      </tr>
+  </tbody>
+</table>
+<p>The TCO spreadsheet collapses if you build it on MVP-tier numbers but the production deployment needs SaaS-tier guarantees. Neo-cloud rates are not contractual long-term - capacity, region, and pricing can all move under you. Treat them as a snapshot, not a commitment. The same workload that costs $0.80/hr on neo-cloud may cost $2.50/hr the moment it has to live behind a hyperscaler load balancer with a real SLA attached.</p>
+<h3 id="accelerator-depreciation---the-3-5-year-lie">Accelerator depreciation - the 3-5 year lie</h3>
+<p>Finance amortizes hardware over 3-5 years on a straight line. For CPUs and storage that is roughly right. For accelerators - GPUs, ASICs (application-specific integrated circuits), NPUs (neural processing units) - it is silently wrong, and the error always makes buying look better than it is.</p>
+<p>Why: an accelerator&rsquo;s performance per watt and per dollar improves ~1.5-2x per generation, and a new generation lands every 18-24 months. Take NVIDIA&rsquo;s datacenter GPUs as the obvious example: an A100 was cost-competitive in 2020; the H100 reset the economics by 2023, the B200 again by 2025. Your card still runs - it just loses money against a more efficient replacement every hour it stays powered on.</p>
+<p>So model owned accelerators on a <strong>2-3 year horizon, not 5</strong>. If the purchase still wins at 2 years, the decision is real. If it only wins at 5, you are booking value the next chip will erase.</p>
+<h3 id="egress---the-silent-killer">Egress - the silent killer</h3>
+<p>For any workload that emits more bytes than it ingests - video delivery, data export, off-cloud backups, multi-region replication - egress is the line item that breaks the model.</p>
+<p>Order of magnitude. A 5 Mbps live stream to 1,000 concurrent viewers for one hour:</p>
+<ul>
+<li>5 Mbps × 3,600 s = 18,000 Mb = 2.25 GB per viewer-hour.</li>
+<li>1,000 viewers × 2.25 GB = 2,250 GB ≈ 2.25 TB.</li>
+<li>At $0.085/GB egress: ~$191 per hour, per 1,000 viewers.</li>
+</ul>
+<p>Scale that to a million viewers across a workday and egress alone justifies an owned CDN. Where egress dominates compute, it decides buy-vs-rent before you ever price a server.</p>
+<h2 id="tradeoffs-and-failure-modes">Tradeoffs and failure modes</h2>
+<p>Where the model blows up in production:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Failure mode</th>
+          <th>Symptom on the bill</th>
+          <th>What it actually means</th>
+          <th>Fix</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Egress surprise</strong></td>
+          <td>Monthly bill triples</td>
+          <td>&ldquo;Safety&rdquo; cross-region replication enabled</td>
+          <td>Alert on egress <em>rate</em>, not just total</td>
+      </tr>
+      <tr>
+          <td><strong>Stranded capacity</strong></td>
+          <td>Owned box at 20% util</td>
+          <td>Bought for a peak that never came</td>
+          <td>Colocate other workloads onto the spare</td>
+      </tr>
+      <tr>
+          <td><strong>Stranded commitment</strong></td>
+          <td>RI on a deprecated instance family</td>
+          <td>3-year forecast was wrong at 18 months</td>
+          <td>Match RI duration to workload predictability</td>
+      </tr>
+      <tr>
+          <td><strong>Refresh stall</strong></td>
+          <td>GPU TCO sliding behind cloud over time</td>
+          <td>Bought accelerators on 5y, silicon moves on 2y</td>
+          <td>Budget refresh on 2-3y horizon, not 5y</td>
+      </tr>
+      <tr>
+          <td><strong>Headcount drift</strong></td>
+          <td>&ldquo;Cloud was supposed to cut SRE cost&rdquo;</td>
+          <td>Same ops work, different shape</td>
+          <td>Don&rsquo;t model headcount cuts into cloud TCO</td>
+      </tr>
+      <tr>
+          <td><strong>CDN-as-compute</strong></td>
+          <td>&ldquo;Transcoding&rdquo; line item dominated by delivery</td>
+          <td>Egress hidden in a managed video service</td>
+          <td>Break out delivery cost separately from compute</td>
+      </tr>
+  </tbody>
+</table>
+<p>Two more that don&rsquo;t fit the table:</p>
+<ul>
+<li><strong>Stateless is portable; stateful is sticky.</strong> Moving stateless workers is a Terraform exercise; moving 50 TB of hot Postgres is a quarter of work. Decide early where the data lives - gravity is permanent.</li>
+<li><strong>Reserved / savings plans are a forecast, not a discount.</strong> A 3-year commit assumes you still need that exact instance shape in 36 months - almost never true for accelerators. Match commit duration to <em>workload predictability</em>, not maximum discount.</li>
+</ul>
+<h2 id="worked-example-sizing-a-gpu-for-real-time-audio-transcription--translation">Worked example: sizing a GPU for real-time audio transcription &amp; translation</h2>
+<p>Time to put the framework to work on a real decision. A recent project needed real-time audio transcription - a Whisper-class speech-to-text model feeding machine translation, FP16 inference, 2-3 parallel streams per host. That pins working VRAM at around 24 GB, with 48 GB wanted where several translation models stay hot at once. The catch: the buy-vs-rent question landed <em>before</em> the MVP shipped, so there was no utilization data to lean on - exactly the situation where the framework has to do the heavy lifting.</p>
+<p>So we shortlisted every GPU that clears the 24-48 GB bar and priced each one both ways - buy and rent. Here is the matrix that came out of it (GPU market as of mid-2026; re-validate before any purchase):</p>
+<table>
+  <thead>
+      <tr>
+          <th>GPU</th>
+          <th>VRAM</th>
+          <th>Purchase (USD)</th>
+          <th>Power @ 1000 h</th>
+          <th>Buy total @ 1000 h</th>
+          <th>MVP rate (USD/h)</th>
+          <th>SaaS rate (USD/h)</th>
+          <th>Rent total @ 1000 h</th>
+          <th>Buy beats rent after (h)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>A10 / A10G</td>
+          <td>24 GB</td>
+          <td>~1,900-2,300</td>
+          <td>~$17</td>
+          <td>~1,920-2,320</td>
+          <td>~1.26 (AWS g5.xlarge)</td>
+          <td>~1.26 (AWS - already SaaS-grade)</td>
+          <td>1,260</td>
+          <td><strong>~1,500-1,800</strong></td>
+      </tr>
+      <tr>
+          <td>L4</td>
+          <td>24 GB</td>
+          <td>~2,500-3,000</td>
+          <td>~$8</td>
+          <td>~2,510-3,010</td>
+          <td>~0.80 (GCP g2)</td>
+          <td>~0.80 (GCP - already SaaS-grade)</td>
+          <td>800</td>
+          <td><strong>~3,100-3,800</strong></td>
+      </tr>
+      <tr>
+          <td>L40S</td>
+          <td>48 GB</td>
+          <td>~7,500-9,500</td>
+          <td>~$39</td>
+          <td>~7,540-9,540</td>
+          <td>~1.10 (RunPod)</td>
+          <td>~1.70 (Nebius FI)</td>
+          <td>1,100</td>
+          <td><strong>~6,800-8,600</strong></td>
+      </tr>
+      <tr>
+          <td>A100 80 GB PCIe</td>
+          <td>80 GB</td>
+          <td>~9,200-12,000</td>
+          <td>~$33</td>
+          <td>~9,230-12,030</td>
+          <td>~1.50 (RunPod)</td>
+          <td>~3.43 (AWS p4de)</td>
+          <td>1,500</td>
+          <td><strong>~6,100-8,000</strong></td>
+      </tr>
+      <tr>
+          <td>RTX 4090</td>
+          <td>24 GB</td>
+          <td>~2,500</td>
+          <td>~$50</td>
+          <td>~2,550</td>
+          <td>~0.40 (Vast.ai)</td>
+          <td>n/a - consumer tier</td>
+          <td>400</td>
+          <td><strong>~6,300</strong></td>
+      </tr>
+      <tr>
+          <td>H100 80 GB PCIe</td>
+          <td>80 GB</td>
+          <td>~25,000-32,000</td>
+          <td>~$39</td>
+          <td>~25,040-32,040</td>
+          <td>~3.00 (EU neocloud)</td>
+          <td>~12.25 (AWS p5)</td>
+          <td>3,000</td>
+          <td><strong>~8,300-10,700</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>Read the matrix through that framework and four things jump out, roughly in the order you should weigh them:</p>
+<p><strong>Breakeven in hours is the right unit.</strong> The A10 pays for itself in 1,500-1,800 hours - 60-75 days of continuous use. The L4 needs 3,100-3,800 despite being cheaper to <em>rent</em>, because its rental rate is lower too. The H100 needs 8,300-10,700 against the cheapest neo-cloud rate - over a year of full-duty use to break even on silicon that has 18-24 months before a successor lands.</p>
+<p><strong>The 4090 trap.</strong> Cheapest box, lowest neo-cloud rate, fastest raw breakeven - and almost certainly wrong for production, because there is no SaaS-grade rent path. The moment compliance, SLA, or VPC isolation enters the room, it drops off the list. Fine for an internal dev box; wrong for a customer-facing service.</p>
+<p><strong>Tier matters more than the headline rate.</strong> The A100 looks great at $1.50/hr on neo-cloud - until the same workload behind AWS p4de is $3.43/hr (2.3x). The H100 gap is worse: $3 vs $12.25 (4x). A TCO model built on neo-cloud rates but promising hyperscaler reliability is fiction. Same trap outside GPUs: R2 vs S3 + egress, neo-CDNs vs CloudFront, indie Postgres vs RDS. The neo-tier rate is real - it just isn&rsquo;t the production rate.</p>
+<p><strong>The non-GPU overhead.</strong> At ~1,000 GPU-hours/month, a production deployment adds $50-230/month of supporting infrastructure - load balancer, NAT gateway, registry, log ingest, DNS, TLS. Small alone, real in aggregate, and never on the napkin.</p>
+<p>Put those four together and the answer writes itself: <strong>rent A10 / A10G on AWS Frankfurt for the MVP</strong> - low upfront cost, SaaS-grade out of the box, EU region for GDPR proximity, no on-call rota. Buying gets revisited only when all three of these hold: sustained utilization above ~50% (~360 GPU-hours/month), a single-region deployment, and an on-call rotation to own host uptime.</p>
+<p>The pattern generalizes: <strong>rent until the workload is proven, then re-tier</strong>. Not laziness - sequencing. Buying before the shape is observable is a bet on a forecast; renting buys the data that makes the forecast unnecessary.</p>
+<h2 id="lessons-learned">Lessons learned</h2>
+<p>A few hard-earned ones:</p>
+<ul>
+<li><strong>Reduce to <code>$ per unit-of-work per year</code>, not <code>$/hour</code>.</strong> Unit of work = stream-hour, transcribed minute, request, GB processed - whatever the business actually charges for. Anything else is theater.</li>
+<li><strong>Workload-shape numbers (<code>p50/p99</code>, <code>peak/sustained</code>) are non-negotiable inputs.</strong> Walking into a buy-vs-rent meeting without them means you will lose to whoever has them, even if their analysis is otherwise worse.</li>
+<li><strong>Egress is the first thing to model, not the last.</strong> If egress dominates, the rest of the spreadsheet is decoration.</li>
+<li><strong>Amortize accelerators on 2-3 year horizons.</strong> Anything longer is borrowing optimism from finance.</li>
+<li><strong>Hybrid is the steady state, not a transition phase.</strong> Treat it as the target architecture, not a compromise you intend to clean up later.</li>
+<li><strong>Forecast errors are asymmetric.</strong> Underprovisioning owned iron is a 6-month problem; overprovisioning is a 5-year problem. Buy lean, rent the spikes.</li>
+</ul>
+<h2 id="if-i-were-redesigning-today">If I were redesigning today</h2>
+<p>I would stop treating the TCO spreadsheet as a one-shot artifact and build a <strong>continuous cost model</strong> as a first-class service: workload-shape telemetry per service, a planner that maps each workload to a tier (owned / committed-cloud / on-demand) from observed shape rather than tribal memory, and quarterly re-tiering against real data. The question doesn&rsquo;t go away - but once the platform produces honest inputs, the answer stops being a debate and becomes a derived number. That is the only version of this calculation worth running twice.</p>
+
+</div>
+<hr class="mt-10 mb-5">
+<div class="author-bio not-prose">
+  <p class="mb-2">
+    <strong>Nenad Lazić</strong> - Software Architect &amp; Technical Lead.<br>
+    I write about system design, scalability, AI in production, and the trade-offs behind real architecture decisions.
+  </p>
+  <p class="mb-0">
+    👉 <a href="https://www.linkedin.com/in/nenad-lazic-7110a310a/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+  </p>
+</div>
+
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/why-your-pcie-card-isnt-detected/"
+      title="Why your PCIe device isn’t detected (and it’s not a driver issue)"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

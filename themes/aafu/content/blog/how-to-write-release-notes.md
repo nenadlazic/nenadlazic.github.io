@@ -3,7 +3,7 @@ title: "How to write release notes"
 date: 2025-08-10
 tags: ["release notes", "deploy"]
 categories: ["deployment"]
-description: "writing release notes"
+description: "How to write release notes that actually get read - what to include, who they serve, and a reusable template with a compatibility matrix."
 draft: false
 ---
 

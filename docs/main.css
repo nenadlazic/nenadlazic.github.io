@@ -718,6 +718,9 @@
   .mt-1 {
     margin-top: calc(var(--spacing) * 1) !important;
   }
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10) !important;
+  }
   .mr-4 {
     margin-right: calc(var(--spacing) * 4) !important;
   }
@@ -739,6 +742,9 @@
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4) !important;
   }
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5) !important;
+  }
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6) !important;
   }
@@ -756,6 +762,9 @@
   }
   .grid {
     display: grid !important;
+  }
+  .hidden {
+    display: none !important;
   }
   .table {
     display: table !important;

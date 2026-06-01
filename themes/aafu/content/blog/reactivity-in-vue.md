@@ -4,7 +4,7 @@ date: 2025-07-25
 tags: ["vue.js", "reactivity", "frontend"]
 categories: ["frontend"]
 description: "vue js reactivity"
-draft: false
+draft: true
 ---
 
 One of the most powerful features of Vue.js and the reason why it feels so intuitive is its **reactivity system**. It allows your UI to automatically update when the underlying data changes, without writing a single line of manual DOM manipulation.

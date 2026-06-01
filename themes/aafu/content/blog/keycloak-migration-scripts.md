@@ -3,7 +3,7 @@ title: "Keycloak migration scripts: your shortcut to consistent IAM"
 date: 2025-08-14
 tags: ["keycloak", "security", "backend"]
 categories: ["security"]
-description: "writing keycloak migration scripts"
+description: "Treat Keycloak configuration as code - write migration scripts for realms, clients, and roles to keep IAM consistent and reproducible across environments."
 draft: false
 ---
 

@@ -4,7 +4,7 @@ date: 2025-07-04
 tags: ["vue.js", "webdev"]
 categories: ["frontend"]
 description: "vue js intro"
-draft: false
+draft: true
 ---
 ## What is Vue.js?
 Vue is a powerful yet easy-to-use JavaScript framework that lets you build dynamic, interactive user interfaces with ease. It works with standard HTML, CSS, and JavaScript, leveraging a clean, component-based structure that helps you craft everything from simple page elements to fully-featured, complex applications - all without the headache.

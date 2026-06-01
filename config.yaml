@@ -11,8 +11,8 @@ build:
 params:
   title: Nenad Lazić
   author: Nenad Lazić
-  description: Software Engineer — Portfolio, Blog & Contact
-  keywords: [Nenad, Lazic, Lazić, CV, Portfolio, Senior Software Engineer, Technical Lead, Blog, Java, C, C++, Streaming, DTV, Android, AI]
+  description: Software Architect — Portfolio, Blog & Contact
+  keywords: [Nenad, Lazic, Lazić, CV, Portfolio, Software Architect, Solution Architect, Senior Software Engineer, Technical Lead, Blog, Java, C, C++, Streaming, DTV, Android, AI]
   copyright: >-
     powered by [hugo](https://gohugo.io/) & deployed on
     [GitHub Pages](https://pages.github.com/)
@@ -32,7 +32,7 @@ params:
 
   profile:
     name: "Nenad Lazić"
-    tagline: Software Engineer
+    tagline: Software Architect
     location: "Belgrade, Serbia"
     photo: profile.jpg
   social:
@@ -65,7 +65,7 @@ params:
   aboutme:
     title: About Me
     icon: fas fa-user-tie
-    description: Senior Software Engineer and Technical Lead with more than 10 years of experience building and leading diverse software projects across client and backend systems. Strong background in system design and architectural planning, with hands-on expertise in C, C++, Java, Spring Boot, Kotlin, Python, Docker, Kubernetes, Android, and related technologies. I enjoy solving complex problems through out-of-the-box thinking and a goal-oriented mindset. I take ownership of projects end-to-end, combining technical leadership with clear organization and prioritization to deliver reliable, production-ready systems.
+    description: Software Architect and Technical Lead with more than 10 years of experience designing, building, and leading diverse software projects across client and backend systems. Strong background in system design and architectural planning, with hands-on expertise in C, C++, Java, Spring Boot, Kotlin, Python, Docker, Kubernetes, Android, and related technologies. I enjoy solving complex problems through out-of-the-box thinking and a goal-oriented mindset. I take ownership of projects end-to-end, combining technical leadership with clear organization and prioritization to deliver reliable, production-ready systems.
   experience:
     title: Experiences
     icon: fas fa-briefcase

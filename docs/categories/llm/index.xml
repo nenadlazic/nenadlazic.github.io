@@ -13,7 +13,7 @@
       <link>https://nenadlazic.github.io/blog/ai-powered-api/</link>
       <pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/blog/ai-powered-api/</guid>
-      <description>&lt;p&gt;Large Language Models (LLMs) have become the backbone of modern AI: they can generate text, summarize documents, answer questions, and help automate developer workflows. But an LLM on its own is just a very good statistical text generator. To build useful, reliable systems, we often combine them with software that provides memory, facts, actions, and guardrails.&lt;/p&gt;&#xA;&lt;p&gt;Using LLMs usually means sending data to the cloud which can be expensive, slow, and raise privacy concerns.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Large Language Models (LLMs) have become the backbone of modern AI: they can generate text, summarize documents, answer questions, and help automate developer workflows.&lt;/p&gt;&#xA;&lt;p&gt;But here is the framing that matters for anyone designing systems: &lt;strong&gt;an LLM is just another component - only an unusual one.&lt;/strong&gt; It is probabilistic (the same input can return different output), stateless (it remembers nothing between calls), and it can be confidently wrong. Almost everything we call an &amp;ldquo;AI-powered backend&amp;rdquo; is the engineering we wrap &lt;em&gt;around&lt;/em&gt; that component to make it useful and reliable: memory, facts, actions, and guardrails.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

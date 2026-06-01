@@ -3,21 +3,29 @@ title: "Understanding AI-powered backends"
 date: 2025-09-19
 tags: ["spring boot", "llm", "ollama", "docker", "java"]
 categories: ["backend", "ai", "llm"]
-description: "Learn how to run a local LLM with Ollama in Docker and connect it to a Spring Boot backend for a fully private AI-powered API."
+description: "The architect's mental model for AI-powered backends: what LLMs and agents really are, the cloud-vs-self-hosted decision, and the engineering you wrap around the model."
 draft: false
 ---
 
-Large Language Models (LLMs) have become the backbone of modern AI: they can generate text, summarize documents, answer questions, and help automate developer workflows. But an LLM on its own is just a very good statistical text generator. To build useful, reliable systems, we often combine them with software that provides memory, facts, actions, and guardrails.
+Large Language Models (LLMs) have become the backbone of modern AI: they can generate text, summarize documents, answer questions, and help automate developer workflows.
 
-Using LLMs usually means sending data to the cloud which can be expensive, slow, and raise privacy concerns.
+But here is the framing that matters for anyone designing systems: **an LLM is just another component - only an unusual one.** It is probabilistic (the same input can return different output), stateless (it remembers nothing between calls), and it can be confidently wrong. Almost everything we call an "AI-powered backend" is the engineering we wrap *around* that component to make it useful and reliable: memory, facts, actions, and guardrails.
 
-In this blog, we’ll focus on key concepts behind AI-powered backends:
-- How LLMs work and what they can do
-- What AI agents are and how they differ from simple LLM integrations
-- Key challenges when building AI-driven services
-- How local deployment can give you privacy, control, and flexibility
+This post is the mental model before the build - deliberately high-level. We'll cover:
+- How LLMs work, and what they can (and can't) do
+- What AI agents are, and how they differ from a plain LLM call
+- The real challenges of putting an LLM behind an API
+- Why and when self-hosting buys you privacy, control, and lower cost
 
-By understanding these fundamentals, you’ll be better prepared to design systems that integrate LLMs and agents in practical, reliable ways whether in Spring Boot, other backend frameworks, or future prototypes.
+Later posts in this series turn these ideas into a working service. This one is about getting the architecture straight first.
+
+## The shape of an AI-powered backend
+
+Before the concepts, here is the picture worth keeping in your head:
+
+![Anatomy of an AI-powered backend: a client request flows through your API and orchestration layer to the LLM, with privacy, cost, latency, guardrails, and observability as cross-cutting concerns](/images/ai-powered-backend-anatomy.png)
+
+The model is just one box. Everything else in that picture is yours to design - and it is where reliability is won or lost.
 
 ## Understanding LLMs, AI Agents, and Challenges
 
@@ -43,17 +51,25 @@ In practice, an agent typically:
 
 In short, an AI agent is **LLM + orchestration + autonomous decision-making**, turning raw text generation into actionable, context-aware automation.
 
+The architectural catch: every bit of autonomy you hand an agent is a bit of determinism you give up. More steps and more tool access mean more capability - and a larger surface for things to go wrong. Taming that surface is the hard part, and the subject of later posts in this series.
+
 
 ## Self-Hosted LLMs
 
 When starting to build AI-powered backends, many developers first try **cloud-based LLM APIs** like OpenAI, Gemini, or Claude. This approach is attractive because it’s fast and easy: you get a pre-trained model with minimal setup - just an API key and a few lines of code.
 
-However, this approach has some trade-offs:
-- Cost: pay-per-token billing can become expensive for frequent or large-scale use
-- Privacy: sensitive data is sent to third-party servers
-- Latency: every request requires a network round-trip
+However, this approach has trade-offs. The decision is really cloud vs self-hosted, and it comes down to a few axes:
 
-Once these limitations become significant, moving to private or local deployment becomes appealing.
+| Concern | Cloud LLM API | Self-hosted LLM |
+|---|---|---|
+| **Cost** | Pay-per-token, scales with usage | Fixed hardware cost, cheaper at volume |
+| **Privacy / control** | Data leaves your perimeter; you rely on the provider's terms | Prompts and data stay in-house by construction |
+| **Latency** | Network round-trip per call | Local, no egress hop |
+| **Setup** | API key, ready in minutes | Provision compute, manage the runtime |
+
+A fair caveat on that privacy row, because it is easy to overstate in either direction. The serious providers offer enterprise terms - data-processing agreements, zero-retention endpoints, and commitments not to train on your traffic - and for many workloads that is genuinely enough. But be precise about what you are buying: a *contractual* guarantee, not a technical one. Your data still leaves your network, a third party still processes it, and that party is an added attack surface - breaches and misconfigurations happen to everyone. Self-hosting does not make you magically secure; it changes the question from "do I trust their promise and their security?" to "do I trust my own?" - and for regulated or highly sensitive data, removing the third party entirely is sometimes the only answer that passes an audit.
+
+Once the cost, privacy, or latency rows start to hurt, moving to private or local deployment becomes appealing.
 
 You don’t need a supercomputer to run a self-hosted LLM. Depending on the model size, a modern workstation or small server may suffice. Tools like **Ollama** provide a simple runtime to run pre-trained models in Docker under your control.
 
@@ -91,12 +107,12 @@ This is usually only practical for research or very specialized projects. It req
 Key takeaway: for most projects, the practical workflow is to pick a pre-trained model, optionally fine-tune it for your domain, and deploy it in a self-hosted setup for full privacy, control, and low latency.
 
 ## Conclusion
-In this post, we explored the key concepts behind AI-powered backends: how LLMs work, what AI agents are, and the benefits of self-hosted models. We also looked at pre-trained models, fine-tuning techniques, and how deploying models locally gives you privacy, control, and flexibility.
+If there is one thing to take from this post, it is the framing: **the LLM is the easy part.** Pulling a model and getting text back is a few lines of code. The architecture is everything around it - choosing cloud vs self-hosted, keeping data private, controlling cost and latency, and putting guardrails between a probabilistic component and your users.
 
-By understanding these fundamentals, you’re now equipped to start designing systems that integrate LLMs and agents in practical, reliable ways - whether in Spring Boot, other backend frameworks, or experimental prototypes.
+Get that shape right, and the rest of this series is just filling it in.
 
 ## Next Steps
-In the next posts, we’ll build a complete Spring Boot-based AI agent that integrates with a self-hosted LLM. You’ll see how to:
+In the next posts, we’ll build a complete AI agent that integrates with a self-hosted LLM. You’ll see how to:
 - Send structured queries from your API to the local model
 - Receive and process responses
 - Orchestrate multiple tasks, turning raw LLM outputs into actionable, context-aware automation

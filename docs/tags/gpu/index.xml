@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gpu on </title>
+    <link>https://nenadlazic.github.io/tags/gpu/</link>
+    <description>Recent content in Gpu on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nenadlazic.github.io/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compute cost: the buy-vs-rent calculation everyone gets wrong</title>
+      <link>https://nenadlazic.github.io/blog/compute-cost-calculation-buy-vs-rent/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/compute-cost-calculation-buy-vs-rent/</guid>
+      <description>&lt;h2 id=&#34;the-question-gets-framed-wrong&#34;&gt;The question gets framed wrong&lt;/h2&gt;&#xA;&lt;p&gt;Every couple of years the same question lands on an architect&amp;rsquo;s desk, dressed up in a fresh deck:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Should we move to the cloud?&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;or, lately, the inverted version:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Should we move &lt;em&gt;off&lt;/em&gt; the cloud?&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Both are the wrong question. The right question is:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Which of our workloads belong on owned iron, which belong on rented capacity, and what is the &lt;em&gt;workload-shape threshold&lt;/em&gt; that flips one into the other?&amp;rdquo;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
