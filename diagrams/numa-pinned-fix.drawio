@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="pinnedfix" name="Pinned fix">
+    <mxGraphModel dx="1000" dy="700" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="860" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="t" value="Pin threads AND memory - take placement away from the scheduler" style="text;html=1;align=center;fontSize=15;fontStyle=1;fontColor=#333333;" vertex="1" parent="1"><mxGeometry x="60" y="18" width="740" height="26" as="geometry"/></mxCell>
+
+        <mxCell id="s0" value="Socket 0 · cores 0-31" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef3fb;strokeColor=#6c8ebf;verticalAlign=top;fontSize=12;fontColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="80" y="70" width="280" height="110" as="geometry"/></mxCell>
+        <mxCell id="wA" value="Workload A&#10;🔒 pinned (affinity)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1"><mxGeometry x="120" y="105" width="200" height="55" as="geometry"/></mxCell>
+        <mxCell id="s1" value="Socket 1 · cores 32-63" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef3fb;strokeColor=#6c8ebf;verticalAlign=top;fontSize=12;fontColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="500" y="70" width="280" height="110" as="geometry"/></mxCell>
+        <mxCell id="wB" value="Workload B&#10;🔒 pinned (affinity)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1"><mxGeometry x="540" y="105" width="200" height="55" as="geometry"/></mxCell>
+
+        <mxCell id="r0" value="RAM 0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" vertex="1" parent="1"><mxGeometry x="140" y="260" width="160" height="60" as="geometry"/></mxCell>
+        <mxCell id="r1" value="RAM 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" vertex="1" parent="1"><mxGeometry x="560" y="260" width="160" height="60" as="geometry"/></mxCell>
+        <mxCell id="e0" value="membind 0 · local" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;fontSize=12;fontColor=#2d7d2d;fontStyle=1;" edge="1" parent="1" source="wA" target="r0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e1" value="membind 1 · local" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;fontSize=12;fontColor=#2d7d2d;fontStyle=1;" edge="1" parent="1" source="wB" target="r1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="cap" value="Everything local · no migration · no interconnect traffic · no overlap" style="text;html=1;align=center;fontSize=12;fontColor=#2d7d2d;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="80" y="340" width="700" height="24" as="geometry"/></mxCell>
+        <mxCell id="knob" value="Both knobs or neither:  CPU affinity (else the thread migrates)  +  memory policy (else it reads remotely)." style="text;html=1;align=center;fontSize=11;fontColor=#999999;" vertex="1" parent="1"><mxGeometry x="80" y="366" width="700" height="20" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Systems-Programming on </title>
+    <link>https://nenadlazic.github.io/tags/systems-programming/</link>
+    <description>Recent content in Systems-Programming on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nenadlazic.github.io/tags/systems-programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NUMA: the performance bug that never throws an error</title>
+      <link>https://nenadlazic.github.io/blog/numa-the-performance-bug-that-never-throws/</link>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/numa-the-performance-bug-that-never-throws/</guid>
+      <description>&lt;p&gt;Two identical servers. Same binary, same config, same input. One delivers roughly 30% less throughput than the other, yet both sit at 100% CPU utilization. No errors, no warnings, nothing in the logs. The difference is where the memory lives.&lt;/p&gt;&#xA;&lt;p&gt;This is a post about NUMA, written for engineers who have never had to care about it, and for those who have and got bitten anyway. I will start from the hardware, but the part worth your time is the failure modes near the end. NUMA is one of the very few problems where everything keeps working, nothing reports a fault, and you quietly pay a third of your hardware budget for nothing.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

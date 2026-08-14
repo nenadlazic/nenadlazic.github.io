@@ -6,8 +6,50 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux</title>
+      <link>https://nenadlazic.github.io/tags/linux/</link>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Memory</title>
+      <link>https://nenadlazic.github.io/tags/memory/</link>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/memory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Numa</title>
+      <link>https://nenadlazic.github.io/tags/numa/</link>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/numa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://nenadlazic.github.io/tags/performance/</link>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/performance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Systems-Programming</title>
+      <link>https://nenadlazic.github.io/tags/systems-programming/</link>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/systems-programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Video-Encoding</title>
+      <link>https://nenadlazic.github.io/tags/video-encoding/</link>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/video-encoding/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Capacity-Planning</title>
       <link>https://nenadlazic.github.io/tags/capacity-planning/</link>
@@ -69,13 +111,6 @@
       <link>https://nenadlazic.github.io/tags/hardware/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://nenadlazic.github.io/tags/hardware/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>https://nenadlazic.github.io/tags/linux/</link>
-      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://nenadlazic.github.io/tags/linux/</guid>
       <description></description>
     </item>
     <item>

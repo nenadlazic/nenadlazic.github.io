@@ -3,21 +3,66 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nenadlazic.github.io/blog/</loc>
-    <lastmod>2026-05-21T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://nenadlazic.github.io/</loc>
-    <lastmod>2026-05-21T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/capacity-planning/</loc>
-    <lastmod>2026-05-21T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://nenadlazic.github.io/categories/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/categories/engineering/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/linux/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/memory/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/numa/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/blog/numa-the-performance-bug-that-never-throws/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/performance/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/systems-programming/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/video-encoding/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/capacity-planning/</loc>
     <lastmod>2026-05-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -37,22 +82,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://nenadlazic.github.io/categories/engineering/</loc>
-    <lastmod>2026-05-21T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://nenadlazic.github.io/tags/gpu/</loc>
     <lastmod>2026-05-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/on-prem/</loc>
-    <lastmod>2026-05-21T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/</loc>
     <lastmod>2026-05-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -73,11 +108,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/hardware/</loc>
-    <lastmod>2026-03-17T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/linux/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

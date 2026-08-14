@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Architect — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="google-site-verification" content="BNTdqVbAxPtce9qZkRnwXoAH5Wc9VZD66vX5UK1HXUM" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.045214c597266dc05ee363afb86da5aef7b92dfa01600bb0bd479165cb03ab19.css"
+    integrity="sha256-BFIUxZcmbcBe42OvuG2lrve5LfoBYAuwvUeRZcsDqxk="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="https://nenadlazic.github.io/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "31022709b8d24ae089f3fc7035bd7ffa"}'></script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">NUMA: the performance bug that never throws an error</h1>
+  <p class="mb-1">August 14, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Two identical servers. Same binary, same config, same input. One delivers roughly 30% less throughput than the other, yet both sit at 100% CPU utilization. No errors, no warnings, nothing in the logs. The difference is where the memory lives.</p>
+<p>This is a post about NUMA, written for engineers who have never had to care about it, and for those who have and got bitten anyway. I will start from the hardware, but the part worth your time is the failure modes near the end. NUMA is one of the very few problems where everything keeps working, nothing reports a fault, and you quietly pay a third of your hardware budget for nothing.</p>
+<h2 id="memory-used-to-be-simple">Memory used to be simple</h2>
+<p>For a long time, the mental model was simple: the CPUs sit on one side, RAM on the other, and every core has roughly the same cost when accessing memory. That is <strong>UMA</strong> - Uniform Memory Access. As more CPU cores and sockets were added, however, they all had to share the same path to memory, turning memory bandwidth into a bottleneck.</p>
+<p>The solution was to give each CPU socket (a physical processor package on the board, not a network socket) its own local memory. This increased both total capacity and available bandwidth, but introduced an important trade-off: memory is no longer equally close to every CPU. Accessing memory attached to your own socket is faster, while accessing memory attached to another socket takes longer. That is <strong>NUMA</strong> - Non-Uniform Memory Access.</p>
+<p><img src="/images/numa-uma-vs-numa.png" alt="UMA versus NUMA memory topology"></p>
+<p>Everything below is a consequence of that trade-off.</p>
+<h2 id="what-the-distance-matrix-actually-tells-you">What the distance matrix actually tells you</h2>
+<p>The machine will tell you its own topology:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ numactl --hardware
+</span></span><span style="display:flex;"><span>available: 2 nodes (0-1)
+</span></span><span style="display:flex;"><span>node 0 cpus: 0-31,64-95
+</span></span><span style="display:flex;"><span>node 0 size: 257838 MB
+</span></span><span style="display:flex;"><span>node 1 cpus: 32-63,96-127
+</span></span><span style="display:flex;"><span>node 1 size: 257997 MB
+</span></span><span style="display:flex;"><span>node distances:
+</span></span><span style="display:flex;"><span>node   0   1
+</span></span><span style="display:flex;"><span>  0:  10  32
+</span></span><span style="display:flex;"><span>  1:  32  10
+</span></span></code></pre></div><p>Two things worth knowing about that matrix, because it is routinely misread.</p>
+<p><strong>Those numbers are firmware&rsquo;s opinion, not a measurement.</strong> They come from the ACPI SLIT table (System Locality Information Table, a relative-distance matrix the BIOS hands to the OS): <code>10</code> conventionally means local memory, while <code>32</code> tells the OS that remote memory is roughly three times as costly. But this is only a hint from the BIOS, not a benchmark. In practice, remote latency on a two-socket system is often closer to 1.5-2x local latency.</p>
+<p><strong>Bandwidth is the bigger problem.</strong> A modern socket can get hundreds of GB/s from its local DDR5 memory, while the inter-socket link provides only a fraction of that. Latency can often be hidden with prefetching and multiple in-flight requests; a saturated interconnect cannot. Under load, remote memory access can therefore hurt performance far more than the raw latency difference suggests.</p>
+<p class="text-blue-500 dark:text-yellow-300 italic">A simple way to picture it: local memory is a drawer in your own desk; remote memory is asking a colleague across the office to fetch from theirs. The reaching is not the expensive part - the walk, and the wait when they are busy, are.</p>
+
+<h2 id="why-compute-heavy-workloads-feel-this-so-badly">Why compute-heavy workloads feel this so badly</h2>
+<p>Most software barely notices NUMA because its hot working set fits in cache. Memory-bound workloads are different, and video encoding is a good example.</p>
+<p>A single 1080p 8-bit 4:2:0 frame is about 3.1 MB (<code>1920 x 1080 x 1.5</code>). But an encoder does not hold one frame - it keeps a lookahead window and multiple reference frames in memory. With 25-40 frames in flight, plus motion vectors, partition trees, cost maps, and other metadata, a single encode instance easily reaches a substantial hot working set:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>~30 frames x 3.1 MB   ≈   95 MB of frame buffers
+</span></span><span style="display:flex;"><span>+ internal structures ≈   ~2x that in practice
+</span></span><span style="display:flex;"><span>                      ─────────────────────────
+</span></span><span style="display:flex;"><span>1080p encode instance ≈   150-250 MB of hot working set
+</span></span></code></pre></div><p>For UHD the numbers get larger still: one frame is about 12.4 MB, so a single instance can push well beyond <strong>1 GB</strong>. That is far larger than the cache available to any individual core.</p>
+<p>Worse, video encoding has relatively poor memory locality: motion estimation repeatedly reads scattered regions from large reference frames, so much of that data has to come from DRAM rather than cache. Now add NUMA. If those reference frames live on the other socket, every one of those reads pays the higher remote latency and competes for the limited inter-socket bandwidth. With many encoders running at once, this stops being a small optimization and becomes a major throughput bottleneck - roughly a third less work from the same hardware.</p>
+<p>The same principle applies well beyond video: large working sets that overflow cache and have poor locality are highly sensitive to NUMA placement - graph traversal, in-memory analytics, simulations, and the like.</p>
+<h2 id="the-silent-failure-the-thread-moves-the-memory-does-not">The silent failure: the thread moves, the memory does not</h2>
+<p>Linux manages memory in fixed-size <strong>pages</strong> (4 KB by default, or 2 MB where transparent huge pages apply - which makes every placement decision, and every later migration, that much coarser), and places each one with a <strong>first-touch</strong> policy: the physical RAM backing a page is allocated on the NUMA node of the thread that first <em>writes</em> to it - not at <code>malloc</code>, but at the first real access. So a process that starts on socket 0 allocates and touches its buffers there, and they land in RAM 0: local and fast. Then the scheduler moves the thread to another socket - socket 0 got busy, or for a reason you do not control. The memory does <strong>not</strong> follow.</p>
+<p><img src="/images/numa-first-touch-migration.png" alt="First-touch allocation and the silent migration that strands the memory"></p>
+<p>The root cause is that two things are decided independently: <strong>first-touch</strong> fixes where the memory lives, and the <strong>scheduler</strong> decides where the thread runs - and nothing keeps the two aligned. The thread never chose remote memory; it simply walked away from its own. This matters most for exactly the workload from the last section - a large working set that lives in DRAM, spread across many threads the scheduler is free to shuffle between sockets.</p>
+<p>Everything still works. Output is identical, and every core still shows 100% busy in <code>htop</code> - a core stalled on a remote fetch is not an idle core. You just get lower throughput per box than you should - fewer jobs on the same hardware - and write it off as &ldquo;what this hardware does.&rdquo;</p>
+<p><strong>That is the whole problem in one sentence: it gets slower, and nothing reports an error.</strong></p>
+<p>CPU utilization is useless here - a stalled core and a busy core look the same from up there. For the real signal, watch <code>numa_miss</code> and <code>other_node</code> climb in plain <code>numastat</code> (system-wide counters, per node), check where one process&rsquo;s pages actually sit with <code>numastat -p &lt;pid&gt;</code>, or measure remote traffic with <code>perf</code> uncore counters.</p>
+<h2 id="the-fix-take-the-choice-away-from-the-scheduler">The fix: take the choice away from the scheduler</h2>
+<p>The fix is to re-couple the two decisions the OS made separately: pin the process and its threads to one node&rsquo;s cores, and bind their memory to that same node, so compute and data never drift apart. (A NUMA node here is a set of cores plus its local memory - you bind to the node, not necessarily to a single core.)</p>
+<p><img src="/images/numa-pinned-fix.png" alt="Pinning threads and memory to the same node"></p>
+<p>You need both knobs. <strong>CPU affinity</strong> alone keeps the thread put but lets its memory land anywhere; <strong>memory policy</strong> alone places the memory but lets the thread wander off. Do only one and you have mostly wasted the effort. <code>libnuma</code> does both, and <code>numactl</code> is its command-line front end. (This assumes the workload fits inside one node - see <em>The traps</em> below for when it does not.)</p>
+<p>The kernel does have automatic NUMA balancing that migrates pages toward a thread (or a thread toward its pages) to reduce remote access. It helps, but for heavy, many-threaded workloads it is best-effort and reacts after the fact - explicit pinning is what you actually rely on.</p>
+<p>For a quick sanity check you do not need to touch the application at all:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>numactl --cpunodebind<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> --membind<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>  ./my_workload ...
+</span></span></code></pre></div><p>That reads as: run <code>my_workload</code> only on the cores of NUMA node 0 (<code>--cpunodebind=0</code>), and allocate all of its memory on node 0 (<code>--membind=0</code>) - compute and data forced onto the same node.</p>
+<p>If that alone shifts throughput by 20-30%, you have your answer, and the rest is about doing it properly instead of by hand. If it changes nothing, NUMA is not your bottleneck - stop here.</p>
+<h2 id="wiring-it-into-a-process">Wiring it into a process</h2>
+<p>There are two ways that pinning actually reaches a process, and it is worth being clear on which you are using.</p>
+<p><strong>Externally, with <code>numactl</code>.</strong> It wraps a process at launch and pins the whole thing to a node - no code changes. This is enough when an entire process belongs on one node, which is exactly how you run several instances side by side, one per node:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>numactl --cpunodebind<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> --membind<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>  ./worker   <span style="color:#75715e"># instance on node 0</span>
+</span></span><span style="display:flex;"><span>numactl --cpunodebind<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --membind<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>  ./worker   <span style="color:#75715e"># instance on node 1</span>
+</span></span></code></pre></div><p><strong>In-process, with <code>libnuma</code>.</strong> When a single process needs finer control - different threads on different nodes, or specific buffers placed deliberately - the application links <code>libnuma</code> and calls its API itself: pin a thread with <code>numa_run_on_node()</code> (or <code>pthread_setaffinity_np</code>), and place its memory with <code>numa_set_membind()</code> or <code>numa_alloc_onnode()</code>. <code>libnuma</code> is a thin wrapper over the kernel syscalls that do the real work (<code>sched_setaffinity</code>, <code>mbind</code>, <code>set_mempolicy</code>); a container&rsquo;s <code>cpuset</code> cgroup is a third layer that limits which nodes the process may touch at all.</p>
+<p>However you wire it, you are always configuring the same two things: <strong>where threads run</strong> and <strong>where memory is allocated</strong>.</p>
+<h2 id="the-traps">The traps</h2>
+<p>Everything above is textbook. This is the part that actually costs you, because each trap produces the same symptom: slower, no error.</p>
+<h3 id="one-socket-does-not-mean-no-numa">One socket does not mean no NUMA</h3>
+<p>Firmware can split one physical socket into several NUMA nodes - AMD calls it <strong>NPS</strong> (NUMA Per Socket), Intel calls it Sub-NUMA Clustering. So a single-socket machine can be a NUMA machine, and a two-socket machine can present eight nodes.</p>
+<p><img src="/images/numa-nps-subnuma.png" alt="One physical socket presenting multiple NUMA nodes via NPS / Sub-NUMA Clustering"></p>
+<p>The practical rule: read <code>NUMA node(s)</code>, never <code>Socket(s)</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lscpu | grep -E <span style="color:#e6db74">&#34;^Model name|^Socket|^NUMA node&#34;</span>
+</span></span></code></pre></div><h3 id="strict-binding-can-oom-a-half-empty-machine">Strict binding can OOM a half-empty machine</h3>
+<p>Pinning assumes one thing that nobody states out loud: that the workload <em>fits</em> inside a single node. One node on the machine above holds ~256 GB, so an instance with a 400 GB working set has no node to be pinned to, and the question stops being <em>which</em> node and becomes <em>how to spread</em>.</p>
+<p>This is also the one loud failure in a post full of quiet ones. <code>--membind</code> is strict: when the bound node runs out, the allocation fails and the process is killed - even with hundreds of gigabytes free on the other node. A half-empty machine OOM-killing a workload is confusing exactly until you remember the policy is doing what you asked.</p>
+<p>Two softer policies exist for the cases where strict binding does not fit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>numactl --cpunodebind<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> --preferred<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>   ./worker   <span style="color:#75715e"># prefer node 0, fall back instead of dying</span>
+</span></span><span style="display:flex;"><span>numactl --interleave<span style="color:#f92672">=</span>all                ./worker   <span style="color:#75715e"># spread pages round-robin across all nodes</span>
+</span></span></code></pre></div><p><code>--preferred</code> keeps the locality benefit but degrades to remote memory rather than failing. <code>--interleave</code> gives up locality on purpose: every node&rsquo;s memory gets used and both memory controllers carry traffic, so you trade the best case for a predictable average. That is the right trade for a working set too large to localize, or for a many-threaded process you cannot cleanly partition - and it is a real answer, not a consolation prize. The failure mode it removes is the one that actually hurts: all the hot data stranded on one node while every socket reads from it.</p>
+<h3 id="verify-that-it-was-applied-not-that-it-was-configured">Verify that it was applied, not that it was configured</h3>
+<p>&ldquo;Configuration was sent&rdquo; and &ldquo;pinning happened&rdquo; are different claims. A run where pinning silently did nothing looks identical to a healthy one in CPU% and output, so do not trust the config - inspect the running process directly, on both halves.</p>
+<p><strong>Are the threads on the node?</strong> <code>ps</code> reports the CPU each thread last ran on (the <code>psr</code> column); check those against the node&rsquo;s CPU list:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps -L -o tid,psr,comm -p &lt;pid&gt;            <span style="color:#75715e"># psr = current CPU, per thread</span>
+</span></span><span style="display:flex;"><span>numactl --hardware | grep <span style="color:#e6db74">&#39;node 0 cpus&#39;</span>   <span style="color:#75715e"># which CPUs belong to node 0</span>
+</span></span></code></pre></div><p>Every thread&rsquo;s <code>psr</code> should fall inside that node&rsquo;s CPU list. (<code>taskset -acp &lt;pid&gt;</code> shows the same as an affinity mask.)</p>
+<p>The CPU list itself is worth a look, because hyperthreading usually splits a node into two ranges:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ numactl --hardware | grep &#39;node 0 cpus&#39;
+</span></span><span style="display:flex;"><span>node 0 cpus: 0 1 2 3 ... 30 31 64 65 66 ... 94 95
+</span></span></code></pre></div><p>So node 0 owns <code>0-31</code> and <code>64-95</code> (node 1 gets <code>32-63</code> and <code>96-127</code>). Now hold a real, scattered process against that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ ps -L -o tid,psr,comm -p 40127
+</span></span><span style="display:flex;"><span>    TID PSR COMMAND
+</span></span><span style="display:flex;"><span>  40127  14 worker        # cpu 14  -&gt; node 0
+</span></span><span style="display:flex;"><span>  40163  73 worker        # cpu 73  -&gt; node 0
+</span></span><span style="display:flex;"><span>  40188 104 worker        # cpu 104 -&gt; node 1   &lt;-- other node
+</span></span></code></pre></div><p>Two threads on node 0, one on node 1: this process is not pinned. Its threads span both sockets, so whichever node holds its memory, the ones on the far side are reading remotely - the silent tax, live.</p>
+<p><strong>Is the memory on the node?</strong> <code>numastat</code> has two faces, and they answer different questions. With <code>-p</code> it breaks one process&rsquo;s pages down per node:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>numastat -p &lt;pid&gt;          <span style="color:#75715e"># this process: how many MB on each node</span>
+</span></span><span style="display:flex;"><span>numastat                   <span style="color:#75715e"># whole machine: numa_hit / numa_miss / other_node</span>
+</span></span></code></pre></div><p>A correctly pinned process shows nearly all its memory on one node in the <code>-p</code> view; if the pages are split across nodes, the memory is remote no matter what you configured. <code>/proc/&lt;pid&gt;/numa_maps</code> gives the same per-mapping (<code>N0=... N1=...</code>). The miss counters live in the bare <code>numastat</code> output, not the <code>-p</code> one - so run it before and after a load test and watch whether <code>numa_miss</code> and <code>other_node</code> are still climbing while the workload runs.</p>
+<p>These two checks - threads inside the node&rsquo;s CPUs, pages on that node - are the only place the difference between &ldquo;configured&rdquo; and &ldquo;applied&rdquo; actually shows.</p>
+<h2 id="when-numa-stops-being-your-problem">When NUMA stops being your problem</h2>
+<p>It is just as important to know when NUMA tuning is unnecessary. A modern single-socket server can expose everything as one node:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1 socket · 96 cores · 192 threads · NUMA node(s): 1
+</span></span></code></pre></div><p>With a single node, all memory sits in the same NUMA domain: no remote memory, no inter-socket link to cross, and usually nothing worth pinning. The right amount of NUMA tuning here is zero. And this is increasingly common - a single package now packs dozens of cores and a large pool of memory, so a good share of the fleet has no NUMA topology to tune at all.</p>
+<p>The rule stays the same either way: <strong>check the topology before you tune placement, and verify it afterwards.</strong> Everything above lives between those two checks.</p>
+<h2 id="takeaways">Takeaways</h2>
+<ol>
+<li><strong>NUMA is a property of the machine, not a feature of your software.</strong> <code>lscpu</code> first, opinions second - and read <code>NUMA node(s)</code>, not <code>Socket(s)</code>.</li>
+<li><strong>The failure is always silent.</strong> It gets slower; nothing errors. No alert will find it, and CPU utilization will actively lie, because a core stalled on remote memory looks perfectly busy.</li>
+<li><strong>Pin threads and memory.</strong> Doing only one is close to doing neither.</li>
+<li><strong>Responsibility is smeared across layers</strong> - orchestration decides placement, the application applies it, the kernel enforces it - and each layer can drop it independently of the others. The symptom is identical every time.</li>
+<li><strong>If you did not verify it at runtime, it did not happen.</strong> A version in a config file, a green build, and &ldquo;we passed the parameter&rdquo; prove nothing. The machine is the only witness that counts.</li>
+</ol>
+
+</div>
+<hr class="mt-10 mb-5">
+<div class="author-bio not-prose">
+  <p class="mb-2">
+    <strong>Nenad Lazić</strong> - Software Architect &amp; Technical Lead.<br>
+    I write about system design, scalability, AI in production, and the trade-offs behind real architecture decisions.
+  </p>
+  <p class="mb-0">
+    👉 <a href="https://www.linkedin.com/in/nenad-lazic-7110a310a/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+  </p>
+</div>
+
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/compute-cost-calculation-buy-vs-rent/"
+      title="Compute cost: the buy-vs-rent calculation everyone gets wrong"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

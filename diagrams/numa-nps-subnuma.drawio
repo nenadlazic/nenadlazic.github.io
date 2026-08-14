@@ -1,0 +1,21 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="nps" name="NPS sub-NUMA">
+    <mxGraphModel dx="1000" dy="700" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="760" pageHeight="330" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="t" value="One socket ≠ one NUMA node" style="text;html=1;align=center;fontSize=15;fontStyle=1;fontColor=#333333;" vertex="1" parent="1"><mxGeometry x="80" y="16" width="600" height="26" as="geometry"/></mxCell>
+
+        <mxCell id="sock" value="1 physical socket - NPS4 / Sub-NUMA Clustering enabled in firmware" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f5;strokeColor=#9a86c4;verticalAlign=top;fontSize=12;fontColor=#6f5ba8;dashed=1;" vertex="1" parent="1"><mxGeometry x="50" y="60" width="660" height="180" as="geometry"/></mxCell>
+
+        <mxCell id="n0" value="NUMA node 0&#10;&#10;local cores&#10;+ local RAM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1"><mxGeometry x="70" y="95" width="140" height="120" as="geometry"/></mxCell>
+        <mxCell id="n1" value="NUMA node 1&#10;&#10;local cores&#10;+ local RAM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1"><mxGeometry x="230" y="95" width="140" height="120" as="geometry"/></mxCell>
+        <mxCell id="n2" value="NUMA node 2&#10;&#10;local cores&#10;+ local RAM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1"><mxGeometry x="390" y="95" width="140" height="120" as="geometry"/></mxCell>
+        <mxCell id="n3" value="NUMA node 3&#10;&#10;local cores&#10;+ local RAM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1"><mxGeometry x="550" y="95" width="140" height="120" as="geometry"/></mxCell>
+
+        <mxCell id="cap" value="Read “NUMA node(s)”, never “Socket(s)”. A single-socket box can present 4 nodes; a two-socket box can present 8." style="text;html=1;align=center;fontSize=12;fontColor=#666666;" vertex="1" parent="1"><mxGeometry x="60" y="255" width="640" height="40" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
