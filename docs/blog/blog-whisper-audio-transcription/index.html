@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>OpenAI Whisper: Quick audio-to-text and subtitle workflow · Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="A concise guide on using OpenAI Whisper to transcribe audio files into text or subtitles quickly and easily." />
+<link rel="canonical" href="http://localhost:1313/blog/blog-whisper-audio-transcription/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="OpenAI Whisper: Quick audio-to-text and subtitle workflow" />
+<meta property="og:description" content="A concise guide on using OpenAI Whisper to transcribe audio files into text or subtitles quickly and easily." />
+<meta property="og:url" content="http://localhost:1313/blog/blog-whisper-audio-transcription/" />
+<meta property="og:site_name" content="Nenad Lazić" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="OpenAI Whisper: Quick audio-to-text and subtitle workflow" />
+<meta name="twitter:description" content="A concise guide on using OpenAI Whisper to transcribe audio files into text or subtitles quickly and easily." />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="google-site-verification" content="BNTdqVbAxPtce9qZkRnwXoAH5Wc9VZD66vX5UK1HXUM" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  <link href="/main.css" rel="stylesheet" />
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="http://localhost:1313/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "31022709b8d24ae089f3fc7035bd7ffa"}'></script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="http://localhost:1313/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">OpenAI Whisper: Quick audio-to-text and subtitle workflow</h1>
+  <p class="mb-1">September 25, 2025</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Transcribing audio has become essential for creators, developers, and content teams. Whether it&rsquo;s podcasts, YouTube videos, or meeting recordings, having accurate text saves time and makes content more accessible.</p>
+<p><strong>OpenAI Whisper</strong> is a versatile <strong>speech-to-text tool and library</strong> that leverages pre-trained models to convert audio into text or subtitles. It supports multiple languages, understands context, and can generate time-coded subtitle files.</p>
+<p>Whisper is more than just a command-line tool: it integrates with <strong>FFmpeg</strong>, allowing you to process a wide range of audio and video formats directly. You can use it as a CLI for quick transcriptions, or as a Python library for embedding transcription into custom workflows and applications.</p>
+<p>In this guide, we’ll demonstrate how to take an audio file (or a video with audio), transcribe it with Whisper, and generate <strong>subtitle files</strong> ready for video editors or media players.</p>
+<h2 id="-setup-installing-whisper">🛠️ Setup: Installing Whisper</h2>
+<p>Before running Whisper, you need to ensure that your system has the following tools installed:</p>
+<ul>
+<li><strong>FFmpeg</strong> – for handling audio and video files</li>
+<li><strong>CMake</strong> – required to build Whisper from source</li>
+<li><strong>GCC / G++</strong> – for compiling the Whisper binaries</li>
+</ul>
+<h3 id="clone-the-official-whisper-repository">Clone the official Whisper repository:</h3>
+<pre tabindex="0"><code>git clone https://github.com/ggml-org/whisper.cpp
+cd whisper.cpp
+</code></pre><h3 id="download-one-of-the-pretrained-model-using-the-provided-bash-script">Download one of the pretrained model using the provided bash script:</h3>
+<pre tabindex="0"><code>sh ./models/download-ggml-model.sh base.en
+</code></pre><p>Whisper offers multiple model sizes and language variants. Here’s a quick overview:</p>
+<ul>
+<li>
+<p>Model sizes:</p>
+<ul>
+<li>tiny – fastest, lowest accuracy</li>
+<li>base – fast, moderate accuracy</li>
+<li>small – balanced speed and accuracy</li>
+<li>medium – higher accuracy, slower</li>
+<li>large – highest accuracy, slowest</li>
+</ul>
+</li>
+<li>
+<p>Language variants:</p>
+<ul>
+<li>en – optimized for English transcription</li>
+<li>multilingual (sometimes written as multilang) – supports multiple languages, useful if your audio contains non-English speech</li>
+</ul>
+</li>
+</ul>
+<h3 id="build-whisper-using-cmake">Build Whisper using CMake:</h3>
+<pre tabindex="0"><code>cmake -B build
+cmake --build build --config Release
+sudo make install -C build
+</code></pre><h3 id="prepare-audio-file-for-input">Prepare audio file for input</h3>
+<pre tabindex="0"><code>ffmpeg -i input.ts -vn -ar 16000 -ac 1 -c:a pcm_s16le input_audio.wav
+</code></pre><h3 id="run-whisper">Run Whisper</h3>
+<pre tabindex="0"><code>./build/bin/whisper-cli -m ./models/ggml-base.en.bin -f samples/input_audio.wav -ovtt
+</code></pre><p>When you run Whisper with the -ovtt flag, the tool generates a WebVTT subtitle file alongside your audio. This file contains:</p>
+<ul>
+<li>Timestamps for each spoken segment</li>
+<li>Transcribed text for each segment</li>
+<li>Proper formatting compatible with video players or editing software</li>
+</ul>
+<pre tabindex="0"><code>WEBVTT
+
+00:00:00.000 --&gt; 00:00:02.500
+Hello everyone, welcome to this tutorial.
+
+00:00:02.500 --&gt; 00:00:05.000
+Today we are learning how to use OpenAI Whisper.
+</code></pre><p><em>You can also use the -osrt flag to generate SRT subtitles if your workflow requires that format.</em></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>OpenAI Whisper makes audio-to-text transcription fast and simple. With the right model and FFmpeg integration, you can generate accurate transcriptions and subtitles in minutes, whether for videos, podcasts, or meetings. It&rsquo;s a versatile tool for both quick CLI usage and integration into custom workflows.</p>
+
+</div>
+<hr class="mt-10 mb-5">
+<div class="author-bio not-prose">
+  <p class="mb-2">
+    <strong>Nenad Lazić</strong> - Software Architect &amp; Technical Lead.<br>
+    I write about system design, scalability, AI in production, and the trade-offs behind real architecture decisions.
+  </p>
+  <p class="mb-0">
+    👉 <a href="https://www.linkedin.com/in/nenad-lazic-7110a310a/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+  </p>
+</div>
+
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/ai-powered-api/"
+      title="Understanding AI-powered backends"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <a
+      href="/blog/better-ocr-with-image-preprocessing/"
+      title="Getting better OCR results: Practical image preprocessing tips"
+    >
+      <i class="nav-menu fas fa-chevron-circle-right"></i>
+    </a>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

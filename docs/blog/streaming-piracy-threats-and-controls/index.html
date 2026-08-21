@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Architect — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="google-site-verification" content="BNTdqVbAxPtce9qZkRnwXoAH5Wc9VZD66vX5UK1HXUM" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  <link href="/main.css" rel="stylesheet" />
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="http://localhost:1313/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "31022709b8d24ae089f3fc7035bd7ffa"}'></script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="http://localhost:1313/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Streaming piracy is not one problem</h1>
+  <p class="mb-1">August 17, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Ask an engineering team how they protect a streaming service and you will usually get a list of products: a DRM, maybe a token scheme, maybe a monitoring subscription. Ask which threat each one addresses and the conversation gets vague quickly.</p>
+<p>That vagueness is expensive. Streaming piracy is not one problem, it is at least five, they have almost nothing in common, and the controls that stop one are frequently irrelevant to the others. The default failure mode in this domain is not weak engineering. It is buying a correct control for a threat you do not have.</p>
+<p>This post is a taxonomy and a mapping. What the threat types actually are, what each control genuinely stops, and how to choose.</p>
+<h2 id="the-mental-model-first">The mental model first</h2>
+<p>Three technologies get conflated constantly, so it is worth separating them before anything else. They answer different questions and none substitutes for another.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  ACCESS CONTROL (DRM / CAS)   =  a lock on a safe
+</span></span><span style="display:flex;"><span>      question: may you open this?
+</span></span><span style="display:flex;"><span>      acts:     at decryption, on the device
+</span></span><span style="display:flex;"><span>      done:     the moment a legitimate device has decrypted
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  REQUEST INSPECTION           =  a doorman
+</span></span><span style="display:flex;"><span>      question: who is knocking, and do they look like our users?
+</span></span><span style="display:flex;"><span>      acts:     on every request, at the edge
+</span></span><span style="display:flex;"><span>      touches the content: never
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  FORENSIC WATERMARKING        =  invisible dye on banknotes
+</span></span><span style="display:flex;"><span>      question: when this shows up elsewhere, whose copy was it?
+</span></span><span style="display:flex;"><span>      acts:     after the leak, forensically
+</span></span></code></pre></div><p>The single most useful observation in this whole field follows from that: <strong>access control assumes the adversary has no rights.</strong> Against that adversary it works well. But most piracy that costs real money is committed by someone who does have rights - a paying subscriber, or somebody using a paying subscriber&rsquo;s credentials. Against them, DRM is not weak. It is simply not in play. It answered its question correctly and the correct answer was &ldquo;yes&rdquo;.</p>
+<p>Everything else in the catalog exists to cover the interval that begins the moment DRM stops applying.</p>
+<h2 id="five-types-of-piracy">Five types of piracy</h2>
+<p>Classifying by technology leads nowhere. Classify by <strong>what the pirate possesses and what they do with it</strong>.</p>
+<h3 id="1-unauthorized-access">1. Unauthorized access</h3>
+<p>No entitlement at all. Someone tries to fetch content they never paid for: guessing URLs, replaying old links, hotlinking, pulling from a misconfigured origin bucket.</p>
+<ul>
+<li><strong>Economics:</strong> low value per incident, high volume, mostly opportunistic.</li>
+<li><strong>Countered by:</strong> encryption plus access control. This is the one category DRM was designed for, and it handles it.</li>
+</ul>
+<h3 id="2-credential-sharing-and-resale">2. Credential sharing and resale</h3>
+<p>One account, many humans. Ranges from a family sharing a password to organized resale of harvested accounts.</p>
+<ul>
+<li><strong>Economics:</strong> revenue leakage rather than a breach. Authorization is functioning correctly; too many people are behind one authorization.</li>
+<li><strong>Countered by:</strong> concurrency limits, household or device binding, anomaly detection on account behaviour.</li>
+<li><strong>Not countered by:</strong> DRM, watermarking. Both work exactly as intended for every one of those viewers.</li>
+</ul>
+<h3 id="3-live-redistribution">3. Live redistribution</h3>
+<p>A pirate holds one legitimate entitlement, receives the stream, and rebroadcasts it to an audience of their own. Two sub-shapes worth distinguishing because they have different cost profiles for you:</p>
+<ul>
+<li>
+<p><strong>Re-encoding and re-hosting.</strong> They pull, transcode, and serve from their own infrastructure. Your cost is the lost subscription.</p>
+</li>
+<li>
+<p><strong>Leeching.</strong> They serve their audience directly from your delivery infrastructure. Your cost is the lost subscription <em>plus</em> your egress bill for their viewers.</p>
+</li>
+<li>
+<p><strong>Economics:</strong> highest damage per incident, and the dominant threat for live sport where the value is concentrated in a two-hour window.</p>
+</li>
+<li>
+<p><strong>Countered by:</strong> per-request validation, session binding, forensic watermarking for attribution, real-time disruption at the edge.</p>
+</li>
+<li>
+<p><strong>Not countered by:</strong> DRM, entitlement checks, or concurrency limits. There is exactly one session and it is legitimate.</p>
+</li>
+</ul>
+<h3 id="4-capture-and-re-upload">4. Capture and re-upload</h3>
+<p>Someone records the output - screen capture, HDMI capture, or a camera pointed at a display - and uploads the file or clips later.</p>
+<ul>
+<li><strong>Economics:</strong> time-shifted, so nothing can be interrupted. The content has already left.</li>
+<li><strong>Countered by:</strong> output protection and hardware DRM tiers raise the bar; forensic watermarking provides attribution; content-recognition monitoring finds the copies.</li>
+<li><strong>Structurally uncounterable:</strong> the analog hole. A person can always point a camera at a screen. HDCP has been broken since its master key leaked, and strippers are commodity hardware. Treat perfect prevention here as out of scope and invest in attribution instead.</li>
+</ul>
+<h3 id="5-unauthorized-clients">5. Unauthorized clients</h3>
+<p>A modified or reimplemented client application that talks to your service. It may bypass in-app checks, strip advertising, unlock features, or simply be somebody else&rsquo;s front end on your backend.</p>
+<ul>
+<li><strong>Economics:</strong> varies wildly. Often the vector for one of the categories above rather than an end in itself.</li>
+<li><strong>Countered by:</strong> platform attestation, certificate pinning, keeping no signing secrets in the client.</li>
+<li><strong>Poorly countered by:</strong> client fingerprinting, for a reason worth stating explicitly below.</li>
+</ul>
+<h3 id="the-pattern-across-all-five">The pattern across all five</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Pirate has rights?</th>
+          <th>Content modified in transit?</th>
+          <th>Real-time interruption possible?</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1. Unauthorized access</td>
+          <td>no</td>
+          <td>-</td>
+          <td>yes</td>
+      </tr>
+      <tr>
+          <td>2. Credential sharing</td>
+          <td>yes</td>
+          <td>-</td>
+          <td>yes</td>
+      </tr>
+      <tr>
+          <td>3. Live redistribution</td>
+          <td>yes</td>
+          <td>-</td>
+          <td>yes</td>
+      </tr>
+      <tr>
+          <td>4. Capture and re-upload</td>
+          <td>yes</td>
+          <td>-</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td>5. Unauthorized clients</td>
+          <td>usually yes</td>
+          <td>-</td>
+          <td>yes</td>
+      </tr>
+  </tbody>
+</table>
+<p>Four of five involve an adversary who holds valid rights. Any strategy built primarily on access control is therefore addressing one fifth of the problem space.</p>
+<h2 id="the-control-catalog">The control catalog</h2>
+<p>Eight layers, ordered roughly by cost. Nobody needs all eight, and the sequencing matters more than the completeness.</p>
+<h3 id="layer-1---encryption-and-access-control">Layer 1 - Encryption and access control</h3>
+<p>Content is unusable without a license. Multi-DRM covers the practical device population. Output protection tiers and hardware-backed key handling let you gate premium resolutions to trustworthy devices, which is also how studio content protection requirements are typically expressed.</p>
+<p><strong>Stops:</strong> type 1 outright, and raises the floor for 4.
+<strong>Does not stop:</strong> anything committed by an entitled user.
+<strong>Hidden cost:</strong> device compatibility is the real work. Key rotation has historically broken live playback on specific players, and older embedded CDMs handle mid-stream key changes inconsistently.</p>
+<h3 id="layer-2---signed-urls-and-short-lived-tokens">Layer 2 - Signed URLs and short-lived tokens</h3>
+<p>Requests carry a signature over a URI scope and an expiry. Cheap, stateless, and effective against link sharing.</p>
+<p><strong>Stops:</strong> hotlinking, casual link redistribution.
+<strong>Does not stop:</strong> anybody who can keep obtaining fresh tokens through your normal login.
+<strong>Design note:</strong> worth knowing that a standard exists rather than inventing a format. <strong>CAT, standardized as CTA-5007</strong>, is a CWT/COSE-signed CBOR token with claims for prefix binding, renewal instructions, and conditional actions such as redirecting to re-authentication instead of denying outright. Several major CDNs have implementations. If a third-party CDN might ever sit in front of your origin, a standard token is the difference between a config change and a rewrite.</p>
+<h3 id="layer-3---concurrency-and-device-limits">Layer 3 - Concurrency and device limits</h3>
+<p>Cap simultaneous sessions per account, household, or device.</p>
+<p><strong>Stops:</strong> type 2, which is precisely what it was built for.
+<strong>Does not stop:</strong> type 3. One redistributor is one session.
+<strong>Failure mode worth designing around:</strong> whether you count <em>sessions</em> or <em>consumers</em>. A limit that counts session objects can be satisfied by an arbitrary number of viewers sharing one session. Also decide LIFO versus FIFO deliberately: blocking the new session suits subscription video, terminating the oldest suits live TV where cross-device switching is normal.</p>
+<h3 id="layer-4---geo-network-class-and-proxy-signals">Layer 4 - Geo, network class, and proxy signals</h3>
+<p>Territorial enforcement, plus network-class context: is this request arriving from a residential ISP or from a hosting provider?</p>
+<p><strong>Stops:</strong> territorial leakage; datacenter-hosted redistribution infrastructure is a genuinely high-signal indicator, since bandwidth economics push redistribution into datacenters.
+<strong>Does not stop:</strong> domestic pirates on residential connections.
+<strong>Failure mode:</strong> residential proxy networks defeat network-class reputation wholesale, and an aggressive datacenter block will catch privacy relays that egress through CDN address space. Use it as a risk modifier and a step-up trigger, not a hard block on playback.</p>
+<h3 id="layer-5---per-request-validation">Layer 5 - Per-request validation</h3>
+<p>Validate on every object rather than only at session establishment. Stateless signature verification over claims in the request, so no lookup per request.</p>
+<p><strong>Stops:</strong> leeching and credential handoff.
+<strong>Cost reality:</strong> the crypto is never the bottleneck. An HMAC-SHA256 is microseconds. Invocation overhead dominates, which is why the lightweight edge-compute tiers exist and why that choice decides whether you can afford this on segments or only on manifests.</p>
+<h3 id="layer-6---request-inspection-and-graduated-response">Layer 6 - Request inspection and graduated response</h3>
+<p>Classify requests by properties of the calling software, and respond with something other than a binary allow or deny.</p>
+<p><strong>Stops:</strong> the commodity tier of redistribution - scripts, generic download tools, off-the-shelf capture utilities. That tier is the majority of incidents by volume.
+<strong>Does not stop:</strong> anybody who takes the trouble to replicate a legitimate client&rsquo;s request shape.
+<strong>Response design:</strong> throttling and quality capping are the low-risk options because they change timing rather than bytes, and they are indistinguishable from ordinary congestion. Serving deliberately corrupted or stale payloads is implementable and has a certain appeal, but it has almost no public engineering precedent and the worst false-positive blast radius of any option here: a wrongly classified real viewer gets broken video.</p>
+<h3 id="layer-7---forensic-watermarking">Layer 7 - Forensic watermarking</h3>
+<p>Embed a per-session identifier in the content itself, imperceptibly and robustly, so a leaked copy can be traced to its origin. Standardized for adaptive streaming as <strong>DASH-IF Forensic A/B Watermarking</strong>, published as <strong>ETSI TS 104 002</strong>.</p>
+<p>The mechanism, briefly: two variants of every segment are prepared, differing invisibly. Each session receives a unique sequence of A and B choices, and that sequence <em>is</em> the identifier. Three embedding families exist and the choice is an infrastructure decision rather than a security detail:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Family</th>
+          <th>Second encode?</th>
+          <th>Storage</th>
+          <th>Payload rate</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Baseband, pre-encode</td>
+          <td>yes, per variant</td>
+          <td>2x</td>
+          <td>1 bit per segment</td>
+      </tr>
+      <tr>
+          <td>Compressed-domain patching</td>
+          <td>no</td>
+          <td>1x plus metadata</td>
+          <td>several bits per segment</td>
+      </tr>
+      <tr>
+          <td>Client-side composited</td>
+          <td>no</td>
+          <td>1x</td>
+          <td>full ID per frame</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Stops nothing in real time.</strong> This is the point people miss. Watermarking is an attribution technology. It tells you whose session leaked, after the fact, and it makes takedown and enforcement faster and legally stronger.</p>
+<p><strong>Timing is a first-order design parameter.</strong> At one bit per segment, segment duration directly sets time-to-attribution: two-second segments yield thirty bits per minute, six-second segments yield ten. Vendor guidance for A/B extraction typically asks for a minimum of about a minute of captured video with five to ten minutes preferred. Collusion resistance is worse than linear - the classical Tardos bound puts required code length at roughly <code>100 * c^2 * ln(1/e)</code> for <code>c</code> colluders at false-accusation probability <code>e</code>, so hardening against a handful of cooperating pirates multiplies the required clip length quadratically.</p>
+<p><strong>Where it fails:</strong> short clips. A forty-second highlight does not contain enough segments to carry an identifier, which is why separate products exist for short-form assets. If your actual pain is clips on social media, A/B watermarking is the wrong tool.</p>
+<p><strong>Cost, as four separate line items</strong> that are routinely collapsed into one and therefore mis-estimated: encode capacity, origin storage and egress, edge decisioning, and licensing plus the detection service.</p>
+<h3 id="layer-8---content-recognition-and-monitoring">Layer 8 - Content recognition and monitoring</h3>
+<p>Perceptual hashing of your own catalog, then scanning third-party services for matches, feeding takedown workflows.</p>
+<p><strong>Stops:</strong> nothing directly.
+<strong>Provides:</strong> the only way to know that content is leaking at all, and where. Bought as a service; does not touch your delivery stack.</p>
+<h2 id="the-mapping">The mapping</h2>
+<p>This is the table worth keeping.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>1 Unauthorized access</th>
+          <th>2 Credential sharing</th>
+          <th>3 Live redistribution</th>
+          <th>4 Capture / re-upload</th>
+          <th>5 Unauthorized clients</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>1</strong> Encryption / DRM</td>
+          <td><strong>yes</strong></td>
+          <td>no</td>
+          <td>no</td>
+          <td>partial</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td><strong>2</strong> Signed URLs</td>
+          <td><strong>yes</strong></td>
+          <td>partial</td>
+          <td>partial</td>
+          <td>no</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td><strong>3</strong> Concurrency limits</td>
+          <td>no</td>
+          <td><strong>yes</strong></td>
+          <td>no</td>
+          <td>no</td>
+          <td>partial</td>
+      </tr>
+      <tr>
+          <td><strong>4</strong> Geo / network class</td>
+          <td>partial</td>
+          <td>partial</td>
+          <td><strong>partial</strong></td>
+          <td>no</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td><strong>5</strong> Per-request validation</td>
+          <td><strong>yes</strong></td>
+          <td>partial</td>
+          <td><strong>yes</strong></td>
+          <td>no</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td><strong>6</strong> Request inspection</td>
+          <td>no</td>
+          <td>no</td>
+          <td><strong>yes, commodity tier</strong></td>
+          <td>no</td>
+          <td>partial</td>
+      </tr>
+      <tr>
+          <td><strong>7</strong> Watermarking</td>
+          <td>no</td>
+          <td>no</td>
+          <td>attribution</td>
+          <td>attribution</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td><strong>8</strong> Monitoring</td>
+          <td>no</td>
+          <td>no</td>
+          <td>detection</td>
+          <td>detection</td>
+          <td>detection</td>
+      </tr>
+      <tr>
+          <td><strong>Attestation</strong></td>
+          <td>no</td>
+          <td>no</td>
+          <td>partial</td>
+          <td>no</td>
+          <td><strong>yes</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>Two things fall out of that table immediately.</p>
+<p>First, <strong>column 3 is the expensive one.</strong> Live redistribution is the only threat that needs layers 5, 6 and 7 working together, and it is also where the money is concentrated for live sport. If that is not your threat, most of this catalog is over-engineering.</p>
+<p>Second, <strong>no single row covers a column.</strong> That is not a defect in any product. It is what the phrase &ldquo;defence in depth&rdquo; means when it is used honestly.</p>
+<h2 id="why-fingerprinting-has-a-ceiling">Why fingerprinting has a ceiling</h2>
+<p>Layer 6 deserves a caveat, because it is regularly oversold and the reason is structural rather than a matter of implementation quality.</p>
+<p>Request inspection asks: <em>do you look like our client?</em> Every input to that answer - user agent, header set and order, TLS handshake shape, request cadence - is chosen by the caller. Tooling exists that reproduces a target&rsquo;s TLS fingerprint, HTTP/2 fingerprint and header order simultaneously.</p>
+<p>The history is instructive. TLS fingerprinting via JA3 was genuinely useful until Chromium randomized ClientHello extension order per connection in early 2023, at which point essentially every Chrome connection produced a distinct value. Cipher stunting had already made the point: one operator reported distinct fingerprint counts rising from tens of thousands to over a billion in six months. JA4 addresses the collection problem by sorting before hashing. It does not address spoofability.</p>
+<p>There is a scale issue too. Published figures put unique TLS fingerprints in the tens of millions against user-agent populations in the hundreds of millions. <strong>A fingerprint identifies a software build, not a device and certainly not a person.</strong> Its anonymity set ranges from millions of devices for a mainstream browser down to a handful for something exotic.</p>
+<p>The consequence for design: a fingerprint is a feature in a risk score and a consistency check against what the client claims to be. It is not an identity and it is not a durable enforcement key. The only durable enforcement key in a streaming service is the account or the token.</p>
+<p>Attestation asks a different question - <em>prove you are our client</em> - answered by a platform-signed assertion over your signed binary. That is the one question a reimplemented client cannot answer by copying. It is also partial: no equivalent exists on the web or on most smart TV platforms, and it belongs at credential issuance rather than on the serving path.</p>
+<h2 id="where-controls-hurt-legitimate-users">Where controls hurt legitimate users</h2>
+<p>Every control in the catalog has a false-positive mode, and in this domain a false positive means a paying customer staring at an error during a match.</p>
+<ul>
+<li><strong>IP binding.</strong> Never bind to an exact address. Carrier-grade NAT puts hundreds of real subscribers behind one public IPv4, dual-stack clients switch address families mid-session under Happy Eyeballs, and privacy relays rotate egress addresses. Bind to a prefix, allow a bounded number of changes, and prefer a re-authentication step-up to a denial.</li>
+<li><strong>Concurrency.</strong> Legitimate households genuinely exceed naive limits. Count consumers, define termination policy deliberately, and give the user a way to resolve it themselves.</li>
+<li><strong>Geo.</strong> Portability rules and travelling subscribers mean territorial enforcement has to distinguish &ldquo;wrong country&rdquo; from &ldquo;temporarily abroad&rdquo;.</li>
+<li><strong>DRM tiers.</strong> Gating resolution on hardware DRM excludes real devices. That is a business decision about catalog reach, not a technical one.</li>
+<li><strong>Shared caches.</strong> If a per-caller countermeasure response is cacheable under a shared key, you have poisoned your own cache with your own defence. Decide after the cache lookup, substitute on egress, mark it uncacheable, and never let a raw high-cardinality classifier reach the cache key.</li>
+</ul>
+<p>None of these have published false-positive baselines. Not from CDN vendors, not from operators, not in the literature. Anyone quoting a precise percentage is quoting a number they cannot support. Measure your own traffic in observe-only mode before enforcing anything.</p>
+<h2 id="choosing">Choosing</h2>
+<p>The staging that tends to hold up:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  early           layers 1-2      encryption, access control, signed URLs
+</span></span><span style="display:flex;"><span>  growth          + layers 3-4    concurrency, geo, network class
+</span></span><span style="display:flex;"><span>  meaningful      + layer 5       per-request validation
+</span></span><span style="display:flex;"><span>  scale           + layer 6       request inspection, graduated response
+</span></span><span style="display:flex;"><span>  premium         + layers 7-8    watermarking, monitoring
+</span></span><span style="display:flex;"><span>  rights
+</span></span></code></pre></div><p>Layers 7 and 8 are usually adopted because a rights contract requires them rather than as an internal initiative, and it is worth being clear-eyed about the evidence base there. Studio content protection specifications have mandated forensic marking for early-window and ultra-high-definition content for a decade, and that requirement is concrete and public. For live sport, the picture is murkier: rights holders procure monitoring and enforcement centrally, and public contract language mandating licensee-side watermarking is hard to find. There is also no independent, quantified study showing that watermarking reduces piracy. It is an attribution technology, and it should be justified as one.</p>
+<p>The independent evidence on blocking is more informative, and it points the same way. Academic work on site blocking found that blocking nineteen major sites cut piracy meaningfully while blocking a single site achieved nothing, because users simply moved. Regulator data from jurisdictions running aggressive live blocking shows illicit audiences contained rather than eliminated. <strong>These controls raise cost and contain volume. They do not remove the problem, and a strategy that promises otherwise will not survive contact with its own metrics.</strong></p>
+<h2 id="lessons-learned">Lessons learned</h2>
+<ul>
+<li><strong>Name the threat before naming the product.</strong> Most wasted spend in this domain is a correct control bought for a threat the organization does not actually have.</li>
+<li><strong>Access control assumes an adversary with no rights.</strong> Four of the five threat types involve an adversary who has rights. Budget accordingly.</li>
+<li><strong>Watermarking is attribution, not prevention.</strong> It answers &ldquo;whose copy&rdquo;, after the fact. Sold or bought as prevention, it will disappoint.</li>
+<li><strong>Detection without an executor produces reports.</strong> If you can identify abuse mid-event but have no mechanism to interrupt it, you have built a dashboard. Plan the enforcement path in the same breath as the detection path.</li>
+<li><strong>The unit of enforcement is the account.</strong> Fingerprints and addresses are context. Neither survives as a durable key.</li>
+<li><strong>Segment duration is a security parameter</strong> once watermarking is in scope, and it is normally chosen by people optimizing something else entirely.</li>
+<li><strong>Measure before enforcing.</strong> A week in observe-only mode on real traffic beats any vendor benchmark, because the false-positive baselines you need do not exist publicly.</li>
+</ul>
+<h2 id="if-i-were-designing-this-from-scratch">If I were designing this from scratch</h2>
+<p>I would write the threat model down as a table before evaluating a single product, with an honest column for &ldquo;we are choosing not to address this&rdquo;. The analog hole belongs in that column. So, for most services, does the fully determined adversary.</p>
+<p>I would treat attribution and interruption as separate capabilities with separate owners, because they fail independently and are routinely conflated in vendor conversations. Interruption needs a recurring checkpoint where a decision can be applied; attribution needs a monitoring and extraction loop with a defined turnaround. Neither implies the other.</p>
+<p>And I would build the measurement pipeline first. Distinct addresses per session, sessions per account, delivered media-seconds against wall-clock, and geographic dispersion per account are all computable from access logs you are already writing, require no changes to the request path, and will tell you within days which of the five types you are actually facing. That answer determines every subsequent decision, and it is remarkable how often it gets supplied by assumption instead.</p>
+
+</div>
+<hr class="mt-10 mb-5">
+<div class="author-bio not-prose">
+  <p class="mb-2">
+    <strong>Nenad Lazić</strong> - Software Architect &amp; Technical Lead.<br>
+    I write about system design, scalability, AI in production, and the trade-offs behind real architecture decisions.
+  </p>
+  <p class="mb-0">
+    👉 <a href="https://www.linkedin.com/in/nenad-lazic-7110a310a/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+  </p>
+</div>
+
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/authorize-once-serve-a-million-times/"
+      title="You authorize once, then serve a million times"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

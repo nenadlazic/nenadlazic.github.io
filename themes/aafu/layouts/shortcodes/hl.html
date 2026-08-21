@@ -1,0 +1,5 @@
+{{- $palette := dict "blue" "#6c8ebf" "amber" "#d6b656" -}}
+{{- $key := .Get 0 -}}
+{{- $color := index $palette $key -}}
+{{- if not $color -}}{{- $color = $key -}}{{- end -}}
+<span style="color:{{ $color }};font-weight:700">{{ .Inner }}</span>

@@ -6,12 +6,26 @@
     <description>Recent content in Engineering on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 20:00:00 +0200</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/categories/engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Designing the system that starts after authorization</title>
+      <link>https://nenadlazic.github.io/blog/anti-piracy-designing-after-authorization/</link>
+      <pubDate>Tue, 18 Aug 2026 20:00:00 +0200</pubDate>
+      <guid>https://nenadlazic.github.io/blog/anti-piracy-designing-after-authorization/</guid>
+      <description>&lt;p&gt;This is the second half of a pair. &lt;a href=&#34;https://nenadlazic.github.io/blog/content-piracy-by-authorized-users/&#34;&gt;Part one&lt;/a&gt; covered the problem: why the abuser usually holds valid access, the four shapes that abuse actually takes, and the three unrelated technologies that all get called fingerprinting.&lt;/p&gt;&#xA;&lt;p&gt;Four things from it carry over, and they are all you need to read on:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;An &lt;strong&gt;artifact&lt;/strong&gt; is whatever you deliver: a stream, a document, a dataset, a build, an image catalogue, a set of weights.&lt;/li&gt;&#xA;&lt;li&gt;Abuse takes four shapes. &lt;strong&gt;Sharing&lt;/strong&gt; and &lt;strong&gt;leeching&lt;/strong&gt; are still moving through your infrastructure, so they can be &lt;strong&gt;interrupted&lt;/strong&gt;. &lt;strong&gt;Mirroring&lt;/strong&gt; and &lt;strong&gt;republication&lt;/strong&gt; are already over when you find out, so all that is left is &lt;strong&gt;attribution&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Those are two separate systems with different latency budgets, and merging them is the most common architectural mistake here.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Requester fingerprinting&lt;/strong&gt; serves the interruption side. &lt;strong&gt;Recipient marking&lt;/strong&gt; and &lt;strong&gt;content fingerprinting&lt;/strong&gt; serve the attribution side, as a pair.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;What follows is the engineering. Each technology gets taken apart, then wired back together into something you could actually build.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Content piracy by authorized users: a threat model that survives contact with reality</title>
+      <link>https://nenadlazic.github.io/blog/content-piracy-by-authorized-users/</link>
+      <pubDate>Fri, 14 Aug 2026 09:00:00 +0200</pubDate>
+      <guid>https://nenadlazic.github.io/blog/content-piracy-by-authorized-users/</guid>
+      <description>&lt;p&gt;Imagine you sell access to something you make. A live sports feed, a market research report, a licensed dataset, a per-customer software build, a set of model weights - it does not matter which. People pay you every month, and that revenue is the whole business.&lt;/p&gt;&#xA;&lt;p&gt;You have done the security work, too. Nothing leaves your servers unencrypted. Every request has to prove who it belongs to. Links expire in seconds rather than days. What each customer can reach is checked against what they actually paid for.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>NUMA: the performance bug that never throws an error</title>
       <link>https://nenadlazic.github.io/blog/numa-the-performance-bug-that-never-throws/</link>
-      <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jul 2026 09:00:00 +0200</pubDate>
       <guid>https://nenadlazic.github.io/blog/numa-the-performance-bug-that-never-throws/</guid>
       <description>&lt;p&gt;Two identical servers. Same binary, same config, same input. One delivers roughly 30% less throughput than the other, yet both sit at 100% CPU utilization. No errors, no warnings, nothing in the logs. The difference is where the memory lives.&lt;/p&gt;&#xA;&lt;p&gt;This is a post about NUMA, written for engineers who have never had to care about it, and for those who have and got bitten anyway. I will start from the hardware, but the part worth your time is the failure modes near the end. NUMA is one of the very few problems where everything keeps working, nothing reports a fault, and you quietly pay a third of your hardware budget for nothing.&lt;/p&gt;</description>
     </item>

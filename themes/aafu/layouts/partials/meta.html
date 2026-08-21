@@ -1,9 +1,21 @@
-<title>{{ .Site.Params.title }}</title>
+{{- $isHome := .IsHome -}}
+{{- $pageTitle := cond $isHome .Site.Params.title (printf "%s · %s" .Title .Site.Params.title) -}}
+{{- $desc := cond (ne (string .Description) "") (string .Description) .Site.Params.description -}}
+<title>{{ $pageTitle }}</title>
 
 <meta name="theme-color" content="" />
 <meta charset="utf-8" />
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-<meta name="description" content="{{ .Site.Params.description }}" />
+<meta name="description" content="{{ $desc }}" />
+<link rel="canonical" href="{{ .Permalink }}" />
+<meta property="og:type" content="{{ cond .IsPage "article" "website" }}" />
+<meta property="og:title" content="{{ cond $isHome .Site.Params.title .Title }}" />
+<meta property="og:description" content="{{ $desc }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:site_name" content="{{ .Site.Params.title }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ cond $isHome .Site.Params.title .Title }}" />
+<meta name="twitter:description" content="{{ $desc }}" />
 <meta name="author" content="{{ .Site.Params.author }}" />
 {{- $hugoGenerator := index (findRE `content=\"(.+)\"` hugo.Generator) 0 }}
 <meta name="generator" content="aafu theme by Darshan in {{ replaceRE `content=|\"` `` $hugoGenerator }}" />

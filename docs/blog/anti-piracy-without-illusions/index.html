@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>Anti-piracy without illusions: what you are actually up against · Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Piracy at scale is a distribution business built on legitimate access, not a broken cipher. The four shapes abuse actually takes, the one question that splits your architecture in two, and the three unrelated technologies people keep calling fingerprinting." />
+<link rel="canonical" href="http://localhost:1313/blog/anti-piracy-without-illusions/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Anti-piracy without illusions: what you are actually up against" />
+<meta property="og:description" content="Piracy at scale is a distribution business built on legitimate access, not a broken cipher. The four shapes abuse actually takes, the one question that splits your architecture in two, and the three unrelated technologies people keep calling fingerprinting." />
+<meta property="og:url" content="http://localhost:1313/blog/anti-piracy-without-illusions/" />
+<meta property="og:site_name" content="Nenad Lazić" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Anti-piracy without illusions: what you are actually up against" />
+<meta name="twitter:description" content="Piracy at scale is a distribution business built on legitimate access, not a broken cipher. The four shapes abuse actually takes, the one question that splits your architecture in two, and the three unrelated technologies people keep calling fingerprinting." />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="google-site-verification" content="BNTdqVbAxPtce9qZkRnwXoAH5Wc9VZD66vX5UK1HXUM" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  <link href="/main.css" rel="stylesheet" />
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="http://localhost:1313/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "31022709b8d24ae089f3fc7035bd7ffa"}'></script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="http://localhost:1313/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Anti-piracy without illusions: what you are actually up against</h1>
+  <p class="mb-1">August 18, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Imagine you sell access to something you make. A live sports feed, a market research report, a licensed dataset, a per-customer software build, a set of model weights - it does not matter which. People pay you every month, and that revenue is the whole business.</p>
+<p>You have done the security work, too. Nothing leaves your servers unencrypted. Every request has to prove who it belongs to. Links expire in seconds rather than days. What each customer can reach is checked against what they actually paid for.</p>
+<p>Somebody reviewed all of it and signed it off.</p>
+<p><img src="/images/antipiracy-the-lock-works.png" alt="A security review scoped entirely to the door, while the copy walks out through it"></p>
+<p>Now picture one particular customer.</p>
+<p>They log in from one home, on one device, at ordinary hours. They never share a password, never trip a rate limit, never appear in two countries at once. On every dashboard you own, this account is a model citizen.</p>
+<p>They are also reselling what you send them to four hundred other people.</p>
+<p>No password was stolen. No cipher was broken. Nothing in that review was wrong. The account is exactly what it claims to be, and that is the whole problem.</p>
+<p>This post is about the part of the system that begins after the login succeeds.</p>
+<h2 id="the-shape-every-content-business-ends-up-with">The shape every content business ends up with</h2>
+<p>One careful decision at the door, then thousands of deliveries that never question it again.</p>
+<p>A subscription is checked once, and three thousand segments follow. A licence box is ticked, and forty gigabytes of model weights follow. A contract is signed, and a dataset lands on a laptop where it will quietly live forever.</p>
+<p>The decision at the door is the part everybody reviews. The thousands of deliveries behind it are the part nobody owns.</p>
+<p>I will call the thing you deliver an <strong>artifact</strong>: a stream, a document, a dataset, a build, an image catalogue, a set of weights. Everything below applies to all of them.</p>
+<h3 id="four-ways-that-gap-gets-used">Four ways that gap gets used</h3>
+<p>These are worth separating, because they cost you different things and they need different controls.</p>
+<p><span style="color:#d6b656;font-weight:700">Sharing.</span>
+ One credential, several people, usually at different times of day. Your authorization is working correctly. There are simply too many people standing behind one of them.</p>
+<p><span style="color:#d6b656;font-weight:700">Leeching.</span>
+ One valid credential pulls, and the puller forks that stream out to an audience of its own in real time. Your infrastructure does the delivering. Nothing is ever stored anywhere. You lose the sale <em>and</em> you pay the egress bill for viewers who are not your customers.</p>
+<p><span style="color:#d6b656;font-weight:700">Mirroring.</span>
+ They fetch once through a valid account, keep a copy, and serve their own audience from their own infrastructure. You lose the sale, but not the bandwidth.</p>
+<p><span style="color:#d6b656;font-weight:700">Republication.</span>
+ The artifact simply leaves and turns up somewhere else, whole. A file on a locker, a dataset in a public repo, a build on a forum.</p>
+<p>The last three all get called &ldquo;redistribution&rdquo; in industry conversations, which is exactly why that word is no use as a label. It hides the only two distinctions that matter: whose infrastructure pays, and whether a copy still exists by the time you find out.</p>
+<p>Two questions tell you which one you are looking at. The first of them decides your whole architecture.</p>
+<p><img src="/images/antipiracy-decision-tree.png" alt="Decision tree splitting the four abuse shapes by whether the artifact is still moving through your infrastructure"></p>
+<blockquote>
+<p><strong>The dividing line:</strong> sharing and leeching are still happening on your infrastructure while you are looking at them, so they can be <strong>interrupted</strong>. Mirroring and republication are already over by the time you find out, so the only thing left is <strong>attribution</strong>.</p></blockquote>
+<p>Two different systems, then. Different latency budgets, different owners, independent failure modes.</p>
+<p>Most bad design in this field comes from treating them as one, and most wasted spend comes from buying a control that belongs to the other half.</p>
+<h3 id="how-they-got-in-is-a-separate-axis">How they got in is a separate axis</h3>
+<p>The four shapes describe what happens to the delivery once somebody is inside. They say nothing about how that somebody got inside, and those are independent questions.</p>
+<p>Entry comes in roughly four flavours: a credential they paid for, a credential somebody shared with them, a <strong>client they emulated</strong>, or a token they forged or replayed.</p>
+<p>That third one is worth calling out, because it is the case people most often file under redistribution when it does not belong there. If an emulated client is pulling your content, access control was not answered correctly - it was <strong>defeated</strong>. The distribution that follows is a consequence, not the problem.</p>
+<p>It also has entirely different countermeasures. Behavioural scoring and per-object validation are the answer to a valid credential behaving badly. An emulated client is answered by platform attestation, by tokens whose integrity you can actually verify, and by keeping no signing secret in the client at all.</p>
+<p>Both axes matter, and they multiply: any entry route can feed any of the four shapes. Both posts keep them apart.</p>
+<p>The rest of this post stays at that level: what the business on the other side actually looks like, and the three technologies people confuse when they try to answer it. The engineering detail - signal layers, watermark capacity arithmetic, what to build in which order - is in <a href="/blog/anti-piracy-designing-after-authorization/">part two</a>.</p>
+<h2 id="the-business-on-the-other-side">The business on the other side</h2>
+<p>Start with the thing that surprises people: piracy at scale is not a hacking story. It is a distribution business.</p>
+<p>The best measurements come from video, because that is where researchers bought subscriptions and took notes. An academic study of paid pirate IPTV services mapped the whole operation.</p>
+<p>It looks like a normal company:</p>
+<ul>
+<li>an ingest headend built from off-the-shelf TV tuner cards</li>
+<li>a middleware vendor handling subscriber management and billing</li>
+<li>sellers, who run the storefront</li>
+<li>resellers, who buy credits and never touch the infrastructure at all</li>
+<li>customers, paying by card or crypto</li>
+</ul>
+<p>They rent hosting like anyone else. In the measured sample, some rented commercial CDN capacity from mainstream providers. One of the larger services reportedly had around 180,000 subscribers.</p>
+<p>Now the detail that should reshape your threat model.</p>
+<p>Next to the tuner cards sits a <strong>card sharing server</strong>. Its only job is to distribute valid decryption keys to clients that are not entitled to them.</p>
+<p>Nobody broke the cipher. Somebody with legitimate access shared the key, and a business grew on top of that.</p>
+<h3 id="this-is-not-a-video-problem">This is not a video problem</h3>
+<p>Change the medium and the story survives intact.</p>
+<p>A consultancy forwards your paid research to three clients: <strong>sharing</strong>. One API key quietly fronts a competitor&rsquo;s free service: <strong>leeching</strong>. A licensee mirrors your dataset onto their own infrastructure: <strong>mirroring</strong>. A per-customer build turns up on a forum: <strong>republication</strong>.</p>
+<p>Same four shapes, no video anywhere. In every one of those cases access control worked exactly as designed. It was asked whether this party may open the artifact. It answered correctly, and the answer was yes.</p>
+<h3 id="so-what-is-left-to-ask">So what is left to ask?</h3>
+<p>Three questions, and the door answers none of them:</p>
+<ul>
+<li><strong>Who is this, really?</strong> Everything on the interruption side depends on this one.</li>
+<li><strong>Whose copy is this?</strong> Where attribution begins.</li>
+<li><strong>Is this artifact even ours?</strong> Without an answer here, attribution never gets the chance to run.</li>
+</ul>
+<p>None has a clean answer. All three have a useful one, as long as you know what you are buying.</p>
+<p>One last thing before the technologies. Fix the goal. You are not going to eliminate this behaviour, you are managing how much of it happens. Your two levers are the abuser&rsquo;s cost per unit of abuse, and your time to respond.</p>
+<h2 id="three-technologies-one-word">Three technologies, one word</h2>
+<p>Almost every confused conversation in this field comes from the word &ldquo;fingerprinting&rdquo; carrying three unrelated meanings.</p>
+<p><img src="/images/antipiracy-three-technologies.png" alt="Requester fingerprinting, recipient marking and content fingerprinting compared"></p>
+<p>In plain terms:</p>
+<p><strong>Requester fingerprinting</strong> looks at the connection and the account. It tries to tell whether this caller is the same one as last time.</p>
+<p><strong>Recipient marking</strong>, usually called watermarking, hides a serial number inside the artifact itself. Every recipient gets a slightly different copy.</p>
+<p><strong>Content fingerprinting</strong> takes a copy found somewhere in the wild and asks whether it belongs to your catalogue at all.</p>
+<p>The distinction that costs real money is between the last two. Marking tells you whose copy leaked, but not where it went. Content fingerprinting tells you where a copy is, but not who put it there.</p>
+<p>You need both to close a loop. Buying one while believing you bought the other is the most expensive mistake here.</p>
+<p>Mapped onto the two halves from earlier: requester fingerprinting is the whole interruption side, while marking and content fingerprinting are the attribution side, and they only work as a pair.</p>
+<h2 id="where-this-goes-next">Where this goes next</h2>
+<p>That is the map. What it deliberately does not contain is any of the engineering.</p>
+<p><a href="/blog/anti-piracy-designing-after-authorization/"><strong>Part two: designing the system that starts after authorization</strong></a> takes each of the three technologies apart:</p>
+<ul>
+<li><strong>Requester fingerprinting</strong> layer by layer, ranked by what a forgery costs the abuser rather than by lab accuracy - and the published uniqueness numbers that show where it hits a ceiling.</li>
+<li><strong>Marking</strong>, including the four places you can insert it, the capacity arithmetic that decides whether it can work for your artifacts at all, and the token failure that makes a recipient unattributable without alerting anything.</li>
+<li><strong>Content fingerprinting</strong> as the discovery layer, and why it is a search problem rather than a hashing one.</li>
+<li><strong>The synthesis</strong>: a table mapping the symptom you see to the control that helps, the failure modes worth knowing before a procurement call, honest costs, and the order I would build in today.</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><em>Iniquitous Cord-Cutting: An Analysis of Infringing IPTV Services</em>, Damon McCoy et al.</li>
+</ul>
+
+</div>
+<hr class="mt-10 mb-5">
+<div class="author-bio not-prose">
+  <p class="mb-2">
+    <strong>Nenad Lazić</strong> - Software Architect &amp; Technical Lead.<br>
+    I write about system design, scalability, AI in production, and the trade-offs behind real architecture decisions.
+  </p>
+  <p class="mb-0">
+    👉 <a href="https://www.linkedin.com/in/nenad-lazic-7110a310a/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+  </p>
+</div>
+
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/numa-the-performance-bug-that-never-throws/"
+      title="NUMA: the performance bug that never throws an error"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <a
+      href="/blog/anti-piracy-designing-after-authorization/"
+      title="Anti-piracy without illusions: designing the system that starts after authorization"
+    >
+      <i class="nav-menu fas fa-chevron-circle-right"></i>
+    </a>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Threat-Modeling on </title>
+    <link>https://nenadlazic.github.io/tags/threat-modeling/</link>
+    <description>Recent content in Threat-Modeling on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Aug 2026 09:00:00 +0200</lastBuildDate>
+    <atom:link href="https://nenadlazic.github.io/tags/threat-modeling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Content piracy by authorized users: a threat model that survives contact with reality</title>
+      <link>https://nenadlazic.github.io/blog/content-piracy-by-authorized-users/</link>
+      <pubDate>Fri, 14 Aug 2026 09:00:00 +0200</pubDate>
+      <guid>https://nenadlazic.github.io/blog/content-piracy-by-authorized-users/</guid>
+      <description>&lt;p&gt;Imagine you sell access to something you make. A live sports feed, a market research report, a licensed dataset, a per-customer software build, a set of model weights - it does not matter which. People pay you every month, and that revenue is the whole business.&lt;/p&gt;&#xA;&lt;p&gt;You have done the security work, too. Nothing leaves your servers unencrypted. Every request has to prove who it belongs to. Links expire in seconds rather than days. What each customer can reach is checked against what they actually paid for.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

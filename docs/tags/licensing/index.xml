@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Licensing on </title>
+    <link>http://localhost:1313/tags/licensing/</link>
+    <description>Recent content in Licensing on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 17 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/licensing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>You authorize once, then serve a million times</title>
+      <link>http://localhost:1313/blog/authorize-once-serve-a-million-times/</link>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/authorize-once-serve-a-million-times/</guid>
+      <description>&lt;p&gt;Any system that sells access to bytes eventually builds the same shape: a careful authorization at the start of a session, then a long tail of deliveries served on the strength of that single decision.&lt;/p&gt;&#xA;&lt;p&gt;A video platform checks entitlement, then serves 3,600 segments. A metered API validates a key, then answers a million calls. A map service authorizes a token, then serves tiles for an hour of panning. A package registry authenticates a pull, then streams gigabytes of layers. A gated model repository accepts a licence click, then hands over 40 GB of weights.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

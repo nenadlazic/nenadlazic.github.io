@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="Software Architect — Portfolio, Blog &amp; Contact" />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="google-site-verification" content="BNTdqVbAxPtce9qZkRnwXoAH5Wc9VZD66vX5UK1HXUM" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  <link href="/main.css" rel="stylesheet" />
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+    <meta property="og:image" content="http://localhost:1313/images/default-preview.png">
+  
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "31022709b8d24ae089f3fc7035bd7ffa"}'></script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="http://localhost:1313/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">Anti-piracy at the CDN edge: the door you check once</h1>
+  <p class="mb-1">August 17, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Your egress bill is growing faster than your subscriber count. Nothing is broken. No alert fired. Authorization is working exactly as designed, every request in the access log is well formed, and the ratio of bytes served to accounts billed keeps drifting in the wrong direction.</p>
+<p>This is a post about protecting delivery at the CDN edge. Not about protecting content - that is a different problem with different tools. This is about the plainer question of who is consuming your delivery capacity, and why the usual answer is &ldquo;we authorize at the start of a session and hope&rdquo;.</p>
+<h2 id="the-shape-of-the-problem">The shape of the problem</h2>
+<p>Take a typical segmented delivery flow. A client asks for a stream or a large asset, you authorize it, and you hand back a manifest. The client then fetches segments for the next two hours.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  GET /session?...        -&gt; full authorization: entitlement, geo,
+</span></span><span style="display:flex;"><span>                             concurrency, credentials, device
+</span></span><span style="display:flex;"><span>                          -&gt; issue session id, return manifest
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  GET /variant.m3u8       -&gt; does this session id exist? yes -&gt; serve
+</span></span><span style="display:flex;"><span>  GET /segment_0001.ts    -&gt; serve
+</span></span><span style="display:flex;"><span>  GET /segment_0002.ts    -&gt; serve
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>  GET /segment_3600.ts    -&gt; serve
+</span></span></code></pre></div><p>One request is authorized. Several thousand are served on the strength of that decision. That ratio is the entire security posture, and it is worth staring at for a moment: <strong>99.97% of the requests, and effectively 100% of the bytes, are delivered by a code path that checks nothing.</strong></p>
+<p>The session id in that flow is a bearer credential. Whoever holds it gets the bytes. It is usually a random string in a query parameter or a cookie, it is usually not bound to anything, and it usually outlives the authorization that produced it.</p>
+<p>This is not an implementation bug. It is a deliberate design that made sense when the threat model was &ldquo;someone who did not pay&rdquo;. Against that threat it works. The problem is that the abuse which actually costs money looks nothing like that.</p>
+<h3 id="three-consumers-you-are-paying-for">Three consumers you are paying for</h3>
+<ul>
+<li><strong>Shared credentials.</strong> One account, many people. Concurrency limits address this, badly, and only if they count the right thing.</li>
+<li><strong>Leeching.</strong> A third party serves their own audience directly from your edge. Their users hit your CDN, your egress, your cache.</li>
+<li><strong>A reimplemented client.</strong> Someone reverse engineers your player or app, and their client talks to your edge with valid credentials obtained through your real login.</li>
+</ul>
+<p>None of these are unauthenticated. Every one of them presents something legitimate. That is the whole difficulty: your authorization layer is being asked a question it answers correctly, and the correct answer is the wrong outcome.</p>
+<h2 id="what-a-request-can-actually-prove">What a request can actually prove</h2>
+<p>Before designing anything, it is worth being brutally clear about which parts of an incoming request are evidence and which parts are decoration.</p>
+<p>Everything the caller sends, the caller chose. That includes far more than people assume.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Signal</th>
+          <th>Spoof cost for a motivated caller</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>User-Agent</code></td>
+          <td>One line of code</td>
+      </tr>
+      <tr>
+          <td>Header set, count, values</td>
+          <td>Copy from a real client capture</td>
+      </tr>
+      <tr>
+          <td>Header order and casing</td>
+          <td>Moderate - needs a patched HTTP stack</td>
+      </tr>
+      <tr>
+          <td>HTTP/2 SETTINGS, WINDOW_UPDATE, pseudo-header order</td>
+          <td>Moderate to hard</td>
+      </tr>
+      <tr>
+          <td>TLS ClientHello fingerprint (JA3 / JA4)</td>
+          <td>Low, with off-the-shelf tooling</td>
+      </tr>
+      <tr>
+          <td>Request cadence and playback behaviour</td>
+          <td>High, but not impossible</td>
+      </tr>
+      <tr>
+          <td>Source IP address</td>
+          <td>Not possible over TCP</td>
+      </tr>
+  </tbody>
+</table>
+<p>Two entries on that list deserve elaboration.</p>
+<h3 id="tls-fingerprinting-is-weaker-than-its-reputation">TLS fingerprinting is weaker than its reputation</h3>
+<p>JA3 was a genuinely useful signal until Chromium shipped ClientHello extension order permutation, randomized per connection, which showed up in the wild in January 2023. With roughly fifteen permutable extensions, essentially every Chrome connection produces a distinct JA3. Cipher stunting had already made the point earlier: Akamai reported distinct JA3 values going from about 18,600 to roughly 1.355 billion in six months, driven by a tool that randomized the cipher list.</p>
+<p>JA4 fixes the collection problem by sorting the cipher and extension lists before hashing, which is why it survived both. What it does not fix is the underlying issue: tooling like uTLS and curl-impersonate will reproduce a target&rsquo;s TLS fingerprint, HTTP/2 fingerprint and header order simultaneously. A perfect browser fingerprint proves that the caller links against a particular TLS library. Nothing more.</p>
+<p>There is also a scale problem that gets glossed over. Cloudflare has published roughly 15 million distinct JA4 fingerprints against 500 million user agents and billions of IPs. A head fingerprint covers hundreds of millions of devices. <strong>A fingerprint is a software classifier, not an identity</strong>, and its anonymity set ranges from millions of devices down to a handful depending on how exotic the client is.</p>
+<h3 id="the-source-ip-is-the-one-thing-that-cannot-be-invented">The source IP is the one thing that cannot be invented</h3>
+<p>Over TCP, source address spoofing does not survive the handshake. Spoof the source and the SYN-ACK is routed to the address you claimed, not to you. You never complete the handshake, you never receive a byte. QUIC has address validation with the same effect.</p>
+<p>So every request you have actually served came from a routable address at which the caller genuinely receives packets. In a stack where everything else is self-declared, that is a rare and valuable property.</p>
+<p>Which is exactly why the application layer usually throws it away.</p>
+<h3 id="the-x-forwarded-for-trap">The X-Forwarded-For trap</h3>
+<p>Network-level spoofing is impossible. Application-level spoofing is trivial if you trust a forwarding header without checking who set it. Any origin that does <code>remoteIp = header(&quot;X-Forwarded-For&quot;)</code> has handed the caller a free IP-spoofing primitive, and this is one of the most common serious misconfigurations in delivery stacks.</p>
+<p>The correct shape is a trust gate on the transport peer:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>IpAddress <span style="color:#a6e22e">remoteIp</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (isLocalhost(tcpPeer())) {          <span style="color:#75715e">// only a local reverse proxy</span>
+</span></span><span style="display:flex;"><span>        IpAddress fromHeader <span style="color:#f92672">=</span> xForwardedFor();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (fromHeader <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) <span style="color:#66d9ef">return</span> fromHeader;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> tcpPeer();                      <span style="color:#75715e">// otherwise, the real peer</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The mirror-image failure is just as damaging and much easier to ship by accident. If your load balancer terminates TCP and is not on loopback, the gate rejects the header, and every request now appears to originate from the load balancer. You have not been spoofed. You have simply lost the only trustworthy field in the request, and every design in the rest of this post silently stops working.</p>
+<p>Whichever way you resolve it, resolve it explicitly and assert it in a test.</p>
+<h2 id="counting-the-right-thing">Counting the right thing</h2>
+<p>Here is where most designs go wrong, and it is a counting error rather than a cryptographic one.</p>
+<p>The instinct is to treat the fingerprint as an identifier and block on it. That is backwards. Consider what is normal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  many IPs sharing one fingerprint    -&gt; completely normal
+</span></span><span style="display:flex;"><span>                                         a fingerprint is a device class;
+</span></span><span style="display:flex;"><span>                                         tens of thousands of real users
+</span></span><span style="display:flex;"><span>                                         share one
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  many IPs on one session id          -&gt; not normal
+</span></span><span style="display:flex;"><span>                                         a real session sees 1 to 3 addresses
+</span></span><span style="display:flex;"><span>                                         over its life; a shared credential
+</span></span><span style="display:flex;"><span>                                         sees dozens within minutes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  fingerprint changing within a
+</span></span><span style="display:flex;"><span>  single session                      -&gt; almost never normal
+</span></span></code></pre></div><p>The third rule is the highest-signal, lowest-false-positive check available, and almost nobody implements it. It costs one comparison per request against state you already hold.</p>
+<p>It also has one caveat that will bite on day one. On Android, an application commonly fetches the manifest with its own HTTP client and lets the media player fetch segments through a different data source, with a different header set. iOS behaves similarly. So the invariant is not &ldquo;one fingerprint per session&rdquo; but <strong>one expected fingerprint per request class</strong> - manifest, segment, key - compared only within its class. Get this wrong and you will drop legitimate clients on their first segment.</p>
+<p>The general principle: identity is the account or token, the IP is the anchor of truth, and the fingerprint is a tripwire that must not move. Do not merge them into a composite blocklist key. Check them as an invariant.</p>
+<h2 id="token-design-that-survives-per-request-checks">Token design that survives per-request checks</h2>
+<p>If the second checkpoint is going to exist, it has to be cheap enough to run on every object.</p>
+<p>The industry has converged, independently across several CDNs, on a two-tier model: a short-lived entry token authorizes the manifest, and the edge issues a longer session token that covers playlists, keys and segments for the duration of the session. The important property is that <strong>per-request verification is stateless</strong>. It is a signature check over claims carried in the request, not a lookup. HMAC-SHA256 is microseconds; an RS256 verify is on the order of 50 to 100 microseconds. State appears only in the revocation path.</p>
+<p>The cost that actually matters is invocation overhead, not crypto. On CloudFront, a Function runs in sub-millisecond time at roughly $0.10 per million invocations, while Lambda@Edge is around $0.60 per million plus duration and shows warm latencies in the tens of milliseconds. That difference decides whether you can afford to run this on segments or only on manifests. Run manifest rewriting in the heavyweight runtime if you must; keep the per-segment path in the lightweight one.</p>
+<p>There is now a standard worth knowing about rather than inventing your own format: <strong>CAT, standardized as CTA-5007</strong>, a CWT/COSE-signed CBOR token. Three of its claims map directly onto the problems above:</p>
+<ul>
+<li><code>catnip</code> binds the token to an IP or prefix</li>
+<li><code>catr</code> carries renewal instructions, so the edge can mint a refreshed token near expiry without a round trip to your auth service</li>
+<li><code>catif</code> expresses a conditional action, for example redirect to re-authentication instead of a hard denial</li>
+</ul>
+<p>Akamai&rsquo;s EdgeWorkers, Fastly Compute and CloudFront Functions all have implementations. If a third-party CDN is ever going to sit in front of you, a standard token is the difference between a configuration change and a rewrite.</p>
+<h3 id="binding-to-an-ip-without-breaking-real-users">Binding to an IP without breaking real users</h3>
+<p>Binding a session to an address is the single highest-value control here, and the fastest way to cause an outage for legitimate users. The rules are not subtle:</p>
+<ul>
+<li><strong>Never bind to an exact address.</strong> Bind to a prefix: <code>/24</code> for IPv4, and never narrower than <code>/64</code> for IPv6, realistically <code>/56</code>, because privacy extensions rotate the interface identifier.</li>
+<li><strong>CGNAT is everywhere.</strong> RFC 6598 reserves <code>100.64.0.0/10</code>, and RFC 6888 contemplates allocations as small as 512 ports per subscriber, so hundreds of real customers can share one public IPv4. Cloudflare has reported that CGNAT addresses get rate-limited roughly three times as often as others despite showing effectively identical abuse rates. That is a pure false-positive tax.</li>
+<li><strong>Dual-stack clients move between address families mid-session</strong> under Happy Eyeballs (RFC 8305). If you authorize the v4 address and the next connection arrives over v6, you have locked out your own user.</li>
+<li><strong>iCloud Private Relay egresses through CDN address space</strong> and rotates. Apple publishes the egress ranges; if you are making decisions on datacenter-looking addresses, you need that list or you will mass-ban iPhone Safari.</li>
+<li><strong>Prefer a step-up to a block.</strong> A <code>catif</code>-style redirect to re-authentication turns a false positive from an outage into a minor annoyance.</li>
+</ul>
+<p>One honest caveat: there are no published false-positive rates for IP-bound tokens from any CDN or operator. The guidance above is qualitative. Anyone quoting you a precise percentage is quoting a number they cannot support. Instrument your own traffic in monitoring mode and derive your own thresholds before enforcing anything.</p>
+<h2 id="the-cache-is-where-this-gets-dangerous">The cache is where this gets dangerous</h2>
+<p>Suppose you now want to respond differently to a suspicious caller - throttle, degrade quality, serve a stale object. There is a trap here that is easy to walk into and very unpleasant to debug.</p>
+<p>RFC 9111 defines the cache key as, at minimum, the request method and target URI. Your edge cache is shared. If you serve a degraded response for a flagged caller under the shared URL key, and it is cached, <strong>the next legitimate user gets the punishment</strong>. You have poisoned your own cache with your own countermeasure.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  Wrong                              Right
+</span></span><span style="display:flex;"><span>  -----                              -----
+</span></span><span style="display:flex;"><span>  request -&gt; countermeasure          request -&gt; cache lookup
+</span></span><span style="display:flex;"><span>          -&gt; written to cache                -&gt; clean object stays intact
+</span></span><span style="display:flex;"><span>          -&gt; next user gets it               -&gt; substitute on the way out
+</span></span><span style="display:flex;"><span>                                             -&gt; private, no-store
+</span></span><span style="display:flex;"><span>                                             -&gt; never written back
+</span></span></code></pre></div><p>Three rules follow:</p>
+<ol>
+<li><strong>Decide after the cache lookup and substitute on egress.</strong> The shared object stays pristine. This is the only approach that scales to per-caller decisions without collapsing hit ratio.</li>
+<li><strong>Never put a raw fingerprint into the cache key.</strong> Quantize the decision to a low-cardinality label such as <code>trust=good|suspect</code> before it touches the key. Two values doubles your object count; a raw fingerprint multiplies it by your user count.</li>
+<li><strong>Normalize unknown query parameters out of the cache key.</strong> Otherwise a caller appends <code>?cb=&lt;random&gt;</code>, forces a MISS on every request, and pushes both the load and any expensive countermeasure straight through to your origin. Cache-busting is how attackers route around cache-absorbed rate limiting.</li>
+</ol>
+<p>On the choice of countermeasure itself: throttling and quality capping are cache-safe by construction, because they change timing and rate rather than bytes, and they are indistinguishable from ordinary congestion. Deliberately serving corrupted or stale payloads is implementable and has a certain appeal, but it has essentially no public engineering precedent and by far the worst false-positive blast radius. A wrongly flagged real viewer gets broken video. Reserve it, if you use it at all, for high-confidence repeat abuse.</p>
+<h2 id="the-ceiling-stated-plainly">The ceiling, stated plainly</h2>
+<p>Everything above raises cost. None of it solves the case where somebody reimplements your client.</p>
+<p>Fingerprinting asks: <em>do you look like our client?</em> An attacker holding your binary can copy the answer exactly. It is not a hard question for them; it is a specification.</p>
+<p>The different question is: <em>prove you are our client.</em> On mobile that is platform attestation - Play Integrity on Android, App Attest on iOS - where the assertion is signed by the platform vendor over your signed binary, and possession of your APK does not help. It is the only mechanism in this post that a reimplemented client cannot satisfy by copying.</p>
+<p>It is also partial. There is no equivalent on the web, on WebOS or on Tizen. Users on rooted devices lose access, which is a business decision rather than a technical one. And it belongs at token issuance rather than on the serving path, because running it per segment is neither affordable nor necessary.</p>
+<p>Behavioural analysis deserves the same honesty. Request cadence, playlist polling regularity against the RFC 8216 timing rules, rendition switching entropy and the ratio of media-seconds requested to wall-clock-seconds are excellent at separating a downloader from a player. They are close to useless against a reimplemented client that is genuinely playing video to a genuine viewer, because its behaviour is not an imitation of legitimate behaviour. It is legitimate behaviour.</p>
+<h2 id="detection-without-an-executor-is-just-a-report">Detection without an executor is just a report</h2>
+<p>One more architectural point, and it is the one most often missed.</p>
+<p>Suppose you detect abuse thirty minutes into a two-hour event. What stops it? If the client already holds everything it needs, the answer is nothing. You can block the next session. This one runs to the end.</p>
+<p>You need a recurring checkpoint where a decision can be applied. Short token lifetimes with renewal give you one. If you are already running DRM, license renewal gives you a better one, because it is tamper resistant in a way an application-level heartbeat is not: without a fresh license there is no decryption, regardless of what the client pretends. Typical renewal intervals sit in the 60 to 600 second range with a short grace period.</p>
+<p>The critical distinction: <strong>renewal detects nothing.</strong> If nothing changed between two renewals, the renewal succeeds. It is not the guard who spots the intruder, it is the door that can be closed once someone else does. Without the door, spotting them produces a report rather than an outcome. Without a detector upstream, the door never closes.</p>
+<p>Chain them and the design closes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  short token TTL
+</span></span><span style="display:flex;"><span>      -&gt; client must periodically return to the auth service
+</span></span><span style="display:flex;"><span>      -&gt; attestation runs there
+</span></span><span style="display:flex;"><span>      -&gt; no new token
+</span></span><span style="display:flex;"><span>      -&gt; no license renewal
+</span></span><span style="display:flex;"><span>      -&gt; playback stops within one renewal interval
+</span></span></code></pre></div><h2 id="what-you-actually-buy">What you actually buy</h2>
+<p>You do not eliminate abuse. You change its cost structure, and that is worth saying out loud to whoever is funding the work.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  Before:  1 credential  -&gt; 500 consumers   invisible; concurrency sees 1 session
+</span></span><span style="display:flex;"><span>  After:   500 credentials -&gt; 500 consumers  now your existing controls apply:
+</span></span><span style="display:flex;"><span>                                             per-account concurrency, token limits,
+</span></span><span style="display:flex;"><span>                                             attestation at issuance, anomaly detection
+</span></span></code></pre></div><p>An invisible problem becomes a countable one. The abuser is still there, but now every additional consumer costs them something, and they are operating on terrain where the controls you already built finally have something to act on.</p>
+<h2 id="lessons-learned">Lessons learned</h2>
+<ul>
+<li><strong>The ratio matters more than the checks.</strong> Counting how many requests are authorized versus how many are served tells you more about your posture than any list of controls.</li>
+<li><strong>Fingerprints are classifiers, not identities.</strong> Many addresses per fingerprint is normal. Many addresses per session is not. Almost every bad design confuses these two.</li>
+<li><strong>The invariant check beats the blocklist.</strong> &ldquo;Has this session changed in a way a real session does not change&rdquo; has a far better signal-to-false-positive ratio than &ldquo;is this on a list&rdquo;, and needs no list to maintain.</li>
+<li><strong>The IP is the only field you did not let the caller choose.</strong> Protect that property deliberately, at both the network and the application layer, and write a test that fails if a forwarding header is ever trusted from a non-local peer.</li>
+<li><strong>Countermeasures live after the cache lookup.</strong> Everything else eventually poisons your own cache.</li>
+<li><strong>Measure before enforcing.</strong> There are no published false-positive baselines for any of this. Monitoring mode on one channel for a week is worth more than any vendor benchmark.</li>
+<li><strong>A detector without an executor produces reports.</strong> Budget for the kill switch in the same sprint as the detection, or you will ship an excellent dashboard.</li>
+</ul>
+<h2 id="if-i-were-redesigning-today">If I were redesigning today</h2>
+<p>I would stop treating the session identifier as a credential. It should be an opaque handle to server-side state, and every request that costs real bytes should carry a signed, short-lived, stateless token that the edge can verify without a lookup - CAT if a third-party CDN might ever be involved, a plain HMAC scheme if not.</p>
+<p>I would put the trust decision in one function, called from exactly one place in the serving path, returning a low-cardinality label rather than a boolean. Everything downstream - cache key, countermeasure selection, telemetry - reads that label. That single choice makes the cache problem tractable and keeps the blast radius of a bad rule to something you can reason about.</p>
+<p>And I would build the monitoring pipeline before the enforcement path. Distinct addresses per session, distinct sessions per account, media-seconds versus wall-clock, fingerprint stability within a session. All four are computable from access logs you are already writing, they require no changes to the request path, and they will tell you within days whether you have a problem worth funding and which of the three consumer types you are actually dealing with. That last question determines everything else, and it is remarkable how often it gets answered by assumption.</p>
+
+</div>
+<hr class="mt-10 mb-5">
+<div class="author-bio not-prose">
+  <p class="mb-2">
+    <strong>Nenad Lazić</strong> - Software Architect &amp; Technical Lead.<br>
+    I write about system design, scalability, AI in production, and the trade-offs behind real architecture decisions.
+  </p>
+  <p class="mb-0">
+    👉 <a href="https://www.linkedin.com/in/nenad-lazic-7110a310a/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+  </p>
+</div>
+
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/streaming-piracy-threats-and-controls/"
+      title="Streaming piracy is not one problem"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
