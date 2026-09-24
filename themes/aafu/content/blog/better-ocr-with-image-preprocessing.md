@@ -4,6 +4,7 @@ date: 2025-10-31
 tags: ["python", "opencv", "ocr", "image processing", "tesseract", "computer vision"]
 categories: ["ai", "computer-vision", "backend"]
 description: "Improve OCR accuracy on subtitle and text-based images using OpenCV preprocessing. Learn how to enhance contrast, binarize, and clean up noisy frames for better text recognition."
+cover: "/images/og/better-ocr-with-image-preprocessing.png"
 draft: false
 ---
 

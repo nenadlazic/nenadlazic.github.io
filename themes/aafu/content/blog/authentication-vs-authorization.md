@@ -4,6 +4,7 @@ date: 2025-07-11
 tags: ["security", "authentication", "authorization"]
 categories: ["backend"]
 description: "Understand the key difference between authentication and authorization, why it matters, and how to avoid common pitfalls."
+cover: "/images/og/authentication-vs-authorization.png"
 draft: false
 ---
 

@@ -9,7 +9,7 @@
     <lastBuildDate>Tue, 18 Aug 2026 20:00:00 +0200</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Designing the system that starts after authorization</title>
+      <title>Anti-piracy after authorization: fingerprinting, watermarking and what to build first</title>
       <link>https://nenadlazic.github.io/blog/anti-piracy-designing-after-authorization/</link>
       <pubDate>Tue, 18 Aug 2026 20:00:00 +0200</pubDate>
       <guid>https://nenadlazic.github.io/blog/anti-piracy-designing-after-authorization/</guid>

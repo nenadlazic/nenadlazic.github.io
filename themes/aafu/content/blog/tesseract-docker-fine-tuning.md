@@ -4,6 +4,7 @@ date: 2026-02-13
 tags: ["tesseract", "ocr", "docker", "machine-learning"]
 categories: ["machine-learning", "ocr"]
 description: "Step-by-step guide to training custom Tesseract OCR models using Docker"
+cover: "/images/og/tesseract-docker-fine-tuning.png"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ date: 2025-09-19
 tags: ["spring boot", "llm", "ollama", "docker", "java"]
 categories: ["backend", "ai", "llm"]
 description: "The architect's mental model for AI-powered backends: what LLMs and agents really are, the cloud-vs-self-hosted decision, and the engineering you wrap around the model."
+cover: "/images/og/ai-powered-api.png"
 draft: false
 ---
 

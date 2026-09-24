@@ -4,6 +4,7 @@ date: 2026-08-14T09:00:00+02:00
 tags: ["security", "anti-piracy", "threat-modeling", "system-design", "architecture"]
 categories: ["engineering"]
 description: "Piracy at scale is a distribution business built on legitimate access, not a broken cipher. The four shapes abuse actually takes, the one question that splits your architecture in two, and the three unrelated technologies people keep calling fingerprinting."
+cover: "/images/og/content-piracy-by-authorized-users.png"
 draft: false
 ---
 
@@ -39,15 +40,17 @@ I will call the thing you deliver an **artifact**: a stream, a document, a datas
 
 These are worth separating, because they cost you different things and they need different controls.
 
-{{< hl amber >}}Sharing.{{< /hl >}} One credential, several people, usually at different times of day. Your authorization is working correctly. There are simply too many people standing behind one of them.
+{{< hl amber >}}Sharing:{{< /hl >}} One credential, several people, usually at different times of day. Your authorization is working correctly. There are simply too many people standing behind one of them.
 
-{{< hl amber >}}Leeching.{{< /hl >}} One valid credential pulls, and the puller forks that stream out to an audience of its own in real time. Your infrastructure does the delivering. Nothing is ever stored anywhere. You lose the sale *and* you pay the egress bill for viewers who are not your customers.
+{{< hl amber >}}Leeching:{{< /hl >}} One valid account, and an audience that is not yours watching through it. The leech is a relay: every request its viewers make passes through it to your servers and back, and it keeps nothing. Sometimes it does not even relay, and simply hands out the signed URLs your system issued to that one account, so its viewers fetch straight from your CDN. Either way, every byte those viewers watch is delivered by you. You lose the sale *and* you pay the egress bill for viewers who are not your customers.
 
-{{< hl amber >}}Mirroring.{{< /hl >}} They fetch once through a valid account, keep a copy, and serve their own audience from their own infrastructure. You lose the sale, but not the bandwidth.
+{{< hl amber >}}Mirroring:{{< /hl >}} They fetch once through a valid account, keep a copy, and serve their own audience from their own infrastructure. You lose the sale, but not the bandwidth.
 
-{{< hl amber >}}Republication.{{< /hl >}} The artifact simply leaves and turns up somewhere else, whole. A file on a locker, a dataset in a public repo, a build on a forum.
+{{< hl amber >}}Republication:{{< /hl >}} A copy leaves and is posted in public, whole, for anyone to take: a film on a file locker, a dataset in a public repo, a build on a forum. Unlike mirroring, there is no service behind it and no operator to shut down. Once it is out, it stays out, and every download after that is a copy you never see.
 
-The last three all get called "redistribution" in industry conversations, which is exactly why that word is no use as a label. It hides the only two distinctions that matter: whose infrastructure pays, and whether a copy still exists by the time you find out.
+Sharing and leeching are easy to confuse, because both look like one account with too many people behind it. The difference is who those people are and how many. Sharing is a household or a few colleagues: a handful of sessions, usually at different times, and nobody makes money. Leeching is a business: hundreds of strangers on one account at the same time, paying someone who is not you.
+
+Leeching, mirroring and republication all get called {{< hl blue >}}"redistribution"{{< /hl >}} in industry conversations, which is exactly why that word is no use as a label. It hides the only two distinctions that matter: whose infrastructure pays, and whether a copy still exists by the time you find out.
 
 Two questions tell you which one you are looking at. The first of them decides your whole architecture.
 
@@ -59,25 +62,26 @@ Two different systems, then. Different latency budgets, different owners, indepe
 
 Most bad design in this field comes from treating them as one, and most wasted spend comes from buying a control that belongs to the other half.
 
-### How they got in is a separate axis
+### How they got in is a different question
 
-The four shapes describe what happens to the delivery once somebody is inside. They say nothing about how that somebody got inside, and those are independent questions.
+Everything so far assumed the case this post is about: whoever abuses the delivery came through the door honestly, on an account somebody paid for. That is not the only way in, and it is worth a short detour before moving on.
 
-Entry comes in roughly four flavours: a credential they paid for, a credential somebody shared with them, a **client they emulated**, or a token they forged or replayed.
+There are roughly four ways in:
 
-That third one is worth calling out, because it is the case people most often file under redistribution when it does not belong there. If an emulated client is pulling your content, access control was not answered correctly - it was **defeated**. The distribution that follows is a consequence, not the problem.
+- **a credential they paid for**: the model citizen from the opening
+- **a credential somebody shared with them**
+- **a client they emulated**: software that pretends to be your app
+- **a token they forged or replayed**
 
-It also has entirely different countermeasures. Behavioural scoring and per-object validation are the answer to a valid credential behaving badly. An emulated client is answered by platform attestation, by tokens whose integrity you can actually verify, and by keeping no signing secret in the client at all.
+The first two are this post's subject: the door did its job, and the problem starts after it. The last two are a break-in. Access control was not answered wrongly, it was **defeated**, and the fix belongs at the door: platform attestation, tokens whose integrity you can verify, no signing secret in the client. Filing them under "redistribution" sends you shopping for the wrong controls.
 
-Both axes matter, and they multiply: any entry route can feed any of the four shapes. Both posts keep them apart.
-
-The rest of this post stays at that level: what the business on the other side actually looks like, and the three technologies people confuse when they try to answer it. The engineering detail - signal layers, watermark capacity arithmetic, what to build in which order - is in [part two](/blog/anti-piracy-designing-after-authorization/).
+Any way in can lead to any of the four shapes, so both posts keep the two questions apart. The rest of this one looks at the business on the other side and the three technologies people confuse when they fight it. The engineering detail - signal layers, watermark capacity arithmetic, what to build in which order - is in [part two](/blog/anti-piracy-designing-after-authorization/).
 
 ## The business on the other side
 
 Start with the thing that surprises people: piracy at scale is not a hacking story. It is a distribution business.
 
-The best measurements come from video, because that is where researchers bought subscriptions and took notes. An academic study of paid pirate IPTV services mapped the whole operation.
+The best measurements come from video, because that is where researchers bought subscriptions and took notes. An academic study of paid pirate IPTV services ([Pandey, Aliapoulios and McCoy, IEEE EuroS&P Workshops 2019](https://ieeexplore.ieee.org/document/8802514)) mapped the whole operation.
 
 It looks like a normal company:
 
@@ -133,19 +137,15 @@ The distinction that costs real money is between the last two. Marking tells you
 
 You need both to close a loop. Buying one while believing you bought the other is the most expensive mistake here.
 
-Mapped onto the two halves from earlier: requester fingerprinting is the whole interruption side, while marking and content fingerprinting are the attribution side, and they only work as a pair.
+{{< accent >}}Mapped onto the two halves from earlier: requester fingerprinting is the whole interruption side, while marking and content fingerprinting are the attribution side, and they only work as a pair.{{< /accent >}}
 
 ## Where this goes next
 
-That is the map. What it deliberately does not contain is any of the engineering.
+That is the map. The engineering behind it comes next.
 
-[**Part two: designing the system that starts after authorization**](/blog/anti-piracy-designing-after-authorization/) takes each of the three technologies apart:
+[**Part two: anti-piracy after authorization - fingerprinting, watermarking and what to build first**](/blog/anti-piracy-designing-after-authorization/) takes each of the three technologies apart:
 
 - **Requester fingerprinting** layer by layer, ranked by what a forgery costs the abuser rather than by lab accuracy - and the published uniqueness numbers that show where it hits a ceiling.
 - **Marking**, including the four places you can insert it, the capacity arithmetic that decides whether it can work for your artifacts at all, and the token failure that makes a recipient unattributable without alerting anything.
 - **Content fingerprinting** as the discovery layer, and why it is a search problem rather than a hashing one.
 - **The synthesis**: a table mapping the symptom you see to the control that helps, the failure modes worth knowing before a procurement call, honest costs, and the order I would build in today.
-
-## Reference
-
-- *Iniquitous Cord-Cutting: An Analysis of Infringing IPTV Services*, Damon McCoy et al.

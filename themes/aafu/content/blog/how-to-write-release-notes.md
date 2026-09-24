@@ -4,6 +4,7 @@ date: 2025-08-10
 tags: ["release notes", "deploy"]
 categories: ["deployment"]
 description: "How to write release notes that actually get read - what to include, who they serve, and a reusable template with a compatibility matrix."
+cover: "/images/og/how-to-write-release-notes.png"
 draft: false
 ---
 

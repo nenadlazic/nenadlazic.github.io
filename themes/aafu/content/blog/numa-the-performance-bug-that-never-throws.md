@@ -4,6 +4,7 @@ date: 2026-07-31T09:00:00+02:00
 tags: ["numa", "performance", "linux", "systems-programming", "memory", "video-encoding"]
 categories: ["engineering"]
 description: "NUMA is the failure mode where everything keeps working, nothing reports a fault, and you quietly pay a third of your hardware budget for nothing. How it happens, and how to catch it."
+cover: "/images/og/numa-the-performance-bug-that-never-throws.png"
 draft: false
 ---
 

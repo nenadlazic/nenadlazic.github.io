@@ -4,6 +4,7 @@ date: 2026-03-17
 tags: ["pcie", "hardware", "bios", "linux", "pcie-bifurcation", "debugging"]
 categories: ["engineering"]
 description: "A deep dive into why PCIe hardware fails to appear in lspci, covering BIOS, lanes, and bifurcation."
+cover: "/images/og/why-your-pcie-card-isnt-detected.png"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ date: 2026-02-05
 tags: ["ocr", "tesseract", "lstm", "computer-vision", "machine-learning"]
 categories: ["engineering"]
 description: "Fine-tuning Tesseract OCR with domain-specific data to improve real-world accuracy."
+cover: "/images/og/tesseract-fine-tuning-ocr.png"
 draft: false
 ---
 

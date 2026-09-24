@@ -4,6 +4,7 @@ date: 2025-12-01
 tags: ["templating", "jinja"]
 categories: ["engineering"]
 description: "Where templating earns its place in modern engineering - config generation, scaffolding, and code generation with Jinja, and the pitfalls to avoid."
+cover: "/images/og/templating-with-jinja.png"
 aliases: ["/blog/templateing-with-jinja/"]
 draft: false
 ---

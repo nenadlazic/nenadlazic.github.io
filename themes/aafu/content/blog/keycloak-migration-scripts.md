@@ -4,6 +4,7 @@ date: 2025-08-14
 tags: ["keycloak", "security", "backend"]
 categories: ["security"]
 description: "Treat Keycloak configuration as code - write migration scripts for realms, clients, and roles to keep IAM consistent and reproducible across environments."
+cover: "/images/og/keycloak-migration-scripts.png"
 draft: false
 ---
 

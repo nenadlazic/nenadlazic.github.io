@@ -4,6 +4,7 @@ date: 2025-09-05
 tags: ["vmaf", "video quality", "ffmpeg", "streaming", "codec", "encoding", "transcoding", "netflix"]
 categories: ["video-engineering"]
 description: "Deep dive into VMAF metric for comparing reference and distorted videos, with technical details on prerequisites like frame alignment, resolution, and fps matching."
+cover: "/images/og/vmaf-introduction.png"
 draft: false
 ---
 

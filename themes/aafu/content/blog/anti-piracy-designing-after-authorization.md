@@ -1,9 +1,10 @@
 ---
-title: "Designing the system that starts after authorization"
+title: "Anti-piracy after authorization: fingerprinting, watermarking and what to build first"
 date: 2026-08-18T20:00:00+02:00
 tags: ["security", "fingerprinting", "watermarking", "anti-piracy", "system-design", "architecture"]
 categories: ["engineering"]
 description: "The engineering half: requester fingerprinting ranked by what a forgery costs, the watermark capacity arithmetic that decides whether marking can work at all, content fingerprinting as a search problem, and the two loops that get confused for one."
+cover: "/images/og/anti-piracy-designing-after-authorization.png"
 draft: false
 ---
 
@@ -365,7 +366,7 @@ Every classifier stays a score feeding a graduated decision, never a gate. The c
 ## References
 
 - Danaher, Smith, Telang, *The Effect of Piracy Website Blocking on Consumer Behavior*, CMU IDEA, 2018
-- *Iniquitous Cord-Cutting: An Analysis of Infringing IPTV Services*, Damon McCoy et al.
+- Pandey, Aliapoulios, McCoy, *Iniquitous Cord-Cutting: An Analysis of Infringing IPTV Services*, IEEE EuroS&P Workshops 2019
 - Gomez-Boix et al., *Hiding in the Crowd*, WWW 2018, and Laperdrix et al., *Browser Fingerprinting: A Survey*, 2019
 - Vastel et al., *FP-Stalker: Tracking Browser Fingerprint Evolutions*, IEEE S&P 2018
 - Jarad and Bicakci, *When Handshakes Tell the Truth: Detecting Web Bad Bots via TLS Fingerprints*, arXiv:2602.09606, 2026

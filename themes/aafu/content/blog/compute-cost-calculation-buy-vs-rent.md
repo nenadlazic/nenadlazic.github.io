@@ -4,6 +4,7 @@ date: 2026-05-21
 tags: ["cost-engineering", "cloud", "on-prem", "gpu", "capacity-planning", "tco"]
 categories: ["engineering"]
 description: "Why most buy-vs-rent compute cost models are wrong, the variables that actually decide the answer, and a concrete GPU case study with a real cost matrix."
+cover: "/images/og/compute-cost-calculation-buy-vs-rent.png"
 draft: false
 ---
 
