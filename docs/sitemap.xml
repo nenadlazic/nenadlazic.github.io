@@ -3,12 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nenadlazic.github.io/blog/</loc>
-    <lastmod>2026-08-25T20:00:00+02:00</lastmod>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://nenadlazic.github.io/</loc>
-    <lastmod>2026-08-25T20:00:00+02:00</lastmod>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/architecture/</loc>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/categories/</loc>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/distributed-systems/</loc>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/categories/engineering/</loc>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/blog/high-availability-what-happens-when-things-fail/</loc>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/high-availability/</loc>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/kubernetes/</loc>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/reliability/</loc>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://nenadlazic.github.io/tags/</loc>
+    <lastmod>2026-09-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -18,21 +63,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://nenadlazic.github.io/blog/anti-piracy-designing-after-authorization/</loc>
-    <lastmod>2026-08-25T20:00:00+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/architecture/</loc>
-    <lastmod>2026-08-25T20:00:00+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://nenadlazic.github.io/categories/</loc>
-    <lastmod>2026-08-25T20:00:00+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://nenadlazic.github.io/categories/engineering/</loc>
     <lastmod>2026-08-25T20:00:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -48,11 +78,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://nenadlazic.github.io/tags/system-design/</loc>
-    <lastmod>2026-08-25T20:00:00+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://nenadlazic.github.io/tags/</loc>
     <lastmod>2026-08-25T20:00:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

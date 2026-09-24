@@ -1,0 +1,34 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="haservicechain" name="Service chain">
+    <mxGraphModel dx="1000" dy="700" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="940" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="t" value="C dies on the primary. Does B reach the healthy C?" style="text;html=1;align=center;fontSize=15;fontStyle=1;fontColor=#333333;" vertex="1" parent="1"><mxGeometry x="80" y="16" width="740" height="26" as="geometry"/></mxCell>
+
+        <mxCell id="cp" value="Primary cluster" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef3fb;strokeColor=#6c8ebf;verticalAlign=top;fontSize=12;fontColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="60" y="60" width="780" height="120" as="geometry"/></mxCell>
+        <mxCell id="pa" value="A" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="120" y="100" width="100" height="50" as="geometry"/></mxCell>
+        <mxCell id="pb" value="B" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="330" y="100" width="100" height="50" as="geometry"/></mxCell>
+        <mxCell id="pc" value="C  ✕ down" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="620" y="100" width="130" height="50" as="geometry"/></mxCell>
+        <mxCell id="eab" value="" style="endArrow=classic;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="pa" target="pb"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ebc" value="1 · cluster-local name&#10;keeps calling the dead C" style="endArrow=classic;html=1;strokeColor=#b85450;strokeWidth=2;fontSize=11;fontColor=#b85450;fontStyle=1;" edge="1" parent="1" source="pb" target="pc"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="dns" value="DNS record for C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1"><mxGeometry x="620" y="222" width="130" height="45" as="geometry"/></mxCell>
+        <mxCell id="l2" value="2 · external hostname&#10;only after someone&#10;switches C's record" style="text;html=1;align=left;fontSize=11;fontColor=#9c7a1e;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="758" y="215" width="140" height="60" as="geometry"/></mxCell>
+        <mxCell id="l3" value="3 · mesh global service&#10;immediately, no DNS, no TTL" style="text;html=1;align=right;fontSize=11;fontColor=#2d7d2d;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="200" y="235" width="250" height="40" as="geometry"/></mxCell>
+
+        <mxCell id="cb" value="Backup cluster" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef3fb;strokeColor=#6c8ebf;verticalAlign=top;fontSize=12;fontColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="60" y="310" width="780" height="120" as="geometry"/></mxCell>
+        <mxCell id="ba" value="A" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="120" y="355" width="100" height="50" as="geometry"/></mxCell>
+        <mxCell id="bb" value="B" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="330" y="355" width="100" height="50" as="geometry"/></mxCell>
+        <mxCell id="bc" value="C  healthy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="620" y="355" width="130" height="50" as="geometry"/></mxCell>
+
+        <mxCell id="e2a" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;dashed=1;exitX=1;exitY=0.85;entryX=0;entryY=0.5;" edge="1" parent="1" source="pb" target="dns"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2b" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="dns" target="bc"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2.5;exitX=0.4;exitY=1;entryX=0;entryY=0.3;" edge="1" parent="1" source="pb" target="bc"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="cap" value="With cluster-local names, the unit of failover is the cluster, not the service." style="text;html=1;align=center;fontSize=12;fontColor=#333333;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="60" y="445" width="780" height="24" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

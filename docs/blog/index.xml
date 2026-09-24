@@ -6,8 +6,15 @@
     <description>Recent content in All tech blogs on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Aug 2026 20:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>High availability: what actually happens when things fail</title>
+      <link>https://nenadlazic.github.io/blog/high-availability-what-happens-when-things-fail/</link>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/high-availability-what-happens-when-things-fail/</guid>
+      <description>&lt;p&gt;Every architecture document I have reviewed says &amp;ldquo;HA&amp;rdquo; somewhere. Very few say what happens, step by step, when the thing it protects actually dies.&lt;/p&gt;&#xA;&lt;p&gt;Here is a failure that is more common than it should be. A platform runs on two Kubernetes clusters in two data centres, primary and backup. Every service is marked HA. Then the primary site loses its uplink.&lt;/p&gt;&#xA;&lt;p&gt;Nothing moves. The public DNS record still points at the dead cluster, because switching it is a manual change nobody has rehearsed. The backup cluster has most services running, but the message broker they depend on lives only on the primary site. And redeploying anything on the backup side needs the secret store and the image registry, both of which run on the primary.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Anti-piracy after authorization: fingerprinting, watermarking and what to build first</title>
       <link>https://nenadlazic.github.io/blog/anti-piracy-designing-after-authorization/</link>

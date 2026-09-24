@@ -6,20 +6,48 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Aug 2026 20:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Architecture</title>
+      <link>https://nenadlazic.github.io/tags/architecture/</link>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/architecture/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Distributed-Systems</title>
+      <link>https://nenadlazic.github.io/tags/distributed-systems/</link>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/distributed-systems/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>High-Availability</title>
+      <link>https://nenadlazic.github.io/tags/high-availability/</link>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/high-availability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubernetes</title>
+      <link>https://nenadlazic.github.io/tags/kubernetes/</link>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reliability</title>
+      <link>https://nenadlazic.github.io/tags/reliability/</link>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/reliability/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Anti-Piracy</title>
       <link>https://nenadlazic.github.io/tags/anti-piracy/</link>
       <pubDate>Tue, 25 Aug 2026 20:00:00 +0200</pubDate>
       <guid>https://nenadlazic.github.io/tags/anti-piracy/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Architecture</title>
-      <link>https://nenadlazic.github.io/tags/architecture/</link>
-      <pubDate>Tue, 25 Aug 2026 20:00:00 +0200</pubDate>
-      <guid>https://nenadlazic.github.io/tags/architecture/</guid>
       <description></description>
     </item>
     <item>

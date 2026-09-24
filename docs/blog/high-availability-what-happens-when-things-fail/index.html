@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>High availability: what actually happens when things fail · Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="HA is not a replica count. It is the path traffic and state take to the surviving side: the two levels of HA, why DNS and service addressing decide failover, why state is the real problem, and how to audit it honestly." />
+<link rel="canonical" href="https://nenadlazic.github.io/blog/high-availability-what-happens-when-things-fail/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="High availability: what actually happens when things fail" />
+<meta property="og:description" content="HA is not a replica count. It is the path traffic and state take to the surviving side: the two levels of HA, why DNS and service addressing decide failover, why state is the real problem, and how to audit it honestly." />
+<meta property="og:url" content="https://nenadlazic.github.io/blog/high-availability-what-happens-when-things-fail/" />
+<meta property="og:site_name" content="Nenad Lazić" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="High availability: what actually happens when things fail" />
+<meta name="twitter:description" content="HA is not a replica count. It is the path traffic and state take to the surviving side: the two levels of HA, why DNS and service addressing decide failover, why state is the real problem, and how to audit it honestly." />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="google-site-verification" content="BNTdqVbAxPtce9qZkRnwXoAH5Wc9VZD66vX5UK1HXUM" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.842536f0f6f748646290a08f61b965cca04f2c49a8e3b3be0325d9347cd85a08.css"
+    integrity="sha256-hCU28Pb3SGRikKCPYbllzKBPLEmo47O&#43;AyXZNHzYWgg="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+  
+  
+    
+  
+  <meta property="og:image" content="https://nenadlazic.github.io/images/og/high-availability-what-happens-when-things-fail.png?v=69c5c710">
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "31022709b8d24ae089f3fc7035bd7ffa"}'></script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">High availability: what actually happens when things fail</h1>
+  <p class="mb-1">September 24, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Every architecture document I have reviewed says &ldquo;HA&rdquo; somewhere. Very few say what happens, step by step, when the thing it protects actually dies.</p>
+<p>Here is a failure that is more common than it should be. A platform runs on two Kubernetes clusters in two data centres, primary and backup. Every service is marked HA. Then the primary site loses its uplink.</p>
+<p>Nothing moves. The public DNS record still points at the dead cluster, because switching it is a manual change nobody has rehearsed. The backup cluster has most services running, but the message broker they depend on lives only on the primary site. And redeploying anything on the backup side needs the secret store and the image registry, both of which run on the primary.</p>
+<p>Every component was &ldquo;HA&rdquo;. The system was not.</p>
+<p>This post is about the difference. My working definition: <strong>high availability is not a replica count. It is the path that traffic and state take to the surviving side, and whether that path has been walked before it is needed.</strong></p>
+<h2 id="two-levels-of-ha-and-what-neither-of-them-covers">Two levels of HA, and what neither of them covers</h2>
+<p>&ldquo;HA&rdquo; in a design document usually means one of two different things, and mixing them up causes most of the wrong assumptions.</p>
+<p><img src="/images/ha-two-levels.png" alt="Two levels of HA: replicas inside a cluster, deployments across clusters, and the shared dependencies underneath both"></p>
+<table>
+  <thead>
+      <tr>
+          <th>Level</th>
+          <th>What it is</th>
+          <th>Protects against</th>
+          <th>Does not protect against</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>more than one replica inside one cluster</td>
+          <td>a pod or a node dying</td>
+          <td>the cluster, the site, a shared database or broker</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>the service deployed on two clusters or sites</td>
+          <td>a whole cluster or site going down</td>
+          <td>anything both sides depend on</td>
+      </tr>
+  </tbody>
+</table>
+<p>Level 1 is cheap and mostly automatic: the orchestrator restarts pods and the load balancer drops dead endpoints. Level 2 is where the real work is, because traffic, service discovery and state all have to move together.</p>
+<p>A service with one replica deployed on both clusters has level 2 but not level 1. It survives a site failure, eventually, after someone switches it, but a routine pod restart is an outage. A service with five replicas on one cluster has level 1 but not level 2. Both get called HA.</p>
+<p>Neither level says anything about dependencies. <strong>A service is exactly as available as the least available thing it cannot work without.</strong></p>
+<h3 id="a-vocabulary-that-makes-the-audit-honest">A vocabulary that makes the audit honest</h3>
+<p>&ldquo;Is it HA?&rdquo; gets a yes or a no, and the yes hides everything. Two columns per component give a real answer.</p>
+<p><strong>Topology</strong> - where it runs:</p>
+<ul>
+<li><strong>active/active</strong> - both sides serve traffic</li>
+<li><strong>active/passive, hot</strong> - both sides run, one gets the traffic</li>
+<li><strong>active/passive, cold</strong> - the backup has the objects, scaled to zero</li>
+<li><strong>not deployed</strong> - nothing on the backup side</li>
+<li><strong>single site</strong> - there is no backup side</li>
+</ul>
+<p><strong>Failover class</strong> - what it takes to move:</p>
+<ul>
+<li><strong>automatic</strong> - health checks and routing move traffic on their own</li>
+<li><strong>scale + DNS</strong> - someone scales up the backup and switches a record</li>
+<li><strong>deploy + DNS</strong> - someone first has to deploy it</li>
+<li><strong>data promotion</strong> - a replica has to be promoted, or data is restored or lost</li>
+<li><strong>not possible</strong></li>
+</ul>
+<p>Filling that table for every component of a real platform is humbling. Most rows land in &ldquo;scale + DNS&rdquo; or worse, and the few &ldquo;automatic&rdquo; ones tend to be the ones somebody was once burned by.</p>
+<h2 id="how-traffic-finds-the-surviving-side">How traffic finds the surviving side</h2>
+<p>Most active/passive setups move external traffic with DNS: one hostname, one record, pointing at the active cluster. Failover means changing the record. Three details decide whether that works.</p>
+<p><strong>A plain record does not fail over.</strong> If the service dies but the cluster is up, requests still arrive, the ingress finds no ready endpoints and answers 503. It does not forward to the other cluster; it does not know there is one.</p>
+<p><strong>A health-checked record checks a URL, not your system.</strong> DNS-level failover probes one endpoint from outside and moves traffic when that URL fails, which may or may not be when your users are failing.</p>
+<p><strong>TTL is a floor, not a guarantee.</strong> After the switch, resolvers and clients keep the old answer for at least the TTL, and some keep it much longer. A 60-second TTL does not mean a 60-second failover.</p>
+<p>Inside the cluster, the same decision is made by the <strong>readiness</strong> probe, not liveness. Readiness removes a pod from the endpoints; liveness only restarts it. A liveness probe that fails when a dependency is down turns one broken database into a restart storm.</p>
+<h2 id="how-services-find-each-other">How services find each other</h2>
+<p>External traffic is the visible half. The half that usually breaks is service-to-service calls.</p>
+<p><img src="/images/ha-service-chain.png" alt="A call chain A to B to C where C fails on the primary, and what each addressing mode does"></p>
+<p>Take a chain: a client calls A, A calls B, B calls C. Everything is deployed on both clusters, traffic is on the primary. Now C dies on the primary only. Whether the chain keeps working depends entirely on the address B uses for C:</p>
+<table>
+  <thead>
+      <tr>
+          <th>B calls C via</th>
+          <th>What happens</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>a cluster-local service name</td>
+          <td>resolves only inside the primary; B keeps calling the dead C and fails</td>
+      </tr>
+      <tr>
+          <td>an external hostname</td>
+          <td>you can switch only C&rsquo;s record: partial failover, cross-site latency on every call, and C on the backup needs healthy dependencies of its own</td>
+      </tr>
+      <tr>
+          <td>a multi-cluster (global) service in a mesh</td>
+          <td>endpoints in both clusters; when no local pod is ready, calls go to the remote one immediately, with no DNS and no TTL</td>
+      </tr>
+  </tbody>
+</table>
+<p>The first row is the default almost everywhere, and its consequence is worth stating plainly: <strong>in active/passive with cluster-local addressing, the unit of failover is the cluster, not the service.</strong> One service without level 1 takes down the functionality of the whole primary, and the only way out is to move the entire stack.</p>
+<p>The mesh option has a trap of its own. Many ingress controllers balance directly across pod IPs from the local endpoint list instead of going through the service IP, so external traffic never sees the remote endpoints and still gets a 503. The mesh covers pod-to-pod calls; check separately that the ingress path uses it.</p>
+<h2 id="state-is-the-real-problem">State is the real problem</h2>
+<p>Stateless services are the easy part. Every hard failover conversation ends at state.</p>
+<p><strong>The database.</strong> A common shape is one database cluster stretched across both sites: a primary with streaming replicas on the other side, and services reaching it through an alias. That is a good design, because failover is promoting a replica and repointing the alias, with no redeploys. Two questions decide how good it really is. Is replication synchronous? The default usually is not, so the recovery point is whatever lag existed at the moment of failure. And is promotion automated, or a procedure that lives in one person&rsquo;s head?</p>
+<p><strong>The message broker</strong> is the hidden single point of failure. Two independent broker clusters, one per site, look redundant. But if every client has one site&rsquo;s brokers in its configuration and nothing replicates between them, losing that site means lost in-flight events and a redeploy of every producer and consumer.</p>
+<p>Cross-cluster replication fixes most of that, at a price:</p>
+<ul>
+<li>it is asynchronous, so the recovery point is the replication lag</li>
+<li>it delivers duplicates, so consumers must be idempotent</li>
+<li>consumer offsets differ between the clusters and must be translated</li>
+<li>if messages carry only a schema ID, the registry on the other side must know the same IDs, or consumers cannot deserialize a single message</li>
+</ul>
+<p><strong>Per-cluster state</strong> - caches, analytical stores, object stores, local volumes - is lost on failover unless it is replicated. For a cache that is fine. For anything else it should be a conscious row in the table, not a surprise.</p>
+<p><strong>The control plane of recovery.</strong> The secret store, the image registry and the CI system are rarely in anyone&rsquo;s HA scope, yet every recovery step goes through them. If they live only on the primary, the backup can run what it already has, but it cannot deploy, pick up new secrets or pull a new image. That is the failure from the opening, and it is the one I would check first.</p>
+<h2 id="singletons-and-electing-a-leader-across-two-clusters">Singletons, and electing a leader across two clusters</h2>
+<p>Some services cannot run twice. The causes are mundane: scheduled jobs that would execute on every replica, volumes that allow a single writer, state kept only in memory, a deployment strategy that stops the old pod before starting the new one.</p>
+<p>Most of these are fixable, and the fix is almost always the same: <strong>move the coordination into something both sides already share.</strong></p>
+<ul>
+<li><strong>Request handling</strong> needs no leader at all if the state is in the database. Any instance on either cluster can serve.</li>
+<li><strong>Scheduled work</strong> needs exactly one executor, and the right place for that lock is the shared database: a lock table, an advisory lock, or row claiming with <code>SKIP LOCKED</code>. When the primary dies, the lock expires and the backup takes over, without anyone having to know who the leader was.</li>
+<li><strong>Not a Kubernetes lease.</strong> A lease lives in one cluster&rsquo;s API server, so each cluster elects its own leader, and you are back to two.</li>
+</ul>
+<p>If a leader must also receive requests because of in-memory state, you can make non-leaders report not-ready so only the leader has endpoints. It works, at a cost: failover takes the lock TTL plus a probe period, rollouts stall, and the backup always looks unhealthy. Moving the state into the database is nearly always cheaper.</p>
+<h2 id="failure-modes-worth-expecting">Failure modes worth expecting</h2>
+<ul>
+<li><strong>The cold standby drifts.</strong> A backup scaled to zero is updated by nobody who watches it. Months later it runs versions behind, with configuration that points at systems which no longer exist.</li>
+<li><strong>Split primaries.</strong> After one incident, some services move to the backup site and never move back. Each site is now primary for half the stack, and every call between the halves crosses sites.</li>
+<li><strong>Secrets that fail to sync on the backup side</strong> stay invisible until the day a redeploy there is actually needed.</li>
+<li><strong>Failover that was never run.</strong> An untested failover is a hypothesis. The procedures that work are the ones with a documented order - what to scale down first, what to bring up last - and a date on which someone last ran them.</li>
+</ul>
+<h2 id="what-it-costs">What it costs</h2>
+<p>Level 1 is cheap: more replicas, and the work of making the service safe to run twice. Level 2 roughly doubles the stateless footprint if the backup is hot, and costs almost nothing if it is cold. That is exactly why cold backups are so common, and why they drift.</p>
+<p>The real cost is not compute. It is <strong>cross-site state</strong>. Synchronous replication adds a round trip between sites to every write; asynchronous replication buys that latency back with a recovery point greater than zero; and every replicated broker or store is one more system to operate and monitor. That trade-off belongs to whoever owns each data set, decided per data set, not by default.</p>
+<h2 id="if-i-were-designing-this-today">If I were designing this today</h2>
+<p>I would start by writing down what &ldquo;HA&rdquo; means for the platform, as a checklist instead of an adjective. A service is HA only if all of this holds:</p>
+<ol>
+<li>it can run as more than one instance at the same time - no unguarded scheduled jobs, no single-writer volumes, no state only in memory</li>
+<li>everything it depends on is available on the backup side</li>
+<li>there is a defined way for traffic to move - a health-checked route, or a documented and tested switch</li>
+<li>it runs at least two replicas per cluster</li>
+</ol>
+<p><strong>The replica count is a consequence, not the goal.</strong></p>
+<p>Then I would fill in the topology and failover-class table for every component, including the ones nobody thinks of as components: DNS, secrets, the registry, CI. The rows marked &ldquo;not possible&rdquo; are where the real architecture discussion starts.</p>
+<p>And I would put a failover exercise in the calendar. Not because it will go well the first time, but because it will not.</p>
+
+</div>
+<hr class="mt-10 mb-5">
+<div class="author-bio not-prose">
+  <p class="mb-2">
+    <strong>Nenad Lazić</strong> - Software Architect &amp; Technical Lead.<br>
+    I write about system design, scalability, AI in production, and the trade-offs behind real architecture decisions.
+  </p>
+  <p class="mb-0">
+    👉 <a href="https://www.linkedin.com/in/nenad-lazic-7110a310a/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+  </p>
+</div>
+
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/anti-piracy-designing-after-authorization/"
+      title="Anti-piracy after authorization: fingerprinting, watermarking and what to build first"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>
