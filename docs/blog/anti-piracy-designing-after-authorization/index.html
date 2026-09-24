@@ -40,8 +40,8 @@
   
   <link
     rel="stylesheet"
-    href="/main.min.d694b768c8ad041863b52102a738328fd84e812f1105fd7c625c34d0be759777.css"
-    integrity="sha256-1pS3aMitBBhjtSECpzgyj9hOgS8RBf18Ylw00L51l3c="
+    href="/main.min.842536f0f6f748646290a08f61b965cca04f2c49a8e3b3be0325d9347cd85a08.css"
+    integrity="sha256-hCU28Pb3SGRikKCPYbllzKBPLEmo47O&#43;AyXZNHzYWgg="
     crossorigin="anonymous"
   />
   
@@ -158,101 +158,136 @@
 <div class="prose prose-stone dark:prose-invert max-w-none">
 <div class="mb-3">
   <h1 class="top-h1">Anti-piracy after authorization: fingerprinting, watermarking and what to build first</h1>
-  <p class="mb-1">August 18, 2026</p>
+  <p class="mb-1">August 25, 2026</p>
   <p>&mdash;</p>
 </div>
 <div class="content">
-  <p>This is the second half of a pair. <a href="/blog/content-piracy-by-authorized-users/">Part one</a> covered the problem: why the abuser usually holds valid access, the four shapes that abuse actually takes, and the three unrelated technologies that all get called fingerprinting.</p>
-<p>Four things from it carry over, and they are all you need to read on:</p>
+  <p>The <a href="/blog/content-piracy-by-authorized-users/">first part</a> of this series established the problem: why the abuser usually holds valid access, the four shapes that abuse actually takes, and the three unrelated technologies that all get called <span style="color:#6c8ebf;font-weight:700">fingerprinting</span>
+.</p>
+<p>This part moves from the problem to the system. Before getting into the engineering, there are four things from part one worth keeping in mind:</p>
 <ul>
 <li>An <strong>artifact</strong> is whatever you deliver: a stream, a document, a dataset, a build, an image catalogue, a set of weights.</li>
 <li>Abuse takes four shapes. <strong>Sharing</strong> and <strong>leeching</strong> are still moving through your infrastructure, so they can be <strong>interrupted</strong>. <strong>Mirroring</strong> and <strong>republication</strong> are already over when you find out, so all that is left is <strong>attribution</strong>.</li>
 <li>Those are two separate systems with different latency budgets, and merging them is the most common architectural mistake here.</li>
-<li><strong>Requester fingerprinting</strong> serves the interruption side. <strong>Recipient marking</strong> and <strong>content fingerprinting</strong> serve the attribution side, as a pair.</li>
+<li><strong>Requester fingerprinting</strong> serves the interruption side: stopping a suspicious client mid-delivery. <strong>Recipient marking</strong> and <strong>content fingerprinting</strong> serve the attribution side, as a pair: finding a leaked copy, then tracing it to its recipient.</li>
 </ul>
-<p>What follows is the engineering. Each technology gets taken apart, then wired back together into something you could actually build.</p>
-<h2 id="fingerprinting-the-requester">Fingerprinting the requester</h2>
-<p>Start on the interruption side, with the only technology that serves it.</p>
-<p>A fingerprint is just a set of details about the caller that you did not ask them to send. Their software leaks it by existing.</p>
-<p>The useful way to think about the layers is not accuracy. It is <strong>what a forgery costs the abuser</strong>.</p>
+<p>That distinction is the foundation for everything that follows. The rest is the engineering: each technology taken apart, its limits made explicit, and the pieces wired back together into something you could actually build.</p>
+<p>The three technologies, in order:</p>
+<ol>
+<li><a href="#1-fingerprinting-the-requester">Fingerprinting the requester</a></li>
+<li><a href="#2-marking-the-copy">Marking the copy</a></li>
+<li><a href="#3-finding-the-leak-content-fingerprinting">Finding the leak</a></li>
+</ol>
+<p>Then <a href="#putting-it-together-designs-that-hold-up">how they fit together</a>.</p>
+<hr>
+<h2 id="1-fingerprinting-the-requester">1. Fingerprinting the requester</h2>
+<p><em>Interruption side</em></p>
+<p>Only one technology applies here.</p>
+<p>A fingerprint is simply a set of details about the caller that you never explicitly asked them to provide. Their software reveals them simply by running.</p>
+<p>Its layers are worth ranking not by how accurate they are, but by <strong>what it costs the abuser to fake them</strong>.</p>
 <p><img src="/images/antipiracy-signal-stack.png" alt="The signal stack ranked by cost to fake, from TLS up to platform attestation"></p>
 <p>Note the inversion in that picture. The two layers vendors talk about most are the two cheapest to defeat.</p>
 <h3 id="the-layers-you-can-read-without-any-help-from-the-client">The layers you can read without any help from the client</h3>
+<span style="color:#d6b656;font-weight:700">TLS: from JA3 to JA4</span>
+
 <p>When a client opens a TLS connection, its first message lists the version, the ciphers it supports, the extensions and the curves. Different software produces a different list.</p>
 <p><strong>JA3</strong> hashed that list into one short string, so you could recognise the same software again later.</p>
 <p>It worked until January 2023. Chromium began permuting the order of TLS extensions on every connection, and within days nearly every Chrome connection was producing a different JA3 value.</p>
 <p><strong>JA4</strong> fixed that by sorting the fields before hashing. It restored stability. It did not make the fingerprint hard to fake, and that difference is the whole story of this layer.</p>
-<p>There are two neighbouring layers worth collecting:</p>
+<span style="color:#d6b656;font-weight:700">Where you can compute it, and what it costs</span>
+
 <ul>
-<li><strong>The TCP handshake</strong> leaks initial TTL, MSS, window size and the order of TCP options. Coarse - it gives you an operating system family, not a device. But it is written by the kernel, not by the abuser&rsquo;s code, which makes it harder to change.</li>
-<li><strong>HTTP/2</strong> adds the SETTINGS values and their order, the first flow-control update, the PRIORITY frames, and the order of pseudo-headers. The scheme comes from an Akamai white paper, which reported browser families separable at 99.7% on the HTTP/2 fingerprint alone. In practice it often discriminates better than TLS does.</li>
+<li><strong>Only where TLS is terminated</strong>, usually your edge proxy. Behind that point the backend sees plain HTTP.</li>
+<li><strong>It travels as a header the proxy adds.</strong> The backend must drop any copy of that header the client sent itself, or anyone can hand you a Chrome fingerprint.</li>
+<li><strong>A third-party CDN in front of your edge</strong> terminates TLS itself, so you end up fingerprinting the CDN, not the client.</li>
+<li><strong>Header order has the same problem:</strong> a reverse proxy reorders and rewrites headers on the way through, so that fingerprint has to be taken at the proxy too.</li>
 </ul>
-<p>How well does this work? Recent academic work trained gradient-boosted classifiers on JA4 features over roughly 200,000 labelled records from JA4DB, reporting near-perfect separation on its own test set: AUC around 0.998, F1 around 0.973.</p>
+<p>The cost is smaller than people expect. The fingerprint is computed once per TLS connection, not per request, and a client typically fetches hundreds of objects over one kept-alive connection.</p>
+<span style="color:#d6b656;font-weight:700">Two neighbouring layers</span>
+
+<ul>
+<li><strong>The TCP handshake</strong> (JA4T) leaks initial TTL, MSS, window size and the order of TCP options. Coarse - it gives you an operating system family, not a device. But it is written by the kernel, not by the abuser&rsquo;s code, which makes it harder to change.</li>
+<li><strong>HTTP/2</strong> adds another layer: the SETTINGS values and their order, the first flow-control update, PRIORITY frames, and pseudo-header ordering. The technique comes from an Akamai white paper, which reported that browser families could be separated with 99.7% accuracy using the HTTP/2 fingerprint alone. In practice, it can be more discriminating than TLS.</li>
+</ul>
+<span style="color:#d6b656;font-weight:700">How well it works</span>
+
+<p>Recent academic work trained gradient-boosted classifiers on JA4 features over roughly 200,000 labelled records from JA4DB, reporting near-perfect separation on its own test set: AUC around 0.998, F1 around 0.973.</p>
 <p>Read the setup before believing the number. A record was labelled bad-bot when the client&rsquo;s application field contained &ldquo;bot&rdquo;. So the model learned to recognise software that announces itself, which is a much easier problem than recognising software that lies.</p>
-<p>The authors say where it fails, in plain terms. It fails against Puppeteer, Playwright and Selenium, because those drive a real browser binary and inherit a real browser&rsquo;s TLS stack. It fails against libraries written to mimic a target fingerprint on purpose. Their own conclusion is that JA4 &ldquo;is not a standalone authentication or attribution mechanism&rdquo;.</p>
+<p>The authors say where it fails, in plain terms:</p>
+<ul>
+<li>against <strong>Puppeteer, Playwright and Selenium</strong>, because those drive a real browser binary and inherit a real browser&rsquo;s TLS stack</li>
+<li>against <strong>libraries written to mimic a target fingerprint</strong> on purpose</li>
+</ul>
+<p>Their own conclusion is that JA4 &ldquo;is not a standalone authentication or attribution mechanism&rdquo;.</p>
 <p>So this layer separates cheap tooling from real browsers very well, and a motivated abuser from a real browser not at all. <code>curl-impersonate</code>, <code>curl_cffi</code> and <code>uTLS</code> reproduce a target browser&rsquo;s cipher list, extension order and HTTP/2 settings in a single call.</p>
-<p>One asymmetry survives, and it is the most useful thing here.</p>
+<p>Here is what that looks like against a plain nginx computing JA4, in a small lab:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Client</th>
+          <th>JA4</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>curl</td>
+          <td><code>t13d3112h2_e8f1e7e78f70_0c76ac0b1ceb</code></td>
+      </tr>
+      <tr>
+          <td>curl with a Chrome User-Agent</td>
+          <td><code>t13d3112h2_e8f1e7e78f70_0c76ac0b1ceb</code></td>
+      </tr>
+      <tr>
+          <td>ffmpeg</td>
+          <td><code>t13d291300_723694b0fccc_4039a0f2863c</code></td>
+      </tr>
+      <tr>
+          <td>curl-impersonate as Chrome 116</td>
+          <td><code>t13d1516h2_8daaf6152771_0adf69b4533f</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>Changing the User-Agent changes nothing underneath. Changing the TLS library changes everything. And a library built to imitate Chrome gets a Chrome-shaped answer.</p>
+<span style="color:#d6b656;font-weight:700">The asymmetry that survives</span>
+
+<p>It is the most useful thing in this section.</p>
 <p><strong>A spoofer normally fakes one layer at a time.</strong> A bot on a Linux host can present a flawless Chrome-on-Windows TLS fingerprint and still emit Linux TCP values, because the kernel wrote those.</p>
 <p>So do not hunt for one good fingerprint. Look for contradictions between layers. JA4T captures the TCP half, which is why the pair is worth more than either piece.</p>
 <p>One caveat: the contradiction only exists while the abuser imitates a platform he is not running on. Once he runs the real browser on the real OS, it disappears.</p>
-<h3 id="the-layers-that-need-the-clients-cooperation">The layers that need the client&rsquo;s cooperation</h3>
-<p>Where you can run code, the surface widens: canvas and WebGL output, audio behaviour, font lists, screen metrics, timezone, memory, the list of supported codecs.</p>
-<p>This layer is oversold. Three studies show why.</p>
-<ul>
-<li><strong>2010, Panopticlick:</strong> 83.6% of 470,161 fingerprints were unique.</li>
-<li><strong>2016, AmIUnique:</strong> 89.4% of 118,934 were unique, and 81% of the mobile ones.</li>
-<li><strong>2018, <em>Hiding in the Crowd</em>:</strong> 2,067,942 fingerprints from a top-15 French commercial site, and only <strong>33.6% were unique. On mobile, 18.5%.</strong></li>
-</ul>
-<p>The gap is sampling, not noise. The early datasets came from sites that attract privacy-minded visitors running unusual software. The last one came from an ordinary commercial audience, which is exactly the population you serve.</p>
-<p>So plan against the last row. Two thirds of desktop fingerprints and more than four fifths of mobile ones are shared with somebody else. Mobile is the weakest case, and mobile is where consumer abuse mostly lives.</p>
-<p>Stability is the second problem. Longitudinal work saw at least one change within a single day for 45.5% of devices. Linkage held about 52 days on average, and past 100 days for roughly a quarter of them.</p>
-<p><strong>A fingerprint is an identifier that decays.</strong></p>
-<p>The third problem is not technical at all. In the EU, fingerprinting falls under Article 5(3) of the ePrivacy Directive, the same provision that governs cookies. The EDPB said so explicitly in its Guidelines 2/2023 on the technical scope of that article, and the point is that storing nothing on the device does not exempt you.</p>
-<p>Anti-abuse is a defensible legal basis, but only for a specific, documented purpose. Put retention and purpose limits into the feature store on day one.</p>
-<p>Platform attestation belongs in a different box entirely. Play Integrity and App Attest do not ask whether you look like the real client. They ask you to <strong>prove</strong> you are, and the platform signs that proof over your signed binary.</p>
-<p>That is the one question a copied client cannot answer, which makes it the answer to the emulated-client entry route rather than to anything on this list. It is also narrow: strong on mobile, absent on the web and most embedded targets. Use it when issuing credentials, not on the delivery path.</p>
+<h3 id="the-layers-that-need-the-client">The layers that need the client</h3>
+<p>Some signals can only be collected if you can run code on the client itself. That opens a wider surface: canvas and WebGL output, audio behaviour, fonts, screen metrics, timezone, memory, supported codecs, and similar details.</p>
+<p>The problem is that these signals are much less unique and stable than they appear. On an ordinary commercial audience, only a third of desktop fingerprints and under a fifth of mobile ones were unique, and fingerprints change over time.</p>
+<p>A fingerprint is an identifier that decays.</p>
+<p>That makes it useful for <strong>grouping related activity</strong>, but weak as a standalone identity or accusation. Where available, platform attestation is stronger: instead of inferring who the client is from its characteristics, it provides a platform-signed statement about the client itself. It is useful at credential issuance, but not as the primary signal on the delivery path.</p>
 <h3 id="the-layer-that-actually-pays">The layer that actually pays</h3>
-<p>Here is the part that gets underbuilt, and it is the cheapest thing in this post.</p>
-<p>Almost every useful signal about an account is already sitting in your access logs:</p>
+<p>The most useful signals are already in the access logs:</p>
 <ul>
-<li>distinct network prefixes and networks under one credential in a rolling window</li>
-<li>concurrency counted per <strong>consumer</strong>, not per session object, since one session object can have any number of people behind it</li>
-<li>request rate and access order against plausible behaviour, because a sequential sweep of a whole catalogue is a scraper by construction</li>
-<li>coverage of the clock, because an account active 24/7 across four timezones is not a person</li>
-<li>delivered volume against entitled volume</li>
-<li>how many distinct device fingerprints show up under one credential over time</li>
+<li>network diversity under one credential</li>
+<li>request rate and access patterns</li>
+<li>concurrency and activity over time</li>
+<li>delivered versus entitled volume</li>
+<li>client identity changes within a session or across credential history</li>
 </ul>
-<p>One published critique is worth internalising. Concurrent-session limits only fire when sessions overlap. The dominant sharing pattern is <strong>staggered in time</strong>.</p>
-<p>Two people sharing one subscription who never watch at the same moment will never trip a concurrency check. Accumulating device and location history over a window, fourteen days in one published approach, builds a case instead of judging a single session.</p>
-<p>Why does this layer win? Cost again.</p>
-<p>Defeating a TLS fingerprint costs one library call. Defeating a behavioural profile means genuinely behaving like N ordinary users: renting N plausible network paths and slowing your own operation down to human speed.</p>
-<p>That bill recurs. It is the only lever here that raises the abuser&rsquo;s ongoing cost rather than his setup cost.</p>
+<p>These are cheap to collect and require no changes to the request path. More importantly, they become much stronger when observed over time.</p>
+<p>Measure behaviour, not individual sessions. A shared credential does not need two active sessions at the same time; its history can still look nothing like a normal consumer.</p>
 <h3 id="where-the-request-comes-from">Where the request comes from</h3>
-<p>The class of network - home, mobile, hosting, VPN, relay - is a strong signal for both leeching and mirroring, because bandwidth economics push resale into datacenters. The IPTV research is evidence for its own countermeasure, since those operations were renting mainstream hosting.</p>
-<p>Residential proxies blunt it completely, for a per-gigabyte fee a paying pirate can absorb.</p>
-<p>One rule follows, and it is worth stating flatly. <strong>Never bind a session to an exact IP address.</strong></p>
-<p>Carrier-grade NAT puts hundreds of real subscribers behind one address. Dual-stack clients switch address families mid-session. Relays rotate exit points.</p>
-<p>Bind to the prefix instead, a /24 or a /56. Allow a few changes per session. Prefer a re-authentication prompt over cutting somebody off.</p>
+<p>Network information is useful context: home, mobile, hosting, VPN, residential proxy.</p>
+<p>But an IP address is not an identity. Addresses are shared, change over time, and can be deliberately proxied.</p>
+<p>Use network information as one feature in the broader behavioural profile, not as a hard binding.</p>
 <h3 id="the-turn-group-do-not-accuse">The turn: group, do not accuse</h3>
-<p>This is the part that changed how I think about the whole category.</p>
-<p>A fingerprint is weak as an accusation and strong as a way to <strong>group sessions together</strong>. It answers &ldquo;is this the same actor as before?&rdquo; much better than &ldquo;is this actor a pirate?&rdquo;</p>
-<p>And a faked fingerprint is faked the same way every time. So the fake itself becomes a grouping key.</p>
-<p>Two consequences follow, and both are cheap.</p>
-<p><strong>First: the pirate is also your client.</strong> Whatever pulls your content on their behalf has a fingerprint on the lower layers. You will not recognise it as pirate software up front.</p>
-<p>But once you isolate it by any means - a behavioural flag, an abuse report, a watermark hit - that fingerprint retroactively identifies every other session it ever opened. One incident becomes a population.</p>
-<p><strong>Second: their infrastructure fingerprints too.</strong> Threat-intelligence work on one IPTV network started from a single domain and reached more than 10,000 IP addresses and 1,100 domains.</p>
-<p>The links were mundane: shared hosting patterns, shared DNS records exposing co-hosted services, a repeated portal URL shape like <code>/get.php?username=...&amp;password=...&amp;type=m3u</code>, and registration history.</p>
-<p>Grouping hundreds of resellers back to one upstream is worth far more than blocking any one of them. The enforcement numbers later explain why.</p>
-<h2 id="marking-the-copy">Marking the copy</h2>
-<p>Now the attribution half, which is what you are left with once <strong>mirroring</strong> or <strong>republication</strong> has already happened.</p>
-<p>Marking writes a per-recipient identifier into the artifact. A copy found anywhere then traces back to the recipient it was issued to. It also attributes a leech, since your bytes reach their audience carrying their session mark - but slowly, which is why the interruption half is the better answer there.</p>
-<p>Where the text says <em>chunk</em> below, read it as whatever unit your artifact is already split into: a video segment, a page, a shard.</p>
-<p>There are four places to put the mark. They differ in cost and in how much you must trust the client, not in what they achieve.</p>
+<p>A fingerprint is weak evidence for saying <em>&ldquo;this is a pirate&rdquo;</em>, but a strong key for asking <em>&ldquo;does this look like the same actor we have seen before?&rdquo;</em></p>
+<p>Once one session is identified through behaviour, an abuse report, or a watermark hit, fingerprinting can connect it to other sessions. The same idea applies to infrastructure: domains, IPs, hosting, DNS, and portal patterns can reveal related services.</p>
+<p>One confirmed incident can therefore become a population of related activity.</p>
+<hr>
+<h2 id="2-marking-the-copy">2. Marking the copy</h2>
+<p><em>Attribution side</em></p>
+<p>This is what is left once <strong>mirroring</strong> or <strong>republication</strong> has already happened.</p>
+<p>Marking writes a per-recipient identifier into the artifact, so a copy found anywhere traces back to whoever it was issued to. Below, a <em>chunk</em> is whatever unit your artifact is already split into: a video segment, a page, a shard.</p>
+<p>There are four places to put the mark:</p>
 <table>
   <thead>
       <tr>
           <th>Where the mark goes in</th>
-          <th>How it works</th>
           <th>Cost</th>
           <th>Trust needed in client</th>
       </tr>
@@ -260,116 +295,55 @@
   <tbody>
       <tr>
           <td>Per-recipient generation</td>
-          <td>a unique artifact rendered per recipient</td>
-          <td>grows with N</td>
+          <td>grows with N; fine for hundreds of recipients</td>
           <td>none</td>
       </tr>
       <tr>
           <td>Variant composition (A/B)</td>
-          <td>two marked variants per chunk, assembled into a per-recipient sequence</td>
           <td>storage doubles once, delivery flat</td>
           <td>none</td>
       </tr>
       <tr>
           <td>Recipient-side embedding</td>
-          <td>trusted code on the device applies the mark</td>
           <td>almost none</td>
-          <td>high</td>
+          <td>high - the abuser controls it and can turn it off</td>
       </tr>
       <tr>
           <td>Delivery-time embedding</td>
-          <td>injected per request at the serving tier</td>
           <td>CPU per request, breaks caching</td>
           <td>none</td>
       </tr>
   </tbody>
 </table>
-<p>Per-recipient generation stops scaling in the hundreds, which is still fine for review copies, licensed datasets and per-customer builds. Delivery-time embedding is flexible and expensive, because a per-recipient response cannot be cached.</p>
-<p>Recipient-side embedding is the one to watch. It is the only option where the abuser controls the thing doing the marking. Unless it runs somewhere he cannot reach, such as a hardware-backed execution environment, he turns it off - and you find out when an unmarked copy appears.</p>
-<p>That leaves variant composition, the only option with an interoperable standard.</p>
+<p>Variant composition is the practical default, and the only one with an interoperable standard: DASH-IF&rsquo;s Forensic A/B Watermarking, published by ETSI as <strong>TS 104 002</strong> in 2023. Every chunk exists in an A and a B variant; the edge reads one bit of the recipient&rsquo;s identifier per chunk from the request token and serves the matching variant.</p>
 <p><img src="/images/antipiracy-ab-marking.png" alt="How A/B variant marking produces many recipient identities from two stored variants"></p>
-<p>DASH-IF&rsquo;s Forensic A/B Watermarking, published by ETSI as <strong>TS 104 002</strong> in August 2023, defines the roles and the interfaces between them.</p>
-<p>A preprocessor emits an A and a B variant of every chunk. The packager carries the metadata through the pipeline. The edge does the sequencing: it derives a bit position from the chunk identifier, reads that bit out of the identifier in the request token, and serves the matching variant.</p>
-<p>Strip the domain vocabulary and a general technique remains. <strong>If an artifact can be chunked, two marked variants plus a per-recipient selection sequence give you N identities from 2 stored copies.</strong></p>
-<p>Per-page document variants and per-shard dataset variants work exactly the same way.</p>
+<p><strong>Two marked variants plus a per-recipient selection sequence give you N identities from 2 stored copies</strong> - for video segments, document pages and dataset shards alike.</p>
 <h3 id="the-failure-mode-that-will-not-show-up-on-a-dashboard">The failure mode that will not show up on a dashboard</h3>
-<p>The security of the whole scheme rests on one thing that is easy to get wrong.</p>
-<p><strong>The token carrying the identifier must be integrity-protected and bound to the session.</strong></p>
-<p>If a client can edit that token, it can request the all-A sequence and make itself unattributable. That is a quieter failure than an outage, and nothing will alert on it.</p>
-<p>So the edge must fail closed on a bad or missing token. And both variants must be encrypted under the same key, so switching between them stays invisible to the player.</p>
-<h3 id="mark-at-every-handoff-not-just-at-the-end-user">Mark at every handoff, not just at the end user</h3>
-<p>One decision is worth making early and is usually made late.</p>
-<p>A per-partner mark applied when you hand an artifact to a distributor, plus a per-session mark on your own delivery path, gives you a two-level search.</p>
-<p>A leak carrying partner X&rsquo;s mark but no session mark means the loss happened inside X. Different conversation, different contract clause, and usually the more damaging case.</p>
+<p><strong>The token carrying the identifier must be integrity-protected and bound to the session.</strong> If a client can edit it, it can request the all-A sequence and become unattributable, and nothing will alert on it. The edge must fail closed on a bad or missing token, and both variants must be encrypted under the same key.</p>
+<p>Mark at every handoff, too, not just at the end user. A per-partner mark plus a per-session mark tells you whether a leak happened inside a distributor or on your own delivery path.</p>
 <h3 id="the-arithmetic-to-run-before-any-procurement-call">The arithmetic to run before any procurement call</h3>
-<p>Three lines, for each class of artifact you ship.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  bits available   =  f(artifact surface, robustness margin)
 </span></span><span style="display:flex;"><span>  bits needed      =  log2(recipients) + collusion margin + ECC
 </span></span><span style="display:flex;"><span>  material needed  =  bits needed / bits per chunk
 </span></span><span style="display:flex;"><span>                      -&gt;  the time or size it takes to attribute
-</span></span></code></pre></div><p>For A/B composition the middle term is about one bit per chunk. So two-second chunks give 30 bits per minute, four-second chunks 15, six-second chunks 10.</p>
-<p>Work it through for a real population:</p>
+</span></span></code></pre></div><p>For A/B that is about one bit per chunk: 15 bits per minute at four-second chunks. Ten million recipients need 24 bits; with error correction and a collusion margin you are past forty - about three minutes of <em>clean</em> material, more in practice.</p>
+<p>The window live enforcement works to is <strong>30 minutes</strong>: Italy&rsquo;s Piracy Shield deadline, and the ceiling an EU study proposed for live takedown. Attribution spends three of them before you know whose account it was. That makes <strong>chunk size an anti-piracy parameter</strong>: at six-second chunks the same identifier needs four minutes.</p>
+<p>And <strong>fragments cannot be attributed.</strong> A thirty-second clip or a two-hundred-row extract has too little surface. If your loss is fragments, marking is the wrong purchase.</p>
+<h3 id="collusion-and-robustness">Collusion and robustness</h3>
+<p>Recipients can compare and splice their copies; in A/B, two spliced sequences can decode to an innocent third party. Anti-collusion codes (Tardos) fix that, but code length grows with the <strong>square</strong> of the number of colluders, and that is proven unavoidable. Design to that scaling law, not to a vendor datapoint.</p>
+<p>Recovery is always probabilistic: the mark has to survive re-encoding, cropping, screen capture, format conversion, row sampling or recompilation, depending on the medium, while staying invisible. <strong>Marking prevents nothing. It changes the odds of being identified, and so the economics of leaking.</strong></p>
+<p>It also depends on the registry mapping identifiers to recipients - the most sensitive database you own. Its retention caps how far back you can attribute, and accusing the wrong customer from a corrupted registry is worse than a leak you never attributed.</p>
+<hr>
+<h2 id="3-finding-the-leak-content-fingerprinting">3. Finding the leak: content fingerprinting</h2>
+<p><em>Attribution side</em></p>
+<p>Marking tells you whose copy it is only once something tells you a copy exists. That is content fingerprinting: a small, change-tolerant descriptor of your artifact - perceptual hashes, audio peak patterns, text shingles - matched against an index of your own catalogue.</p>
 <ul>
-<li>ten million recipients is 24 bits, before anything else</li>
-<li>add error correction so the identifier survives partial recovery, and you are in the thirties</li>
-<li>add any collusion margin, and you are past forty</li>
-<li>at four-second chunks, forty-odd bits is about three minutes of <em>clean</em> recovered material, and more wall clock than that in practice</li>
+<li><strong>It is a search problem, not a hashing problem.</strong> The index over a large catalogue at crawl volume is where the money goes, so this layer is usually bought.</li>
+<li><strong>Its ceiling is geometric.</strong> Flips, heavy crops, overlays and compositing into a bigger frame - exactly what a pirate&rsquo;s branding does - break weak hashes.</li>
+<li><strong>A match is a location, not a verdict.</strong> Partners and pirates both match; separating them is a rights-metadata problem.</li>
 </ul>
-<p>Now compare that to how long the content is worth stealing. Vendors advertise attribution in around three minutes for live material. The window everyone in live enforcement works to is <strong>30 minutes</strong>: it is the deadline Italy&rsquo;s Piracy Shield imposes on ISPs, and the ceiling an EU study proposed for notice and takedown on live streams.</p>
-<p>So the budget is 30 minutes end to end, and three of them are gone before you even know whose account it was. The rest has to cover capture, extraction, the registry lookup, a decision, and somebody acting on it.</p>
-<p>That is why <strong>chunk size is an anti-piracy parameter</strong>, not just a latency and caching one. At four-second chunks a forty-bit identifier needs about 2.7 minutes of clean material; at six-second chunks the same identifier needs 4. You spend that difference out of the same 30.</p>
-<p>The same arithmetic gives the hard limit of the technique. <strong>Fragments cannot be attributed.</strong> A thirty-second clip, a two-hundred-row extract, one lifted function - not enough surface to carry an identifier that survives anything.</p>
-<p>If your real loss is fragments, marking is the wrong purchase, and no vendor engineering changes that.</p>
-<h3 id="collusion-and-why-it-scales-badly">Collusion, and why it scales badly</h3>
-<p>Several recipients can compare their copies, then average or splice them.</p>
-<p>In an A/B scheme this is cheap to attempt and easy to reason about: two subscribers splicing their sequences produce a third sequence that decodes to an innocent third party.</p>
-<p>The countermeasure is anti-collusion coding, and Tardos codes are the reference family. Required code length grows on the order of <code>c^2 * ln(n/e)</code>, for <code>c</code> colluders in a population of <code>n</code> recipients at false-accusation probability <code>e</code>.</p>
-<p>The quadratic term is the part to design around. Tardos proved it is unavoidable, not an artefact of his construction. Only the constant has moved: his original 100 is down to roughly 4.93, with 2 as the asymptotic floor.</p>
-<p>Design to that scaling law, not to a vendor datapoint.</p>
-<p>One related detail. Extraction happens under loss, and loss is the normal case. Spread the identifier&rsquo;s weight evenly across its bits. Schemes with a few structurally important bits fail badly when exactly those go missing.</p>
-<h3 id="robustness-and-the-registry-behind-it">Robustness, and the registry behind it</h3>
-<table>
-  <thead>
-      <tr>
-          <th>Medium</th>
-          <th>The transformations that matter</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Video, audio, images</td>
-          <td>re-encode, rescale, crop and letterbox, screen capture, camcording, overlay, clipping</td>
-      </tr>
-      <tr>
-          <td>Documents</td>
-          <td>reflow, format conversion, OCR round-trip, retyping, paraphrase</td>
-      </tr>
-      <tr>
-          <td>Datasets</td>
-          <td>row sampling, shuffling, dropping columns, joining against another source</td>
-      </tr>
-      <tr>
-          <td>Software, model weights</td>
-          <td>recompilation, symbol stripping, obfuscation, quantisation, fine-tuning</td>
-      </tr>
-  </tbody>
-</table>
-<p>The mark has to be invisible, and being invisible is exactly what makes recovery probabilistic. That is the shape of the technology, not a flaw to engineer away.</p>
-<p><strong>Marking prevents nothing. It changes the odds of being identified, and so the economics of leaking.</strong></p>
-<p>It also depends entirely on the mapping from recipient to identifier, and that registry is the part teams underbuild.</p>
-<p>It is the most sensitive database you own, since its whole purpose is turning an identifier into a person. Its retention window caps how far back you can attribute anything, and accusing the wrong customer from a corrupted registry is far worse than a leak you never attributed.</p>
-<h2 id="finding-the-leak-content-fingerprinting">Finding the leak: content fingerprinting</h2>
-<p>The attribution half has one more prerequisite. Marking answers &ldquo;whose copy is this&rdquo; only if something first tells you that a copy exists at all.</p>
-<p>That is content fingerprinting, working in the opposite direction.</p>
-<p>It derives a small, change-tolerant descriptor from the artifact and matches it against an index of your own catalogue: perceptual hashes for images and frames, spectral peak patterns for audio, shingling for text, similarity metrics for compiled code.</p>
-<p>It works because a small change to the artifact produces a small change in the descriptor, so re-encoding and resizing do not break the match.</p>
-<p>Three realities decide whether it earns its cost:</p>
-<ul>
-<li><strong>It is a search problem, not a hashing problem.</strong> The descriptor is easy. The index is the engineering. Nearest-neighbour search over a large catalogue at crawl volumes is where the money goes, which is why this layer is usually bought rather than built.</li>
-<li><strong>Its ceiling is geometric, not cryptographic.</strong> Weak perceptual hashes fall over on a horizontal flip, heavy cropping, large overlays, or your content composited into a bigger frame. That last one is exactly what a leech or a mirror operator does when they wrap your feed in their own branding.</li>
-<li><strong>It cannot tell infringement from licensed use.</strong> A match is a location, not a verdict. Your affiliate, your syndication partner and a pirate all produce matches. Separating them is a metadata problem in your rights system.</li>
-</ul>
-<p>Used well, this layer produces a queue of locations ranked by audience, each a candidate for capture and mark extraction. Used badly, a report nobody reads.</p>
+<p>Used well, it produces a queue of locations ranked by audience, each a candidate for mark extraction.</p>
+<hr>
 <h2 id="putting-it-together-designs-that-hold-up">Putting it together: designs that hold up</h2>
 <p>Back to the two halves from part one, this time with their internals. Interruption and attribution are pipelines of different length, and only one of them runs while you can still change the outcome.</p>
 <p><img src="/images/antipiracy-two-loops.png" alt="The interruption loop and the attribution loop, with their different latencies and owners"></p>
@@ -387,7 +361,7 @@
       <tr>
           <td>One credential, many networks, never at the same time</td>
           <td><strong>sharing</strong>, staggered in time</td>
-          <td>device and location history over a window; per-seat binding</td>
+          <td>device and location history over a window; binding the credential to named devices</td>
           <td>concurrency limits</td>
       </tr>
       <tr>
@@ -425,65 +399,40 @@
 <p>The right-hand column is the useful one. Most wasted spend here is a correct control bought for the wrong reading of a symptom.</p>
 <p>Now the failures, which are predictable enough to list.</p>
 <p><strong>Allow or deny at the edge, keyed on a classifier.</strong> As brittle as the classifier&rsquo;s false-positive rate, which you do not know. Graduated response survives its own mistakes instead: throttling or capping quality changes timing rather than correctness, and looks like ordinary congestion to a legitimate user you caught by accident.</p>
-<p><strong>Enforcement keyed on a fingerprint or an address.</strong> Neither lasts. One decays within days, the other is shared by a whole CGNAT population.</p>
-<p><strong>The only durable unit of enforcement is the credential.</strong> Fingerprints and addresses feed the decision. They are never what it is applied to.</p>
+<p><strong>Enforcement keyed on a fingerprint or an address.</strong> Neither lasts. One decays, the other is shared by a whole CGNAT population. <strong>The only durable unit of enforcement is the credential:</strong> fingerprints and addresses feed the decision, but are never what it is applied to.</p>
 <p><strong>A high-cardinality classifier that reaches the cache key.</strong> You have destroyed your own cache with your own defence. Decide after the lookup, substitute on the way out, and mark per-recipient responses uncacheable.</p>
-<p><strong>Detection with nothing to execute it.</strong> If you can spot abuse mid-event but cannot interrupt it, you have built a dashboard. Interruption needs a recurring point where a decision can be applied, and with long-lived credentials that are never revalidated, that point does not exist. Better detection will not create one.</p>
-<p>The live-sports numbers show how common this failure is. A 2024 study by the Live Content Coalition and Grant Thornton found that <strong>81% of illegal streams stayed up for the whole event, and only 2.7% were taken down inside the 30-minute window.</strong> Detection was rarely the missing piece. Execution was.</p>
-<p><strong>Depth of enforcement instead of breadth.</strong> The best natural experiment available is the UK site-blocking sequence, and the numbers are worth knowing:</p>
-<ul>
-<li>blocking one major site: a small drop in piracy, and <strong>no</strong> increase in legal use, because people moved to other sites and to VPNs</li>
-<li>blocking 19 sites at once: a real drop, plus an 11% average rise in paid legal streaming among affected users</li>
-<li>blocking 52 sites later: roughly 10% more subscription use and 11.5% more ad-supported use</li>
-</ul>
-<p><strong>Enforcement has a coverage threshold.</strong> Below it you displace the abuse. Above it you convert users. That argues for spending on grouping and coverage, not on perfecting one detector.</p>
-<p><strong>Enforcing before measuring.</strong> There are no credible published false-positive baselines for any control here. Anyone quoting a precise percentage cannot support it for your traffic.</p>
-<p>Run every classifier in observe-only mode against your own logs first, long enough to see a weekend and a holiday.</p>
+<p><strong>Detection with nothing to execute it.</strong> If you can spot abuse mid-event but cannot interrupt it, you have built a dashboard. Interruption needs a recurring point where a decision can be applied, and with long-lived credentials that are never revalidated, that point does not exist. Better detection will not create one. It is common: in a 2024 live-sports study, <strong>81% of illegal streams stayed up for the whole event.</strong> Detection was rarely the missing piece. Execution was.</p>
+<p><strong>Depth of enforcement instead of breadth.</strong> The UK site-blocking studies are the best natural experiment: blocking one major site only moved users to other sites and VPNs, while blocking 19, and later 52, raised paid legal streaming by roughly 10-11%. Enforcement has a coverage threshold: below it you displace the abuse. Above it you convert users. That argues for spending on grouping and coverage, not on perfecting one detector.</p>
+<p><strong>Enforcing before measuring.</strong> There are no credible published false-positive baselines for any control here. Anyone quoting a precise percentage cannot support it for your traffic. Run every classifier in observe-only mode against your own logs first, long enough to see a weekend and a holiday.</p>
+<hr>
 <h2 id="cost-honestly">Cost, honestly</h2>
 <p>Marking is four line items that get collapsed into one and therefore estimated wrongly: preparation, storage and egress for the variants, per-delivery decisioning, and the detection service plus licensing.</p>
 <p>A/B is the interesting case. Storage doubles while egress does not, because the whole population shares the same two variants. Caching still works, only the object count grows.</p>
 <p>Per-request validation has a cost profile people get backwards. The cryptography is never the bottleneck; an HMAC check is microseconds. Invocation overhead at the edge dominates.</p>
 <p>That overhead decides whether you can afford a decision per object, or only per manifest, per index, per catalogue call - which is also the boundary of what you can interrupt mid-session.</p>
-<h2 id="lessons-learned">Lessons learned</h2>
-<ul>
-<li><strong>The abuser usually has valid access.</strong> Card sharing servers exist because the encryption works. Any strategy built mainly on access control addresses the smaller half of the problem.</li>
-<li><strong>Sort the abuse by whether a copy has already left.</strong> Sharing and leeching can be interrupted. Mirroring and republication can only be attributed. A control bought for the wrong half is wasted money.</li>
-<li><strong>Keep the entry route on its own axis.</strong> A valid credential behaving badly and an emulated client are different problems with different answers, and calling both of them redistribution is how the wrong control gets funded.</li>
-<li><strong>Rank signals by what a forgery costs, not by lab accuracy,</strong> and look for contradictions between layers, since spoofers fake one at a time.</li>
-<li><strong>A fingerprint groups sessions; it does not identify a person,</strong> and it decays. Uniqueness figures from self-selected datasets do not transfer: 33.6% on desktop and 18.5% on mobile is what a real audience looks like.</li>
-<li><strong>Marking is attribution with a probability attached, and its unit is the chunk.</strong> Fragments are permanently out of scope, and the registry resolving an identifier to a person is both the real system and the real liability.</li>
-<li><strong>Detection with no executor is a dashboard,</strong> enforcement has a coverage threshold, and anything sold as making an attack impossible is sold to the wrong buyer. Measure in observe-only first; the baselines you need are published nowhere.</li>
-</ul>
 <h2 id="if-i-were-designing-this-today">If I were designing this today</h2>
-<p>I would build the measurement pipeline before evaluating a single product.</p>
-<p>Four features per credential - distinct network prefixes, request pattern against plausible behaviour, delivered versus entitled volume, and consistency of client identity within a session - come straight out of existing access logs. They need no change to the request path, and within days they tell you which problem you actually have.</p>
-<p>I would also write the threat model as a table with an explicit column headed &ldquo;we are choosing not to address this&rdquo;.</p>
-<p>The analog hole belongs in that column. If a legitimate party can render the artifact, they can capture it. So, for most services, does the fully determined abuser. Naming those cases out of scope is what makes the rest of the budget defensible.</p>
-<p>I would split interruption and attribution into two subsystems with two owners, because they fail independently and get merged in every vendor conversation. Interruption needs a short credential lifetime with renewal, which is cheap and retrofittable. Attribution needs a discovery and extraction loop with an agreed turnaround, which is an operational commitment rather than a purchase.</p>
-<p>And I would build in this order, because each step tells you whether the next one is worth funding:</p>
+<p>I would start with measurement, not a product.</p>
+<p>The five features from the access logs - network diversity, request patterns, activity over time, delivered versus entitled volume, and client-identity consistency - are already in your access logs. No request-path changes. Within days, you know which problem you actually have.</p>
+<p>Make the threat model explicit, including a column for <strong>what we choose not to address</strong>.</p>
+<p>The analog hole goes there. If a legitimate user can render the artifact, they can capture it. A determined abuser usually can too. That boundary keeps the rest of the budget honest.</p>
+<p>Keep <strong>interruption</strong> and <strong>attribution</strong> as separate systems, with separate owners. Interruption needs short-lived credentials and renewal. Attribution needs a discovery-to-takedown loop. They fail independently and should be built independently.</p>
+<p>Build in this order:</p>
 <ol>
-<li><strong>Measure.</strong> Behavioural features over existing logs, observe-only. <em>(interruption)</em></li>
-<li><strong>Shorten the credential.</strong> Create the checkpoint where any decision can later be applied. <em>(interruption)</em></li>
-<li><strong>Grade the responses.</strong> Throttle and step up before you ever deny. <em>(interruption)</em></li>
-<li><strong>Classify at the protocol layer,</strong> as a score, for the commodity tier only. <em>(interruption)</em></li>
-<li><strong>Mark</strong>, but only after the capacity arithmetic says it can work for your artifacts. <em>(attribution)</em></li>
-<li><strong>Discover</strong>, and only once somebody owns the takedown path end to end. <em>(attribution)</em></li>
+<li><strong>Measure.</strong> Existing logs, observe-only. <em>(interruption)</em></li>
+<li><strong>Shorten the credential.</strong> Create the decision point. <em>(interruption)</em></li>
+<li><strong>Grade the response.</strong> Throttle and step up before denying. <em>(interruption)</em></li>
+<li><strong>Classify.</strong> Protocol-level scoring for cheap tooling. <em>(interruption)</em></li>
+<li><strong>Mark.</strong> Only when the capacity works for your artifacts. <em>(attribution)</em></li>
+<li><strong>Discover.</strong> Only when someone owns the path to takedown. <em>(attribution)</em></li>
 </ol>
-<p>The first four are cheap and stop the two shapes you can still catch in the act. The last two cost real money and only pay off once somebody owns the path from a match to a takedown.</p>
-<p>Every classifier stays a score feeding a graduated decision, never a gate. The credential stays the only key enforcement is applied to.</p>
+<p>The first four are cheap. The last two cost real money.</p>
+<p>Every classifier stays a score feeding a graduated decision, never a gate.</p>
 <h2 id="references">References</h2>
 <ul>
-<li>Danaher, Smith, Telang, <em>The Effect of Piracy Website Blocking on Consumer Behavior</em>, CMU IDEA, 2018</li>
-<li>Pandey, Aliapoulios, McCoy, <em>Iniquitous Cord-Cutting: An Analysis of Infringing IPTV Services</em>, IEEE EuroS&amp;P Workshops 2019</li>
-<li>Gomez-Boix et al., <em>Hiding in the Crowd</em>, WWW 2018, and Laperdrix et al., <em>Browser Fingerprinting: A Survey</em>, 2019</li>
-<li>Vastel et al., <em>FP-Stalker: Tracking Browser Fingerprint Evolutions</em>, IEEE S&amp;P 2018</li>
-<li>Jarad and Bicakci, <em>When Handshakes Tell the Truth: Detecting Web Bad Bots via TLS Fingerprints</em>, arXiv:2602.09606, 2026</li>
-<li>Shuster, <em>Passive Fingerprinting of HTTP/2 Clients</em>, Akamai white paper, Black Hat EU 2017</li>
-<li>FoxIO, JA4+ network fingerprinting specification</li>
-<li>DASH-IF Forensic A/B Watermarking, published as ETSI TS 104 002 V1.1.1 (2023-08)</li>
-<li>Tardos, <em>Optimal Probabilistic Fingerprint Codes</em>, and the later literature reducing its leading constant</li>
-<li>EDPB Guidelines 2/2023 on the technical scope of Article 5(3) of the ePrivacy Directive</li>
-<li>Live Content Coalition and Grant Thornton, live sports piracy takedown study, 2024</li>
+<li>Jarad, Bicakci, <em>When Handshakes Tell the Truth</em>, arXiv:2602.09606, 2026</li>
+<li>Gomez-Boix et al., <em>Hiding in the Crowd</em>, WWW 2018</li>
+<li>ETSI TS 104 002, forensic A/B watermarking (DASH-IF), 2023</li>
+<li>Danaher, Smith, Telang, <em>The Effect of Piracy Website Blocking on Consumer Behavior</em>, 2018</li>
 </ul>
 
 </div>
