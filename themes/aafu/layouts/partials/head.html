@@ -33,11 +33,13 @@
   <link rel="stylesheet" href="{{ `/css/general.css` | relURL }}" />
   <link rel="stylesheet" href="{{ `/css/search.css` | relURL }}" />
 
-  {{ with .Params.cover }}
-    <meta property="og:image" content="{{ . | absURL }}">
-  {{ else }}
-    <meta property="og:image" content="{{ "/images/default-preview.png" | absURL }}">
+  {{/* ?v=<content hash> changes the URL whenever the image changes, so Slack/LinkedIn image caches refetch it */}}
+  {{ $ogImage := .Params.cover | default "/images/default-preview.png" }}
+  {{ $ogFile := printf "themes/aafu/static%s" $ogImage }}
+  {{ if fileExists $ogFile }}
+    {{ $ogImage = printf "%s?v=%s" $ogImage (readFile $ogFile | md5 | truncate 8 "") }}
   {{ end }}
+  <meta property="og:image" content="{{ $ogImage | absURL }}">
 
   <script>
     let html = document.querySelector("html");

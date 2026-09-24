@@ -11,7 +11,7 @@ build:
 params:
   title: Nenad Lazić
   author: Nenad Lazić
-  description: Software Architect — Portfolio, Blog & Contact
+  description: Software Architect - Portfolio, Blog & Contact
   keywords: [Nenad, Lazic, Lazić, CV, Portfolio, Software Architect, Solution Architect, Senior Software Engineer, Technical Lead, Blog, Java, C, C++, Streaming, DTV, Android, AI]
   copyright: >-
     powered by [hugo](https://gohugo.io/) & deployed on

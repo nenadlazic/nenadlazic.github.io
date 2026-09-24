@@ -89,7 +89,39 @@ for p in sorted(glob.glob(f"{BLOG}/*.md")):
     card(slug, title, image, f"{OUT}/{slug}.png")
     rows.append((slug, title, image if isinstance(image, str) or image is None else "generated diagram"))
 
-card("default", "Software architecture, media systems and the failure modes nobody logs", None, f"{IMG}/default-preview.png")
+def home_card(out):
+    """Card for the home page and the blog list: photo, name, role, and the topics the blog covers."""
+    im = Image.new("RGB", (W, H), BG)
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, 12, H], fill=ACCENT)
+    # face crop from profile.jpg (2073x1552), as a circle with an accent ring
+    size = 330
+    photo = Image.open(f"{IMG}/profile.jpg").convert("RGB").crop((950, 430, 1850, 1330)).resize((size, size), Image.LANCZOS)
+    mask = Image.new("L", (size, size), 0)
+    ImageDraw.Draw(mask).ellipse([0, 0, size, size], fill=255)
+    px, py = 70, (H - size) // 2
+    d.ellipse([px - 8, py - 8, px + size + 8, py + size + 8], fill=ACCENT)
+    im.paste(photo, (px, py), mask)
+    x = px + size + 60
+    d.text((x, 120), "Nenad Lazić", font=ImageFont.truetype(BOLD, 68), fill=FG)
+    d.text((x, 212), "Software Architect & Technical Lead", font=ImageFont.truetype(REG, 30), fill=ACCENT)
+    body = ImageFont.truetype(REG, 26)
+    for i, l in enumerate(["Architecture and engineering leadership for", "backend and video platforms at scale."]):
+        d.text((x, 272 + i * 36), l, font=body, fill=MUTED)
+    chip = ImageFont.truetype(BOLD, 21)
+    cx, cy = x, 372
+    for t in ["system design", "distributed systems", "video streaming", "AI systems", "performance", "security"]:
+        w = d.textlength(t, font=chip) + 32
+        if cx + w > W - 50:
+            cx, cy = x, cy + 52
+        d.rounded_rectangle([cx, cy, cx + w, cy + 40], 20, outline=ACCENT, width=2)
+        d.text((cx + 16, cy + 20), t, font=chip, fill=FG, anchor="lm")
+        cx += w + 12
+    d.text((x, H - 70), "nenadlazic.github.io", font=ImageFont.truetype(REG, 24), fill=MUTED)
+    im.save(out, optimize=True)
+
+
+home_card(f"{IMG}/default-preview.png")
 rows.append(("../default-preview", "(default - home page, blog list)", None))
 
 os.makedirs(f"{ROOT}/out", exist_ok=True)
