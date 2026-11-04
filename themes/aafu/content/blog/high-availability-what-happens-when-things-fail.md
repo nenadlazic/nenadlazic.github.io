@@ -35,28 +35,6 @@ A service with one replica deployed on both clusters has level 2 but not level 1
 
 Neither level says anything about dependencies. **A service is exactly as available as the least available thing it cannot work without.**
 
-### A vocabulary that makes the audit honest
-
-"Is it HA?" gets a yes or a no, and the yes hides everything. Two columns per component give a real answer.
-
-**Topology** - where it runs:
-
-- **active/active** - both sides serve traffic
-- **active/passive, hot** - both sides run, one gets the traffic
-- **active/passive, cold** - the backup has the objects, scaled to zero
-- **not deployed** - nothing on the backup side
-- **single site** - there is no backup side
-
-**Failover class** - what it takes to move:
-
-- **automatic** - health checks and routing move traffic on their own
-- **scale + DNS** - someone scales up the backup and switches a record
-- **deploy + DNS** - someone first has to deploy it
-- **data promotion** - a replica has to be promoted, or data is restored or lost
-- **not possible**
-
-Filling that table for every component of a real platform is humbling. Most rows land in "scale + DNS" or worse, and the few "automatic" ones tend to be the ones somebody was once burned by.
-
 ## How traffic finds the surviving side
 
 Most active/passive setups move external traffic with DNS: one hostname, one record, pointing at the active cluster. Failover means changing the record. Three details decide whether that works.
@@ -83,7 +61,7 @@ Take a chain: a client calls A, A calls B, B calls C. Everything is deployed on 
 | an external hostname | you can switch only C's record: partial failover, cross-site latency on every call, and C on the backup needs healthy dependencies of its own |
 | a multi-cluster (global) service in a mesh | endpoints in both clusters; when no local pod is ready, calls go to the remote one immediately, with no DNS and no TTL |
 
-The first row is the default almost everywhere, and its consequence is worth stating plainly: **in active/passive with cluster-local addressing, the unit of failover is the cluster, not the service.** One service without level 1 takes down the functionality of the whole primary, and the only way out is to move the entire stack.
+The first row is the default almost everywhere. **In active/passive with cluster-local addressing, the unit of failover is the cluster, not the service.** One service without level 1 takes down the functionality of the whole primary, and the only way out is to move the entire stack.
 
 The mesh option has a trap of its own. Many ingress controllers balance directly across pod IPs from the local endpoint list instead of going through the service IP, so external traffic never sees the remote endpoints and still gets a 503. The mesh covers pod-to-pod calls; check separately that the ingress path uses it.
 
@@ -129,19 +107,35 @@ If a leader must also receive requests because of in-memory state, you can make 
 
 Level 1 is cheap: more replicas, and the work of making the service safe to run twice. Level 2 roughly doubles the stateless footprint if the backup is hot, and costs almost nothing if it is cold. That is exactly why cold backups are so common, and why they drift.
 
-The real cost is not compute. It is **cross-site state**. Synchronous replication adds a round trip between sites to every write; asynchronous replication buys that latency back with a recovery point greater than zero; and every replicated broker or store is one more system to operate and monitor. That trade-off belongs to whoever owns each data set, decided per data set, not by default.
+The real cost is not compute. It is **cross-site state**. Synchronous replication removes the lag but adds a round trip between sites to every write, and every replicated broker or store is one more system to operate and monitor. Sync or async is a decision for whoever owns each data set, made per data set, not by default.
 
 ## If I were designing this today
 
 I would start by writing down what "HA" means for the platform, as a checklist instead of an adjective. A service is HA only if all of this holds:
 
-1. it can run as more than one instance at the same time - no unguarded scheduled jobs, no single-writer volumes, no state only in memory
+1. it can run as more than one instance at the same time
 2. everything it depends on is available on the backup side
 3. there is a defined way for traffic to move - a health-checked route, or a documented and tested switch
 4. it runs at least two replicas per cluster
 
-**The replica count is a consequence, not the goal.**
+Then I would audit every component, including the ones nobody thinks of as components: DNS, secrets, the registry, CI. "Is it HA?" gets a yes or a no, and the yes hides everything. Two columns per component give a real answer.
 
-Then I would fill in the topology and failover-class table for every component, including the ones nobody thinks of as components: DNS, secrets, the registry, CI. The rows marked "not possible" are where the real architecture discussion starts.
+**Topology** - where it runs:
+
+- **active/active** - both sides serve traffic
+- **active/passive, hot** - both sides run, one gets the traffic
+- **active/passive, cold** - the backup has the objects, scaled to zero
+- **not deployed** - nothing on the backup side
+- **single site** - there is no backup side
+
+**Failover class** - what it takes to move:
+
+- **automatic** - health checks and routing move traffic on their own
+- **scale + DNS** - someone scales up the backup and switches a record
+- **deploy + DNS** - someone first has to deploy it
+- **data promotion** - a replica has to be promoted, or data is restored or lost
+- **not possible**
+
+Filling that table for a real platform is humbling. Most rows land in "scale + DNS" or worse, and the few "automatic" ones tend to be the ones somebody was once burned by. The rows marked "not possible" are where the real architecture discussion starts.
 
 And I would put a failover exercise in the calendar. Not because it will go well the first time, but because it will not.
