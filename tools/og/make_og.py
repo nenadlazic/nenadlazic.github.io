@@ -85,7 +85,7 @@ for p in sorted(glob.glob(f"{BLOG}/*.md")):
         continue
     title = re.search(r'^title:\s*"(.*)"', txt, re.M).group(1)
     imgs = [i for i in re.findall(r"!\[[^\]]*\]\(/images/([^)]+)\)", txt) if os.path.exists(f"{IMG}/{i}")]
-    image = OVERRIDE.get(slug) or (imgs[0] if imgs else None) or DIAGRAMS.get(slug)
+    image = OVERRIDE.get(slug) or DIAGRAMS.get(slug) or (imgs[0] if imgs else None)
     card(slug, title, image, f"{OUT}/{slug}.png")
     rows.append((slug, title, image if isinstance(image, str) or image is None else "generated diagram"))
 

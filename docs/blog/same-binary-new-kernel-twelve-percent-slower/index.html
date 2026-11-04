@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en-us" class="m-auto  dark "><head>
+  <title>The OS upgrade that quietly ate 12% of the CPU · Nenad Lazić</title>
+
+<meta name="theme-color" content="" />
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="An OS upgrade made a heavily multithreaded, CPU-bound workload burn 12% more CPU for identical work. Same instructions, lower efficiency, and every usual suspect ruled out one at a time until only the kernel was left." />
+<link rel="canonical" href="https://nenadlazic.github.io/blog/same-binary-new-kernel-twelve-percent-slower/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The OS upgrade that quietly ate 12% of the CPU" />
+<meta property="og:description" content="An OS upgrade made a heavily multithreaded, CPU-bound workload burn 12% more CPU for identical work. Same instructions, lower efficiency, and every usual suspect ruled out one at a time until only the kernel was left." />
+<meta property="og:url" content="https://nenadlazic.github.io/blog/same-binary-new-kernel-twelve-percent-slower/" />
+<meta property="og:site_name" content="Nenad Lazić" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The OS upgrade that quietly ate 12% of the CPU" />
+<meta name="twitter:description" content="An OS upgrade made a heavily multithreaded, CPU-bound workload burn 12% more CPU for identical work. Same instructions, lower efficiency, and every usual suspect ruled out one at a time until only the kernel was left." />
+<meta name="author" content="Nenad Lazić" />
+<meta name="generator" content="aafu theme by Darshan in Hugo 0.147.3" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">        <link rel="manifest" href="/site.webmanifest">        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">        <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="google-site-verification" content="BNTdqVbAxPtce9qZkRnwXoAH5Wc9VZD66vX5UK1HXUM" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Didact+Gothic%7CRoboto:400%7CRoboto+Mono"
+  />
+
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/main.min.842536f0f6f748646290a08f61b965cca04f2c49a8e3b3be0325d9347cd85a08.css"
+    integrity="sha256-hCU28Pb3SGRikKCPYbllzKBPLEmo47O&#43;AyXZNHzYWgg="
+    crossorigin="anonymous"
+  />
+  
+
+  <link href="/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="stylesheet" href="/css/search.css" />
+
+  
+  
+  
+  
+    
+  
+  <meta property="og:image" content="https://nenadlazic.github.io/images/og/same-binary-new-kernel-twelve-percent-slower.png?v=76894846">
+
+  <script>
+    let html = document.querySelector("html");
+    let theme = window.localStorage.getItem("theme");
+
+    const setTheme = (theme) => {
+      html.classList.remove("light");
+      if (theme === "dark") {
+        html.classList.add("dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        window.localStorage.setItem("theme", "light");
+      }
+      fixThemeToggleIcon(theme);
+    };
+
+    const fixThemeToggleIcon = (theme) => {
+      let themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        if (theme === "dark") {
+          themeToggle.classList.remove("fa-moon");
+          themeToggle.classList.add("fa-sun");
+        } else {
+          themeToggle.classList.remove("fa-sun");
+          themeToggle.classList.add("fa-moon");
+        }
+      }
+    };
+
+    if (theme == null) {
+      if (html.classList.contains("dark")) {
+        theme = "dark";
+      } else if (html.classList.contains("light")) {
+        theme = "light";
+      } else {
+        
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          theme = "dark";
+        } else {
+          theme = "light";
+        }
+      }
+    }
+
+    setTheme(theme);
+
+    const toggleTheme = () => {
+      html.classList.contains("dark") ? setTheme("light") : setTheme("dark");
+    };
+
+    window.onload = () => {
+      fixThemeToggleIcon(theme);
+
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+
+    window.onresize = () => {
+      let defaultActivePanel = document.querySelector(".accordion.active");
+      if (defaultActivePanel) {
+        defaultActivePanel.nextElementSibling.style.maxHeight =
+          defaultActivePanel.nextElementSibling.scrollHeight + "px";
+      }
+    };
+  </script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "31022709b8d24ae089f3fc7035bd7ffa"}'></script>
+</head>
+<body class="h-screen p-2 m-auto max-w-4xl flex flex-col">
+    
+    <header
+  class="nav flex flex-row row py-2 mb-6 w-full border-b border-gray-700 dark:border-gray-300 justify-between"
+>
+  <div>
+    <a class="nav-menu-item" href="https://nenadlazic.github.io/">Home</a>
+    <a class="nav-menu-item" href="/blog">Blog</a>
+  </div>
+  <div>
+    <a class="mr-4" href="/search">
+      <i class="fas fa-search"></i>
+    </a>
+    <i
+      class="fas fa-sun theme-toggle text-blue-500 hover:text-blue-700 dark:text-yellow-300 dark:hover:text-yellow-500 cursor-pointer text-lg mr-9 sm:mr-0"
+      onclick="toggleTheme()"
+    ></i>
+  </div>
+</header>
+
+
+
+    
+    <main class="grow">
+<div class="prose prose-stone dark:prose-invert max-w-none">
+<div class="mb-3">
+  <h1 class="top-h1">The OS upgrade that quietly ate 12% of the CPU</h1>
+  <p class="mb-1">November 4, 2026</p>
+  <p>&mdash;</p>
+</div>
+<div class="content">
+  <p>Two identical servers run the same binary on the same live input. One needs about 12% more CPU to do it. Nothing errors, the output is identical, every dashboard is green. The only difference is the operating system: Ubuntu 20.04 with kernel 5.15 on one, Ubuntu 24.04 with kernel 6.8 on the other.</p>
+<p>Twelve percent sounds small until you size a fleet with it: roughly one extra machine in eight, just to stand still. Nobody budgets for an OS upgrade making the same work more expensive.</p>
+<p>The short version: it is the kernel, the most likely mechanism is how newer schedulers place threads on a CPU with many small caches, and the usual quick fixes did not help. The fix is still in progress and will land in the last section of this post.</p>
+<h2 id="the-setup">The setup</h2>
+<p>The workload is a demanding multithreaded process doing intensive computation over a continuous data feed. Several independent instances run side by side on each machine, each with 100-150 threads and 6-7 cores of load. It is CPU-bound, memory-heavy, and works on far more data than fits in any CPU cache, so where that data sits in memory matters.</p>
+<p>The hardware is a server with two first-generation AMD EPYC processors (Zen 1): 64 cores and 128 hardware threads in total. What matters for this story is how those cores are grouped, because the groups decide how far a core is from the data it needs.</p>
+<p><img src="/images/zen1-topology.png" alt="Two sockets, eight NUMA nodes with their own RAM, sixteen CCXs with their own L3 cache"></p>
+<p>Read it from the bottom up:</p>
+<ul>
+<li>A <strong>CCX</strong> (core complex) is a group of 4 cores sharing one L3 cache, the last and largest cache on the chip. Data in it is close and fast. A core in another CCX cannot use it.</li>
+<li>A <strong>NUMA node</strong> is a group of cores with its own memory attached. Its cores reach that memory directly; memory attached to another node is reachable too, but slower. (<a href="/blog/numa-the-performance-bug-that-never-throws/">More on NUMA here.</a>)</li>
+<li>A <strong>socket</strong> is one physical processor. Going from one socket to the other is the longest trip of all.</li>
+</ul>
+<p>So this machine has not one big cache but sixteen small ones, and not one pool of memory but eight. As long as a thread stays on the same cores, its data stays close. When the operating system moves the thread to a core in another CCX, it starts with an empty cache. When it moves the thread to another NUMA node, it also leaves its memory behind and reads it from a distance from then on.</p>
+<h2 id="measuring-12-without-fooling-yourself">Measuring 12% without fooling yourself</h2>
+<p>Comparing CPU graphs over a day does not work here, because <strong>the input drives the cost</strong>. Some data is simply more expensive to process, and CPU per process swings by 20-30% from one minute to the next.</p>
+<p>So the input has to cancel out. Both machines process the same four feeds at the same time with the same binary, CPU per process is read from <code>/proc/&lt;pid&gt;/stat</code> over the same 60-second window on both, and only the <strong>ratio</strong> counts. Absolute numbers drift; the ratio was stable to within a few points.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># CPU cores used by each worker process over 60 s (utime + stime)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> p in <span style="color:#66d9ef">$(</span>pgrep -f worker<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> echo <span style="color:#e6db74">&#34;</span>$p<span style="color:#e6db74"> </span><span style="color:#66d9ef">$(</span>awk <span style="color:#e6db74">&#39;{print $14+$15}&#39;</span> /proc/$p/stat<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span> &gt; /tmp/a
+</span></span><span style="display:flex;"><span>sleep <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> p in <span style="color:#66d9ef">$(</span>pgrep -f worker<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> echo <span style="color:#e6db74">&#34;</span>$p<span style="color:#e6db74"> </span><span style="color:#66d9ef">$(</span>awk <span style="color:#e6db74">&#39;{print $14+$15}&#39;</span> /proc/$p/stat<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span> &gt; /tmp/b
+</span></span><span style="display:flex;"><span>join /tmp/a /tmp/b | awk <span style="color:#e6db74">&#39;{printf &#34;%s %.2f cores\n&#34;, $1, ($3-$2)/100/60}&#39;</span>
+</span></span></code></pre></div><p>Baseline: <strong>+11.8%</strong> on the newer OS, with every instance showing about the same gap.</p>
+<h3 id="same-work-done-slower">Same work, done slower</h3>
+<p>CPU time says <em>that</em> something is slower, not <em>why</em>. The CPU&rsquo;s hardware counters can answer that, and <code>perf stat</code> reads them from a running process without touching it. Four of them matter:</p>
+<ul>
+<li><strong>instructions</strong> - how much work the program did</li>
+<li><strong>cycles</strong> - how many clock ticks that work took</li>
+<li><strong>IPC</strong> (instructions per cycle) - how efficiently the CPU got through the work; it drops when the CPU sits waiting, mostly for data from memory</li>
+<li><strong>cache misses</strong> - how often data was not in the fast on-chip cache and had to come from slower memory</li>
+</ul>
+<p>Measured on both machines over the same 60 seconds, counting only the application&rsquo;s own code (not time spent in the kernel):</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Old OS (5.15)</th>
+          <th>New OS (6.8)</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>instructions</td>
+          <td>baseline</td>
+          <td>-0.2%</td>
+          <td>same work</td>
+      </tr>
+      <tr>
+          <td>cycles</td>
+          <td>baseline</td>
+          <td>+11%</td>
+          <td>took longer</td>
+      </tr>
+      <tr>
+          <td>IPC</td>
+          <td>1.45</td>
+          <td>1.30</td>
+          <td>10% less efficient</td>
+      </tr>
+      <tr>
+          <td>cache misses</td>
+          <td>baseline</td>
+          <td>+5-6%</td>
+          <td>small increase</td>
+      </tr>
+  </tbody>
+</table>
+<p>The new system does not run more code - no extra security path, no library doing more work. It runs the same instructions about 10% slower, and almost all extra cycles are in the application, not the kernel. The kernel is not burning the CPU; something it does makes everyone else slower.</p>
+<p>Keep one number in mind for later: cache misses rose only 5-6%, which on its own does not explain a 10% efficiency drop.</p>
+<h2 id="ruling-things-out-one-at-a-time">Ruling things out, one at a time</h2>
+<p>An OS upgrade changes hundreds of things at once. The only reliable way through is one change per test, both machines measured at the same moment.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Suspect</th>
+          <th>Test</th>
+          <th>Gap after</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CPU security mitigation (SRSO)</td>
+          <td>turned off with <code>spec_rstack_overflow=off</code></td>
+          <td>+12.3%</td>
+      </tr>
+      <tr>
+          <td>CPU microcode</td>
+          <td>booted with the older microcode</td>
+          <td>+12.3%</td>
+      </tr>
+      <tr>
+          <td>glibc and toolchain</td>
+          <td>binary rebuilt on the new OS</td>
+          <td>still there</td>
+      </tr>
+      <tr>
+          <td>NUMA placement</td>
+          <td>each process pinned to 2 NUMA nodes</td>
+          <td>+8.7%</td>
+      </tr>
+      <tr>
+          <td>hyperthreading (SMT)</td>
+          <td>both machines pinned to physical cores only</td>
+          <td>+13.6%</td>
+      </tr>
+      <tr>
+          <td>that particular kernel</td>
+          <td>kernel 6.14 instead of 6.8</td>
+          <td>+10.5%</td>
+      </tr>
+  </tbody>
+</table>
+<p>The security mitigation was the first suspect, since the older kernel does not have it at all. Turning it off changed nothing; neither did the microcode. Rebuilding the binary on the new OS did not close the gap either (that build was also a newer version of the code, so not a perfect test, but enough to rule out &ldquo;built on the old system&rdquo;).</p>
+<p>One test nearly fooled me. Pinning the processes to physical cores on the new machine alone dropped the gap to +3.4%, which looked like a fix. It was not: that pinning makes this workload cheaper on <em>any</em> machine, and with the same pinning on both, the gap was back at +13.6%. <strong>An optimisation applied to only one side of a comparison is not a result.</strong></p>
+<h2 id="the-kernel-swap">The kernel swap</h2>
+<p>Two explanations were left: the kernel, or this particular machine - BIOS settings, memory layout, firmware. The test that separates them: keep the new OS, change only the kernel.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Kernel on the new-OS machine</th>
+          <th>CPU vs the old-OS machine</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>6.8 (release default)</td>
+          <td>+12%</td>
+      </tr>
+      <tr>
+          <td>6.14 (newer hardware-enablement kernel)</td>
+          <td>+10.5%</td>
+      </tr>
+      <tr>
+          <td><strong>5.15 (from the previous long-term release)</strong></td>
+          <td><strong>~0%, every instance within ±2%</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>Same machine, same userspace, same binary, same microcode. With 5.15 the difference is gone. The machine is fine; the gap follows the kernel. (The 5.15 result comes from four clean 60-second windows rather than fifteen, for a reason described below. All four agreed.)</p>
+<h2 id="what-the-scheduler-does-differently">What the scheduler does differently</h2>
+<p>The scheduler keeps per-thread statistics that can be read without any tracing: time spent waiting for a CPU (<code>/proc/&lt;pid&gt;/task/*/schedstat</code>) and the number of moves between cores (<code>/proc/&lt;pid&gt;/task/*/sched</code>). Sampling which core each thread ran on once per second also shows how often it changed NUMA node.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Per process</th>
+          <th>5.15</th>
+          <th>6.8</th>
+          <th>6.14</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>time waiting for a CPU</td>
+          <td>~8 ms/s</td>
+          <td>~32 ms/s</td>
+          <td>~8 ms/s</td>
+      </tr>
+      <tr>
+          <td>moves between cores</td>
+          <td>~390/s</td>
+          <td>~500-550/s</td>
+          <td>~450/s</td>
+      </tr>
+      <tr>
+          <td>on a different NUMA node than 1 s earlier</td>
+          <td>~49% *</td>
+          <td>~68%</td>
+          <td>~52-62%</td>
+      </tr>
+  </tbody>
+</table>
+<p><em>The 6.8 column was measured with a newer build of the same application; 6.14 and 5.15 with the binary used everywhere else in this post. * The 5.15 figure in the last row is from the old-OS machine; the swapped machine on 5.15 was not sampled cleanly for it.</em></p>
+<p><strong>Wait time was a red herring.</strong> On 6.8 threads waited four times longer for a CPU, on a machine only 17% busy, and that looked like the answer. Then 6.14 brought wait time back to the 5.15 level while the CPU gap stayed at 10.5%.</p>
+<p><strong>Moves are the signal that tracks the gap.</strong> Both 6.x kernels move threads more often, and more often across NUMA nodes. On 5.15 the numbers match the old machine exactly.</p>
+<p>The likely mechanism follows from the topology. A thread that changes CCX loses its warm cache; one that changes NUMA node now reads its memory remotely. Same instructions, data further away, lower efficiency. It fits the counters with one honest gap: cache misses rose only 5-6%, so either remote and cross-CCX accesses cost more than a miss counter shows, or something else is involved too. This is a hypothesis, not yet a proof.</p>
+<p>The prime suspect for <em>why</em> placement changed is the scheduler itself. In kernel 6.6 Linux replaced CFS, its scheduling algorithm for sixteen years, with a new one called EEVDF, and thread placement and load balancing changed along with it. Zen 1, with sixteen small caches and eight NUMA nodes in one box, is about as sensitive to placement as x86 hardware gets.</p>
+<h2 id="traps-along-the-way">Traps along the way</h2>
+<p>Swapping kernels on a remote server is where most of the actual risk was. Three traps, each of which would have cost a trip to the remote console:</p>
+<p><strong>The network driver was not in the kernel package.</strong> Ubuntu splits kernel modules into a base package and an <code>-extra</code> package, and this server&rsquo;s network card driver lives in <code>-extra</code>. The metapackage for the newest kernel did not pull <code>-extra</code> in, so installing it as suggested would have produced a machine that boots without network. Check where your network and storage drivers live before rebooting into a new kernel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dpkg -S <span style="color:#66d9ef">$(</span>modinfo -n &lt;nic_driver&gt;<span style="color:#66d9ef">)</span>    <span style="color:#75715e"># which package ships the running driver</span>
+</span></span></code></pre></div><p><strong>Firmware compression.</strong> Newer Ubuntu compresses firmware with zstd, which the original 5.15 could not read. The build used here had it backported (<code>CONFIG_FW_LOADER_COMPRESS_ZSTD=y</code>), but on an old kernel with a new userspace, check it rather than assume it.</p>
+<p><strong>GRUB boots the newest kernel.</strong> An older kernel never becomes the default on its own. A one-shot boot keeps the test reversible: if it does not come up, a power cycle returns to the known-good kernel.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sed -i <span style="color:#e6db74">&#39;s/^GRUB_DEFAULT=.*/GRUB_DEFAULT=saved/&#39;</span> /etc/default/grub
+</span></span><span style="display:flex;"><span>sudo update-grub <span style="color:#f92672">&amp;&amp;</span> sudo grub-set-default <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>sudo grub-reboot <span style="color:#e6db74">&#34;Advanced options for Ubuntu&gt;Ubuntu, with Linux 5.15.0-203-generic&#34;</span>
+</span></span></code></pre></div><p>And one measurement trap: halfway through the 5.15 run, an extra and much heavier job was started on only one of the two machines, and from then on the new machine looked <em>13% faster</em>. Any load that is not the same on both sides turns the ratio into noise.</p>
+<h2 id="what-it-costs-and-the-options">What it costs, and the options</h2>
+<p>For capacity planning the result is blunt: on this CPU generation, a heavily multithreaded CPU-bound workload loses about 10-12% of its capacity on 6.x kernels.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Option</th>
+          <th>Gain</th>
+          <th>Cost</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>stay on 5.15 with the new userspace</td>
+          <td>back to baseline</td>
+          <td>unsupported combination, security fixes only from the older kernel line</td>
+      </tr>
+      <tr>
+          <td>accept it and re-plan capacity</td>
+          <td>none</td>
+          <td>~10-12% more machines on this generation</td>
+      </tr>
+      <tr>
+          <td>tune the scheduler on 6.x</td>
+          <td>not known yet</td>
+          <td>runtime settings, careful measurement</td>
+      </tr>
+      <tr>
+          <td>pin each process to one NUMA node</td>
+          <td>not known yet</td>
+          <td>placement logic in orchestration or the application</td>
+      </tr>
+  </tbody>
+</table>
+<p>Coarse pinning to two NUMA nodes is already ruled out, because the scheduler could still move threads between four CCXs inside that set. Next up: pinning each process to a single node, scheduler settings that make the kernel more reluctant to move a thread with a warm cache, and a comparison of kernel 6.5 (the last with CFS) against 6.6.</p>
+<p>Newer CPU generations have larger caches and fewer NUMA nodes, so the effect may be smaller there. That is not measured yet, so I would not generalise beyond Zen 1.</p>
+<h2 id="lessons-learned">Lessons learned</h2>
+<ol>
+<li><strong>An OS upgrade is a performance change.</strong> Measure the same workload before and after, on the same hardware, with the same binary. Nothing in the logs will tell you.</li>
+<li><strong>Compare ratios measured at the same moment.</strong> When the input drives the cost, numbers from two different hours are noise.</li>
+<li><strong>One change per test, applied to both sides.</strong> The one time that rule was bent, it produced a fake fix.</li>
+<li><strong>The first strong signal is not always the cause.</strong> Wait time looked like the answer on 6.8 and vanished on 6.14 while the gap stayed.</li>
+<li><strong>A kernel change is an infrastructure change, not a package update.</strong> Check drivers, firmware and the boot path first, and keep a way back that does not need someone in the data centre.</li>
+</ol>
+<h2 id="the-fix">The fix</h2>
+<p><em>Work in progress. This section will be updated once the fix is measured.</em></p>
+
+</div>
+<hr class="mt-10 mb-5">
+<div class="author-bio not-prose">
+  <p class="mb-2">
+    <strong>Nenad Lazić</strong> - Software Architect &amp; Technical Lead.<br>
+    I write about system design, scalability, AI in production, and the trade-offs behind real architecture decisions.
+  </p>
+  <p class="mb-0">
+    👉 <a href="https://www.linkedin.com/in/nenad-lazic-7110a310a/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+  </p>
+</div>
+
+</div>
+<div class="flex flex-row justify-around my-2">
+  <h3 class="mb-1 mt-1 text-left mr-4">
+    
+    <a
+      href="/blog/high-availability-what-happens-when-things-fail/"
+      title="High availability: what actually happens when things fail"
+    >
+      <i class="nav-menu fas fa-chevron-circle-left"></i>
+    </a>
+    
+  </h3>
+  <h3 class="mb-1 mt-1 text-left ml-4">
+    
+    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    
+  </h3>
+</div>
+
+
+    </main>
+    
+    <footer class="text-sm text-center border-t border-gray-500  py-6 ">
+  <p class="markdownify">powered by <a href="https://gohugo.io/">hugo</a> &amp; deployed on <a href="https://pages.github.com/">GitHub Pages</a></p>
+  <p >
+    <i>
+      <a href="https://nenadlazic.github.io/">
+        © 2025
+      </a>
+    </i>
+    by
+    <a href="https://github.com/nenadlazic">
+      Nenad Lazić
+    </a>
+  </p>
+
+  
+</footer>
+
+    
+  </body>
+</html>

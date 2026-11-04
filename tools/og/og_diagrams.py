@@ -1,4 +1,5 @@
-# Simple drawio-style illustrations for posts that have no diagram of their own.
+# Simple drawio-style illustrations for posts that have no diagram of their own,
+# or whose diagrams do not read well as a thumbnail. A registered illustration wins over body images.
 # Each function takes the panel size in pixels and returns an RGB image of that size.
 from PIL import Image, ImageDraw, ImageFont
 
@@ -201,7 +202,31 @@ def tesseract_ocr(w, h):
     return c.im
 
 
+def kernel_cpu_gap(w, h):
+    c = Canvas(w, h)
+    H = c.H
+    x0, x1, yb, yt = 60, 960, H - 55, 30
+    c.d.line([c.s(x0), c.s(yb), c.s(x1), c.s(yb)], fill=INK, width=c.s(3))
+    c.text((x0 + x1) / 2, H - 18, "same binary, same input: extra CPU vs the old OS", 19, REG, SOFT, "mm")
+    bars = [("kernel 5.15", 0.0, GREEN), ("kernel 6.14", 10.5, YELLOW), ("kernel 6.8", 12.0, RED)]
+    top = 13.0
+    bw, gap = 220, 70
+    for i, (label, v, st) in enumerate(bars):
+        bx = x0 + 45 + i * (bw + gap)
+        hgt = max((yb - yt - 50) * v / top, 6)
+        fill, stroke = st
+        c.d.rectangle([c.s(bx), c.s(yb - hgt), c.s(bx + bw), c.s(yb)], fill=fill, outline=stroke, width=c.s(3))
+        if v == 0:
+            c.text(bx + bw / 2, yb - 80, "~0%", 34, BOLD, stroke, "mm")
+            c.text(bx + bw / 2, yb - 30, label, 22, BOLD, INK, "mm")
+        else:
+            c.text(bx + bw / 2, yb - hgt - 26, f"+{v:g}%", 34, BOLD, stroke, "mm")
+            c.text(bx + bw / 2, yb - hgt / 2, label, 22, BOLD, INK, "mm")
+    return c.im
+
+
 DIAGRAMS = {
+    "same-binary-new-kernel-twelve-percent-slower": kernel_cpu_gap,
     "compute-cost-calculation-buy-vs-rent": compute_cost,
     "how-to-write-release-notes": release_notes,
     "keycloak-migration-scripts": keycloak_migration,

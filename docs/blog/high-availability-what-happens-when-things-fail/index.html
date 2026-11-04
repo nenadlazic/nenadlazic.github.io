@@ -197,25 +197,6 @@
 <p>Level 1 is cheap and mostly automatic: the orchestrator restarts pods and the load balancer drops dead endpoints. Level 2 is where the real work is, because traffic, service discovery and state all have to move together.</p>
 <p>A service with one replica deployed on both clusters has level 2 but not level 1. It survives a site failure, eventually, after someone switches it, but a routine pod restart is an outage. A service with five replicas on one cluster has level 1 but not level 2. Both get called HA.</p>
 <p>Neither level says anything about dependencies. <strong>A service is exactly as available as the least available thing it cannot work without.</strong></p>
-<h3 id="a-vocabulary-that-makes-the-audit-honest">A vocabulary that makes the audit honest</h3>
-<p>&ldquo;Is it HA?&rdquo; gets a yes or a no, and the yes hides everything. Two columns per component give a real answer.</p>
-<p><strong>Topology</strong> - where it runs:</p>
-<ul>
-<li><strong>active/active</strong> - both sides serve traffic</li>
-<li><strong>active/passive, hot</strong> - both sides run, one gets the traffic</li>
-<li><strong>active/passive, cold</strong> - the backup has the objects, scaled to zero</li>
-<li><strong>not deployed</strong> - nothing on the backup side</li>
-<li><strong>single site</strong> - there is no backup side</li>
-</ul>
-<p><strong>Failover class</strong> - what it takes to move:</p>
-<ul>
-<li><strong>automatic</strong> - health checks and routing move traffic on their own</li>
-<li><strong>scale + DNS</strong> - someone scales up the backup and switches a record</li>
-<li><strong>deploy + DNS</strong> - someone first has to deploy it</li>
-<li><strong>data promotion</strong> - a replica has to be promoted, or data is restored or lost</li>
-<li><strong>not possible</strong></li>
-</ul>
-<p>Filling that table for every component of a real platform is humbling. Most rows land in &ldquo;scale + DNS&rdquo; or worse, and the few &ldquo;automatic&rdquo; ones tend to be the ones somebody was once burned by.</p>
 <h2 id="how-traffic-finds-the-surviving-side">How traffic finds the surviving side</h2>
 <p>Most active/passive setups move external traffic with DNS: one hostname, one record, pointing at the active cluster. Failover means changing the record. Three details decide whether that works.</p>
 <p><strong>A plain record does not fail over.</strong> If the service dies but the cluster is up, requests still arrive, the ingress finds no ready endpoints and answers 503. It does not forward to the other cluster; it does not know there is one.</p>
@@ -248,7 +229,7 @@
       </tr>
   </tbody>
 </table>
-<p>The first row is the default almost everywhere, and its consequence is worth stating plainly: <strong>in active/passive with cluster-local addressing, the unit of failover is the cluster, not the service.</strong> One service without level 1 takes down the functionality of the whole primary, and the only way out is to move the entire stack.</p>
+<p>The first row is the default almost everywhere. <strong>In active/passive with cluster-local addressing, the unit of failover is the cluster, not the service.</strong> One service without level 1 takes down the functionality of the whole primary, and the only way out is to move the entire stack.</p>
 <p>The mesh option has a trap of its own. Many ingress controllers balance directly across pod IPs from the local endpoint list instead of going through the service IP, so external traffic never sees the remote endpoints and still gets a 503. The mesh covers pod-to-pod calls; check separately that the ingress path uses it.</p>
 <h2 id="state-is-the-real-problem">State is the real problem</h2>
 <p>Stateless services are the easy part. Every hard failover conversation ends at state.</p>
@@ -281,17 +262,33 @@
 </ul>
 <h2 id="what-it-costs">What it costs</h2>
 <p>Level 1 is cheap: more replicas, and the work of making the service safe to run twice. Level 2 roughly doubles the stateless footprint if the backup is hot, and costs almost nothing if it is cold. That is exactly why cold backups are so common, and why they drift.</p>
-<p>The real cost is not compute. It is <strong>cross-site state</strong>. Synchronous replication adds a round trip between sites to every write; asynchronous replication buys that latency back with a recovery point greater than zero; and every replicated broker or store is one more system to operate and monitor. That trade-off belongs to whoever owns each data set, decided per data set, not by default.</p>
+<p>The real cost is not compute. It is <strong>cross-site state</strong>. Synchronous replication removes the lag but adds a round trip between sites to every write, and every replicated broker or store is one more system to operate and monitor. Sync or async is a decision for whoever owns each data set, made per data set, not by default.</p>
 <h2 id="if-i-were-designing-this-today">If I were designing this today</h2>
 <p>I would start by writing down what &ldquo;HA&rdquo; means for the platform, as a checklist instead of an adjective. A service is HA only if all of this holds:</p>
 <ol>
-<li>it can run as more than one instance at the same time - no unguarded scheduled jobs, no single-writer volumes, no state only in memory</li>
+<li>it can run as more than one instance at the same time</li>
 <li>everything it depends on is available on the backup side</li>
 <li>there is a defined way for traffic to move - a health-checked route, or a documented and tested switch</li>
 <li>it runs at least two replicas per cluster</li>
 </ol>
-<p><strong>The replica count is a consequence, not the goal.</strong></p>
-<p>Then I would fill in the topology and failover-class table for every component, including the ones nobody thinks of as components: DNS, secrets, the registry, CI. The rows marked &ldquo;not possible&rdquo; are where the real architecture discussion starts.</p>
+<p>Then I would audit every component, including the ones nobody thinks of as components: DNS, secrets, the registry, CI. &ldquo;Is it HA?&rdquo; gets a yes or a no, and the yes hides everything. Two columns per component give a real answer.</p>
+<p><strong>Topology</strong> - where it runs:</p>
+<ul>
+<li><strong>active/active</strong> - both sides serve traffic</li>
+<li><strong>active/passive, hot</strong> - both sides run, one gets the traffic</li>
+<li><strong>active/passive, cold</strong> - the backup has the objects, scaled to zero</li>
+<li><strong>not deployed</strong> - nothing on the backup side</li>
+<li><strong>single site</strong> - there is no backup side</li>
+</ul>
+<p><strong>Failover class</strong> - what it takes to move:</p>
+<ul>
+<li><strong>automatic</strong> - health checks and routing move traffic on their own</li>
+<li><strong>scale + DNS</strong> - someone scales up the backup and switches a record</li>
+<li><strong>deploy + DNS</strong> - someone first has to deploy it</li>
+<li><strong>data promotion</strong> - a replica has to be promoted, or data is restored or lost</li>
+<li><strong>not possible</strong></li>
+</ul>
+<p>Filling that table for a real platform is humbling. Most rows land in &ldquo;scale + DNS&rdquo; or worse, and the few &ldquo;automatic&rdquo; ones tend to be the ones somebody was once burned by. The rows marked &ldquo;not possible&rdquo; are where the real architecture discussion starts.</p>
 <p>And I would put a failover exercise in the calendar. Not because it will go well the first time, but because it will not.</p>
 
 </div>
@@ -320,7 +317,12 @@
   </h3>
   <h3 class="mb-1 mt-1 text-left ml-4">
     
-    <i class="text-gray-300 dark:text-gray-600 fas fa-chevron-circle-right"></i>
+    <a
+      href="/blog/same-binary-new-kernel-twelve-percent-slower/"
+      title="The OS upgrade that quietly ate 12% of the CPU"
+    >
+      <i class="nav-menu fas fa-chevron-circle-right"></i>
+    </a>
     
   </h3>
 </div>

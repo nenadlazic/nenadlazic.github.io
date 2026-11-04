@@ -70,13 +70,15 @@ params:
     title: Experiences
     icon: fas fa-briefcase
     list:
-      - position: Software Engineer | Technical lead
+      - position: Software Architect | Technical lead
         dates: 01/2022 - *Present*
         url: https://tyllo.net/
         company: Tyllo (UnitedCloud)
         details: |1-
-          - Worked on backend solutions for media processing (transcoding, streaming, content protection), while leading a team of 10 engineers and designing architecture solutions across projects.
-      - position: Software Engineer
+          - Architecture of a video processing platform (live transcoding, streaming, content protection): system design, technology choices and trade-offs across teams.
+          - Leading a team of 10 engineers; design reviews and technical direction for the wider engineering group.
+          - Hands-on work on performance, reliability and the hard problems in production.
+      - position: Software Engineer | Team Lead
         dates: 07/2020 - 01/2022
         url: "https://www.iwedia.com/"
         company: RT-RK (iWedia), Belgrade, Serbia

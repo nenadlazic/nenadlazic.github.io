@@ -6,8 +6,15 @@
     <description>Recent content in Performance on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 Jul 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The OS upgrade that quietly ate 12% of the CPU</title>
+      <link>https://nenadlazic.github.io/blog/same-binary-new-kernel-twelve-percent-slower/</link>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/blog/same-binary-new-kernel-twelve-percent-slower/</guid>
+      <description>&lt;p&gt;Two identical servers run the same binary on the same live input. One needs about 12% more CPU to do it. Nothing errors, the output is identical, every dashboard is green. The only difference is the operating system: Ubuntu 20.04 with kernel 5.15 on one, Ubuntu 24.04 with kernel 6.8 on the other.&lt;/p&gt;&#xA;&lt;p&gt;Twelve percent sounds small until you size a fleet with it: roughly one extra machine in eight, just to stand still. Nobody budgets for an OS upgrade making the same work more expensive.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>NUMA: the performance bug that never throws an error</title>
       <link>https://nenadlazic.github.io/blog/numa-the-performance-bug-that-never-throws/</link>

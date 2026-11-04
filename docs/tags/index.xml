@@ -6,8 +6,50 @@
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Sep 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nenadlazic.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kernel</title>
+      <link>https://nenadlazic.github.io/tags/kernel/</link>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/kernel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://nenadlazic.github.io/tags/linux/</link>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Multithreading</title>
+      <link>https://nenadlazic.github.io/tags/multithreading/</link>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/multithreading/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Numa</title>
+      <link>https://nenadlazic.github.io/tags/numa/</link>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/numa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://nenadlazic.github.io/tags/performance/</link>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/performance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Scheduler</title>
+      <link>https://nenadlazic.github.io/tags/scheduler/</link>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://nenadlazic.github.io/tags/scheduler/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Architecture</title>
       <link>https://nenadlazic.github.io/tags/architecture/</link>
@@ -86,31 +128,10 @@
       <description></description>
     </item>
     <item>
-      <title>Linux</title>
-      <link>https://nenadlazic.github.io/tags/linux/</link>
-      <pubDate>Fri, 31 Jul 2026 09:00:00 +0200</pubDate>
-      <guid>https://nenadlazic.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Memory</title>
       <link>https://nenadlazic.github.io/tags/memory/</link>
       <pubDate>Fri, 31 Jul 2026 09:00:00 +0200</pubDate>
       <guid>https://nenadlazic.github.io/tags/memory/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Numa</title>
-      <link>https://nenadlazic.github.io/tags/numa/</link>
-      <pubDate>Fri, 31 Jul 2026 09:00:00 +0200</pubDate>
-      <guid>https://nenadlazic.github.io/tags/numa/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Performance</title>
-      <link>https://nenadlazic.github.io/tags/performance/</link>
-      <pubDate>Fri, 31 Jul 2026 09:00:00 +0200</pubDate>
-      <guid>https://nenadlazic.github.io/tags/performance/</guid>
       <description></description>
     </item>
     <item>
